@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>👨🏻‍💻 技术 on XP&#39;s Blog</title>
-    <link>https://github.com/sirius00/posts/tech/</link>
-    <description>Recent content in 👨🏻‍💻 技术 on XP&#39;s Blog</description>
+    <title>👨🏻‍💻 技术 on Sulv&#39;s Blog</title>
+    <link>https://www.sulvblog.cn/posts/tech/</link>
+    <description>Recent content in 👨🏻‍💻 技术 on Sulv&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 06 Feb 2023 22:33:15 +0800</lastBuildDate><atom:link href="https://github.com/sirius00/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 May 2022 00:17:58 +0800</lastBuildDate><atom:link href="https://www.sulvblog.cn/posts/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Git的使用</title>
-      <link>https://github.com/sirius00/posts/tech/git%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
-      <pubDate>Mon, 06 Feb 2023 22:33:15 +0800</pubDate>
+      <title>Tech</title>
+      <link>https://www.sulvblog.cn/posts/tech/tech/</link>
+      <pubDate>Thu, 05 May 2022 00:17:58 +0800</pubDate>
       
-      <guid>https://github.com/sirius00/posts/tech/git%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
-      <description>基础篇 git add 添加指定文件夹及其目录下的文件 source目录下及子目录下所有文件，home目录下的所有.py文件 git source/* git home/*.py git add 文件夹 git add 文件夹名 git</description>
-    </item>
-    
-    <item>
-      <title>mysql数据库</title>
-      <link>https://github.com/sirius00/posts/tech/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
-      <pubDate>Mon, 06 Feb 2023 16:07:01 +0800</pubDate>
-      
-      <guid>https://github.com/sirius00/posts/tech/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
-      <description>创建数据库 create database 数据库名 删除数据库 drop database 数据库名 mysql数据类型 数值类型 类型 大小 范围（有符号） 范围（无符号） 用途 TINYINT 1 Bytes (-128，127) (0</description>
+      <guid>https://www.sulvblog.cn/posts/tech/tech/</guid>
+      <description></description>
     </item>
     
   </channel>
