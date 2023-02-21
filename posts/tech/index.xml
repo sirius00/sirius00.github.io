@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>👨🏻‍💻 技术 on Sulv&#39;s Blog</title>
-    <link>https://www.sulvblog.cn/posts/tech/</link>
-    <description>Recent content in 👨🏻‍💻 技术 on Sulv&#39;s Blog</description>
+    <title>👨🏻‍💻 技术 on XP&#39;s Blog</title>
+    <link>https://sirius00.github.io/posts/tech/</link>
+    <description>Recent content in 👨🏻‍💻 技术 on XP&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 05 May 2022 00:17:58 +0800</lastBuildDate><atom:link href="https://www.sulvblog.cn/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Feb 2023 17:05:52 +0800</lastBuildDate><atom:link href="https://sirius00.github.io/posts/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Tech</title>
-      <link>https://www.sulvblog.cn/posts/tech/tech/</link>
-      <pubDate>Thu, 05 May 2022 00:17:58 +0800</pubDate>
+      <title>Mysql的基本使用</title>
+      <link>https://sirius00.github.io/posts/tech/mysql%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Tue, 21 Feb 2023 17:05:52 +0800</pubDate>
       
-      <guid>https://www.sulvblog.cn/posts/tech/tech/</guid>
+      <guid>https://sirius00.github.io/posts/tech/mysql%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</guid>
+      <description>创建数据库 create database 数据库名 删除数据库 drop database 数据库名 mysql数据类型 数值类型 类型 大小 范围（有符号） 范围（无符号） 用途 TINYINT 1 Bytes (-128，127) (0，255) 小整数值 SMALLINT 2 Bytes (-32 768，32 767) (0，65 535) 大整数值 MEDIUMINT 3 Bytes (-8 388 608，8 388 607) (0，16 777 215) 大整数值 INT或INTEGER 4 Bytes (-2 147 483 6</description>
+    </item>
+    
+    <item>
+      <title>Git的使用</title>
+      <link>https://sirius00.github.io/posts/tech/git%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Tue, 07 Feb 2023 19:59:52 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/tech/git%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
       <description></description>
     </item>
     
