@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Koa框架 | XP&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="教程：https://github.com/jj112358/node-api 项目的基本优化 nodemon **作用：**自动重新加载当前项目 安装：npm i nodemon **配置：**在package.json修改scripts， 添加如下内容 ： &#34;start&#34;: &#34;nodemon ./main.js&#34;, dotenv **作用：**读取配置文件， 设置环境变量 链接：npm地">
+<meta name="author" content="
+作者:&nbsp;XP">
+<link rel="canonical" href="https://sirius00.github.io/posts/tech/koa%E6%A1%86%E6%9E%B6/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a6c679e0d2f6e83a8f1aad1f7a2cdc96085c188647e679dbc62800f83be6bad2.css" integrity="sha256-psZ54NL26DqPGq0feizclghcGIZH5nnbxigA&#43;DvmutI=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+        onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sirius00.github.io/img/cat.png">
+<link rel="apple-touch-icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="mask-icon" href="https://sirius00.github.io/img/cat.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = ""; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<meta property="og:title" content="Koa框架" />
+<meta property="og:description" content="教程：https://github.com/jj112358/node-api 项目的基本优化 nodemon **作用：**自动重新加载当前项目 安装：npm i nodemon **配置：**在package.json修改scripts， 添加如下内容 ： &#34;start&#34;: &#34;nodemon ./main.js&#34;, dotenv **作用：**读取配置文件， 设置环境变量 链接：npm地" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sirius00.github.io/posts/tech/koa%E6%A1%86%E6%9E%B6/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-22T09:31:10+08:00" />
+<meta property="article:modified_time" content="2023-02-22T09:31:10+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Koa框架"/>
+<meta name="twitter:description" content="教程：https://github.com/jj112358/node-api 项目的基本优化 nodemon **作用：**自动重新加载当前项目 安装：npm i nodemon **配置：**在package.json修改scripts， 添加如下内容 ： &#34;start&#34;: &#34;nodemon ./main.js&#34;, dotenv **作用：**读取配置文件， 设置环境变量 链接：npm地"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+
+        {
+          "@type": "ListItem",
+          "position":  1 ,
+          "name": "📚文章",
+          "item": "https://sirius00.github.io/posts/"
+        },
+
+        {
+          "@type": "ListItem",
+          "position":  2 ,
+          "name": "👨🏻‍💻 技术",
+          "item": "https://sirius00.github.io/posts/tech/"
+        }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Koa框架",
+      "item": "https://sirius00.github.io/posts/tech/koa%E6%A1%86%E6%9E%B6/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Koa框架",
+  "name": "Koa框架",
+  "description": "教程：https://github.com/jj112358/node-api 项目的基本优化 nodemon **作用：**自动重新加载当前项目 安装：npm i nodemon **配置：**在package.json修改scripts， 添加如下内容 ： \u0026#34;start\u0026#34;: \u0026#34;nodemon ./main.js\u0026#34;, dotenv **作用：**读取配置文件， 设置环境变量 链接：npm地",
+  "keywords": [
+    ""
+  ],
+  "articleBody": " 教程：https://github.com/jj112358/node-api\n项目的基本优化 nodemon **作用：**自动重新加载当前项目\n安装：npm i nodemon\n**配置：**在package.json修改scripts， 添加如下内容\t：\n\"start\": \"nodemon ./main.js\", dotenv **作用：**读取配置文件， 设置环境变量\n链接：npm地址\n安装：npm i dotenv\n使用：\n创建.env文件\nPORT = 8080 创建config文件夹， 创建config.default.js文件\nconst dotenv = require('dotenv') dotenv.config() module.exports = process.env 在main.js文件中\nconst {PORT} = require('./config/config.js') 配置路由 使用 koa-router\n安装：npm i koa-router\n使用：\n创建router文件夹\n创建user.route.js文件\nconst Router = rquire('koa-router') const userRouter = new Router({prefix: '/user'}) router.get（'/'， （ctx， next） =\u003e { ctx.body = 'hello' }） module.exports = userRouter 改写 main.js 文件\nconst user = require('./router/user.route'); //引入user app.use(user.routes()); 如何使用路由重定向 如果向直接从 localhost：9000 重定向至 localhost：9000/home 如何实现？\n可以在 router/index.js 中进行如下配置：\nrouter.use（'/home', home.routes(), home.allowMethods()） ... router.redirect('/', '/home') 目录结构优化 将http服务和app业务拆分 创建app/inde.js文件\nconst Koa = require('koa') const userRouter = require(' . ./router /user. route') const app = new Koa() app.use(userRouter.routes()) module. exports = app 创建controller文件夹， 将路由和控制器分开 例如， 创建user.controller.js文件\nclass UserController { async register (ctx， next) { ctx.body = '用户注册成功' } } 在router/user.route.js文件中引入\nconst {register} = require('../~') // 注册接口 router.post('/register'， register) 解析body， 拆分service 解析body 安装：npm i koa-body\n使用：\nconst { koaBody } = require('koa-body'); // 解析body app.use(koaBody()); 拆分serveice或model（操作数据库） 创建service或model文件夹\n/* 写法一 exports.createUser = async (username, password) =\u003e { return '写入数据成功' } */ // 写法二 class UserModel { async createUser(username, password) { return '写入数据成功' } } module.exports = new UserModel() 操作数据库 sequelize ORM数据库工具\nsequelize中文文档\nsequelize 自动生成model\n如何使用sequelize automate\n自动生成model使用教程\nORM： 对象关系映射\n数据表映射（对应）一个类 数据表中的数据行（记录）对应一个对象 数据表字段对应对象的属性 数据表操作对应对象的方法 安装： npm i mysql2 sequelize\n使用：\n连接数据库\n错误处理 在app文件夹下， errorHandler.js文件：\nmodule.exports = (err, ctx) =\u003e { let status = 500 switch (err.code) { case '10001': status = 400 break case '10002': status = 409 break default: status = 500 } ctx.status = status ctx.body = err console.log(err); } 使用：\nctx.app.emit('error', userRegisterError, ctx) 拆分中间件 拆分中间件 创建middleware文件夹\n如user.middleware.js文件：\nconst cryptojs = require('crypto-js') const { getUserInfo } = require('../service/user.service') const { userFormateError, userAlreadyExited, userRegisterError, userDoesNotExist, userLoginError } = require('../constant/err.type') const userValidator = async (ctx, next) =\u003e { const { username, password } = ctx.request.body // 合法性 if (!username || !password) { console.error('用户名或密码为空', ctx.request.body) ctx.app.emit('error', userFormateError, ctx) return } await next() } const verifyUser = async (ctx, next) =\u003e { const { username } = ctx.request.body try { const res = await getUserInfo({ username }) if (res) { console.error('用户名已经存在', { username }) ctx.app.emit('error', userAlreadyExited, ctx) return } } catch (err) { console.error('获取用户信息错误', err) ctx.app.emit('error', userRegisterError, ctx) return } await next() } const cryptoPassword = async (ctx, next) =\u003e { const { password } = ctx.request.body const newPassword = cryptojs.MD5(password).toString() ctx.request.body.password = newPassword // console.log(newPassword); await next() } const verifyLogin = async (ctx, next) =\u003e { // 1. 判断用户是否存在(不存在:报错) const { username, password } = ctx.request.body try { const res = await getUserInfo({ username }) if (!res) { console.error('用户名不存在', { username }) ctx.app.emit('error', userDoesNotExist, ctx) return } console.log('res', res); // 2. 密码是否匹配(不匹配: 报错) const pwd = cryptojs.MD5(password).toString() if (pwd !== res.password) { ctx.app.emit('error', invalidPassword, ctx) return } } catch (err) { console.error(err) return ctx.app.emit('error', userLoginError, ctx) } await next() } module.exports = { userValidator, verifyUser, cryptoPassword, verifyLogin } 统一错误处理 创建constant文件夹， 新建err.type.js文件， 定义错误常量\nmodule.exports = { userFormateError: { code: '10001', message: '用户名或密码为空', result: '', }, userAlreadyExited: { code: '10002', message: '用户已经存在', result: '', }, userRegisterError: { code: '10003', message: '用户注册错误', result: '', }, userDoesNotExist: { code: '10004', message: '用户不存在', result: '', }, userLoginError: { code: '10005', message: '用户登录失败', result: '', }, invalidPassword: { code: '10006', message: '密码不匹配', result: '', }, tokenExpiredError: { code: '10101', message: 'token已过期', result: '', }, invalidToken: { code: '10102', message: '无效的token', result: '', }, } 错误处理函数 调用service层的时候，尽量都加上try catch\n加密 安装bcryptjs（安装crypto-js） 编写加密中间件 在router中使用 用户的认证 登陆成功后， 给用户颁发一个令牌token， 用户在以后的每一次请求中携带这个令牌\njwt： jsonwebtoken\nheader： 头部 payload： 载荷 signature： 签名 颁发token 安装jsonwebtoken\nnpm i jsonwebtoken\n用户认证 创建中间件，auth.middleware.js\nconst jwt = require('jsonwebtoken') const { JWT_SECRET } = require('../config/config') const { tokenExpiredError, invalidToken } = require('../constant/err.type') const auth = async (ctx, next) =\u003e { const { authorization } = ctx.request.header const token = authorization.replace('Bearer ', '') console.log(token) try { // user中包含了payload的信息(id, user_name, is_admin) const user = jwt.verify(token, JWT_SECRET) ctx.state.user = user } catch (err) { switch (err.name) { case 'TokenExpiredError': console.error('token已过期', err) return ctx.app.emit('error', tokenExpiredError, ctx) case 'JsonWebTokenError': console.error('无效的token', err) return ctx.app.emit('error', invalidToken, ctx) } } await next() } module.exports = { auth, } 在路由中使用：\n// 修改用户信息 router.patch('/change', auth, changePassword) 参数校验 使用插件joi\n使用方式：\n创建schema文件夹\n添加参数验证， 如：\nconst joi = require('joi') const schema = joi.object({ username: joi.string().required(), password: joi.string().required() }) module.exports = schema 在中间件 文件夹中使用\nconst user_schema = require('../schema/user.schema') const addPostValidator = async (ctx, next) =\u003e { // const res = await user_schema.validateAsync(ctx.request.body) try { const value = await user_schema.validateAsync(ctx.request.body); } catch (err) { if(err) { ctx.app.emit('error', {code: 1, message: err.details[0].message}, ctx) return } } await next() } module.exports = { addPostValidator } 在router路由中使用\nrouter.post('/test', addPostValidator, registerTest) 读取静态文件 安装 koa-static npm i koa-static 引入 const path = rquire（'path'） const static = require('koa-static') // 获取静态资源文件夹 app.use(static(path.join(__dirname+ '/assets'))) 上传图片 修改koa-body的使用 app.use(koaBody({ multipart: true, formidable: { uploadDir: '', keepExtensions: true } })) 新建 upload 文件夹 ",
+  "wordCount" : "2296",
+  "inLanguage": "en",
+  "datePublished": "2023-02-22T09:31:10+08:00",
+  "dateModified": "2023-02-22T09:31:10+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "XP"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://sirius00.github.io/posts/tech/koa%E6%A1%86%E6%9E%B6/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "XP's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://sirius00.github.io/img/cat.png"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://sirius00.github.io/" accesskey="h" title="XP&#39;s Blog (Alt + H)">
+            <img src="https://sirius00.github.io/img/cat.png" alt="logo" aria-label="logo"
+                 height="35">XP&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://sirius00.github.io/search" title="🔍 搜索 (Alt &#43; /)" accesskey=/>
+                <span>🔍 搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/" title="🏠 主页">
+                <span>🏠 主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/posts" title="📚 文章">
+                <span>📚 文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/tags" title="🧩 标签">
+                <span>🧩 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/archives/" title="⏱️ 时间轴">
+                <span>⏱️ 时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/about" title="🙋🏻‍♂️ 关于">
+                <span>🙋🏻‍♂️ 关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main page">
+<article class="post-single">
+    <div id="single-content">
+        <header class="post-header">
+            <div class="breadcrumbs"><a href="https://sirius00.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://sirius00.github.io/posts/">📚文章</a>&nbsp;»&nbsp;<a href="https://sirius00.github.io/posts/tech/">👨🏻‍💻 技术</a></div>
+            <h1 class="post-title">
+                Koa框架
+            </h1>
+            <div class="post-meta">创建:&nbsp;<span title='2023-02-22 09:31:10 +0800 CST'>2023-02-22</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-22&nbsp;|&nbsp;字数:&nbsp;2296字&nbsp;|&nbsp;时长:&nbsp;5分钟&nbsp;|&nbsp;
+作者:&nbsp;XP
+
+
+
+                &nbsp;|&nbsp;标签: &nbsp;
+                <ul class="post-tags-meta">
+                    <a href="https://sirius00.github.io/tags/nodejs/">nodejs</a>
+                    <a href="https://sirius00.github.io/tags/%E5%90%8E%E7%AB%AF/">、后端</a>
+                </ul>
+
+                
+                <span id="busuanzi_container_page_pv">
+                &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+</div>
+        </header> 
+        <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">文章目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e9%a1%b9%e7%9b%ae%e7%9a%84%e5%9f%ba%e6%9c%ac%e4%bc%98%e5%8c%96" aria-label="项目的基本优化">项目的基本优化</a><ul>
+                        
+                <li>
+                    <a href="#nodemon" aria-label="nodemon">nodemon</a></li>
+                <li>
+                    <a href="#dotenv" aria-label="dotenv">dotenv</a></li>
+                <li>
+                    <a href="#%e9%85%8d%e7%bd%ae%e8%b7%af%e7%94%b1" aria-label="配置路由">配置路由</a><ul>
+                        
+                <li>
+                    <a href="#%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8%e8%b7%af%e7%94%b1%e9%87%8d%e5%ae%9a%e5%90%91" aria-label="如何使用路由重定向">如何使用路由重定向</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84%e4%bc%98%e5%8c%96" aria-label="目录结构优化">目录结构优化</a><ul>
+                        
+                <li>
+                    <a href="#%e5%b0%86http%e6%9c%8d%e5%8a%a1%e5%92%8capp%e4%b8%9a%e5%8a%a1%e6%8b%86%e5%88%86" aria-label="将http服务和app业务拆分">将http服务和app业务拆分</a></li>
+                <li>
+                    <a href="#%e5%88%9b%e5%bb%bacontroller%e6%96%87%e4%bb%b6%e5%a4%b9-%e5%b0%86%e8%b7%af%e7%94%b1%e5%92%8c%e6%8e%a7%e5%88%b6%e5%99%a8%e5%88%86%e5%bc%80" aria-label="创建controller文件夹， 将路由和控制器分开">创建controller文件夹， 将路由和控制器分开</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e8%a7%a3%e6%9e%90body-%e6%8b%86%e5%88%86service" aria-label="解析body， 拆分service">解析body， 拆分service</a><ul>
+                        
+                <li>
+                    <a href="#%e8%a7%a3%e6%9e%90body" aria-label="解析body">解析body</a></li>
+                <li>
+                    <a href="#%e6%8b%86%e5%88%86serveice%e6%88%96model%e6%93%8d%e4%bd%9c%e6%95%b0%e6%8d%ae%e5%ba%93" aria-label="拆分serveice或model（操作数据库）">拆分serveice或model（操作数据库）</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%93%8d%e4%bd%9c%e6%95%b0%e6%8d%ae%e5%ba%93" aria-label="操作数据库">操作数据库</a></li>
+                <li>
+                    <a href="#%e9%94%99%e8%af%af%e5%a4%84%e7%90%86" aria-label="错误处理">错误处理</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%8b%86%e5%88%86%e4%b8%ad%e9%97%b4%e4%bb%b6" aria-label="拆分中间件">拆分中间件</a><ul>
+                        
+                <li>
+                    <a href="#%e6%8b%86%e5%88%86%e4%b8%ad%e9%97%b4%e4%bb%b6-1" aria-label="拆分中间件">拆分中间件</a></li>
+                <li>
+                    <a href="#%e7%bb%9f%e4%b8%80%e9%94%99%e8%af%af%e5%a4%84%e7%90%86" aria-label="统一错误处理">统一错误处理</a></li>
+                <li>
+                    <a href="#%e9%94%99%e8%af%af%e5%a4%84%e7%90%86%e5%87%bd%e6%95%b0" aria-label="错误处理函数">错误处理函数</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%8a%a0%e5%af%86" aria-label="加密">加密</a><ul>
+                        
+                <li>
+                    <a href="#%e5%ae%89%e8%a3%85bcryptjs%e5%ae%89%e8%a3%85crypto-js" aria-label="安装bcryptjs（安装crypto-js）">安装bcryptjs（安装crypto-js）</a></li>
+                <li>
+                    <a href="#%e7%bc%96%e5%86%99%e5%8a%a0%e5%af%86%e4%b8%ad%e9%97%b4%e4%bb%b6" aria-label="编写加密中间件">编写加密中间件</a></li>
+                <li>
+                    <a href="#%e5%9c%a8router%e4%b8%ad%e4%bd%bf%e7%94%a8" aria-label="在router中使用">在router中使用</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e7%94%a8%e6%88%b7%e7%9a%84%e8%ae%a4%e8%af%81" aria-label="用户的认证">用户的认证</a><ul>
+                        
+                <li>
+                    <a href="#%e9%a2%81%e5%8f%91token" aria-label="颁发token">颁发token</a></li>
+                <li>
+                    <a href="#%e7%94%a8%e6%88%b7%e8%ae%a4%e8%af%81" aria-label="用户认证">用户认证</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%8f%82%e6%95%b0%e6%a0%a1%e9%aa%8c" aria-label="参数校验">参数校验</a></li>
+                <li>
+                    <a href="#%e8%af%bb%e5%8f%96%e9%9d%99%e6%80%81%e6%96%87%e4%bb%b6" aria-label="读取静态文件">读取静态文件</a></li>
+                <li>
+                    <a href="#%e4%b8%8a%e4%bc%a0%e5%9b%be%e7%89%87" aria-label="上传图片">上传图片</a>
+                </li>
+            </ul>
+        </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+        
+        activeElement = elements[0];
+        const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+        document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+    }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 &&
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+            const id = encodeURI(element.getAttribute('id')).toLowerCase();
+            if (element === activeElement){
+                document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+            } else {
+                document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+            }
+        })
+    }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;
+    }
+</script>
+        
+        <div class="post-content"><ol start="2">
+<li>
+<p>教程：https://github.com/jj112358/node-api</p>
+<h2 id="项目的基本优化">项目的基本优化<a hidden class="anchor" aria-hidden="true" href="#项目的基本优化">#</a></h2>
+<h3 id="nodemon">nodemon<a hidden class="anchor" aria-hidden="true" href="#nodemon">#</a></h3>
+<p>**作用：**自动重新加载当前项目</p>
+<p><strong>安装：</strong><code>npm i nodemon</code></p>
+<p>**配置：**在package.json修改scripts， 添加如下内容	：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#e6db74">&#34;start&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;nodemon ./main.js&#34;</span>,
+</span></span></code></pre></div><h3 id="dotenv">dotenv<a hidden class="anchor" aria-hidden="true" href="#dotenv">#</a></h3>
+<p>**作用：**读取配置文件， 设置环境变量</p>
+<p><strong>链接：</strong><a href="https://www.npmjs.com/package/dotenv">npm地址</a></p>
+<p><strong>安装：</strong><code>npm i dotenv</code></p>
+<p><strong>使用：</strong></p>
+<ul>
+<li>
+<p>创建.env文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">PORT</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">8080</span>
+</span></span></code></pre></div></li>
+<li>
+<p>创建config文件夹， 创建config.default.js文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dotenv</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;dotenv&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dotenv</span>.<span style="color:#a6e22e">config</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>
+</span></span></code></pre></div></li>
+<li>
+<p>在main.js文件中</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> {<span style="color:#a6e22e">PORT</span>} <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;./config/config.js&#39;</span>)
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="配置路由">配置路由<a hidden class="anchor" aria-hidden="true" href="#配置路由">#</a></h3>
+<p>使用 koa-router</p>
+<p><strong>安装：</strong><code>npm i koa-router</code></p>
+<p><strong>使用：</strong></p>
+<ul>
+<li>
+<p>创建router文件夹</p>
+</li>
+<li>
+<p>创建user.route.js文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Router</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">rquire</span>(<span style="color:#e6db74">&#39;koa-router&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">userRouter</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Router</span>({<span style="color:#a6e22e">prefix</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/user&#39;</span>})
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">get</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#e6db74">&#39;/&#39;</span><span style="color:#960050;background-color:#1e0010">，</span> <span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">ctx</span><span style="color:#960050;background-color:#1e0010">，</span> <span style="color:#a6e22e">next</span><span style="color:#960050;background-color:#1e0010">）</span> =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">body</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;hello&#39;</span>
+</span></span><span style="display:flex;"><span>}<span style="color:#960050;background-color:#1e0010">）</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">userRouter</span>
+</span></span></code></pre></div></li>
+<li>
+<p>改写 main.js 文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;./router/user.route&#39;</span>);     <span style="color:#75715e">//引入user
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">routes</span>());
+</span></span></code></pre></div></li>
+</ul>
+<h4 id="如何使用路由重定向">如何使用路由重定向<a hidden class="anchor" aria-hidden="true" href="#如何使用路由重定向">#</a></h4>
+<p>如果向直接从 localhost：9000 重定向至 localhost：9000/home 如何实现？</p>
+<p>可以在 router/index.js 中进行如下配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">use</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#e6db74">&#39;/home&#39;</span>, <span style="color:#a6e22e">home</span>.<span style="color:#a6e22e">routes</span>(), <span style="color:#a6e22e">home</span>.<span style="color:#a6e22e">allowMethods</span>()<span style="color:#960050;background-color:#1e0010">）</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">redirect</span>(<span style="color:#e6db74">&#39;/&#39;</span>, <span style="color:#e6db74">&#39;/home&#39;</span>)
+</span></span></code></pre></div><h3 id="目录结构优化">目录结构优化<a hidden class="anchor" aria-hidden="true" href="#目录结构优化">#</a></h3>
+<h4 id="将http服务和app业务拆分">将http服务和app业务拆分<a hidden class="anchor" aria-hidden="true" href="#将http服务和app业务拆分">#</a></h4>
+<p>创建app/inde.js文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Koa</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;koa&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">userRouter</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39; . ./router /user. route&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Koa</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">userRouter</span>.<span style="color:#a6e22e">routes</span>())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>. <span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">app</span>
+</span></span></code></pre></div><h4 id="创建controller文件夹-将路由和控制器分开">创建controller文件夹， 将路由和控制器分开<a hidden class="anchor" aria-hidden="true" href="#创建controller文件夹-将路由和控制器分开">#</a></h4>
+<p>例如， 创建user.controller.js文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserController</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">register</span> (<span style="color:#a6e22e">ctx</span><span style="color:#960050;background-color:#1e0010">，</span> <span style="color:#a6e22e">next</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">body</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;用户注册成功&#39;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在router/user.route.js文件中引入</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> {<span style="color:#a6e22e">register</span>}  <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;../~&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 注册接口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">post</span>(<span style="color:#e6db74">&#39;/register&#39;</span><span style="color:#960050;background-color:#1e0010">，</span> <span style="color:#a6e22e">register</span>)
+</span></span></code></pre></div><h3 id="解析body-拆分service">解析body， 拆分service<a hidden class="anchor" aria-hidden="true" href="#解析body-拆分service">#</a></h3>
+<h4 id="解析body">解析body<a hidden class="anchor" aria-hidden="true" href="#解析body">#</a></h4>
+<p><strong>安装：</strong><code>npm i koa-body</code></p>
+<p><strong>使用：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">koaBody</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;koa-body&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 解析body
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">koaBody</span>());
+</span></span></code></pre></div><h4 id="拆分serveice或model操作数据库">拆分serveice或model（操作数据库）<a hidden class="anchor" aria-hidden="true" href="#拆分serveice或model操作数据库">#</a></h4>
+<p>创建service或model文件夹</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">/* 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">写法一
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">exports.createUser = async (username, password) =&gt; {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  return &#39;写入数据成功&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">} */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 写法二
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserModel</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">createUser</span>(<span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">password</span>)  {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;写入数据成功&#39;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">UserModel</span>()
+</span></span></code></pre></div><h3 id="操作数据库">操作数据库<a hidden class="anchor" aria-hidden="true" href="#操作数据库">#</a></h3>
+<p>sequelize ORM数据库工具</p>
+<p><a href="https://www.sequelize.cn/core-concepts/model-basics">sequelize中文文档</a></p>
+<p><a href="https://github.com/nodejh/sequelize-automate">sequelize 自动生成model</a></p>
+<p><a href="https://segmentfault.com/a/1190000021548522">如何使用sequelize automate</a></p>
+<p><a href="https://segmentfault.com/a/1190000021548522">自动生成model使用教程</a></p>
+<p>ORM： 对象关系映射</p>
+<ul>
+<li>数据表映射（对应）一个类</li>
+<li>数据表中的数据行（记录）对应一个对象</li>
+<li>数据表字段对应对象的属性</li>
+<li>数据表操作对应对象的方法</li>
+</ul>
+<p><strong>安装：</strong> <code>npm i mysql2 sequelize</code></p>
+<p><strong>使用：</strong></p>
+<p>连接数据库</p>
+<h3 id="错误处理">错误处理<a hidden class="anchor" aria-hidden="true" href="#错误处理">#</a></h3>
+<p>在app文件夹下， errorHandler.js文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">ctx</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">status</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">code</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;10001&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">status</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">400</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;10002&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">status</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">409</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">status</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">status</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">body</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">err</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>使用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#39;error&#39;</span>, <span style="color:#a6e22e">userRegisterError</span>, <span style="color:#a6e22e">ctx</span>)
+</span></span></code></pre></div><h2 id="拆分中间件">拆分中间件<a hidden class="anchor" aria-hidden="true" href="#拆分中间件">#</a></h2>
+<h3 id="拆分中间件-1">拆分中间件<a hidden class="anchor" aria-hidden="true" href="#拆分中间件-1">#</a></h3>
+<p>创建middleware文件夹</p>
+<p>如user.middleware.js文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cryptojs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;crypto-js&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">getUserInfo</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;../service/user.service&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userFormateError</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userAlreadyExited</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userRegisterError</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userDoesNotExist</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userLoginError</span>
+</span></span><span style="display:flex;"><span>} <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;../constant/err.type&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">userValidator</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">next</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">password</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">body</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 合法性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">username</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">password</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;用户名或密码为空&#39;</span>, <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">body</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#39;error&#39;</span>, <span style="color:#a6e22e">userFormateError</span>, <span style="color:#a6e22e">ctx</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">next</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">verifyUser</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">next</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">username</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">body</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getUserInfo</span>({ <span style="color:#a6e22e">username</span> })
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">res</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;用户名已经存在&#39;</span>, { <span style="color:#a6e22e">username</span> })
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#39;error&#39;</span>, <span style="color:#a6e22e">userAlreadyExited</span>, <span style="color:#a6e22e">ctx</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;获取用户信息错误&#39;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#39;error&#39;</span>, <span style="color:#a6e22e">userRegisterError</span>, <span style="color:#a6e22e">ctx</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">next</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cryptoPassword</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">next</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">password</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">body</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newPassword</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cryptojs</span>.<span style="color:#a6e22e">MD5</span>(<span style="color:#a6e22e">password</span>).<span style="color:#a6e22e">toString</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">password</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">newPassword</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// console.log(newPassword);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">next</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">verifyLogin</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">next</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 1. 判断用户是否存在(不存在:报错)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">password</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">body</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getUserInfo</span>({ <span style="color:#a6e22e">username</span> })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">res</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;用户名不存在&#39;</span>, { <span style="color:#a6e22e">username</span> })
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#39;error&#39;</span>, <span style="color:#a6e22e">userDoesNotExist</span>, <span style="color:#a6e22e">ctx</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;res&#39;</span>, <span style="color:#a6e22e">res</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 2. 密码是否匹配(不匹配: 报错)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pwd</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cryptojs</span>.<span style="color:#a6e22e">MD5</span>(<span style="color:#a6e22e">password</span>).<span style="color:#a6e22e">toString</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">pwd</span> <span style="color:#f92672">!==</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">password</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#39;error&#39;</span>, <span style="color:#a6e22e">invalidPassword</span>, <span style="color:#a6e22e">ctx</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#39;error&#39;</span>, <span style="color:#a6e22e">userLoginError</span>, <span style="color:#a6e22e">ctx</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">next</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userValidator</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">verifyUser</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">cryptoPassword</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">verifyLogin</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="统一错误处理">统一错误处理<a hidden class="anchor" aria-hidden="true" href="#统一错误处理">#</a></h3>
+<p>创建constant文件夹， 新建err.type.js文件， 定义错误常量</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userFormateError</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;10001&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;用户名或密码为空&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">result</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userAlreadyExited</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;10002&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;用户已经存在&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">result</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userRegisterError</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;10003&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;用户注册错误&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">result</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userDoesNotExist</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;10004&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;用户不存在&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">result</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userLoginError</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;10005&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;用户登录失败&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">result</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">invalidPassword</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;10006&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;密码不匹配&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">result</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tokenExpiredError</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;10101&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;token已过期&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">result</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">invalidToken</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;10102&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;无效的token&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">result</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="错误处理函数">错误处理函数<a hidden class="anchor" aria-hidden="true" href="#错误处理函数">#</a></h3>
+<p>调用service层的时候，尽量都加上try catch</p>
+<h2 id="加密">加密<a hidden class="anchor" aria-hidden="true" href="#加密">#</a></h2>
+<h3 id="安装bcryptjs安装crypto-js">安装bcryptjs（安装crypto-js）<a hidden class="anchor" aria-hidden="true" href="#安装bcryptjs安装crypto-js">#</a></h3>
+<h3 id="编写加密中间件">编写加密中间件<a hidden class="anchor" aria-hidden="true" href="#编写加密中间件">#</a></h3>
+<h3 id="在router中使用">在router中使用<a hidden class="anchor" aria-hidden="true" href="#在router中使用">#</a></h3>
+<h2 id="用户的认证">用户的认证<a hidden class="anchor" aria-hidden="true" href="#用户的认证">#</a></h2>
+<p>登陆成功后， 给用户颁发一个令牌token， 用户在以后的每一次请求中携带这个令牌</p>
+<p>jwt： jsonwebtoken</p>
+<ul>
+<li>header： 头部</li>
+<li>payload： 载荷</li>
+<li>signature： 签名</li>
+</ul>
+<h3 id="颁发token">颁发token<a hidden class="anchor" aria-hidden="true" href="#颁发token">#</a></h3>
+<p>安装jsonwebtoken</p>
+<p>npm i jsonwebtoken</p>
+<h3 id="用户认证">用户认证<a hidden class="anchor" aria-hidden="true" href="#用户认证">#</a></h3>
+<p>创建中间件，auth.middleware.js</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">jwt</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;jsonwebtoken&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">JWT_SECRET</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;../config/config&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">tokenExpiredError</span>, <span style="color:#a6e22e">invalidToken</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;../constant/err.type&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">auth</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">next</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">authorization</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">header</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">authorization</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">&#39;Bearer &#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">token</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// user中包含了payload的信息(id, user_name, is_admin)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">jwt</span>.<span style="color:#a6e22e">verify</span>(<span style="color:#a6e22e">token</span>, <span style="color:#a6e22e">JWT_SECRET</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">user</span>
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">name</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;TokenExpiredError&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;token已过期&#39;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#39;error&#39;</span>, <span style="color:#a6e22e">tokenExpiredError</span>, <span style="color:#a6e22e">ctx</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;JsonWebTokenError&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;无效的token&#39;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#39;error&#39;</span>, <span style="color:#a6e22e">invalidToken</span>, <span style="color:#a6e22e">ctx</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">next</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">auth</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在路由中使用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>	<span style="color:#75715e">// 修改用户信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">patch</span>(<span style="color:#e6db74">&#39;/change&#39;</span>, <span style="color:#a6e22e">auth</span>, <span style="color:#a6e22e">changePassword</span>)
+</span></span></code></pre></div><h2 id="参数校验">参数校验<a hidden class="anchor" aria-hidden="true" href="#参数校验">#</a></h2>
+<p>使用插件joi</p>
+<p>使用方式：</p>
+<ol>
+<li>
+<p>创建schema文件夹</p>
+</li>
+<li>
+<p>添加参数验证， 如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">joi</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;joi&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">schema</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">joi</span>.<span style="color:#a6e22e">object</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">username</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">joi</span>.<span style="color:#a6e22e">string</span>().<span style="color:#a6e22e">required</span>(),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">password</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">joi</span>.<span style="color:#a6e22e">string</span>().<span style="color:#a6e22e">required</span>()
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">schema</span>
+</span></span></code></pre></div></li>
+<li>
+<p>在中间件 文件夹中使用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user_schema</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;../schema/user.schema&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">addPostValidator</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">next</span>) =&gt; {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// const res = await user_schema.validateAsync(ctx.request.body)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">user_schema</span>.<span style="color:#a6e22e">validateAsync</span>(<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">body</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#39;error&#39;</span>, {<span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">details</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">message</span>}, <span style="color:#a6e22e">ctx</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">next</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">addPostValidator</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>
+<p>在router路由中使用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">post</span>(<span style="color:#e6db74">&#39;/test&#39;</span>, <span style="color:#a6e22e">addPostValidator</span>, <span style="color:#a6e22e">registerTest</span>)
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="读取静态文件">读取静态文件<a hidden class="anchor" aria-hidden="true" href="#读取静态文件">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">安装</span> <span style="color:#a6e22e">koa</span><span style="color:#f92672">-</span><span style="color:#66d9ef">static</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">npm</span> <span style="color:#a6e22e">i</span> <span style="color:#a6e22e">koa</span><span style="color:#f92672">-</span><span style="color:#66d9ef">static</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">引入</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">rquire</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#e6db74">&#39;path&#39;</span><span style="color:#960050;background-color:#1e0010">）</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">static</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;koa-static&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 获取静态资源文件夹
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#66d9ef">static</span>(<span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">join</span>(<span style="color:#a6e22e">__dirname</span><span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/assets&#39;</span>)))
+</span></span></code></pre></div><h2 id="上传图片">上传图片<a hidden class="anchor" aria-hidden="true" href="#上传图片">#</a></h2>
+<ol>
+<li>修改koa-body的使用</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">koaBody</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">multipart</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">formidable</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">uploadDir</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">keepExtensions</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}))
+</span></span></code></pre></div><ol start="2">
+<li>新建 <strong>upload</strong> 文件夹</li>
+</ol>
+</li>
+</ol>
+
+
+        </div>
+
+        <footer class="post-footer">
+            
+<nav class="paginav">
+  <a class="prev" href="https://sirius00.github.io/posts/tech/scss%E7%9A%84%E4%BD%BF%E7%94%A8/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>Scss的使用</span>
+  </a>
+  <a class="next" href="https://sirius00.github.io/posts/tech/mysql%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Mysql的基本使用</span>
+  </a>
+</nav>
+
+        </footer>
+    </div>
+</article>
+</main>
+
+
+<script async src="https://unpkg.com/mermaid@8.8.1/dist/mermaid.min.js"></script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<footer class="footer">
+    <span>
+        Copyright
+        &copy;
+        2020-2023
+        <a href="https://sirius00.github.io/" style="color:#939393;">XP&#39;s Blog</a>
+        All Rights Reserved
+    </span>
+
+    <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#939393;">填写自己的备案号</a>&nbsp;
+
+    <span>
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=null"
+           style="display:inline-block;text-decoration:none;height:20px;color:#939393;">
+            <img src="%e5%a1%ab%e8%87%aa%e5%b7%b1%e7%9a%84%e5%85%ac%e5%ae%89%e5%9b%be%e6%a0%87%e9%93%be%e6%8e%a5" style="float:left;margin: 0px 5px 0px 0px;"/>
+            填自己的公网安备
+        </a>
+    </span>
+
+    <span id="busuanzi_container">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        总访客数: <span id="busuanzi_value_site_uv"></span>
+        总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <span class="topInner">
+        <svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z"/>
+        </svg>
+        <span id="read_progress"></span>
+    </span>
+</a>
+
+<script>
+    document.addEventListener('scroll', function (e) {
+        const readProgress = document.getElementById("read_progress");
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        
+        readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
+    })
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    let mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+<script>
+    document.body.addEventListener('copy', function (e) {
+        if (window.getSelection().toString() && window.getSelection().toString().length > 50) {
+            let clipboardData = e.clipboardData || window.clipboardData;
+            if (clipboardData) {
+                e.preventDefault();
+                let htmlData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「' + {
+                { .
+                    Site.Title
+                }
+            }
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                let textData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「' + {
+                { .
+                    Site.Title
+                }
+            }
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                clipboardData.setData('text/html', htmlData);
+                clipboardData.setData('text/plain', textData);
+            }
+        }
+    });
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '📄复制';
+
+        function copyingDone() {
+            copybutton.innerText = '👌🏻已复制!';
+            setTimeout(() => {
+                copybutton.innerText = '📄复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                let text = codeblock.textContent +
+                    '\r\n————————————————\r\n' +
+                    '版权声明：本文为「' + "XP's Blog"
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                navigator.clipboard.writeText(text);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+            }
+            ;
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild === container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName === "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $("code[class^=language] ").on("mouseover", function () {
+        if (this.clientWidth < this.scrollWidth) {
+            $(this).css("width", "135%")
+        }
+    }).on("mouseout", function () {
+        $(this).css("width", "100%")
+    })
+</script>
+</body>
+
+</html>

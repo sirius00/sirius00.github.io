@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Canvas的使用 | XP&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="canvas画布宽度和高度 canvas标签只有两个标签属性: width和height 当没有设置宽度和高度的时候, canvas会初始化为宽300px, 高150px画布 使用html属性设置width, height 时,只影响画布本身,不影响画布内容 使用css样式指定canvas的width, he">
+<meta name="author" content="
+作者:&nbsp;XP">
+<link rel="canonical" href="https://sirius00.github.io/posts/tech/canvas%E7%9A%84%E4%BD%BF%E7%94%A8/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a6c679e0d2f6e83a8f1aad1f7a2cdc96085c188647e679dbc62800f83be6bad2.css" integrity="sha256-psZ54NL26DqPGq0feizclghcGIZH5nnbxigA&#43;DvmutI=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+        onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sirius00.github.io/img/cat.png">
+<link rel="apple-touch-icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="mask-icon" href="https://sirius00.github.io/img/cat.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = ""; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<meta property="og:title" content="Canvas的使用" />
+<meta property="og:description" content="canvas画布宽度和高度 canvas标签只有两个标签属性: width和height 当没有设置宽度和高度的时候, canvas会初始化为宽300px, 高150px画布 使用html属性设置width, height 时,只影响画布本身,不影响画布内容 使用css样式指定canvas的width, he" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sirius00.github.io/posts/tech/canvas%E7%9A%84%E4%BD%BF%E7%94%A8/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-22T09:41:47+08:00" />
+<meta property="article:modified_time" content="2023-02-22T09:41:47+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Canvas的使用"/>
+<meta name="twitter:description" content="canvas画布宽度和高度 canvas标签只有两个标签属性: width和height 当没有设置宽度和高度的时候, canvas会初始化为宽300px, 高150px画布 使用html属性设置width, height 时,只影响画布本身,不影响画布内容 使用css样式指定canvas的width, he"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+
+        {
+          "@type": "ListItem",
+          "position":  1 ,
+          "name": "📚文章",
+          "item": "https://sirius00.github.io/posts/"
+        },
+
+        {
+          "@type": "ListItem",
+          "position":  2 ,
+          "name": "👨🏻‍💻 技术",
+          "item": "https://sirius00.github.io/posts/tech/"
+        }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Canvas的使用",
+      "item": "https://sirius00.github.io/posts/tech/canvas%E7%9A%84%E4%BD%BF%E7%94%A8/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Canvas的使用",
+  "name": "Canvas的使用",
+  "description": "canvas画布宽度和高度 canvas标签只有两个标签属性: width和height 当没有设置宽度和高度的时候, canvas会初始化为宽300px, 高150px画布 使用html属性设置width, height 时,只影响画布本身,不影响画布内容 使用css样式指定canvas的width, he",
+  "keywords": [
+    ""
+  ],
+  "articleBody": "canvas画布宽度和高度 canvas标签只有两个标签属性: width和height\n当没有设置宽度和高度的时候, canvas会初始化为宽300px, 高150px画布\n使用html属性设置width, height 时,只影响画布本身,不影响画布内容\n使用css样式指定canvas的width, height时, 不但影响画布本身的宽高, 还会使画布内容等比例缩放\n\u003ccanvas id=\"canvas\" width=\"400\" height=\"200\" style=\"border: 1px solid\"\u003e\u003c/canvas\u003e canvas画笔 const canvas = document.getElementById('canvas') // 检查浏览器是否支持canvas if (canvas.getContext) { // canvas相关的操作基本都在ctx上面进行 const ctx = canvas.getContext('2d') } canvas绘制矩形 fillRect(填充矩形)\nstrokeRect(边框矩形)\nctx.fillRect(x, y, width, height)\nctx.strokeRect(x, y, width, height)\n两者参数:\nx:x轴偏移量 y: y轴偏移量 width: 矩形宽度 height: 矩形高度 strokeRect边框矩形渲染问题 canvas 在渲染矩形边框时，边框宽度是平均分在偏移位置两侧的。\n// 边框会渲染在 49.5-50.5 之间，浏览器是不会让一个像素只显示一半的，只会全部显示。相当于边框会渲染在 49-51 之间，也就是 2px ctx.strokeRect(50, 50, 100, 100) // 将偏移量多移动 0.5，边框会渲染在 200-201 和 50-51 之间，也就是1px ctx.strokeRect(200.5, 50.5, 100, 100) canvas清除区域 ctx.clearRect(x, y, width, height)：可以清除 canvas 画布上指定的区域，让清除部分完全透明\nctx.fillRect(50, 50, 100, 100) // 以 (100, 100) 为偏移量，清除一个 50 * 50 的区域 ctx.clearRect(100, 100, 50, 50) canvas样式和颜色 ctx.fillStyle：设置图像的填充颜色。（默认黑色）\nctx.strokeStyle：设置图像轮廓的颜色。（默认黑色）\nctx.lineWidth：设置当前绘线的粗细，属性值必须为正数（默认值 1，0、负数、Infinity 和 NaN 会被忽略）。\nctx.lineJoin：设定线条与线条间结合的样式。（默认miter）\nround：圆角。\nbevel：斜角。\nmiter：直角。\n// 填充样式红色 ctx.fillStyle = 'red' // 边框样式蓝色 ctx.strokeStyle = 'blue' // 绘线粗细 10px ctx.lineWidth = 10 // 绘线交接呈现圆角 ctx.lineJoin = 'round' ctx.fillRect(50, 50, 100, 100) ctx.strokeRect(200, 50, 100, 100) canvas路径 路径绘制矩形 ctx.stroke()：通过线条来绘制图像轮廓，不会自动调用 closePath()。\nctx.fill()：通过填充路径的内容区域生成实心的图像，自动调用closePath()。\nctx.rect(x, y, width, height)：绘制一个偏移量 (x, y)，宽 width，高 height 的矩形。\n当该方法执行的时候，moveTo() 方法自动设置起点坐标为 (x, y)。\n该方法执行完毕的时候，画布上不会呈现图像，相当于只是形成了路径列表，要调用 fill() 或 stroke() 方法才会呈现在画布中\n// 绘制路径不显示 ctx.rect(50, 50, 100, 100) // 填充显示 ctx.fill() ctx.rect(200, 50, 100, 100) // 路径连接显示 ctx.stroke() 重置路径和闭合路径 ctx.beginPath()：新建一条路径，生成之后，图像绘制命令被指向到路径上准备生成路径。\n本质上，路径是由多个子路径构成，这些子路径都是在一个路径列表中，每次调用 beginPath，路径列表都会清空重置。 通常我们在绘制图像之前，都会调用该方法 ctx.moveTo(x, y)：将画笔移动到指定的坐标轴上。（设置起点）\nctx.lineTo(x, y)：绘制一条从当前位置到指定坐标轴位置的直线。\nctx.closePath()：闭合路径，图像绘制命令又重新指向到上下文中。\n使用 fill() 绘制图像或图像路径已经闭合不需要使用此方法。 通常使用 stroke() 绘制图像的时候才使用此方法。 // 自动填充路径 ctx.beginPath() ctx.moveTo(50, 50) ctx.lineTo(100, 50) ctx.lineTo(100, 100) ctx.fill() // 路径不会自动闭合 ctx.beginPath() ctx.moveTo(150, 50) ctx.lineTo(200, 50) ctx.lineTo(200, 100) ctx.stroke() // 手动闭合路径 ctx.beginPath() ctx.moveTo(250, 50) ctx.lineTo(300, 50) ctx.lineTo(300, 100) ctx.closePath() ctx.stroke() 路径绘制样式 ctx.lineCap：绘制每一条线段末端的样式属性。\nbutt：线段末端以方形结束。（默认值） round：线段末端以圆形结束。 square：线段末端以方形结束，但是增加了一个宽度和线段相同，高度是线段宽度一半的矩形区域。 // 绘线末端圆形显示 ctx.lineCap = 'round' ctx.lineWidth = 10 ctx.moveTo(50, 50) ctx.lineTo(100, 50) ctx.lineTo(100, 100) ctx.stroke() canvas状态 ctx.save()：将当前状态放入栈中，保持 canvas 全部状态的方法。\n保存到栈中的绘制状态由下面部分组成。\n当前的变换矩阵。\n当前的剪切区域。\n当前的虚线列表。\n绘制图像的样式（strokeStyle / fillStyle / lineWidth / lineJoin / lineCap …）。\nctx.restore()：通过在绘图状态栈中弹出顶端的状态，将 canvas 恢复到最近的保存状态的方法，如果没有保存状态，此方法不做任何改变。\n通常我们在绘制图像进行的操作，都会放在 save() 和 restore() 方法之间，避免当前绘制图像设置的状态，影响到后续图像的绘制效果。\n// 画布默认状态放入栈中 ctx.save() // 当前填充样式设置为红色 ctx.fillStyle = 'red' // 绘制矩形，显示效果为红色 ctx.fillRect(50, 50, 100, 100) // 弹出栈中顶端状态，这个时候红色的填充样式会被弹出的状态覆盖，变为黑色 ctx.restore() // 绘制矩形，显示效果为黑色 ctx.fillRect(200, 50, 100, 100) canvas圆形/圆弧 ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise)：画一个以(x, y)坐标为圆心，radius 为半径的圆弧或圆，从 startAngle 开始，到 endAngle 结束。\n参数如下：\nx：圆心在画布 x 轴上的偏移量。 y：圆心在画布 y 轴上的偏移量。 radius：绘制圆的半径。 startAngle：圆弧的起始点，x 轴方向开始计算，单位以弧度表示。 endAngle：圆弧的终点，单位以弧度表示。 anticlockwise：布尔值。true 表示逆时针，false 表示顺时针。（默认值） ctx.arcTo(x1, y1, x2, y2, radius)：根据设置的两个控制点和半径画一段圆弧。\n必须存在一个开始坐标点 ctx.moveTo(x, y)，三点才能构成圆弧，半径为 radius 的圆向夹角里面填充。 绘制的圆弧一定经过起点，但不一定经过 (x1, y1) 和 (x2, y2)，这两个坐标只是用来控制方向的。 canvas贝塞尔曲线 二次贝塞尔 ctx.quadraticCurveTo(cpx, cpy, x, y)：绘制二次贝塞尔曲线。\n参数：\ncpx：控制点的 x 轴坐标。\ncpy：控制点的 y 轴坐标。\nx：终点的 x 轴坐标。\ny：终点的 y 轴坐标。\n注意:\n必须要设置起点 moveTo(x, y)。 二次贝塞尔曲线一定经过起点和终点。 // 将3个点连接起来 ctx.beginPath() ctx.moveTo(20, 20) ctx.lineTo(200, 0) ctx.lineTo(100, 100) ctx.stroke() // 观察二次贝塞尔曲线在3点之间的位置 ctx.beginPath() ctx.moveTo(20, 20) ctx.quadraticCurveTo(200, 0, 100, 100, 20) ctx.stroke() 三次贝塞尔 ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)：绘制三次贝塞尔曲线。\n参数只是在二次贝塞尔的基础上多增加了一个控制点 (cp2x, cp2y)。\n同样要设置起点 moveTo(x, y)，也一定经过起点和终点。\n// 将4个点连接起来 ctx.beginPath() ctx.moveTo(20, 20) ctx.lineTo(200, 0) ctx.lineTo(100, 100) ctx.lineTo(200, 100) ctx.stroke() // 观察三次贝塞尔曲线在4点之间的位置 ctx.beginPath() ctx.moveTo(20, 20) ctx.bezierCurveTo(200, 0, 100, 100, 200, 100, 20) ctx.stroke() canvas变换 平移变换 ctx.translate(x, y)：对当前 canvas 画布进行平移变换。\nx：水平方向的移动距离。\ny：垂直方向的移动距离。\n注意：在 canvas 中 translate 是累加的。\n// x 轴和 y 轴都平移 50px ctx.translate(50, 50) ctx.fillRect(0, 0, 100, 100) 旋转变换 ctx.rotate(angle)：将当前 canvas 画布对照原点顺时针旋转。\nangle：顺时针旋转的弧度(degree * Math.PI / 180), 旋转的中心始终是 canvas 的原点 (0, 0)，x 轴顺时针旋转，如果要改变中心点，我们可以通过 translate() 方法移动 canvas\n注意：在 canvas 中 rotate 是累加的\nctx.translate(50, 50) // 顺时针旋转 45 度 ctx.rotate(45 * Math.PI / 180) ctx.fillRect(0, 0, 100, 100) 伸缩变换 ctx.scale(x, y)：将当前 canvas 画布的 x 轴和 y 轴进行伸缩变换。\n参数：\nx：水平方向的缩放因子。 y：垂直方向的缩放因子。 注意:\n在 canvas 中 scale 是累加的。 缩放因子为 1 时大小不变，值为负数按照 x 轴或 y 轴进行翻转（翻转上下文） 默认的，在 canvas 中一个单位实际上就是一个像素。例如，如果我们将 0.5 作为缩放因子，最终的单位会变成 0.5 像素，并且形状的尺寸会变成原来的一半。相似的方式，我们将 2.0 作为缩放因子，将会增大单位尺寸变成两个像素。形状的尺寸将会变成原来的两倍。\nctx.translate(50, 50) // x 轴放大 2 倍，y 轴不变 ctx.scale(2, 1) ctx.fillRect(0, 0, 100, 100) 文字翻转 // x 轴放大 2 倍，并翻转，y 轴不变 ctx.scale(-2, 1) ctx.font = '48px serif' ctx.fillText('canvas', -200, 100) canvas背景 图片背景 ctx.drawImage(img, sx, sy, swidth, sheight, x, y, width, height)：在画布上绘制图片。\n参数：\nimg：图像源对象（规定使用的图像、画布或视频等）。 sx：可选，开始剪切的x坐标位置。 sy：可选，开始剪切的y坐标位置。 swidth：可选，被剪切图像的宽度。 sheight：可选，被剪切图像的高度。 x：在画布上放置图像的x坐标位置。 y：在画布上放置图像的y坐标位置。 width：可选，要使用的图像的宽度（伸展或缩小图像）。 height：可选，要使用的图像的高度（伸展或缩小图像）。 注意: 必须要等图片加载完才能操作，参数必须如下 3 种方式(3, 5, 9)\n\u003cimg id=\"img\" src=\"./img/react.png\"\u003e \u003ccanvas id=\"canvas\" width=\"400\" height=\"200\" style=\"border: 1px solid\"\u003e\u003c/canvas\u003e ctx.drawImage(img, x, y)：在画布上定位图像。\nconst img = new Image() img.src = './img/react.png' img.onload = () =\u003e { // 将图片绘制到画布上 ctx.drawImage(img, 0, 0) } ctx.drawImage(img, x, y, width, height)：在画布上定位图像，并规定图像的宽度和高度。\nctx.drawImage(img, 0, 0, 100, 100) ctx.drawImage(img, sx, sy, swidth, sheight, x, y, width, height)：剪切图像，并在画布上定位被剪切的部分。\nctx.drawImage(img, 0, 0, 100, 100, 0, 0, 100, 100) 设置背景 ctx.createPattern(image, repetition)：创建一个用于图像绘制使用的样式。\n参数：\nimage：图像源对象（规定使用的图像、画布或视频等）。 repetition：重复图像的方式，值只能是 repeat | repeat-x | repeat-y | no-repeat。 repetition 如果为空字符串 (’’) 或 null (但不是 undefined )，repetition将被当作 repeat\n// 创建背景样式 const pat = ctx.createPattern(img, 'repeat') ctx.fillStyle = pat ctx.fillRect(0, 0, 300, 100) canvas渐变 线性渐变 ctx.createLinearGradient(x1, y1, x2, y2)：从 (x1, y1) 到 (x2, y2) 进行渐变。\n该方法返回一个 CanvasGradient 对象。\n使用 CanvasGradient 身上的 addColorStop(position, color) 设置渐变颜色。\n参数：\nposition：介于 0-1 之间的值，表示渐变中开始与结束之间的位置。 color：在position位置显示的css颜色值 // 从 (0, 0) 坐标点到 (300, 0) 坐标点进行渐变 const line = ctx.createLinearGradient(0, 0, 300, 0) // 渐变顺序 红 --\u003e 蓝 --\u003e 绿 line.addColorStop(0, 'red') line.addColorStop(.5, 'blue') line.addColorStop(1, 'green') // 图像填充颜色设置为渐变色 ctx.fillStyle = line ctx.fillRect(0, 0, 300, 100) 径向渐变 ctx.createRadialGradient(x1, y1, r1, x2, y2, r2)：从 (x1, y1) 为圆心，半径为 r1 的圆，向 (x2, y2) 为圆心，半径为 r2 的圆进行径向渐变。\n使用方法跟上述的 createLinearGradient 一样。\n// 以 (200, 100) 为圆心 50 为半径，向 100 为半径的圆渐变 const grad = ctx.createRadialGradient(200, 100, 50, 200, 100, 100) // 渐变顺序 红 --\u003e 蓝 --\u003e 绿 grad.addColorStop(0, 'red') grad.addColorStop(.5, 'blue') grad.addColorStop(1, 'green') // 图像填充颜色设置为渐变色 ctx.fillStyle = grad ctx.fillRect(0, 0, 400, 200) canvas文本相关 文本相对于画布的偏移量，都是参照文本的基线进行偏移的。\n渲染文本 canvas 中提供了两种方法渲染文本，如下：\nctx.fillText(text, x, y, [maxWidth])：在 (x, y) 填充指定的文本 (text)。\nctx.strokeText(text, x, y, [maxWidth])：在 (x, y) 绘制文本边框 (text)。\n参数：\ntext：文本内容。 x, y：偏移量。 maxWidth：字体绘制的最大宽度，绘制字体宽度超出最大宽度会水平自适应 // 边框文本 ctx.strokeText('天天好心情', 50, 50) // 填充文本 ctx.fillText('天天好心情', 50, 100) // 填充文本现在宽度 ctx.fillText('天天好心情', 50, 150, 30) 文本样式 设置字体 ctx.font：font 属性指定时，必须要有大小和字体，缺一不可。\n默认字体 10px sans-serif。\n文本对齐方式 ctx.textAlign：设置文本的对齐方式，值如下：\nstart：文本对齐界线开始的地方。（默认值） end：文本对齐界线结束的地方。 left：文本左对齐。 right：文本右对齐。 center：文本居中对齐。 这里的 textAlign = ‘center’ 比较特殊。textAlign 的值为 center 时候文本的居中是基于你在 (fillText / strokeText) 的时候所给的x的值，也就是说文本一半在 x 的左边，一半在 x 的右边（可以理解为计算 x 的位置时从默认文字的左端，改为文字的中心，因此你只需要考虑 x 的位置即可）。所以，如果你想让文本在整个 canvas 居中，就需要将 (fillText / strokeText) 的x值设置成 canvas 的宽度的一半。\nctx.font = '30px sans-serif' // 文本居中对齐 ctx.textAlign = 'center' ctx.strokeText('天天好心情', 50, 50) 文本基线对齐方式 文本相对于画布的偏移量，都是参照文本的基线进行偏移的，设置基线在文本中的位置，可以调整文本在 canvas 画布中的位置。\nctx.textBaseline：描绘绘制文本时，当前文本基线的属性，值如下：\nalphabetic：文本基线是标准的字母基线。（默认值）\ntop：文本基线在文本块的顶部。\nmiddle: 文本基线在文本块的中间。\nbottom：文本基线在文本块的底部。\nhanging：文本基线是悬挂基线。\nideographic：文本基线是表意字基线。\n如果字符本身超出了 alphabetic 基线，那么 ideographic 基线位置在字符本身的底部\nctx.font = '30px sans-serif' ctx.textAlign = 'center' // 基线设置在文本的顶部 ctx.textBaseline = 'top' ctx.strokeText('天天好心情', 50, 50) 文本在canvas中垂直居中显示 ctx.font = '30px sans-serif' // x 轴偏移画布一半，水平按文本中间对齐 ctx.textAlign = 'center' // y 轴偏移画布一半，基线设置在文本的中心位置 ctx.textBaseline = 'middle' ctx.fillText('天天好心情', canvas.width / 2, canvas.height / 2) 获取文本信息 ctx.measureText(text)：返回一个 TextMetrics 对象，包含关于文本尺寸的信息（一般都用来获取文本的宽度）。\n参数：\ntext：文本内容。 ctx.font = '100px serif' // 返回当前文本的相关信息 const textInfo = ctx.measureText('天天好心情') console.log(textInfo) canvas阴影 设置 canvas 图像或文字阴影需要如下属性：\nctx.shadowOffsetX：图像 x 轴延伸距离。（默认值 0） ctx.shadowOffsetY：图像 y 轴延伸距离。（默认值 0） ctx.shadowBlur：用来设定阴影的模糊程度，其数值并不跟像素数量挂钩，也不受变换矩阵的影响。（默认值 0） ctx.shadowColor：必须是标准的CSS颜色值，用于设定阴影颜色效果。（默认是全透明的黑色） // 图像阴影向左移动 10px ctx.shadowOffsetX = 10 // 图像阴影向下移动 10px ctx.shadowOffsetY = 10 // 模糊程度为 10 ctx.shadowBlur = 10 // 阴影颜色为红色 ctx.shadowColor = 'red' ctx.fillRect(50, 50, 100, 100) canvas像素相关 获取区域内像素信息 ctx.getImageData(x, y, width, height)：返回一个 ImageData 对象，用来描述 canvas 区域隐含的像素数据，这个区域通过矩形表示，起始点是 (x, y)，宽为 width，高为 height。\nimageData 对象中存储着 canvas 对象真实的像素数据，它包含以下几个只读属性：\nwidth：图片的宽度，单位是像素。\nheight：图片的高度，单位是像素。\ndata：Uint8ClampedArray 类型的一维数组，包含着 RGBA 格式的整型数组，范围在 0-255 之间 (包括255)。按图像从左到右，从下到下记录像素的\nconst img = new Image() img.src = './img/react.png' img.onload = () =\u003e { ctx.drawImage(img, 0, 0, 100, 100) // 获取绘制图像区域内的相关信息 const imgData = ctx.getImageData(0, 0, 100, 100) console.log(imgData) } 图像的长和宽都是 100，所以一共有 10000 个像素点 (100 * 100)，因为一个像素点对应一个 RGBA 值，一个 RGBA 值由 4 个数值构成，所以 data 数组的长度为 40000。\n该数组每 4 个值构成一个像素点。\n对画布进行像素数据的写入 ctx.putImageData(imagedata, dx, dy)\nctx.putImageData(imagedata, dx, dy, dirtyX, dirtyY, dirtyWidth, dirtyHeight)\n将数据从已有的 ImageData 对象绘制到位图的方法。 如果提供了一个绘制过的矩形，则只绘制该矩形的像素。此方法不受画布转换矩阵的影响\n参数:\nimagedata：包含像素值的数组对象。 dx：源图像数据在目标画布中的位置偏移量（x 轴方向的偏移量）。 dy：源图像数据在目标画布中的位置偏移量（y 轴方向的偏移量）。 dirtyX：可选，在源图像数据中，矩形区域左上角的位置。默认是整个图像数据的左上角（x 坐标）。 dirtyY：可选，在源图像数据中，矩形区域左上角的位置。默认是整个图像数据的左上角（y 坐标）。 dirtyWidth：可选，在源图像数据中，矩形区域的宽度。默认是图像数据的宽度。 dirtyHeight：可选，在源图像数据中，矩形区域的高度。默认是图像数据的高度。 const img = new Image() img.src = './img/react.png' img.onload = () =\u003e { ctx.drawImage(img, 0, 0, 100, 100) const imgData = ctx.getImageData(0, 0, 100, 100) // 将 ImageData 对象重新写入到画布中 ctx.putImageData(imgData, 200, 100, 0, 0, 50, 50) } 创建imageData对象 ctx.createImageData(width, height)\nctx.createImageData(imagedata)\n创建一个新的、空的、指定大小的imageData 对象，所有像素在新对象中都是透明的。（data 数组中的值都是 0）\n参数:\nwidth：imageData 新对象的宽度。 height：imageData 新对象的高度。 imagedata：从现有的 ImageData 对象中，复制一个和其宽度和高度相同的对象。图像自身不允许被复制。（data 数组中的值都是 0） const img = new Image() img.src = './img/react.png' img.onload = () =\u003e { ctx.drawImage(img, 0, 0, 100, 100) const imgData = ctx.getImageData(0, 0, 100, 100) // 根据老的 ImageData 对象，创建一个新的 ImageData 对象 const imgDataByData = ctx.createImageData(imgData) console.log('imgDta创建', imgDataByData) // 根据指定的宽高，创建一个新的 ImageData 对象 const imgDataByRect = ctx.createImageData(10, 10) console.log('宽高创建', imgDataByRect) } 像素扩展 获取某个坐标的像素 通过 getImageData 方法我们可以获取到整个 canvas 画布的像素信息。已知坐标 (x, y)，通过 (y * canvas.width + x) 可以获取这是第几个像素。因为一个像素包含 RGBA 4 个数值，所以最后获取到的像素为 (y * canvas.width + x) * 4，加上紧跟的后 3 位所对应的数值构成的 RGBA 值\n// 获取 imageData 中某个坐标的像素 function getPixelInfo(imageData, x, y) { const { width, data } = imageData const pixel = [] const index = (y * width + x) * 4 pixel[0] = data[index] pixel[1] = data[index + 1] pixel[2] = data[index + 2] pixel[3] = data[index + 3] return pixel } 测试 ctx.fillStyle = 'red' ctx.fillRect(10, 10, 1, 1) const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height) // 获取 (10, 10) 这个坐标点的像素信息 const pixel = getPixelInfo(imgData, 10, 10) console.log(pixel) 设置某个坐标的像素 基本原理跟获取坐标像素一样，我们可以传入一个 RGBA 值来设置某些坐标的像素。\n// 设置 imageData 中某个坐标的像素 function setPixelInfo(imageData, x, y, rgba) { const { width, data } = imageData const index = (y * width + x) * 4 data[index] = rgba[0] data[index + 1] = rgba[1] data[index + 2] = rgba[2] data[index + 3] = rgba[3] } 测试 // 创建一个10 * 10 imageData 对象 const imgData = ctx.createImageData(10, 10) // RGBA 红色 const rgba = [255, 0, 0, 255] for (let y = 0; y \u003c 10; y++) { for (let x = 0; x \u003c 10; x++) { // 将每个像素点都设置为红色 setPixelInfo(imgData, x, y, rgba) } } // 将 imageData 对象写入到 (100, 100) 开始的位置 ctx.putImageData(imgData, 100, 100) 马赛克小练习 现在我们既能获取到坐标位置的像素，也能设置坐标位置的像素。基于这两点我们来实现一个马赛克的效果。\n基本思路：\n假如现在有一个 100 * 100 的图像，将一个像素点看做一个 1 * 1 的小方块，里面就只有一个 RGBA 值，一共有 100 * 100 = 10000 个小方块，10000 个像素点。\n将这个小方块变大，包含 2 * 2 个像素点，一共有 50 * 50 = 2500 个小方块。\n现在一个小方块里面包含 4 个像素点，可能存在多个 RGBA 值，随机取出其中的一个 RGBA 值，将这个小方块中的 4 个像素点的 RGNA 值，都设置成随机取出的这个 RGBA 值。\n现在每个小方块虽然包含 4 个像素点，但是这 4 个像素点的 RGBA 值都一样，也可以看作现在这个图像只有 2500 个像素点，像素点变少了，图像就模糊了，马赛克效果就形成了。\n/* 设置马赛克像素 imgData：imageData对象 size：马赛克程度，值越大越模糊（小方块宽高） */ function setMosaicPixel(imgData, size) { const { width, height } = imgData // 小方块变大，所以宽高要除以 size for (let y = 0; y \u003c height / size; y++) { for (let x = 0; x \u003c width / size; x++) { // 随机获取小方块中的 (x, y) 坐标 const randomX = x * size + Math.floor(Math.random() * size) const randomY = y * size + Math.floor(Math.random() * size) // 获取这个坐标像素点的 RGBA 值 const randomPixel = getPixelInfo(imgData, randomX, randomY) // 将这个小方块中的像素点都应用这个 RGBA 值 for (let MosaicX = 0; MosaicX \u003c size; MosaicX++) { for (let MosaicY = 0; MosaicY \u003c size; MosaicY++) { setPixelInfo(imgData, x * size + MosaicX, y * size + MosaicY, randomPixel) } } } } } 测试 const img = new Image() img.src = './img/react.png' img.onload = () =\u003e { // 绘制图像 ctx.drawImage(img, 0, 0, 200, 100) // 获取图像的信息 const imgData = ctx.getImageData(0, 0, 200, 100) // 将图像马赛克化 setMosaicPixel(imgData, 2) // 最后重新写入到画布中 ctx.putImageData(imgData, 0, 0) } canvas透明度 ctx.globalAlpha：这个属性影响到 canvas 里所有图像的透明度，有效的值范围是 0（完全透明）到 1（完全不透明），默认是 1。\n// 画布全局透明度设置为 0.2 ctx.globalAlpha = .2 ctx.fillStyle = 'red' ctx.fillRect(50, 50, 50, 50) ctx.fillStyle = 'blue' ctx.fillRect(150, 50, 50, 50) canvas图像合成设置 ctx.globalCompositeOperation：设置或返回如何将一个源（新的 source）图像绘制到目标（已有的 destination）的图像上。\n可选值如下:\nsource-over\t源在上面，新的图像层级比较高。（默认值）\nsource-in\t只留下源与目标的重叠部分。（源的那一部分）\nsource-out\t只留下源超过目标的部分。\nsource-atop\t砍掉源溢出的部分。\ndestination-over\t目标在上面，旧的图像层级比较高。\ndestination-in\t只留下源与目标的重叠部分。（目标的那一部分）\ndestination-out\t只留下目标超过源的部分。\ndestination-atop\t砍掉目标溢出的部分。\nlighter\t显示源图像 + 目标图像。（重叠图形的颜色是通过颜色值相加来确定的）\ncopy\t显示源图像，忽略目标图像。\nxor\t那些重叠和正常绘制之外的其他地方是透明的。\n// 设置图像重叠的地方不显示 ctx.globalCompositeOperation = 'xor' ctx.fillStyle = 'red' ctx.fillRect(50, 50, 50, 50) ctx.fillStyle = 'blue' ctx.fillRect(75, 75, 50, 50) 刮刮卡小练习 通过 globalCompositeOperation 属性设置，可以实现一个简单的刮刮卡效果。\n基本思路：\n将 canvas 画布填充一个颜色，和最后要显示的图片宽高设为一致，通过定位将画布覆盖在图片上方\n给 canvas 元素绑定鼠标按下事件，获取当前鼠标按下位置的 offsetX 和 offsetY，相当于在画布中的偏移量，设置起点 moveTo(offsetX, offsetY)。\n给 canvas 元素绑定鼠标移动事件，鼠标按下移动时，实时获取鼠标相对于画布的偏移量，设置 lineTo(offsetX, offsetY)，并将这些路径连接起来。\n设置 ctx.globalCompositeOperation = ‘destination-out’，只留下不是鼠标移动绘制形成的区域，重叠的区域将会透明显示，最下方的图片就能看见。\n给 canvas 元素绑定鼠标松开事件，清除 canvas 身上的鼠标移动事件。\n\u003cdiv style=\"width: 400px;height: 200px;position: relative\"\u003e \u003ccanvas id=\"canvas\" width=\"400\" height=\"200\" style=\"border: 1px solid;position: absolute\"\u003e\u003c/canvas\u003e \u003cimg id=\"img\" src=\"./img/react.png\" style=\"width: 100%;height: 100%\"\u003e \u003c/div\u003e // 获取 canvas 元素的宽高 const { width, height } = canvas // 将整个画布填充为灰色 ctx.fillStyle = 'gray' ctx.fillRect(0, 0, width, height) // 只留下目标超过源的部分 ctx.globalCompositeOperation = 'destination-out' // 刮卡的粗细设置为 20px ctx.lineWidth = 20 // 将绘线的路径连接处和两端都设置为圆形，这样比较好看 ctx.lineJoin = 'round' ctx.lineCap = 'round' // 为 canvas 元素绑定鼠标按下事件 canvas.onmousedown = function(event) { // 获取当前鼠标在画布中的偏移量 const { offsetX, offsetY } = event // 设置起点 ctx.moveTo(offsetX, offsetY) // 为 canvas 元素绑定鼠标移动事件 canvas.onmousemove = function(event) { // 实时获取鼠标的偏移量 const { offsetX, offsetY } = event // 设置路径点 ctx.lineTo(offsetX, offsetY) // 将子路径连接起来绘制显示 ctx.stroke() } // 为 canvas 元素绑定鼠标离开事件 canvas.onmouseup = () =\u003e { // 清除 canvas 元素身上的鼠标移动事件 canvas.onmousemove = null } } canvas将画布导出为图像 canvas.toDataURL(type, encoderOptions)。\n通过 canvas 身上的 toDataURL 方法，返回一个包含画布内容的 base64 格式的 data url。\n参数：\ntype：图片格式，默认为 image/png。 encoderOptions：在指定图片格式为 image/jpeg 或 image/webp 的情况下，可以从 0-1 之间选择图片的质量。如果超出取值范围，将会使用默认值0.92。其他参数会被忽略。 ctx.fillStyle = 'red' ctx.fillRect(50, 50, 100, 100) const dataUrl = canvas.toDataURL() // data:image/png;base64,iVBORw0KGgoAAAANSUh.... console.log(dataUrl) 地址栏输入 data url：\ncanvas事件操作 canvas 中几乎没有提供任何事件操作的方法，但是我们可以通过 isPointInPath 方法，判断当前坐标是否在路径列表中，从而进行一些事件操作。\nctx.isPointInPath(x, y)：判断在当前路径中是否包含检测点 (x, y)，返回 true / false。\n特别注意：\nctx.beginPath() 之前的路径检测不到，因为它会清空路径列表。\nfillRect 和 strokeRect 这两个直接绘制矩形的方法不会生成路径，它们包含的坐标点 isPointInPath 检查不到。\n// 绘制一个路径矩形 ctx.rect(50, 50, 100, 100) ctx.fill() // 给 canvas 绑定点击事件 canvas.onclick = event =\u003e { // 鼠标点击位置距离 canvas 的 offsetX 和 offsetY，就相当于在 canvas 中的坐标位置 const { offsetX, offsetY } = event const isInPath = ctx.isPointInPath(offsetX, offsetY) console.log(`当前点击坐标：(${offsetX}, ${offsetY})`, `是否在路径列表中：${isInPath}`) } ",
+  "wordCount" : "8682",
+  "inLanguage": "en",
+  "datePublished": "2023-02-22T09:41:47+08:00",
+  "dateModified": "2023-02-22T09:41:47+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "XP"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://sirius00.github.io/posts/tech/canvas%E7%9A%84%E4%BD%BF%E7%94%A8/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "XP's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://sirius00.github.io/img/cat.png"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://sirius00.github.io/" accesskey="h" title="XP&#39;s Blog (Alt + H)">
+            <img src="https://sirius00.github.io/img/cat.png" alt="logo" aria-label="logo"
+                 height="35">XP&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://sirius00.github.io/search" title="🔍 搜索 (Alt &#43; /)" accesskey=/>
+                <span>🔍 搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/" title="🏠 主页">
+                <span>🏠 主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/posts" title="📚 文章">
+                <span>📚 文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/tags" title="🧩 标签">
+                <span>🧩 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/archives/" title="⏱️ 时间轴">
+                <span>⏱️ 时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/about" title="🙋🏻‍♂️ 关于">
+                <span>🙋🏻‍♂️ 关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main page">
+<article class="post-single">
+    <div id="single-content">
+        <header class="post-header">
+            <div class="breadcrumbs"><a href="https://sirius00.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://sirius00.github.io/posts/">📚文章</a>&nbsp;»&nbsp;<a href="https://sirius00.github.io/posts/tech/">👨🏻‍💻 技术</a></div>
+            <h1 class="post-title">
+                Canvas的使用
+            </h1>
+            <div class="post-meta">创建:&nbsp;<span title='2023-02-22 09:41:47 +0800 CST'>2023-02-22</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-22&nbsp;|&nbsp;字数:&nbsp;8682字&nbsp;|&nbsp;时长:&nbsp;18分钟&nbsp;|&nbsp;
+作者:&nbsp;XP
+
+
+
+                &nbsp;|&nbsp;标签: &nbsp;
+                <ul class="post-tags-meta">
+                    <a href="https://sirius00.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+                </ul>
+
+                
+                <span id="busuanzi_container_page_pv">
+                &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+</div>
+        </header> 
+        <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">文章目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#canvas%e7%94%bb%e5%b8%83%e5%ae%bd%e5%ba%a6%e5%92%8c%e9%ab%98%e5%ba%a6" aria-label="canvas画布宽度和高度">canvas画布宽度和高度</a></li>
+                <li>
+                    <a href="#canvas%e7%94%bb%e7%ac%94" aria-label="canvas画笔">canvas画笔</a></li>
+                <li>
+                    <a href="#canvas%e7%bb%98%e5%88%b6%e7%9f%a9%e5%bd%a2" aria-label="canvas绘制矩形">canvas绘制矩形</a><ul>
+                        
+                <li>
+                    <a href="#strokerect%e8%be%b9%e6%a1%86%e7%9f%a9%e5%bd%a2%e6%b8%b2%e6%9f%93%e9%97%ae%e9%a2%98" aria-label="strokeRect边框矩形渲染问题">strokeRect边框矩形渲染问题</a></li></ul>
+                </li>
+                <li>
+                    <a href="#canvas%e6%b8%85%e9%99%a4%e5%8c%ba%e5%9f%9f" aria-label="canvas清除区域">canvas清除区域</a></li>
+                <li>
+                    <a href="#canvas%e6%a0%b7%e5%bc%8f%e5%92%8c%e9%a2%9c%e8%89%b2" aria-label="canvas样式和颜色">canvas样式和颜色</a></li>
+                <li>
+                    <a href="#canvas%e8%b7%af%e5%be%84" aria-label="canvas路径">canvas路径</a><ul>
+                        
+                <li>
+                    <a href="#%e8%b7%af%e5%be%84%e7%bb%98%e5%88%b6%e7%9f%a9%e5%bd%a2" aria-label="路径绘制矩形">路径绘制矩形</a></li>
+                <li>
+                    <a href="#%e9%87%8d%e7%bd%ae%e8%b7%af%e5%be%84%e5%92%8c%e9%97%ad%e5%90%88%e8%b7%af%e5%be%84" aria-label="重置路径和闭合路径">重置路径和闭合路径</a></li>
+                <li>
+                    <a href="#%e8%b7%af%e5%be%84%e7%bb%98%e5%88%b6%e6%a0%b7%e5%bc%8f" aria-label="路径绘制样式">路径绘制样式</a></li></ul>
+                </li>
+                <li>
+                    <a href="#canvas%e7%8a%b6%e6%80%81" aria-label="canvas状态">canvas状态</a></li>
+                <li>
+                    <a href="#canvas%e5%9c%86%e5%bd%a2%e5%9c%86%e5%bc%a7" aria-label="canvas圆形/圆弧">canvas圆形/圆弧</a></li>
+                <li>
+                    <a href="#canvas%e8%b4%9d%e5%a1%9e%e5%b0%94%e6%9b%b2%e7%ba%bf" aria-label="canvas贝塞尔曲线">canvas贝塞尔曲线</a><ul>
+                        
+                <li>
+                    <a href="#%e4%ba%8c%e6%ac%a1%e8%b4%9d%e5%a1%9e%e5%b0%94" aria-label="二次贝塞尔">二次贝塞尔</a></li>
+                <li>
+                    <a href="#%e4%b8%89%e6%ac%a1%e8%b4%9d%e5%a1%9e%e5%b0%94" aria-label="三次贝塞尔">三次贝塞尔</a></li></ul>
+                </li>
+                <li>
+                    <a href="#canvas%e5%8f%98%e6%8d%a2" aria-label="canvas变换">canvas变换</a><ul>
+                        
+                <li>
+                    <a href="#%e5%b9%b3%e7%a7%bb%e5%8f%98%e6%8d%a2" aria-label="平移变换">平移变换</a></li>
+                <li>
+                    <a href="#%e6%97%8b%e8%bd%ac%e5%8f%98%e6%8d%a2" aria-label="旋转变换">旋转变换</a></li>
+                <li>
+                    <a href="#%e4%bc%b8%e7%bc%a9%e5%8f%98%e6%8d%a2" aria-label="伸缩变换">伸缩变换</a><ul>
+                        
+                <li>
+                    <a href="#%e6%96%87%e5%ad%97%e7%bf%bb%e8%bd%ac" aria-label="文字翻转">文字翻转</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#canvas%e8%83%8c%e6%99%af" aria-label="canvas背景">canvas背景</a><ul>
+                        
+                <li>
+                    <a href="#%e5%9b%be%e7%89%87%e8%83%8c%e6%99%af" aria-label="图片背景">图片背景</a></li>
+                <li>
+                    <a href="#%e8%ae%be%e7%bd%ae%e8%83%8c%e6%99%af" aria-label="设置背景">设置背景</a></li></ul>
+                </li>
+                <li>
+                    <a href="#canvas%e6%b8%90%e5%8f%98" aria-label="canvas渐变">canvas渐变</a><ul>
+                        
+                <li>
+                    <a href="#%e7%ba%bf%e6%80%a7%e6%b8%90%e5%8f%98" aria-label="线性渐变">线性渐变</a></li>
+                <li>
+                    <a href="#%e5%be%84%e5%90%91%e6%b8%90%e5%8f%98" aria-label="径向渐变">径向渐变</a></li></ul>
+                </li>
+                <li>
+                    <a href="#canvas%e6%96%87%e6%9c%ac%e7%9b%b8%e5%85%b3" aria-label="canvas文本相关">canvas文本相关</a><ul>
+                        
+                <li>
+                    <a href="#%e6%b8%b2%e6%9f%93%e6%96%87%e6%9c%ac" aria-label="渲染文本">渲染文本</a></li>
+                <li>
+                    <a href="#%e6%96%87%e6%9c%ac%e6%a0%b7%e5%bc%8f" aria-label="文本样式">文本样式</a><ul>
+                        
+                <li>
+                    <a href="#%e8%ae%be%e7%bd%ae%e5%ad%97%e4%bd%93" aria-label="设置字体">设置字体</a></li>
+                <li>
+                    <a href="#%e6%96%87%e6%9c%ac%e5%af%b9%e9%bd%90%e6%96%b9%e5%bc%8f" aria-label="文本对齐方式">文本对齐方式</a></li>
+                <li>
+                    <a href="#%e6%96%87%e6%9c%ac%e5%9f%ba%e7%ba%bf%e5%af%b9%e9%bd%90%e6%96%b9%e5%bc%8f" aria-label="文本基线对齐方式">文本基线对齐方式</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%96%87%e6%9c%ac%e5%9c%a8canvas%e4%b8%ad%e5%9e%82%e7%9b%b4%e5%b1%85%e4%b8%ad%e6%98%be%e7%a4%ba" aria-label="文本在canvas中垂直居中显示">文本在canvas中垂直居中显示</a></li>
+                <li>
+                    <a href="#%e8%8e%b7%e5%8f%96%e6%96%87%e6%9c%ac%e4%bf%a1%e6%81%af" aria-label="获取文本信息">获取文本信息</a></li></ul>
+                </li>
+                <li>
+                    <a href="#canvas%e9%98%b4%e5%bd%b1" aria-label="canvas阴影">canvas阴影</a></li>
+                <li>
+                    <a href="#canvas%e5%83%8f%e7%b4%a0%e7%9b%b8%e5%85%b3" aria-label="canvas像素相关">canvas像素相关</a><ul>
+                        
+                <li>
+                    <a href="#%e8%8e%b7%e5%8f%96%e5%8c%ba%e5%9f%9f%e5%86%85%e5%83%8f%e7%b4%a0%e4%bf%a1%e6%81%af" aria-label="获取区域内像素信息">获取区域内像素信息</a></li>
+                <li>
+                    <a href="#%e5%af%b9%e7%94%bb%e5%b8%83%e8%bf%9b%e8%a1%8c%e5%83%8f%e7%b4%a0%e6%95%b0%e6%8d%ae%e7%9a%84%e5%86%99%e5%85%a5" aria-label="对画布进行像素数据的写入">对画布进行像素数据的写入</a></li>
+                <li>
+                    <a href="#%e5%88%9b%e5%bb%baimagedata%e5%af%b9%e8%b1%a1" aria-label="创建imageData对象">创建imageData对象</a></li>
+                <li>
+                    <a href="#%e5%83%8f%e7%b4%a0%e6%89%a9%e5%b1%95" aria-label="像素扩展">像素扩展</a><ul>
+                        
+                <li>
+                    <a href="#%e8%8e%b7%e5%8f%96%e6%9f%90%e4%b8%aa%e5%9d%90%e6%a0%87%e7%9a%84%e5%83%8f%e7%b4%a0" aria-label="获取某个坐标的像素">获取某个坐标的像素</a></li>
+                <li>
+                    <a href="#%e8%ae%be%e7%bd%ae%e6%9f%90%e4%b8%aa%e5%9d%90%e6%a0%87%e7%9a%84%e5%83%8f%e7%b4%a0" aria-label="设置某个坐标的像素">设置某个坐标的像素</a></li>
+                <li>
+                    <a href="#%e9%a9%ac%e8%b5%9b%e5%85%8b%e5%b0%8f%e7%bb%83%e4%b9%a0" aria-label="马赛克小练习">马赛克小练习</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#canvas%e9%80%8f%e6%98%8e%e5%ba%a6" aria-label="canvas透明度">canvas透明度</a></li>
+                <li>
+                    <a href="#canvas%e5%9b%be%e5%83%8f%e5%90%88%e6%88%90%e8%ae%be%e7%bd%ae" aria-label="canvas图像合成设置">canvas图像合成设置</a><ul>
+                        
+                <li>
+                    <a href="#%e5%88%ae%e5%88%ae%e5%8d%a1%e5%b0%8f%e7%bb%83%e4%b9%a0" aria-label="刮刮卡小练习">刮刮卡小练习</a></li></ul>
+                </li>
+                <li>
+                    <a href="#canvas%e5%b0%86%e7%94%bb%e5%b8%83%e5%af%bc%e5%87%ba%e4%b8%ba%e5%9b%be%e5%83%8f" aria-label="canvas将画布导出为图像">canvas将画布导出为图像</a></li>
+                <li>
+                    <a href="#canvas%e4%ba%8b%e4%bb%b6%e6%93%8d%e4%bd%9c" aria-label="canvas事件操作">canvas事件操作</a>
+                </li>
+            </ul>
+        </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+        
+        activeElement = elements[0];
+        const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+        document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+    }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 &&
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+            const id = encodeURI(element.getAttribute('id')).toLowerCase();
+            if (element === activeElement){
+                document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+            } else {
+                document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+            }
+        })
+    }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;
+    }
+</script>
+        
+        <div class="post-content"><h2 id="canvas画布宽度和高度">canvas画布宽度和高度<a hidden class="anchor" aria-hidden="true" href="#canvas画布宽度和高度">#</a></h2>
+<p><code>canvas</code>标签只有两个标签属性: width和height</p>
+<p>当没有设置宽度和高度的时候, <code>canvas</code>会初始化为宽300px, 高150px画布</p>
+<p>使用html属性设置width, height 时,只影响画布本身,不影响画布内容</p>
+<p>使用css样式指定canvas的width, height时, 不但影响画布本身的宽高, 还会使画布内容等比例缩放</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- 不要通过样式指定宽高 --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">canvas</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;canvas&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;400&#34;</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;200&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;border: 1px solid&#34;</span>&gt;&lt;/<span style="color:#f92672">canvas</span>&gt;
+</span></span></code></pre></div><h2 id="canvas画笔">canvas画笔<a hidden class="anchor" aria-hidden="true" href="#canvas画笔">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">canvas</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;canvas&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 检查浏览器是否支持canvas
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">getContext</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// canvas相关的操作基本都在ctx上面进行
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ctx</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">getContext</span>(<span style="color:#e6db74">&#39;2d&#39;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="canvas绘制矩形">canvas绘制矩形<a hidden class="anchor" aria-hidden="true" href="#canvas绘制矩形">#</a></h2>
+<p>fillRect(填充矩形)</p>
+<p>strokeRect(边框矩形)</p>
+<p>ctx.fillRect(x, y, width, height)</p>
+<p>ctx.strokeRect(x, y, width, height)</p>
+<p>两者参数:</p>
+<ul>
+<li>x:x轴偏移量</li>
+<li>y: y轴偏移量</li>
+<li>width: 矩形宽度</li>
+<li>height: 矩形高度</li>
+</ul>
+<h3 id="strokerect边框矩形渲染问题">strokeRect边框矩形渲染问题<a hidden class="anchor" aria-hidden="true" href="#strokerect边框矩形渲染问题">#</a></h3>
+<p><code>canvas</code> 在渲染矩形边框时，边框宽度是平均分在偏移位置两侧的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 边框会渲染在 49.5-50.5 之间，浏览器是不会让一个像素只显示一半的，只会全部显示。相当于边框会渲染在 49-51 之间，也就是 2px
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">strokeRect</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 将偏移量多移动 0.5，边框会渲染在 200-201 和 50-51 之间，也就是1px
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">strokeRect</span>(<span style="color:#ae81ff">200.5</span>, <span style="color:#ae81ff">50.5</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span></code></pre></div><h2 id="canvas清除区域">canvas清除区域<a hidden class="anchor" aria-hidden="true" href="#canvas清除区域">#</a></h2>
+<p>ctx.clearRect(x, y, width, height)：可以清除 <code>canvas</code> 画布上指定的区域，让清除部分完全透明</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 以 (100, 100) 为偏移量，清除一个 50 * 50 的区域
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">clearRect</span>(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+</span></span></code></pre></div><h2 id="canvas样式和颜色">canvas样式和颜色<a hidden class="anchor" aria-hidden="true" href="#canvas样式和颜色">#</a></h2>
+<p>ctx.fillStyle：设置图像的填充颜色。（默认黑色）</p>
+<p>ctx.strokeStyle：设置图像轮廓的颜色。（默认黑色）</p>
+<p>ctx.lineWidth：设置当前绘线的粗细，属性值必须为正数（默认值 1，0、负数、Infinity 和 NaN 会被忽略）。</p>
+<p>ctx.lineJoin：设定线条与线条间结合的样式。（默认miter）</p>
+<ul>
+<li>
+<p>round：圆角。</p>
+</li>
+<li>
+<p>bevel：斜角。</p>
+</li>
+<li>
+<p>miter：直角。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 填充样式红色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillStyle</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;red&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 边框样式蓝色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">strokeStyle</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;blue&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 绘线粗细 10px
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineWidth</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 绘线交接呈现圆角
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineJoin</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;round&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">strokeRect</span>(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="canvas路径">canvas路径<a hidden class="anchor" aria-hidden="true" href="#canvas路径">#</a></h2>
+<h3 id="路径绘制矩形">路径绘制矩形<a hidden class="anchor" aria-hidden="true" href="#路径绘制矩形">#</a></h3>
+<p>ctx.stroke()：通过线条来绘制图像轮廓，不会自动调用 closePath()。</p>
+<p>ctx.fill()：通过填充路径的内容区域生成实心的图像，自动调用closePath()。</p>
+<p>ctx.rect(x, y, width, height)：绘制一个偏移量 (x, y)，宽 width，高 height 的矩形。</p>
+<ul>
+<li>
+<p>当该方法执行的时候，moveTo() 方法自动设置起点坐标为 (x, y)。</p>
+</li>
+<li>
+<p>该方法执行完毕的时候，画布上不会呈现图像，相当于只是形成了路径列表，要调用 fill() 或 stroke() 方法才会呈现在画布中</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 绘制路径不显示
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">rect</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 填充显示
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fill</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">rect</span>(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 路径连接显示
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">stroke</span>()
+</span></span></code></pre></div><h3 id="重置路径和闭合路径">重置路径和闭合路径<a hidden class="anchor" aria-hidden="true" href="#重置路径和闭合路径">#</a></h3>
+<p>ctx.beginPath()：新建一条路径，生成之后，图像绘制命令被指向到路径上准备生成路径。</p>
+<ul>
+<li>本质上，路径是由多个子路径构成，这些子路径都是在一个路径列表中，每次调用 beginPath，路径列表都会清空重置。</li>
+<li>通常我们在绘制图像之前，都会调用该方法</li>
+</ul>
+<p>ctx.moveTo(x, y)：将画笔移动到指定的坐标轴上。（设置起点）</p>
+<p>ctx.lineTo(x, y)：绘制一条从当前位置到指定坐标轴位置的直线。</p>
+<p>ctx.closePath()：闭合路径，图像绘制命令又重新指向到上下文中。</p>
+<ul>
+<li>使用 fill() 绘制图像或图像路径已经闭合不需要使用此方法。</li>
+<li>通常使用 stroke() 绘制图像的时候才使用此方法。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 自动填充路径
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">beginPath</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">moveTo</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineTo</span>(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineTo</span>(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fill</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 路径不会自动闭合
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">beginPath</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">moveTo</span>(<span style="color:#ae81ff">150</span>, <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineTo</span>(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineTo</span>(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">stroke</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 手动闭合路径
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">beginPath</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">moveTo</span>(<span style="color:#ae81ff">250</span>, <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineTo</span>(<span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineTo</span>(<span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">closePath</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">stroke</span>()
+</span></span></code></pre></div><h3 id="路径绘制样式">路径绘制样式<a hidden class="anchor" aria-hidden="true" href="#路径绘制样式">#</a></h3>
+<p>ctx.lineCap：绘制每一条线段末端的样式属性。</p>
+<ol>
+<li>butt：线段末端以方形结束。（默认值）</li>
+<li>round：线段末端以圆形结束。</li>
+<li>square：线段末端以方形结束，但是增加了一个宽度和线段相同，高度是线段宽度一半的矩形区域。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 绘线末端圆形显示
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineCap</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;round&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineWidth</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">moveTo</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineTo</span>(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineTo</span>(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">stroke</span>()
+</span></span></code></pre></div><h2 id="canvas状态">canvas状态<a hidden class="anchor" aria-hidden="true" href="#canvas状态">#</a></h2>
+<p>ctx.save()：将当前状态放入栈中，保持 canvas 全部状态的方法。</p>
+<p>保存到栈中的绘制状态由下面部分组成。</p>
+<ul>
+<li>
+<p>当前的变换矩阵。</p>
+</li>
+<li>
+<p>当前的剪切区域。</p>
+</li>
+<li>
+<p>当前的虚线列表。</p>
+</li>
+<li>
+<p>绘制图像的样式（strokeStyle / fillStyle / lineWidth / lineJoin / lineCap …）。</p>
+</li>
+</ul>
+<p>ctx.restore()：通过在绘图状态栈中弹出顶端的状态，将 canvas 恢复到最近的保存状态的方法，如果没有保存状态，此方法不做任何改变。</p>
+<p>通常我们在绘制图像进行的操作，都会放在 save() 和 restore() 方法之间，避免当前绘制图像设置的状态，影响到后续图像的绘制效果。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 画布默认状态放入栈中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">save</span>()
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 当前填充样式设置为红色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillStyle</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;red&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 绘制矩形，显示效果为红色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 弹出栈中顶端状态，这个时候红色的填充样式会被弹出的状态覆盖，变为黑色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">restore</span>()
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 绘制矩形，显示效果为黑色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span></code></pre></div><h2 id="canvas圆形圆弧">canvas圆形/圆弧<a hidden class="anchor" aria-hidden="true" href="#canvas圆形圆弧">#</a></h2>
+<p>ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise)：画一个以(x, y)坐标为圆心，radius 为半径的圆弧或圆，从 startAngle 开始，到 endAngle 结束。</p>
+<p>参数如下：</p>
+<ol>
+<li>x：圆心在画布 x 轴上的偏移量。</li>
+<li>y：圆心在画布 y 轴上的偏移量。</li>
+<li>radius：绘制圆的半径。</li>
+<li>startAngle：圆弧的起始点，x 轴方向开始计算，单位以弧度表示。</li>
+<li>endAngle：圆弧的终点，单位以弧度表示。</li>
+<li>anticlockwise：布尔值。true 表示逆时针，false 表示顺时针。（默认值）</li>
+</ol>
+<p>ctx.arcTo(x1, y1, x2, y2, radius)：根据设置的两个控制点和半径画一段圆弧。</p>
+<ol>
+<li>必须存在一个开始坐标点 ctx.moveTo(x, y)，三点才能构成圆弧，半径为 radius 的圆向夹角里面填充。</li>
+<li>绘制的圆弧一定经过起点，但不一定经过 (x1, y1) 和 (x2, y2)，这两个坐标只是用来控制方向的。</li>
+</ol>
+<h2 id="canvas贝塞尔曲线">canvas贝塞尔曲线<a hidden class="anchor" aria-hidden="true" href="#canvas贝塞尔曲线">#</a></h2>
+<h3 id="二次贝塞尔">二次贝塞尔<a hidden class="anchor" aria-hidden="true" href="#二次贝塞尔">#</a></h3>
+<p>ctx.quadraticCurveTo(cpx, cpy, x, y)：绘制二次贝塞尔曲线。</p>
+<p>参数：</p>
+<ul>
+<li>
+<p>cpx：控制点的 x 轴坐标。</p>
+</li>
+<li>
+<p>cpy：控制点的 y 轴坐标。</p>
+</li>
+<li>
+<p>x：终点的 x 轴坐标。</p>
+</li>
+<li>
+<p>y：终点的 y 轴坐标。</p>
+</li>
+</ul>
+<p>注意:</p>
+<ul>
+<li>必须要设置起点 moveTo(x, y)。</li>
+<li>二次贝塞尔曲线一定经过起点和终点。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>// 将3个点连接起来
+</span></span><span style="display:flex;"><span>ctx.beginPath()
+</span></span><span style="display:flex;"><span>ctx.moveTo(20, 20)
+</span></span><span style="display:flex;"><span>ctx.lineTo(200, 0)
+</span></span><span style="display:flex;"><span>ctx.lineTo(100, 100)
+</span></span><span style="display:flex;"><span>ctx.stroke()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// 观察二次贝塞尔曲线在3点之间的位置
+</span></span><span style="display:flex;"><span>ctx.beginPath()
+</span></span><span style="display:flex;"><span>ctx.moveTo(20, 20)
+</span></span><span style="display:flex;"><span>ctx.quadraticCurveTo(200, 0, 100, 100, 20)
+</span></span><span style="display:flex;"><span>ctx.stroke()
+</span></span></code></pre></div><h3 id="三次贝塞尔">三次贝塞尔<a hidden class="anchor" aria-hidden="true" href="#三次贝塞尔">#</a></h3>
+<p>ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)：绘制三次贝塞尔曲线。</p>
+<p>参数只是在二次贝塞尔的基础上多增加了一个控制点 (cp2x, cp2y)。</p>
+<p>同样要设置起点 moveTo(x, y)，也一定经过起点和终点。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 将4个点连接起来
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">beginPath</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">moveTo</span>(<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">20</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineTo</span>(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineTo</span>(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineTo</span>(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">stroke</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 观察三次贝塞尔曲线在4点之间的位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">beginPath</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">moveTo</span>(<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">20</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">bezierCurveTo</span>(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">20</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">stroke</span>()
+</span></span></code></pre></div><h2 id="canvas变换">canvas变换<a hidden class="anchor" aria-hidden="true" href="#canvas变换">#</a></h2>
+<h3 id="平移变换">平移变换<a hidden class="anchor" aria-hidden="true" href="#平移变换">#</a></h3>
+<p>ctx.translate(x, y)：对当前 <code>canvas</code> 画布进行平移变换。</p>
+<ol>
+<li>
+<p>x：水平方向的移动距离。</p>
+</li>
+<li>
+<p>y：垂直方向的移动距离。</p>
+<p>注意：在 <code>canvas</code> 中 translate 是累加的。</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// x 轴和 y 轴都平移 50px
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">translate</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span></code></pre></div><h3 id="旋转变换">旋转变换<a hidden class="anchor" aria-hidden="true" href="#旋转变换">#</a></h3>
+<p>ctx.rotate(angle)：将当前 <code>canvas</code> 画布对照原点顺时针旋转。</p>
+<ol>
+<li>
+<p>angle：顺时针旋转的弧度(degree * Math.PI / 180),  旋转的中心始终是 <code>canvas</code> 的原点 (0, 0)，x 轴顺时针旋转，如果要改变中心点，我们可以通过 translate() 方法移动 <code>canvas</code></p>
+<p>注意：在 <code>canvas</code> 中 rotate 是累加的</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">translate</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 顺时针旋转 45 度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">rotate</span>(<span style="color:#ae81ff">45</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">180</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span></code></pre></div><h3 id="伸缩变换">伸缩变换<a hidden class="anchor" aria-hidden="true" href="#伸缩变换">#</a></h3>
+<p>ctx.scale(x, y)：将当前 <code>canvas</code> 画布的 x 轴和 y 轴进行伸缩变换。</p>
+<p>参数：</p>
+<ol>
+<li>x：水平方向的缩放因子。</li>
+<li>y：垂直方向的缩放因子。</li>
+</ol>
+<p>注意:</p>
+<ul>
+<li>在 <code>canvas</code> 中 scale 是累加的。</li>
+<li>缩放因子为 1 时大小不变，值为负数按照 x 轴或 y 轴进行翻转（翻转上下文）</li>
+</ul>
+<blockquote>
+<p>默认的，在 <code>canvas</code> 中一个单位实际上就是一个像素。例如，如果我们将 0.5 作为缩放因子，最终的单位会变成 0.5 像素，并且形状的尺寸会变成原来的一半。相似的方式，我们将 2.0 作为缩放因子，将会增大单位尺寸变成两个像素。形状的尺寸将会变成原来的两倍。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">translate</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// x 轴放大 2 倍，y 轴不变
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">scale</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span></code></pre></div><h4 id="文字翻转">文字翻转<a hidden class="anchor" aria-hidden="true" href="#文字翻转">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// x 轴放大 2 倍，并翻转，y 轴不变
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">scale</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">font</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;48px serif&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillText</span>(<span style="color:#e6db74">&#39;canvas&#39;</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">100</span>)
+</span></span></code></pre></div><h2 id="canvas背景">canvas背景<a hidden class="anchor" aria-hidden="true" href="#canvas背景">#</a></h2>
+<h3 id="图片背景">图片背景<a hidden class="anchor" aria-hidden="true" href="#图片背景">#</a></h3>
+<p>ctx.drawImage(img, sx, sy, swidth, sheight, x, y, width, height)：在画布上绘制图片。</p>
+<p>参数：</p>
+<ol>
+<li>img：图像源对象（规定使用的图像、画布或视频等）。</li>
+<li>sx：可选，开始剪切的x坐标位置。</li>
+<li>sy：可选，开始剪切的y坐标位置。</li>
+<li>swidth：可选，被剪切图像的宽度。</li>
+<li>sheight：可选，被剪切图像的高度。</li>
+<li>x：在画布上放置图像的x坐标位置。</li>
+<li>y：在画布上放置图像的y坐标位置。</li>
+<li>width：可选，要使用的图像的宽度（伸展或缩小图像）。</li>
+<li>height：可选，要使用的图像的高度（伸展或缩小图像）。</li>
+</ol>
+<p>注意: 必须要等图片加载完才能操作，参数必须如下 3 种方式(3, 5, 9)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">img</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;img&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;./img/react.png&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">canvas</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;canvas&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;400&#34;</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;200&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;border: 1px solid&#34;</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/canvas&gt;</span>
+</span></span></code></pre></div><p>ctx.drawImage(img, x, y)：在画布上定位图像。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">img</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Image</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;./img/react.png&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 将图片绘制到画布上
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">drawImage</span>(<span style="color:#a6e22e">img</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>ctx.drawImage(img, x, y, width, height)：在画布上定位图像，并规定图像的宽度和高度。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">drawImage</span>(<span style="color:#a6e22e">img</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span></code></pre></div><p>ctx.drawImage(img, sx, sy, swidth, sheight, x, y, width, height)：剪切图像，并在画布上定位被剪切的部分。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">drawImage</span>(<span style="color:#a6e22e">img</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span></code></pre></div><h3 id="设置背景">设置背景<a hidden class="anchor" aria-hidden="true" href="#设置背景">#</a></h3>
+<p>ctx.createPattern(image, repetition)：创建一个用于图像绘制使用的样式。</p>
+<p>参数：</p>
+<ol>
+<li>image：图像源对象（规定使用的图像、画布或视频等）。</li>
+<li>repetition：重复图像的方式，值只能是 repeat | repeat-x | repeat-y | no-repeat。</li>
+</ol>
+<blockquote>
+<p>repetition 如果为空字符串 (’’) 或 null (但不是 undefined )，repetition将被当作 repeat</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 创建背景样式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pat</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">createPattern</span>(<span style="color:#a6e22e">img</span>, <span style="color:#e6db74">&#39;repeat&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillStyle</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">pat</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">100</span>)
+</span></span></code></pre></div><h2 id="canvas渐变">canvas渐变<a hidden class="anchor" aria-hidden="true" href="#canvas渐变">#</a></h2>
+<h3 id="线性渐变">线性渐变<a hidden class="anchor" aria-hidden="true" href="#线性渐变">#</a></h3>
+<p>ctx.createLinearGradient(x1, y1, x2, y2)：从 (x1, y1) 到 (x2, y2) 进行渐变。</p>
+<p>该方法返回一个 CanvasGradient 对象。</p>
+<p>使用 CanvasGradient 身上的 addColorStop(position, color) 设置渐变颜色。</p>
+<p>参数：</p>
+<ol>
+<li>position：介于 0-1 之间的值，表示渐变中开始与结束之间的位置。</li>
+<li>color：在position位置显示的css颜色值</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 从 (0, 0) 坐标点到 (300, 0) 坐标点进行渐变
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">line</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">createLinearGradient</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 渐变顺序 红 --&gt; 蓝 --&gt; 绿
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">line</span>.<span style="color:#a6e22e">addColorStop</span>(<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#39;red&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">line</span>.<span style="color:#a6e22e">addColorStop</span>(.<span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#39;blue&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">line</span>.<span style="color:#a6e22e">addColorStop</span>(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;green&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 图像填充颜色设置为渐变色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillStyle</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">line</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">100</span>)
+</span></span></code></pre></div><h3 id="径向渐变">径向渐变<a hidden class="anchor" aria-hidden="true" href="#径向渐变">#</a></h3>
+<p>ctx.createRadialGradient(x1, y1, r1, x2, y2, r2)：从 (x1, y1) 为圆心，半径为 r1 的圆，向 (x2, y2) 为圆心，半径为 r2 的圆进行径向渐变。</p>
+<p>使用方法跟上述的 createLinearGradient 一样。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 以 (200, 100) 为圆心 50 为半径，向 100 为半径的圆渐变
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">grad</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">createRadialGradient</span>(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 渐变顺序 红 --&gt; 蓝 --&gt; 绿
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">grad</span>.<span style="color:#a6e22e">addColorStop</span>(<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#39;red&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">grad</span>.<span style="color:#a6e22e">addColorStop</span>(.<span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#39;blue&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">grad</span>.<span style="color:#a6e22e">addColorStop</span>(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;green&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 图像填充颜色设置为渐变色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillStyle</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">grad</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">200</span>)
+</span></span></code></pre></div><h2 id="canvas文本相关">canvas文本相关<a hidden class="anchor" aria-hidden="true" href="#canvas文本相关">#</a></h2>
+<p>文本相对于画布的偏移量，都是参照文本的基线进行偏移的。</p>
+<h3 id="渲染文本">渲染文本<a hidden class="anchor" aria-hidden="true" href="#渲染文本">#</a></h3>
+<p>canvas 中提供了两种方法渲染文本，如下：</p>
+<ul>
+<li>
+<p>ctx.fillText(text, x, y, [maxWidth])：在 (x, y) 填充指定的文本 (text)。</p>
+</li>
+<li>
+<p>ctx.strokeText(text, x, y, [maxWidth])：在 (x, y) 绘制文本边框 (text)。</p>
+</li>
+</ul>
+<p>参数：</p>
+<ol>
+<li>text：文本内容。</li>
+<li>x, y：偏移量。</li>
+<li>maxWidth：字体绘制的最大宽度，绘制字体宽度超出最大宽度会水平自适应</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 边框文本
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">strokeText</span>(<span style="color:#e6db74">&#39;天天好心情&#39;</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 填充文本
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillText</span>(<span style="color:#e6db74">&#39;天天好心情&#39;</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 填充文本现在宽度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillText</span>(<span style="color:#e6db74">&#39;天天好心情&#39;</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">150</span>, <span style="color:#ae81ff">30</span>)
+</span></span></code></pre></div><h3 id="文本样式">文本样式<a hidden class="anchor" aria-hidden="true" href="#文本样式">#</a></h3>
+<h4 id="设置字体">设置字体<a hidden class="anchor" aria-hidden="true" href="#设置字体">#</a></h4>
+<p>ctx.font：font 属性指定时，必须要有大小和字体，缺一不可。</p>
+<p>默认字体 10px sans-serif。</p>
+<h4 id="文本对齐方式">文本对齐方式<a hidden class="anchor" aria-hidden="true" href="#文本对齐方式">#</a></h4>
+<p>ctx.textAlign：设置文本的对齐方式，值如下：</p>
+<ul>
+<li>start：文本对齐界线开始的地方。（默认值）</li>
+<li>end：文本对齐界线结束的地方。</li>
+<li>left：文本左对齐。</li>
+<li>right：文本右对齐。</li>
+<li>center：文本居中对齐。</li>
+</ul>
+<blockquote>
+<p>这里的 textAlign = ‘center’ 比较特殊。textAlign 的值为 center 时候文本的居中是基于你在 (fillText / strokeText) 的时候所给的x的值，也就是说文本一半在 x 的左边，一半在 x 的右边（可以理解为计算 x 的位置时从默认文字的左端，改为文字的中心，因此你只需要考虑 x 的位置即可）。所以，如果你想让文本在整个 canvas 居中，就需要将 (fillText / strokeText) 的x值设置成 canvas 的宽度的一半。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">font</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;30px sans-serif&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 文本居中对齐
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">textAlign</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;center&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">strokeText</span>(<span style="color:#e6db74">&#39;天天好心情&#39;</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+</span></span></code></pre></div><h4 id="文本基线对齐方式">文本基线对齐方式<a hidden class="anchor" aria-hidden="true" href="#文本基线对齐方式">#</a></h4>
+<p>文本相对于画布的偏移量，都是参照文本的基线进行偏移的，设置基线在文本中的位置，可以调整文本在 canvas 画布中的位置。</p>
+<p>ctx.textBaseline：描绘绘制文本时，当前文本基线的属性，值如下：</p>
+<p>alphabetic：文本基线是标准的字母基线。（默认值）</p>
+<p>top：文本基线在文本块的顶部。</p>
+<p>middle: 文本基线在文本块的中间。</p>
+<p>bottom：文本基线在文本块的底部。</p>
+<p>hanging：文本基线是悬挂基线。</p>
+<p>ideographic：文本基线是表意字基线。</p>
+<blockquote>
+<p>如果字符本身超出了 alphabetic 基线，那么 ideographic 基线位置在字符本身的底部</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">font</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;30px sans-serif&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">textAlign</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;center&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 基线设置在文本的顶部
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">textBaseline</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;top&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">strokeText</span>(<span style="color:#e6db74">&#39;天天好心情&#39;</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+</span></span></code></pre></div><h3 id="文本在canvas中垂直居中显示">文本在canvas中垂直居中显示<a hidden class="anchor" aria-hidden="true" href="#文本在canvas中垂直居中显示">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">font</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;30px sans-serif&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// x 轴偏移画布一半，水平按文本中间对齐
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">textAlign</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;center&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// y 轴偏移画布一半，基线设置在文本的中心位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">textBaseline</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;middle&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillText</span>(<span style="color:#e6db74">&#39;天天好心情&#39;</span>, <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">width</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)
+</span></span></code></pre></div><h3 id="获取文本信息">获取文本信息<a hidden class="anchor" aria-hidden="true" href="#获取文本信息">#</a></h3>
+<p>ctx.measureText(text)：返回一个 TextMetrics 对象，包含关于文本尺寸的信息（一般都用来获取文本的宽度）。</p>
+<p>参数：</p>
+<ol>
+<li>text：文本内容。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">font</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;100px serif&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 返回当前文本的相关信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">textInfo</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">measureText</span>(<span style="color:#e6db74">&#39;天天好心情&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">textInfo</span>)
+</span></span></code></pre></div><h2 id="canvas阴影">canvas阴影<a hidden class="anchor" aria-hidden="true" href="#canvas阴影">#</a></h2>
+<p>设置 canvas 图像或文字阴影需要如下属性：</p>
+<ol>
+<li>ctx.shadowOffsetX：图像 x 轴延伸距离。（默认值 0）</li>
+<li>ctx.shadowOffsetY：图像 y 轴延伸距离。（默认值 0）</li>
+<li>ctx.shadowBlur：用来设定阴影的模糊程度，其数值并不跟像素数量挂钩，也不受变换矩阵的影响。（默认值 0）</li>
+<li>ctx.shadowColor：必须是标准的CSS颜色值，用于设定阴影颜色效果。（默认是全透明的黑色）</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 图像阴影向左移动 10px
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">shadowOffsetX</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 图像阴影向下移动 10px
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">shadowOffsetY</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 模糊程度为 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">shadowBlur</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 阴影颜色为红色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">shadowColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;red&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span></code></pre></div><h2 id="canvas像素相关">canvas像素相关<a hidden class="anchor" aria-hidden="true" href="#canvas像素相关">#</a></h2>
+<h3 id="获取区域内像素信息">获取区域内像素信息<a hidden class="anchor" aria-hidden="true" href="#获取区域内像素信息">#</a></h3>
+<p>ctx.getImageData(x, y, width, height)：返回一个 ImageData 对象，用来描述 canvas 区域隐含的像素数据，这个区域通过矩形表示，起始点是 (x, y)，宽为 width，高为 height。</p>
+<p>imageData 对象中存储着 canvas 对象真实的像素数据，它包含以下几个只读属性：</p>
+<ul>
+<li>
+<p>width：图片的宽度，单位是像素。</p>
+</li>
+<li>
+<p>height：图片的高度，单位是像素。</p>
+</li>
+<li>
+<p>data：Uint8ClampedArray 类型的一维数组，包含着 RGBA 格式的整型数组，范围在 0-255 之间 (包括255)。按图像从左到右，从下到下记录像素的</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">img</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Image</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;./img/react.png&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">drawImage</span>(<span style="color:#a6e22e">img</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 获取绘制图像区域内的相关信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">imgData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">getImageData</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">imgData</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>图像的长和宽都是 100，所以一共有 10000 个像素点 (100 * 100)，因为一个像素点对应一个 RGBA 值，一个 RGBA 值由 4 个数值构成，所以 data 数组的长度为 40000。</p>
+<p>该数组每 4 个值构成一个像素点。</p>
+<h3 id="对画布进行像素数据的写入">对画布进行像素数据的写入<a hidden class="anchor" aria-hidden="true" href="#对画布进行像素数据的写入">#</a></h3>
+<p>ctx.putImageData(imagedata, dx, dy)</p>
+<p>ctx.putImageData(imagedata, dx, dy, dirtyX, dirtyY, dirtyWidth, dirtyHeight)</p>
+<blockquote>
+<p>将数据从已有的 ImageData 对象绘制到位图的方法。 如果提供了一个绘制过的矩形，则只绘制该矩形的像素。此方法不受画布转换矩阵的影响</p>
+</blockquote>
+<p>参数:</p>
+<ol>
+<li>imagedata：包含像素值的数组对象。</li>
+<li>dx：源图像数据在目标画布中的位置偏移量（x 轴方向的偏移量）。</li>
+<li>dy：源图像数据在目标画布中的位置偏移量（y 轴方向的偏移量）。</li>
+<li>dirtyX：可选，在源图像数据中，矩形区域左上角的位置。默认是整个图像数据的左上角（x 坐标）。</li>
+<li>dirtyY：可选，在源图像数据中，矩形区域左上角的位置。默认是整个图像数据的左上角（y 坐标）。</li>
+<li>dirtyWidth：可选，在源图像数据中，矩形区域的宽度。默认是图像数据的宽度。</li>
+<li>dirtyHeight：可选，在源图像数据中，矩形区域的高度。默认是图像数据的高度。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">img</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Image</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;./img/react.png&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">drawImage</span>(<span style="color:#a6e22e">img</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">imgData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">getImageData</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 将 ImageData 对象重新写入到画布中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">putImageData</span>(<span style="color:#a6e22e">imgData</span>, <span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="创建imagedata对象">创建imageData对象<a hidden class="anchor" aria-hidden="true" href="#创建imagedata对象">#</a></h3>
+<p>ctx.createImageData(width, height)</p>
+<p>ctx.createImageData(imagedata)</p>
+<blockquote>
+<p>创建一个新的、空的、指定大小的imageData 对象，所有像素在新对象中都是透明的。（data 数组中的值都是 0）</p>
+</blockquote>
+<p>参数:</p>
+<ol>
+<li>width：imageData 新对象的宽度。</li>
+<li>height：imageData 新对象的高度。</li>
+<li>imagedata：从现有的 ImageData 对象中，复制一个和其宽度和高度相同的对象。图像自身不允许被复制。（data 数组中的值都是 0）</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">img</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Image</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;./img/react.png&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">drawImage</span>(<span style="color:#a6e22e">img</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">imgData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">getImageData</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 根据老的 ImageData 对象，创建一个新的 ImageData 对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">imgDataByData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">createImageData</span>(<span style="color:#a6e22e">imgData</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;imgDta创建&#39;</span>, <span style="color:#a6e22e">imgDataByData</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 根据指定的宽高，创建一个新的 ImageData 对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">imgDataByRect</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">createImageData</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;宽高创建&#39;</span>, <span style="color:#a6e22e">imgDataByRect</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="像素扩展">像素扩展<a hidden class="anchor" aria-hidden="true" href="#像素扩展">#</a></h3>
+<h4 id="获取某个坐标的像素">获取某个坐标的像素<a hidden class="anchor" aria-hidden="true" href="#获取某个坐标的像素">#</a></h4>
+<p>通过 getImageData 方法我们可以获取到整个 canvas 画布的像素信息。已知坐标 (x, y)，通过 (y * canvas.width + x) 可以获取这是第几个像素。因为一个像素包含 RGBA 4 个数值，所以最后获取到的像素为 (y * canvas.width + x) * 4，加上紧跟的后 3 位所对应的数值构成的 RGBA 值</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 获取 imageData 中某个坐标的像素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getPixelInfo</span>(<span style="color:#a6e22e">imageData</span>, <span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">data</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">imageData</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pixel</span> <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">y</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">width</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">x</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pixel</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">index</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pixel</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">index</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pixel</span>[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">index</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pixel</span>[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">index</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">pixel</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">测试</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillStyle</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;red&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">imgData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">getImageData</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">height</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 获取 (10, 10) 这个坐标点的像素信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pixel</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getPixelInfo</span>(<span style="color:#a6e22e">imgData</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">pixel</span>)
+</span></span></code></pre></div><h4 id="设置某个坐标的像素">设置某个坐标的像素<a hidden class="anchor" aria-hidden="true" href="#设置某个坐标的像素">#</a></h4>
+<p>基本原理跟获取坐标像素一样，我们可以传入一个 RGBA 值来设置某些坐标的像素。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 设置 imageData 中某个坐标的像素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setPixelInfo</span>(<span style="color:#a6e22e">imageData</span>, <span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">rgba</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">data</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">imageData</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">y</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">width</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">x</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">index</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">rgba</span>[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">index</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">rgba</span>[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">index</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">rgba</span>[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">index</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">rgba</span>[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">测试</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 创建一个10 * 10 imageData 对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">imgData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">createImageData</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// RGBA 红色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rgba</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">255</span>]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">y</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; <span style="color:#a6e22e">y</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">x</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; <span style="color:#a6e22e">x</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 将每个像素点都设置为红色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">setPixelInfo</span>(<span style="color:#a6e22e">imgData</span>, <span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">rgba</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 将 imageData 对象写入到 (100, 100) 开始的位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">putImageData</span>(<span style="color:#a6e22e">imgData</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span></code></pre></div><h4 id="马赛克小练习">马赛克小练习<a hidden class="anchor" aria-hidden="true" href="#马赛克小练习">#</a></h4>
+<p>现在我们既能获取到坐标位置的像素，也能设置坐标位置的像素。基于这两点我们来实现一个马赛克的效果。</p>
+<p>基本思路：</p>
+<ul>
+<li>
+<p>假如现在有一个 100 * 100 的图像，将一个像素点看做一个 1 * 1 的小方块，里面就只有一个 RGBA 值，一共有 100 * 100 = 10000 个小方块，10000 个像素点。</p>
+</li>
+<li>
+<p>将这个小方块变大，包含 2 * 2 个像素点，一共有 50 * 50 = 2500 个小方块。</p>
+</li>
+<li>
+<p>现在一个小方块里面包含 4 个像素点，可能存在多个 RGBA 值，随机取出其中的一个 RGBA 值，将这个小方块中的 4 个像素点的 RGNA 值，都设置成随机取出的这个 RGBA 值。</p>
+</li>
+<li>
+<p>现在每个小方块虽然包含 4 个像素点，但是这 4 个像素点的 RGBA 值都一样，也可以看作现在这个图像只有 2500 个像素点，像素点变少了，图像就模糊了，马赛克效果就形成了。</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  设置马赛克像素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  imgData：imageData对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  size：马赛克程度，值越大越模糊（小方块宽高）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setMosaicPixel</span>(<span style="color:#a6e22e">imgData</span>, <span style="color:#a6e22e">size</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">imgData</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 小方块变大，所以宽高要除以 size
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">y</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">size</span>; <span style="color:#a6e22e">y</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">x</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">width</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">size</span>; <span style="color:#a6e22e">x</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 随机获取小方块中的 (x, y) 坐标
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">randomX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">+</span> Math.<span style="color:#a6e22e">floor</span>(Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#a6e22e">size</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">randomY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">+</span> Math.<span style="color:#a6e22e">floor</span>(Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#a6e22e">size</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 获取这个坐标像素点的 RGBA 值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">randomPixel</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getPixelInfo</span>(<span style="color:#a6e22e">imgData</span>, <span style="color:#a6e22e">randomX</span>, <span style="color:#a6e22e">randomY</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 将这个小方块中的像素点都应用这个 RGBA 值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">MosaicX</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">MosaicX</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">size</span>; <span style="color:#a6e22e">MosaicX</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">MosaicY</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">MosaicY</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">size</span>; <span style="color:#a6e22e">MosaicY</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">setPixelInfo</span>(<span style="color:#a6e22e">imgData</span>, <span style="color:#a6e22e">x</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">MosaicX</span>, <span style="color:#a6e22e">y</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">MosaicY</span>, <span style="color:#a6e22e">randomPixel</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">测试</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">img</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Image</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;./img/react.png&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 绘制图像
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">drawImage</span>(<span style="color:#a6e22e">img</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 获取图像的信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">imgData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">getImageData</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 将图像马赛克化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">setMosaicPixel</span>(<span style="color:#a6e22e">imgData</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 最后重新写入到画布中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">putImageData</span>(<span style="color:#a6e22e">imgData</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="canvas透明度">canvas透明度<a hidden class="anchor" aria-hidden="true" href="#canvas透明度">#</a></h2>
+<p>ctx.globalAlpha：这个属性影响到 <code>canvas</code> 里所有图像的透明度，有效的值范围是 0（完全透明）到 1（完全不透明），默认是 1。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 画布全局透明度设置为 0.2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">globalAlpha</span> <span style="color:#f92672">=</span> .<span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillStyle</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;red&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillStyle</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;blue&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">150</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+</span></span></code></pre></div><h2 id="canvas图像合成设置">canvas图像合成设置<a hidden class="anchor" aria-hidden="true" href="#canvas图像合成设置">#</a></h2>
+<p>ctx.globalCompositeOperation：设置或返回如何将一个源（新的 source）图像绘制到目标（已有的 destination）的图像上。</p>
+<p>可选值如下:</p>
+<ol>
+<li>
+<p>source-over	源在上面，新的图像层级比较高。（默认值）</p>
+</li>
+<li>
+<p>source-in	只留下源与目标的重叠部分。（源的那一部分）</p>
+</li>
+<li>
+<p>source-out	只留下源超过目标的部分。</p>
+</li>
+<li>
+<p>source-atop	砍掉源溢出的部分。</p>
+</li>
+<li>
+<p>destination-over	目标在上面，旧的图像层级比较高。</p>
+</li>
+<li>
+<p>destination-in	只留下源与目标的重叠部分。（目标的那一部分）</p>
+</li>
+<li>
+<p>destination-out	只留下目标超过源的部分。</p>
+</li>
+<li>
+<p>destination-atop	砍掉目标溢出的部分。</p>
+</li>
+<li>
+<p>lighter	显示源图像 + 目标图像。（重叠图形的颜色是通过颜色值相加来确定的）</p>
+</li>
+<li>
+<p>copy	显示源图像，忽略目标图像。</p>
+</li>
+<li>
+<p>xor	那些重叠和正常绘制之外的其他地方是透明的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 设置图像重叠的地方不显示
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">globalCompositeOperation</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;xor&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillStyle</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;red&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillStyle</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;blue&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">75</span>, <span style="color:#ae81ff">75</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="刮刮卡小练习">刮刮卡小练习<a hidden class="anchor" aria-hidden="true" href="#刮刮卡小练习">#</a></h3>
+<p>通过 globalCompositeOperation 属性设置，可以实现一个简单的刮刮卡效果。</p>
+<p>基本思路：</p>
+<ul>
+<li>
+<p>将 canvas 画布填充一个颜色，和最后要显示的图片宽高设为一致，通过定位将画布覆盖在图片上方</p>
+</li>
+<li>
+<p>给 canvas 元素绑定鼠标按下事件，获取当前鼠标按下位置的 offsetX 和 offsetY，相当于在画布中的偏移量，设置起点 moveTo(offsetX, offsetY)。</p>
+</li>
+<li>
+<p>给 canvas 元素绑定鼠标移动事件，鼠标按下移动时，实时获取鼠标相对于画布的偏移量，设置 lineTo(offsetX, offsetY)，并将这些路径连接起来。</p>
+</li>
+<li>
+<p>设置 ctx.globalCompositeOperation = ‘destination-out’，只留下不是鼠标移动绘制形成的区域，重叠的区域将会透明显示，最下方的图片就能看见。</p>
+</li>
+<li>
+<p>给 canvas 元素绑定鼠标松开事件，清除 canvas 身上的鼠标移动事件。</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- 结构设置 --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width: 400px;height: 200px;position: relative&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">canvas</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;canvas&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;400&#34;</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;200&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;border: 1px solid;position: absolute&#34;</span>&gt;&lt;/<span style="color:#f92672">canvas</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;img&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;./img/react.png&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width: 100%;height: 100%&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 获取 canvas 元素的宽高
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">canvas</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 将整个画布填充为灰色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillStyle</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;gray&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 只留下目标超过源的部分
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">globalCompositeOperation</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;destination-out&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 刮卡的粗细设置为 20px
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineWidth</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 将绘线的路径连接处和两端都设置为圆形，这样比较好看
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineJoin</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;round&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineCap</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;round&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 为 canvas 元素绑定鼠标按下事件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">onmousedown</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">event</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 获取当前鼠标在画布中的偏移量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">offsetX</span>, <span style="color:#a6e22e">offsetY</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 设置起点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">moveTo</span>(<span style="color:#a6e22e">offsetX</span>, <span style="color:#a6e22e">offsetY</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 为 canvas 元素绑定鼠标移动事件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">onmousemove</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">event</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 实时获取鼠标的偏移量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">offsetX</span>, <span style="color:#a6e22e">offsetY</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 设置路径点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineTo</span>(<span style="color:#a6e22e">offsetX</span>, <span style="color:#a6e22e">offsetY</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 将子路径连接起来绘制显示
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">stroke</span>()
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 为 canvas 元素绑定鼠标离开事件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">onmouseup</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 清除 canvas 元素身上的鼠标移动事件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">onmousemove</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="canvas将画布导出为图像">canvas将画布导出为图像<a hidden class="anchor" aria-hidden="true" href="#canvas将画布导出为图像">#</a></h2>
+<p>canvas.toDataURL(type, encoderOptions)。</p>
+<p>通过 canvas 身上的 toDataURL 方法，返回一个包含画布内容的 base64 格式的 data url。</p>
+<p>参数：</p>
+<ol>
+<li>type：图片格式，默认为 image/png。</li>
+<li>encoderOptions：在指定图片格式为 image/jpeg 或 image/webp 的情况下，可以从 0-1 之间选择图片的质量。如果超出取值范围，将会使用默认值0.92。其他参数会被忽略。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillStyle</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;red&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillRect</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dataUrl</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">toDataURL</span>()
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// data:image/png;base64,iVBORw0KGgoAAAANSUh....
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">dataUrl</span>)
+</span></span></code></pre></div><p>地址栏输入 data url：</p>
+<h2 id="canvas事件操作">canvas事件操作<a hidden class="anchor" aria-hidden="true" href="#canvas事件操作">#</a></h2>
+<p>canvas 中几乎没有提供任何事件操作的方法，但是我们可以通过 isPointInPath 方法，判断当前坐标是否在路径列表中，从而进行一些事件操作。</p>
+<p>ctx.isPointInPath(x, y)：判断在当前路径中是否包含检测点 (x, y)，返回 true / false。</p>
+<p>特别注意：</p>
+<ul>
+<li>
+<p>ctx.beginPath() 之前的路径检测不到，因为它会清空路径列表。</p>
+</li>
+<li>
+<p>fillRect 和 strokeRect 这两个直接绘制矩形的方法不会生成路径，它们包含的坐标点 isPointInPath 检查不到。</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 绘制一个路径矩形
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">rect</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fill</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 给 canvas 绑定点击事件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span> =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 鼠标点击位置距离 canvas 的 offsetX 和 offsetY，就相当于在 canvas 中的坐标位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">offsetX</span>, <span style="color:#a6e22e">offsetY</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">isInPath</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">isPointInPath</span>(<span style="color:#a6e22e">offsetX</span>, <span style="color:#a6e22e">offsetY</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`当前点击坐标：(</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">offsetX</span><span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">offsetY</span><span style="color:#e6db74">}</span><span style="color:#e6db74">)`</span>, <span style="color:#e6db74">`是否在路径列表中：</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">isInPath</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+
+        </div>
+
+        <footer class="post-footer">
+            
+<nav class="paginav">
+  <a class="prev" href="https://sirius00.github.io/posts/tech/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>计算机网络</span>
+  </a>
+  <a class="next" href="https://sirius00.github.io/posts/tech/scss%E7%9A%84%E4%BD%BF%E7%94%A8/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Scss的使用</span>
+  </a>
+</nav>
+
+        </footer>
+    </div>
+</article>
+</main>
+
+
+<script async src="https://unpkg.com/mermaid@8.8.1/dist/mermaid.min.js"></script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<footer class="footer">
+    <span>
+        Copyright
+        &copy;
+        2020-2023
+        <a href="https://sirius00.github.io/" style="color:#939393;">XP&#39;s Blog</a>
+        All Rights Reserved
+    </span>
+
+    <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#939393;">填写自己的备案号</a>&nbsp;
+
+    <span>
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=null"
+           style="display:inline-block;text-decoration:none;height:20px;color:#939393;">
+            <img src="%e5%a1%ab%e8%87%aa%e5%b7%b1%e7%9a%84%e5%85%ac%e5%ae%89%e5%9b%be%e6%a0%87%e9%93%be%e6%8e%a5" style="float:left;margin: 0px 5px 0px 0px;"/>
+            填自己的公网安备
+        </a>
+    </span>
+
+    <span id="busuanzi_container">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        总访客数: <span id="busuanzi_value_site_uv"></span>
+        总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <span class="topInner">
+        <svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z"/>
+        </svg>
+        <span id="read_progress"></span>
+    </span>
+</a>
+
+<script>
+    document.addEventListener('scroll', function (e) {
+        const readProgress = document.getElementById("read_progress");
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        
+        readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
+    })
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    let mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+<script>
+    document.body.addEventListener('copy', function (e) {
+        if (window.getSelection().toString() && window.getSelection().toString().length > 50) {
+            let clipboardData = e.clipboardData || window.clipboardData;
+            if (clipboardData) {
+                e.preventDefault();
+                let htmlData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「' + {
+                { .
+                    Site.Title
+                }
+            }
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                let textData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「' + {
+                { .
+                    Site.Title
+                }
+            }
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                clipboardData.setData('text/html', htmlData);
+                clipboardData.setData('text/plain', textData);
+            }
+        }
+    });
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '📄复制';
+
+        function copyingDone() {
+            copybutton.innerText = '👌🏻已复制!';
+            setTimeout(() => {
+                copybutton.innerText = '📄复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                let text = codeblock.textContent +
+                    '\r\n————————————————\r\n' +
+                    '版权声明：本文为「' + "XP's Blog"
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                navigator.clipboard.writeText(text);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+            }
+            ;
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild === container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName === "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $("code[class^=language] ").on("mouseover", function () {
+        if (this.clientWidth < this.scrollWidth) {
+            $(this).css("width", "135%")
+        }
+    }).on("mouseout", function () {
+        $(this).css("width", "100%")
+    })
+</script>
+</body>
+
+</html>

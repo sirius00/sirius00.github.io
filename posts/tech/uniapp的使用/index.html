@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Uniapp的使用 | XP&#39;s Blog</title>
+<meta name="keywords" content="uniapp">
+<meta name="description" content="全局文件 pages.json页面路由 ​ mainfest.json应用配置 uni.scss文件 ​ 作用:为了方便整体控制应用的风格。比如按钮颜色、边框风格，uni.scss文件里预置了一批scss变量预置 main.js文件 ​ 项目的入口文件,主要作用是初始化vue实例并使用需要的插件 unpackage">
+<meta name="author" content="
+作者:&nbsp;XP">
+<link rel="canonical" href="https://sirius00.github.io/posts/tech/uniapp%E7%9A%84%E4%BD%BF%E7%94%A8/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a6c679e0d2f6e83a8f1aad1f7a2cdc96085c188647e679dbc62800f83be6bad2.css" integrity="sha256-psZ54NL26DqPGq0feizclghcGIZH5nnbxigA&#43;DvmutI=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+        onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sirius00.github.io/img/cat.png">
+<link rel="apple-touch-icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="mask-icon" href="https://sirius00.github.io/img/cat.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = ""; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<meta property="og:title" content="Uniapp的使用" />
+<meta property="og:description" content="全局文件 pages.json页面路由 ​ mainfest.json应用配置 uni.scss文件 ​ 作用:为了方便整体控制应用的风格。比如按钮颜色、边框风格，uni.scss文件里预置了一批scss变量预置 main.js文件 ​ 项目的入口文件,主要作用是初始化vue实例并使用需要的插件 unpackage" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sirius00.github.io/posts/tech/uniapp%E7%9A%84%E4%BD%BF%E7%94%A8/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-22T09:44:37+08:00" />
+<meta property="article:modified_time" content="2023-02-22T09:44:37+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Uniapp的使用"/>
+<meta name="twitter:description" content="全局文件 pages.json页面路由 ​ mainfest.json应用配置 uni.scss文件 ​ 作用:为了方便整体控制应用的风格。比如按钮颜色、边框风格，uni.scss文件里预置了一批scss变量预置 main.js文件 ​ 项目的入口文件,主要作用是初始化vue实例并使用需要的插件 unpackage"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+
+        {
+          "@type": "ListItem",
+          "position":  1 ,
+          "name": "📚文章",
+          "item": "https://sirius00.github.io/posts/"
+        },
+
+        {
+          "@type": "ListItem",
+          "position":  2 ,
+          "name": "👨🏻‍💻 技术",
+          "item": "https://sirius00.github.io/posts/tech/"
+        }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Uniapp的使用",
+      "item": "https://sirius00.github.io/posts/tech/uniapp%E7%9A%84%E4%BD%BF%E7%94%A8/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Uniapp的使用",
+  "name": "Uniapp的使用",
+  "description": "全局文件 pages.json页面路由 ​ mainfest.json应用配置 uni.scss文件 ​ 作用:为了方便整体控制应用的风格。比如按钮颜色、边框风格，uni.scss文件里预置了一批scss变量预置 main.js文件 ​ 项目的入口文件,主要作用是初始化vue实例并使用需要的插件 unpackage",
+  "keywords": [
+    "uniapp"
+  ],
+  "articleBody": "全局文件 pages.json页面路由 ​\nmainfest.json应用配置 uni.scss文件 ​\t作用:为了方便整体控制应用的风格。比如按钮颜色、边框风格，uni.scss文件里预置了一批scss变量预置\nmain.js文件 ​\t项目的入口文件,主要作用是初始化vue实例并使用需要的插件\nunpackage ​\t打包目录\n页面 页面生命周期 onLoad: ​\t监听页面加载,其参数为上个页面传递的数据,参数类型为object\nonShow: ​\t监听页面显示.页面每次出现在屏幕上都出发\nonReady: ​\t监听页面初次渲染完成\nonHide: 监听页面隐藏 onUnload: ​\t监听页面卸载\nonPullDownRefresh: ​\t监听用户下拉刷新\n两种方式开启下拉刷新:\n需要在pages.json 里,找到当前页面的pages节点,并在style选项中开启 enablePullDownRefresh\n通过调用uni.startPullDownRefresh方法来开启下拉刷新\n// 仅做示例，实际开发中延时根据需求来使用。 export default { data() { return { text: 'uni-app' } }, onLoad: function (options) { setTimeout(function () { console.log('start pulldown'); }, 1000); uni.startPullDownRefresh(); }, onPullDownRefresh() { console.log('refresh'); setTimeout(function () { uni.stopPullDownRefresh(); }, 1000); } } 页面调用接口 页面通讯 父传子 父组件通过零v-bind绑定数据\n子组件通过props接收来自外界传递到组件内部的值\n子传父 通过$emit触发事件进行传递参数\n为子组件methods添加emit触发事件\n设置参数:触发事件的名称, 所传参数 this.$emit('myEven', this.num) 父组件接收该事件\n在父组件相应的子组件位置接收该触发事件\n在父组件methods中添加相应的方法 (getNum)\n兄弟组件 uni.$emit(eventName,OBJECT) ​\t触发全局的自定义事件.附加参数都会传给监听器回调\nuni.$on(eventName,callback) ​\t监听全局的自定义事件, 事件可以由uni.emit触发, 回调函数会接收所有传入事件触发函数的额外参数\n​\t被修改界面添加监听\ncreated() { uni.$on('update', num =\u003e { this.num += num }) } ​\t修改数据界面添加事件\nmethods: { addNum() { uni.$emit('update',this.num) } } uni.$once(eventName,callback) ​\t监听全局的自定义事件, 但是只触发一次,在触发之后移除监听器\nuni.$off([eventName, callback]) ​\t移除全局自定义事件监听器\n页面路由跳转 页面路由跳转方式: navigator组件跳转 调用API跳转: 路由方式 页面栈表现 触发时机 打开新页面 新页面入栈 调用 API uni.navigateTo 、使用组件 页面重定向 当前页面出栈，新页面入栈 调用 API uni.redirectTo 、使用组件 页面返回 页面不断出栈，直到目标返回页 调用 API uni.navigateBack 、使用组件 、用户按左上角返回按钮、安卓用户点击物理back按键 Tab 切换 页面全部出栈，只留下新的 Tab 页面 调用 API uni.switchTab 、使用组件 、用户切换 Tab 重加载 页面全部出栈，只留下新的页面 调用 API uni.reLaunch 、使用组件 组件 内置组件 视图容器 基础内容 表单组件 路由及页面跳转 ​\t[页面路由跳转](# 页面路由跳转)\n媒体组件 画布 canvas\n组件的生命周期 beforeCreate: ​\t在实例初始化之前被调用\ncreated: ​\t在实例创建完成后被立即调用\nbeforeMount: ​\t在挂载开始之前被立即调用\nmounted: ​\t挂载到实例上去之后调用\nbeforeUpdate: ​\t数据更新之前调用,发生在虚拟DOM打补丁之前\nupdate: ​\t由于数据更改导致的虚拟DOM重新渲染和打补丁,在这之后会调用该钩子\nbeforeDestroy: ​\t实例销毁之前调用\ndestroyed: ​\tVue实例销毁之后调用.调用后,vue实例指示的所有东西都会解绑,所有的事件监听器会被移除,所有的子实例也会被销毁\nAPI 绘画(canvas) 配置网路请求 由于平台的限制,小程序项目中不支持使用axios, 而且原生的wx.request(), API功能较为简单,不支持拦截器等全局定制的功能.因此建议在uni-app项目中使用 @escook/request-miniprogram 第三方包发起网络数据请求\n官方文档 @escook/request-miniprogram\n在项目的 main.js 文件中,通过如下方式进行配置:\nimport { $http } from '@escook/request-miniprogram' // 在 uni-app 项目中，可以把 $http 挂载到 uni 顶级对象之上，方便全局调用 uni.$http = $http // 请求的根路径 $http.baseUrl = 'https://wwww.xxxxxxxx.com' // 请求拦截器 $http.beforeRequest = function (options) { uni.showLoading({ title: \"数据加载中...\" }) } // 响应拦截器 $http.afterRequest = function () { uni.hideLoading() } 使用:\n//获取轮播图数据 async getSwiperList() { // 1、 发起请求（请求返回的是一个promise对象，我们可以用async和await来做优化） const { data: res } = await uni.$http.get('/api/xxx/xxx/xxx/swiperData') console.log('查看请求的结果=\u003e\u003e',res); // 2、 请求失败 if (res.meta.status !== 200) { return uni.showToast({ title: '数据请求失败！', duration: 1500, icon: 'none', }) } // 3、 请求成功，为 data 中的数据赋值 this.swiperList = res.message; }, tips: uni-app在使用v-for时block和view的使用区别: 使用view自带换行效果\n使用block时,不带换行效果\n关于uni-app中使用canvas,在H5不显示问题 需要注意的问题: 组件嵌套,在子组件中不能使用canvas ,也不是说不能,只能说使用了也没用,H5中显示无果,小程序一样.(我在uniapp社区提出这个bug ,但是我看有人在今年的6.7月份也提出过,但至今为止没有解决这个问题) 在H5中 出现canvas闪烁的问题 ,就一定要用异步去显示canvas, 绘制canvas 时 得用uniapp 中的draw()去绘制,不然 不会显示(原生一般直接填充就完事了) 一定要在onReady函数中进行实例化canvas并且绘制 \u003ctemplate\u003e \u003cview class=\"\"\u003e \u003cview style=\"margin:0 auto;width: 200px;padding-left: 10px;\"\u003e \u003ccanvas style=\"width: 200px;; height: 200px;border: #007AFF solid 1rpx;\" canvas-id=\"myCanvas\" id=\"myCanvas\"\u003e\u003c/canvas\u003e \u003c/view\u003e \u003c/view\u003e \u003c/template\u003e \u003cscript\u003e export default { onReady() { this.initCanvas() }, data() { return { wendu:16 } }, methods: { /*初始化画布*/ initCanvas() { const ctx = uni.createCanvasContext('myCanvas',this) ctx.beginPath(); ctx.arc(100,100,60,0.7*Math.PI,0.30*Math.PI); ctx.createLinearGradient(0,0,170,0); /* 渐变 */ const grd=ctx.createLinearGradient(0,0,170,0); grd.addColorStop(\"0.7\",\"#09C4D5\"); grd.addColorStop(1,\"#07D2B8\"); ctx.strokeStyle = grd; ctx.lineWidth = 8; /* 字体 */ ctx.font=\"40px Arial\";\t//设置字体大小 ctx.fillStyle = '#09C4D5';//fillStyle填充颜色 ctx.fillText(\"16\",73,110); //fillText(\"字体\",x,y) ctx.font=\"20px Arial\"\tctx.fillStyle = 'gray'; ctx.fillText(\"℃\",115,88); ctx.font=\"12px Arial\" ctx.fillStyle = 'gray'; ctx.fillText(\"室内温度\",77,130); /* 阴影 */ ctx.shadowBlur=2; ctx.shadowColor=\"#09C4D5\"; setTimeout(function(){\t//必须延迟执行 不然H5不显示 ctx.stroke(); ctx.draw()\t//必须加上 uniapp 没这儿玩意儿 显示不出来不比原生 不加可以显示 },200) }, }, \u003c/script\u003e uni-app中使用vuex uni-app中阻止事件冒泡 开发小程序时的 注意事项 @click.stop来做事件冒泡没有作用。需要把@click.stop改成@tap.stop就可以实现了\nuni-app点击子元素出发父元素事件 \u003cview class=\"bgFixedBack\" id=\"bgFixedBack\" @click=\"closeModalLight\"\u003e\t\u003cview id='bgWhite' ref='bgWhite' class=\"bgWhite\" @click.stop='!closeModalLight'\u003e \u003cmodal-header :title='title'\u003e\u003c/modal-header\u003e \u003cview class=\"mainContent\"\u003e 啊哈哈哈 \u003c/view\u003e \u003c/view\u003e \u003c/view\u003e \u003c/view\u003e 父元素关闭弹框事件： @click=“closeModalLight”\n子元素点击事件： ① @click.stop=‘!closeModalLight’\n②@click.stop=“() =\u003e {}”\n③@click.native.stop=“() =\u003e {}”\n事件映射表 事件映射官方文档\n// 事件映射表，左侧为 WEB 事件，右侧为 ``uni-app`` 对应事件 { click: 'tap', touchstart: 'touchstart', touchmove: 'touchmove', touchcancel: 'touchcancel', touchend: 'touchend', tap: 'tap', longtap: 'longtap', //推荐使用longpress代替 input: 'input', change: 'change', submit: 'submit', blur: 'blur', focus: 'focus', reset: 'reset', confirm: 'confirm', columnchange: 'columnchange', linechange: 'linechange', error: 'error', scrolltoupper: 'scrolltoupper', scrolltolower: 'scrolltolower', scroll: 'scroll' } ",
+  "wordCount" : "2528",
+  "inLanguage": "en",
+  "datePublished": "2023-02-22T09:44:37+08:00",
+  "dateModified": "2023-02-22T09:44:37+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "XP"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://sirius00.github.io/posts/tech/uniapp%E7%9A%84%E4%BD%BF%E7%94%A8/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "XP's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://sirius00.github.io/img/cat.png"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://sirius00.github.io/" accesskey="h" title="XP&#39;s Blog (Alt + H)">
+            <img src="https://sirius00.github.io/img/cat.png" alt="logo" aria-label="logo"
+                 height="35">XP&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://sirius00.github.io/search" title="🔍 搜索 (Alt &#43; /)" accesskey=/>
+                <span>🔍 搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/" title="🏠 主页">
+                <span>🏠 主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/posts" title="📚 文章">
+                <span>📚 文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/tags" title="🧩 标签">
+                <span>🧩 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/archives/" title="⏱️ 时间轴">
+                <span>⏱️ 时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/about" title="🙋🏻‍♂️ 关于">
+                <span>🙋🏻‍♂️ 关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main page">
+<article class="post-single">
+    <div id="single-content">
+        <header class="post-header">
+            <div class="breadcrumbs"><a href="https://sirius00.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://sirius00.github.io/posts/">📚文章</a>&nbsp;»&nbsp;<a href="https://sirius00.github.io/posts/tech/">👨🏻‍💻 技术</a></div>
+            <h1 class="post-title">
+                Uniapp的使用
+            </h1>
+            <div class="post-meta">创建:&nbsp;<span title='2023-02-22 09:44:37 +0800 CST'>2023-02-22</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-22&nbsp;|&nbsp;字数:&nbsp;2528字&nbsp;|&nbsp;时长:&nbsp;6分钟&nbsp;|&nbsp;
+作者:&nbsp;XP
+
+
+
+                &nbsp;|&nbsp;标签: &nbsp;
+                <ul class="post-tags-meta">
+                    <a href="https://sirius00.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+                </ul>
+
+                
+                <span id="busuanzi_container_page_pv">
+                &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+</div>
+        </header> 
+        <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">文章目录</span>
+        </summary>
+
+        <div class="inner"><ul><ul>
+                <li>
+                    <a href="#%e5%85%a8%e5%b1%80%e6%96%87%e4%bb%b6" aria-label="全局文件">全局文件</a><ul>
+                        
+                <li>
+                    <a href="#pagesjson%e9%a1%b5%e9%9d%a2%e8%b7%af%e7%94%b1" aria-label="pages.json页面路由">pages.json页面路由</a></li>
+                <li>
+                    <a href="#mainfestjson%e5%ba%94%e7%94%a8%e9%85%8d%e7%bd%ae" aria-label="mainfest.json应用配置">mainfest.json应用配置</a></li>
+                <li>
+                    <a href="#uniscss%e6%96%87%e4%bb%b6" aria-label="uni.scss文件">uni.scss文件</a></li>
+                <li>
+                    <a href="#mainjs%e6%96%87%e4%bb%b6" aria-label="main.js文件">main.js文件</a></li>
+                <li>
+                    <a href="#unpackage" aria-label="unpackage">unpackage</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e9%a1%b5%e9%9d%a2" aria-label="页面">页面</a><ul>
+                        
+                <li>
+                    <a href="#%e9%a1%b5%e9%9d%a2%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f" aria-label="页面生命周期">页面生命周期</a><ul>
+                        
+                <li>
+                    <a href="#onload" aria-label="onLoad:"><strong>onLoad:</strong></a></li>
+                <li>
+                    <a href="#onshow" aria-label="onShow:"><strong>onShow:</strong></a></li>
+                <li>
+                    <a href="#onready" aria-label="onReady:"><strong>onReady:</strong></a></li>
+                <li>
+                    <a href="#onhide" aria-label="onHide:"><strong>onHide:</strong></a></li>
+                <li>
+                    <a href="#onunload" aria-label="onUnload:"><strong>onUnload:</strong></a></li>
+                <li>
+                    <a href="#onpulldownrefresh" aria-label="onPullDownRefresh:"><strong>onPullDownRefresh:</strong></a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e9%a1%b5%e9%9d%a2%e8%b0%83%e7%94%a8%e6%8e%a5%e5%8f%a3" aria-label="页面调用接口">页面调用接口</a></li>
+                <li>
+                    <a href="#%e9%a1%b5%e9%9d%a2%e9%80%9a%e8%ae%af" aria-label="页面通讯">页面通讯</a><ul>
+                        
+                <li>
+                    <a href="#%e7%88%b6%e4%bc%a0%e5%ad%90" aria-label="父传子">父传子</a></li>
+                <li>
+                    <a href="#%e5%ad%90%e4%bc%a0%e7%88%b6" aria-label="子传父">子传父</a></li>
+                <li>
+                    <a href="#%e5%85%84%e5%bc%9f%e7%bb%84%e4%bb%b6" aria-label="兄弟组件">兄弟组件</a><ul>
+                        
+                <li>
+                    <a href="#uniemiteventnameobject" aria-label="uni.$emit(eventName,OBJECT)">uni.$emit(eventName,OBJECT)</a></li>
+                <li>
+                    <a href="#unioneventnamecallback" aria-label="uni.$on(eventName,callback)">uni.$on(eventName,callback)</a></li>
+                <li>
+                    <a href="#unionceeventnamecallback" aria-label="uni.$once(eventName,callback)">uni.$once(eventName,callback)</a></li>
+                <li>
+                    <a href="#unioffeventname-callback" aria-label="uni.$off([eventName, callback])">uni.$off([eventName, callback])</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#%e9%a1%b5%e9%9d%a2%e8%b7%af%e7%94%b1%e8%b7%b3%e8%bd%ac" aria-label="页面路由跳转">页面路由跳转</a><ul>
+                        
+                <li>
+                    <a href="#%e9%a1%b5%e9%9d%a2%e8%b7%af%e7%94%b1%e8%b7%b3%e8%bd%ac%e6%96%b9%e5%bc%8f" aria-label="页面路由跳转方式:">页面路由跳转方式:</a><ul>
+                        
+                <li>
+                    <a href="#navigator%e7%bb%84%e4%bb%b6%e8%b7%b3%e8%bd%ac" aria-label="navigator组件跳转">navigator组件跳转</a></li>
+                <li>
+                    <a href="#%e8%b0%83%e7%94%a8api%e8%b7%b3%e8%bd%ac" aria-label="调用API跳转:">调用API跳转:</a></li></ul>
+                </li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#%e7%bb%84%e4%bb%b6" aria-label="组件">组件</a><ul>
+                        
+                <li>
+                    <a href="#%e5%86%85%e7%bd%ae%e7%bb%84%e4%bb%b6" aria-label="内置组件">内置组件</a><ul>
+                        
+                <li>
+                    <a href="#%e8%a7%86%e5%9b%be%e5%ae%b9%e5%99%a8" aria-label="视图容器">视图容器</a></li>
+                <li>
+                    <a href="#%e5%9f%ba%e7%a1%80%e5%86%85%e5%ae%b9" aria-label="基础内容">基础内容</a></li>
+                <li>
+                    <a href="#%e8%a1%a8%e5%8d%95%e7%bb%84%e4%bb%b6" aria-label="表单组件">表单组件</a></li>
+                <li>
+                    <a href="#%e8%b7%af%e7%94%b1%e5%8f%8a%e9%a1%b5%e9%9d%a2%e8%b7%b3%e8%bd%ac" aria-label="路由及页面跳转">路由及页面跳转</a></li>
+                <li>
+                    <a href="#%e5%aa%92%e4%bd%93%e7%bb%84%e4%bb%b6" aria-label="媒体组件">媒体组件</a></li>
+                <li>
+                    <a href="#%e7%94%bb%e5%b8%83" aria-label="画布">画布</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e7%bb%84%e4%bb%b6%e7%9a%84%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f" aria-label="组件的生命周期">组件的生命周期</a><ul>
+                        
+                <li>
+                    <a href="#beforecreate" aria-label="beforeCreate:"><strong>beforeCreate:</strong></a></li>
+                <li>
+                    <a href="#created" aria-label="created:"><strong>created:</strong></a></li>
+                <li>
+                    <a href="#beforemount" aria-label="beforeMount:"><strong>beforeMount:</strong></a></li>
+                <li>
+                    <a href="#mounted" aria-label="mounted:"><strong>mounted:</strong></a></li>
+                <li>
+                    <a href="#beforeupdate" aria-label="beforeUpdate:"><strong>beforeUpdate:</strong></a></li>
+                <li>
+                    <a href="#update" aria-label="update:"><strong>update:</strong></a></li>
+                <li>
+                    <a href="#beforedestroy" aria-label="beforeDestroy:"><strong>beforeDestroy:</strong></a></li>
+                <li>
+                    <a href="#destroyed" aria-label="destroyed:"><strong>destroyed:</strong></a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#api" aria-label="API">API</a><ul>
+                        
+                <li>
+                    <a href="#%e7%bb%98%e7%94%bbcanvas" aria-label="绘画(canvas)">绘画(canvas)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e9%85%8d%e7%bd%ae%e7%bd%91%e8%b7%af%e8%af%b7%e6%b1%82" aria-label="配置网路请求">配置网路请求</a></li></ul>
+                    
+                <li>
+                    <a href="#tips" aria-label="tips:">tips:</a><ul>
+                        
+                <li>
+                    <a href="#uni-app%e5%9c%a8%e4%bd%bf%e7%94%a8v-for%e6%97%b6block%e5%92%8cview%e7%9a%84%e4%bd%bf%e7%94%a8%e5%8c%ba%e5%88%ab" aria-label="uni-app在使用v-for时block和view的使用区别:">uni-app在使用v-for时block和view的使用区别:</a></li>
+                <li>
+                    <a href="#%e5%85%b3%e4%ba%8euni-app%e4%b8%ad%e4%bd%bf%e7%94%a8canvas%e5%9c%a8h5%e4%b8%8d%e6%98%be%e7%a4%ba%e9%97%ae%e9%a2%98" aria-label="关于uni-app中使用canvas,在H5不显示问题">关于uni-app中使用canvas,在H5不显示问题</a><ul>
+                        
+                <li>
+                    <a href="#%e9%9c%80%e8%a6%81%e6%b3%a8%e6%84%8f%e7%9a%84%e9%97%ae%e9%a2%98" aria-label="需要注意的问题:">需要注意的问题:</a></li></ul>
+                </li>
+                <li>
+                    <a href="#uni-app%e4%b8%ad%e4%bd%bf%e7%94%a8vuex" aria-label="uni-app中使用vuex">uni-app中使用vuex</a></li>
+                <li>
+                    <a href="#uni-app%e4%b8%ad%e9%98%bb%e6%ad%a2%e4%ba%8b%e4%bb%b6%e5%86%92%e6%b3%a1" aria-label="uni-app中阻止事件冒泡">uni-app中阻止事件冒泡</a><ul>
+                        
+                <li>
+                    <a href="#%e5%bc%80%e5%8f%91%e5%b0%8f%e7%a8%8b%e5%ba%8f%e6%97%b6%e7%9a%84-%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9" aria-label="开发小程序时的 注意事项">开发小程序时的 注意事项</a></li>
+                <li>
+                    <a href="#uni-app%e7%82%b9%e5%87%bb%e5%ad%90%e5%85%83%e7%b4%a0%e5%87%ba%e5%8f%91%e7%88%b6%e5%85%83%e7%b4%a0%e4%ba%8b%e4%bb%b6" aria-label="uni-app点击子元素出发父元素事件">uni-app点击子元素出发父元素事件</a><ul>
+                        
+                <li>
+                    <a href="#%e7%88%b6%e5%85%83%e7%b4%a0%e5%85%b3%e9%97%ad%e5%bc%b9%e6%a1%86%e4%ba%8b%e4%bb%b6" aria-label="父元素关闭弹框事件：">父元素关闭弹框事件：</a></li>
+                <li>
+                    <a href="#%e5%ad%90%e5%85%83%e7%b4%a0%e7%82%b9%e5%87%bb%e4%ba%8b%e4%bb%b6" aria-label="子元素点击事件：">子元素点击事件：</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#%e4%ba%8b%e4%bb%b6%e6%98%a0%e5%b0%84%e8%a1%a8" aria-label="事件映射表">事件映射表</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+        
+        activeElement = elements[0];
+        const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+        document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+    }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 &&
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+            const id = encodeURI(element.getAttribute('id')).toLowerCase();
+            if (element === activeElement){
+                document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+            } else {
+                document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+            }
+        })
+    }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;
+    }
+</script>
+        
+        <div class="post-content"><h2 id="全局文件">全局文件<a hidden class="anchor" aria-hidden="true" href="#全局文件">#</a></h2>
+<h3 id="pagesjson页面路由">pages.json页面路由<a hidden class="anchor" aria-hidden="true" href="#pagesjson页面路由">#</a></h3>
+<p>​</p>
+<h3 id="mainfestjson应用配置">mainfest.json应用配置<a hidden class="anchor" aria-hidden="true" href="#mainfestjson应用配置">#</a></h3>
+<h3 id="uniscss文件">uni.scss文件<a hidden class="anchor" aria-hidden="true" href="#uniscss文件">#</a></h3>
+<p>​	作用:为了方便整体控制应用的风格。比如按钮颜色、边框风格，<code>uni.scss</code>文件里预置了一批scss变量预置</p>
+<h3 id="mainjs文件">main.js文件<a hidden class="anchor" aria-hidden="true" href="#mainjs文件">#</a></h3>
+<p>​	项目的入口文件,主要作用是初始化vue实例并使用需要的插件</p>
+<h3 id="unpackage">unpackage<a hidden class="anchor" aria-hidden="true" href="#unpackage">#</a></h3>
+<p>​	打包目录</p>
+<h2 id="页面">页面<a hidden class="anchor" aria-hidden="true" href="#页面">#</a></h2>
+<h3 id="页面生命周期">页面生命周期<a hidden class="anchor" aria-hidden="true" href="#页面生命周期">#</a></h3>
+<h4 id="onload"><strong>onLoad:</strong><a hidden class="anchor" aria-hidden="true" href="#onload">#</a></h4>
+<p>​	监听页面加载,其参数为上个页面传递的数据,参数类型为object</p>
+<h4 id="onshow"><strong>onShow:</strong><a hidden class="anchor" aria-hidden="true" href="#onshow">#</a></h4>
+<p>​	监听页面显示.页面每次出现在屏幕上都出发</p>
+<h4 id="onready"><strong>onReady:</strong><a hidden class="anchor" aria-hidden="true" href="#onready">#</a></h4>
+<p>​	监听页面初次渲染完成</p>
+<h4 id="onhide"><strong>onHide:</strong><a hidden class="anchor" aria-hidden="true" href="#onhide">#</a></h4>
+<pre><code>监听页面隐藏
+</code></pre>
+<h4 id="onunload"><strong>onUnload:</strong><a hidden class="anchor" aria-hidden="true" href="#onunload">#</a></h4>
+<p>​	监听页面卸载</p>
+<h4 id="onpulldownrefresh"><strong>onPullDownRefresh:</strong><a hidden class="anchor" aria-hidden="true" href="#onpulldownrefresh">#</a></h4>
+<p>​	监听用户下拉刷新</p>
+<ul>
+<li>
+<p>两种方式开启下拉刷新:</p>
+<ul>
+<li>
+<p>需要在<em>pages.json</em> 里,找到当前页面的pages节点,并在style选项中开启 <em>enablePullDownRefresh</em></p>
+</li>
+<li>
+<p>通过调用uni.startPullDownRefresh方法来开启下拉刷新</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 仅做示例，实际开发中延时根据需求来使用。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">data</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">text</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;uni-app&#39;</span>
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	},
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">onLoad</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">options</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">setTimeout</span>(<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;start pulldown&#39;</span>);
+</span></span><span style="display:flex;"><span>		}, <span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">startPullDownRefresh</span>();
+</span></span><span style="display:flex;"><span>	},
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">onPullDownRefresh</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;refresh&#39;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">setTimeout</span>(<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">stopPullDownRefresh</span>();
+</span></span><span style="display:flex;"><span>		}, <span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h3 id="页面调用接口">页面调用接口<a hidden class="anchor" aria-hidden="true" href="#页面调用接口">#</a></h3>
+<h3 id="页面通讯">页面通讯<a hidden class="anchor" aria-hidden="true" href="#页面通讯">#</a></h3>
+<h4 id="父传子">父传子<a hidden class="anchor" aria-hidden="true" href="#父传子">#</a></h4>
+<ol>
+<li>
+<p>父组件通过零v-bind绑定数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"></code></pre></div></li>
+<li>
+<p>子组件通过props接收来自外界传递到组件内部的值</p>
+</li>
+</ol>
+<h4 id="子传父">子传父<a hidden class="anchor" aria-hidden="true" href="#子传父">#</a></h4>
+<p>通过$emit触发事件进行传递参数</p>
+<ol>
+<li>
+<p>为子组件methods添加emit触发事件</p>
+<ul>
+<li>设置参数:触发事件的名称, 所传参数</li>
+<li><code>this.$emit('myEven', this.num)</code></li>
+</ul>
+</li>
+<li>
+<p>父组件接收该事件</p>
+<ul>
+<li>
+<p>在父组件相应的子组件位置接收该触发事件</p>
+<p><code>&lt;test v-if=&quot;flag&quot; :title=&quot;title&quot; @myEven=&quot;getNum&quot;&gt;&lt;/test&gt;</code></p>
+</li>
+<li>
+<p>在父组件methods中添加相应的方法 (getNum)</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="兄弟组件">兄弟组件<a hidden class="anchor" aria-hidden="true" href="#兄弟组件">#</a></h4>
+<h5 id="uniemiteventnameobject">uni.$emit(eventName,OBJECT)<a hidden class="anchor" aria-hidden="true" href="#uniemiteventnameobject">#</a></h5>
+<p>​	触发全局的自定义事件.附加参数都会传给监听器回调</p>
+<h5 id="unioneventnamecallback">uni.$on(eventName,callback)<a hidden class="anchor" aria-hidden="true" href="#unioneventnamecallback">#</a></h5>
+<p>​	监听全局的自定义事件, 事件可以由uni.emit触发, 回调函数会接收所有传入事件触发函数的额外参数</p>
+<p>​	被修改界面添加监听</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>		created() {
+</span></span><span style="display:flex;"><span>			uni.$on(&#39;update&#39;, num =&gt; {
+</span></span><span style="display:flex;"><span>				this.num += num
+</span></span><span style="display:flex;"><span>			})
+</span></span><span style="display:flex;"><span>		}
+</span></span></code></pre></div><p>​	修改数据界面添加事件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>		methods: {
+</span></span><span style="display:flex;"><span>			addNum() {
+</span></span><span style="display:flex;"><span>				uni.$emit(&#39;update&#39;,this.num)
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span></code></pre></div><h5 id="unionceeventnamecallback">uni.$once(eventName,callback)<a hidden class="anchor" aria-hidden="true" href="#unionceeventnamecallback">#</a></h5>
+<p>​	监听全局的自定义事件, 但是只触发一次,在触发之后移除监听器</p>
+<h5 id="unioffeventname-callback">uni.$off([eventName, callback])<a hidden class="anchor" aria-hidden="true" href="#unioffeventname-callback">#</a></h5>
+<p>​	移除全局自定义事件监听器</p>
+<h3 id="页面路由跳转">页面路由跳转<a hidden class="anchor" aria-hidden="true" href="#页面路由跳转">#</a></h3>
+<h4 id="页面路由跳转方式">页面路由跳转方式:<a hidden class="anchor" aria-hidden="true" href="#页面路由跳转方式">#</a></h4>
+<h5 id="navigator组件跳转">navigator组件跳转<a hidden class="anchor" aria-hidden="true" href="#navigator组件跳转">#</a></h5>
+<h5 id="调用api跳转">调用API跳转:<a hidden class="anchor" aria-hidden="true" href="#调用api跳转">#</a></h5>
+<table>
+<thead>
+<tr>
+<th>路由方式</th>
+<th>页面栈表现</th>
+<th>触发时机</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>打开新页面</td>
+<td>新页面入栈</td>
+<td>调用 API  <a href="https://uniapp.dcloud.io/api/router#navigateto">uni.navigateTo</a> 、使用组件 <code>&lt;navigator open-type=&quot;navigaator&quot;&gt;</code></td>
+</tr>
+<tr>
+<td>页面重定向</td>
+<td>当前页面出栈，新页面入栈</td>
+<td>调用 API  <a href="https://uniapp.dcloud.io/api/router#redirectto">uni.redirectTo</a> 、使用组件 <code>&lt;navigator open-type=&quot;redirectTo&quot;&gt;</code></td>
+</tr>
+<tr>
+<td>页面返回</td>
+<td>页面不断出栈，直到目标返回页</td>
+<td>调用 API  <a href="https://uniapp.dcloud.io/api/router#navigateback">uni.navigateBack</a>  、使用组件 <code>&lt;navigator open-type=&quot;navigatorBack&quot;&gt;</code> 、用户按左上角返回按钮、安卓用户点击物理back按键</td>
+</tr>
+<tr>
+<td>Tab 切换</td>
+<td>页面全部出栈，只留下新的 Tab 页面</td>
+<td>调用 API  <a href="https://uniapp.dcloud.io/api/router#switchtab">uni.switchTab</a> 、使用组件 <code>&lt;navigator open-type=&quot;switchTab&quot;&gt;</code> 、用户切换 Tab</td>
+</tr>
+<tr>
+<td>重加载</td>
+<td>页面全部出栈，只留下新的页面</td>
+<td>调用 API  <a href="https://uniapp.dcloud.io/api/router#relaunch">uni.reLaunch</a> 、使用组件  <code>&lt;navigator open-type=&quot;reLaunch&quot;&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="组件">组件<a hidden class="anchor" aria-hidden="true" href="#组件">#</a></h2>
+<h3 id="内置组件">内置组件<a hidden class="anchor" aria-hidden="true" href="#内置组件">#</a></h3>
+<h4 id="视图容器">视图容器<a hidden class="anchor" aria-hidden="true" href="#视图容器">#</a></h4>
+<h4 id="基础内容">基础内容<a hidden class="anchor" aria-hidden="true" href="#基础内容">#</a></h4>
+<h4 id="表单组件">表单组件<a hidden class="anchor" aria-hidden="true" href="#表单组件">#</a></h4>
+<h4 id="路由及页面跳转">路由及页面跳转<a hidden class="anchor" aria-hidden="true" href="#路由及页面跳转">#</a></h4>
+<p>​	[页面路由跳转](# 页面路由跳转)</p>
+<h4 id="媒体组件">媒体组件<a hidden class="anchor" aria-hidden="true" href="#媒体组件">#</a></h4>
+<h4 id="画布">画布<a hidden class="anchor" aria-hidden="true" href="#画布">#</a></h4>
+<p>canvas</p>
+<h3 id="组件的生命周期">组件的生命周期<a hidden class="anchor" aria-hidden="true" href="#组件的生命周期">#</a></h3>
+<h4 id="beforecreate"><strong>beforeCreate:</strong><a hidden class="anchor" aria-hidden="true" href="#beforecreate">#</a></h4>
+<p>​	在实例初始化之前被调用</p>
+<h4 id="created"><strong>created:</strong><a hidden class="anchor" aria-hidden="true" href="#created">#</a></h4>
+<p>​	在实例创建完成后被立即调用</p>
+<h4 id="beforemount"><strong>beforeMount:</strong><a hidden class="anchor" aria-hidden="true" href="#beforemount">#</a></h4>
+<p>​	在挂载开始之前被立即调用</p>
+<h4 id="mounted"><strong>mounted:</strong><a hidden class="anchor" aria-hidden="true" href="#mounted">#</a></h4>
+<p>​	挂载到实例上去之后调用</p>
+<h4 id="beforeupdate"><strong>beforeUpdate:</strong><a hidden class="anchor" aria-hidden="true" href="#beforeupdate">#</a></h4>
+<p>​	数据更新之前调用,发生在虚拟DOM打补丁之前</p>
+<h4 id="update"><strong>update:</strong><a hidden class="anchor" aria-hidden="true" href="#update">#</a></h4>
+<p>​	由于数据更改导致的虚拟DOM重新渲染和打补丁,在这之后会调用该钩子</p>
+<h4 id="beforedestroy"><strong>beforeDestroy:</strong><a hidden class="anchor" aria-hidden="true" href="#beforedestroy">#</a></h4>
+<p>​	实例销毁之前调用</p>
+<h4 id="destroyed"><strong>destroyed:</strong><a hidden class="anchor" aria-hidden="true" href="#destroyed">#</a></h4>
+<p>​	Vue实例销毁之后调用.调用后,vue实例指示的所有东西都会解绑,所有的事件监听器会被移除,所有的子实例也会被销毁</p>
+<h2 id="api">API<a hidden class="anchor" aria-hidden="true" href="#api">#</a></h2>
+<h3 id="绘画canvas">绘画(canvas)<a hidden class="anchor" aria-hidden="true" href="#绘画canvas">#</a></h3>
+<h2 id="配置网路请求">配置网路请求<a hidden class="anchor" aria-hidden="true" href="#配置网路请求">#</a></h2>
+<p>由于平台的限制,小程序项目中不支持使用axios, 而且原生的wx.request(), API功能较为简单,不支持拦截器等全局定制的功能.因此建议在uni-app项目中使用  <em>@escook/request-miniprogram</em> 第三方包发起网络数据请求</p>
+<p>官方文档 <a href="https://www.npmjs.com/package/@escook/request-miniprogram">@escook/request-miniprogram</a></p>
+<p>在项目的 <u>main.js</u> 文件中,通过如下方式进行配置:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">$http</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@escook/request-miniprogram&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 在 uni-app 项目中，可以把 $http 挂载到 uni 顶级对象之上，方便全局调用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">$http</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$http</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 请求的根路径
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">$http</span>.<span style="color:#a6e22e">baseUrl</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://wwww.xxxxxxxx.com&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 请求拦截器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">$http</span>.<span style="color:#a6e22e">beforeRequest</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">options</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">showLoading</span>({
+</span></span><span style="display:flex;"><span>	  <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;数据加载中...&#34;</span>
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 响应拦截器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">$http</span>.<span style="color:#a6e22e">afterRequest</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">hideLoading</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>使用:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//获取轮播图数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">async</span> <span style="color:#a6e22e">getSwiperList</span>() {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 1、 发起请求（请求返回的是一个promise对象，我们可以用async和await来做优化）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">res</span> } <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">$http</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/api/xxx/xxx/xxx/swiperData&#39;</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;查看请求的结果=&gt;&gt;&#39;</span>,<span style="color:#a6e22e">res</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 2、 请求失败
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">meta</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">!==</span> <span style="color:#ae81ff">200</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">showToast</span>({
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;数据请求失败！&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">duration</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1500</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">icon</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;none&#39;</span>,
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 3、 请求成功，为 data 中的数据赋值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">swiperList</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">message</span>;
+</span></span><span style="display:flex;"><span>    },
+</span></span></code></pre></div><h1 id="tips">tips:<a hidden class="anchor" aria-hidden="true" href="#tips">#</a></h1>
+<h2 id="uni-app在使用v-for时block和view的使用区别">uni-app在使用v-for时block和view的使用区别:<a hidden class="anchor" aria-hidden="true" href="#uni-app在使用v-for时block和view的使用区别">#</a></h2>
+<p>使用view自带换行效果</p>
+<p>使用block时,不带换行效果</p>
+<h2 id="关于uni-app中使用canvas在h5不显示问题">关于uni-app中使用canvas,在H5不显示问题<a hidden class="anchor" aria-hidden="true" href="#关于uni-app中使用canvas在h5不显示问题">#</a></h2>
+<h3 id="需要注意的问题">需要注意的问题:<a hidden class="anchor" aria-hidden="true" href="#需要注意的问题">#</a></h3>
+<ol>
+<li>组件嵌套,在子组件中不能使用canvas ,也不是说不能,只能说使用了也没用,H5中显示无果,小程序一样.(我在uniapp社区提出这个bug ,但是我看有人在今年的6.7月份也提出过,但至今为止没有解决这个问题)</li>
+<li>在H5中 出现canvas闪烁的问题 ,就一定要用异步去显示canvas,</li>
+<li>绘制canvas 时  得用uniapp 中的draw()去绘制,不然 不会显示(原生一般直接填充就完事了)</li>
+<li>一定要在onReady函数中进行实例化canvas并且绘制</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vue" data-lang="vue"><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">view</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">view</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin:0 auto;width: 200px;padding-left: 10px;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>           &lt;<span style="color:#f92672">canvas</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width:  200px;; height: 200px;border: #007AFF solid 1rpx;&#34;</span> <span style="color:#a6e22e">canvas</span><span style="color:#f92672">-id</span><span style="color:#960050;background-color:#1e0010">=&#34;</span><span style="color:#a6e22e">myCanvas</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;myCanvas&#34;</span>&gt;&lt;/<span style="color:#f92672">canvas</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">view</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">view</span>&gt;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">onReady</span>() {
+</span></span><span style="display:flex;"><span>	    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">initCanvas</span>()
+</span></span><span style="display:flex;"><span>	},
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">data</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">wendu</span><span style="color:#f92672">:</span><span style="color:#ae81ff">16</span>
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	},
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">/*初始化画布*/</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">initCanvas</span>() {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ctx</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">createCanvasContext</span>(<span style="color:#e6db74">&#39;myCanvas&#39;</span>,<span style="color:#66d9ef">this</span>)
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">beginPath</span>();
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">arc</span>(<span style="color:#ae81ff">100</span>,<span style="color:#ae81ff">100</span>,<span style="color:#ae81ff">60</span>,<span style="color:#ae81ff">0.7</span><span style="color:#f92672">*</span>Math.<span style="color:#a6e22e">PI</span>,<span style="color:#ae81ff">0.30</span><span style="color:#f92672">*</span>Math.<span style="color:#a6e22e">PI</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">createLinearGradient</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">170</span>,<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">/* 渐变 */</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">grd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">createLinearGradient</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">170</span>,<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">grd</span>.<span style="color:#a6e22e">addColorStop</span>(<span style="color:#e6db74">&#34;0.7&#34;</span>,<span style="color:#e6db74">&#34;#09C4D5&#34;</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">grd</span>.<span style="color:#a6e22e">addColorStop</span>(<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;#07D2B8&#34;</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">strokeStyle</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">grd</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">lineWidth</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">/* 字体 */</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">font</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;40px Arial&#34;</span>;		<span style="color:#75715e">//设置字体大小
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillStyle</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#09C4D5&#39;</span>;<span style="color:#75715e">//fillStyle填充颜色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillText</span>(<span style="color:#e6db74">&#34;16&#34;</span>,<span style="color:#ae81ff">73</span>,<span style="color:#ae81ff">110</span>); <span style="color:#75715e">//fillText(&#34;字体&#34;,x,y)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">font</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;20px Arial&#34;</span>	
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillStyle</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;gray&#39;</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillText</span>(<span style="color:#e6db74">&#34;℃&#34;</span>,<span style="color:#ae81ff">115</span>,<span style="color:#ae81ff">88</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">font</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;12px Arial&#34;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillStyle</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;gray&#39;</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fillText</span>(<span style="color:#e6db74">&#34;室内温度&#34;</span>,<span style="color:#ae81ff">77</span>,<span style="color:#ae81ff">130</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">/* 阴影 */</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">shadowBlur</span><span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">shadowColor</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#09C4D5&#34;</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">setTimeout</span>(<span style="color:#66d9ef">function</span>(){	<span style="color:#75715e">//必须延迟执行 不然H5不显示
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>				<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">stroke</span>();
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">draw</span>()		<span style="color:#75715e">//必须加上  uniapp 没这儿玩意儿 显示不出来不比原生  不加可以显示
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			 },<span style="color:#ae81ff">200</span>) 
+</span></span><span style="display:flex;"><span>		},
+</span></span><span style="display:flex;"><span>	},
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><h2 id="uni-app中使用vuex">uni-app中使用vuex<a hidden class="anchor" aria-hidden="true" href="#uni-app中使用vuex">#</a></h2>
+<h2 id="uni-app中阻止事件冒泡">uni-app中阻止事件冒泡<a hidden class="anchor" aria-hidden="true" href="#uni-app中阻止事件冒泡">#</a></h2>
+<h3 id="开发小程序时的-注意事项">开发小程序时的 注意事项<a hidden class="anchor" aria-hidden="true" href="#开发小程序时的-注意事项">#</a></h3>
+<p>@click.stop来做事件冒泡没有作用。需要把@click.stop改成@tap.stop就可以实现了</p>
+<h3 id="uni-app点击子元素出发父元素事件">uni-app点击子元素出发父元素事件<a hidden class="anchor" aria-hidden="true" href="#uni-app点击子元素出发父元素事件">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>	&lt;<span style="color:#f92672">view</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bgFixedBack&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bgFixedBack&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;closeModalLight&#34;</span>&gt;	
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>			&lt;<span style="color:#f92672">view</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bgWhite&#39;</span> <span style="color:#a6e22e">ref</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bgWhite&#39;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bgWhite&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">stop</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;!closeModalLight&#39;</span>&gt;
+</span></span><span style="display:flex;"><span>				&lt;<span style="color:#f92672">modal-header</span> <span style="color:#a6e22e">:title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;title&#39;</span>&gt;&lt;/<span style="color:#f92672">modal-header</span>&gt;
+</span></span><span style="display:flex;"><span>				&lt;<span style="color:#f92672">view</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mainContent&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>				啊哈哈哈
+</span></span><span style="display:flex;"><span>				&lt;/<span style="color:#f92672">view</span>&gt;
+</span></span><span style="display:flex;"><span>			&lt;/<span style="color:#f92672">view</span>&gt;
+</span></span><span style="display:flex;"><span>		&lt;/<span style="color:#f92672">view</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;/<span style="color:#f92672">view</span>&gt;
+</span></span></code></pre></div><h4 id="父元素关闭弹框事件">父元素关闭弹框事件：<a hidden class="anchor" aria-hidden="true" href="#父元素关闭弹框事件">#</a></h4>
+<p>@click=“closeModalLight”</p>
+<h4 id="子元素点击事件">子元素点击事件：<a hidden class="anchor" aria-hidden="true" href="#子元素点击事件">#</a></h4>
+<p>① @click.stop=‘!closeModalLight’</p>
+<p>②@click.stop=“() =&gt; {}”</p>
+<p>③@click.native.stop=“() =&gt; {}”</p>
+<h2 id="事件映射表">事件映射表<a hidden class="anchor" aria-hidden="true" href="#事件映射表">#</a></h2>
+<p><a href="https://uniapp.dcloud.net.cn/tutorial/vue-basics.html#eventhandler:~:text=%23-,%E4%BA%8B%E4%BB%B6%E6%98%A0%E5%B0%84%E8%A1%A8,-//%20%E4%BA%8B%E4%BB%B6%E6%98%A0%E5%B0%84%E8%A1%A8">事件映射官方文档</a></p>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 事件映射表，左侧为 WEB 事件，右侧为 ``uni-app`` 对应事件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">click</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tap&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">touchstart</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;touchstart&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">touchmove</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;touchmove&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">touchcancel</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;touchcancel&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">touchend</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;touchend&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">tap</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tap&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">longtap</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;longtap&#39;</span>, <span style="color:#75715e">//推荐使用longpress代替
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#a6e22e">input</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;input&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">change</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;change&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">submit</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;submit&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">blur</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;blur&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">focus</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;focus&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">reset</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;reset&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">confirm</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;confirm&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">columnchange</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;columnchange&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">linechange</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;linechange&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;error&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">scrolltoupper</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;scrolltoupper&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">scrolltolower</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;scrolltolower&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">scroll</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;scroll&#39;</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div></blockquote>
+
+
+        </div>
+
+        <footer class="post-footer">
+            
+<nav class="paginav">
+  <a class="prev" href="https://sirius00.github.io/posts/tech/vue2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>Vue2学习笔记</span>
+  </a>
+  <a class="next" href="https://sirius00.github.io/posts/tech/django%E7%9A%84%E4%BD%BF%E7%94%A8/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Django的使用</span>
+  </a>
+</nav>
+
+        </footer>
+    </div>
+</article>
+</main>
+
+
+<script async src="https://unpkg.com/mermaid@8.8.1/dist/mermaid.min.js"></script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<footer class="footer">
+    <span>
+        Copyright
+        &copy;
+        2020-2023
+        <a href="https://sirius00.github.io/" style="color:#939393;">XP&#39;s Blog</a>
+        All Rights Reserved
+    </span>
+
+    <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#939393;">填写自己的备案号</a>&nbsp;
+
+    <span>
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=null"
+           style="display:inline-block;text-decoration:none;height:20px;color:#939393;">
+            <img src="%e5%a1%ab%e8%87%aa%e5%b7%b1%e7%9a%84%e5%85%ac%e5%ae%89%e5%9b%be%e6%a0%87%e9%93%be%e6%8e%a5" style="float:left;margin: 0px 5px 0px 0px;"/>
+            填自己的公网安备
+        </a>
+    </span>
+
+    <span id="busuanzi_container">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        总访客数: <span id="busuanzi_value_site_uv"></span>
+        总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <span class="topInner">
+        <svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z"/>
+        </svg>
+        <span id="read_progress"></span>
+    </span>
+</a>
+
+<script>
+    document.addEventListener('scroll', function (e) {
+        const readProgress = document.getElementById("read_progress");
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        
+        readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
+    })
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    let mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+<script>
+    document.body.addEventListener('copy', function (e) {
+        if (window.getSelection().toString() && window.getSelection().toString().length > 50) {
+            let clipboardData = e.clipboardData || window.clipboardData;
+            if (clipboardData) {
+                e.preventDefault();
+                let htmlData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「' + {
+                { .
+                    Site.Title
+                }
+            }
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                let textData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「' + {
+                { .
+                    Site.Title
+                }
+            }
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                clipboardData.setData('text/html', htmlData);
+                clipboardData.setData('text/plain', textData);
+            }
+        }
+    });
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '📄复制';
+
+        function copyingDone() {
+            copybutton.innerText = '👌🏻已复制!';
+            setTimeout(() => {
+                copybutton.innerText = '📄复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                let text = codeblock.textContent +
+                    '\r\n————————————————\r\n' +
+                    '版权声明：本文为「' + "XP's Blog"
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                navigator.clipboard.writeText(text);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+            }
+            ;
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild === container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName === "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $("code[class^=language] ").on("mouseover", function () {
+        if (this.clientWidth < this.scrollWidth) {
+            $(this).css("width", "135%")
+        }
+    }).on("mouseout", function () {
+        $(this).css("width", "100%")
+    })
+</script>
+</body>
+
+</html>

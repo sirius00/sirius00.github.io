@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>tool on XP&#39;s Blog</title>
+    <link>https://sirius00.github.io/tags/tool/</link>
+    <description>Recent content in tool on XP&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 22 Feb 2023 09:46:05 +0800</lastBuildDate><atom:link href="https://sirius00.github.io/tags/tool/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Webpack的使用</title>
+      <link>https://sirius00.github.io/posts/tech/webpack%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 22 Feb 2023 09:46:05 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/tech/webpack%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>webpack 安装 首先需要安装Node.js, node.js自带软件包管理工具npm 查看node版本 node -v 全局安装webpack npm install webpack@3.6.0 -g 本地安装webpack 在项目目录下执行 npm install webpack@3.6.0 --save-dev webpack的基本使用 项目文件目录: 项目 dist //打包好的文件 src //项目源码 webpack 打包js文件 常规方式 在项目文件夹下 webpack</description>
+    </item>
+    
+    <item>
+      <title>Git的使用</title>
+      <link>https://sirius00.github.io/posts/tech/git%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Tue, 07 Feb 2023 19:59:52 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/tech/git%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

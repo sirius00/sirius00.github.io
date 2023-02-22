@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Webpack的使用 | XP&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="webpack 安装 首先需要安装Node.js, node.js自带软件包管理工具npm 查看node版本 node -v 全局安装webpack npm install webpack@3.6.0 -g 本地安装webpack 在项目目录下执行 npm install webpack@3.6.0 --save-dev webpack的基本使用 项目文件目录: 项目 dist //打包好的文件 src //项目源码 webpack 打包js文件 常规方式 在项目文件夹下 webpack">
+<meta name="author" content="
+作者:&nbsp;XP">
+<link rel="canonical" href="https://sirius00.github.io/posts/tech/webpack%E7%9A%84%E4%BD%BF%E7%94%A8/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a6c679e0d2f6e83a8f1aad1f7a2cdc96085c188647e679dbc62800f83be6bad2.css" integrity="sha256-psZ54NL26DqPGq0feizclghcGIZH5nnbxigA&#43;DvmutI=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+        onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sirius00.github.io/img/cat.png">
+<link rel="apple-touch-icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="mask-icon" href="https://sirius00.github.io/img/cat.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = ""; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<meta property="og:title" content="Webpack的使用" />
+<meta property="og:description" content="webpack 安装 首先需要安装Node.js, node.js自带软件包管理工具npm 查看node版本 node -v 全局安装webpack npm install webpack@3.6.0 -g 本地安装webpack 在项目目录下执行 npm install webpack@3.6.0 --save-dev webpack的基本使用 项目文件目录: 项目 dist //打包好的文件 src //项目源码 webpack 打包js文件 常规方式 在项目文件夹下 webpack" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sirius00.github.io/posts/tech/webpack%E7%9A%84%E4%BD%BF%E7%94%A8/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-22T09:46:05+08:00" />
+<meta property="article:modified_time" content="2023-02-22T09:46:05+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Webpack的使用"/>
+<meta name="twitter:description" content="webpack 安装 首先需要安装Node.js, node.js自带软件包管理工具npm 查看node版本 node -v 全局安装webpack npm install webpack@3.6.0 -g 本地安装webpack 在项目目录下执行 npm install webpack@3.6.0 --save-dev webpack的基本使用 项目文件目录: 项目 dist //打包好的文件 src //项目源码 webpack 打包js文件 常规方式 在项目文件夹下 webpack"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+
+        {
+          "@type": "ListItem",
+          "position":  1 ,
+          "name": "📚文章",
+          "item": "https://sirius00.github.io/posts/"
+        },
+
+        {
+          "@type": "ListItem",
+          "position":  2 ,
+          "name": "👨🏻‍💻 技术",
+          "item": "https://sirius00.github.io/posts/tech/"
+        }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Webpack的使用",
+      "item": "https://sirius00.github.io/posts/tech/webpack%E7%9A%84%E4%BD%BF%E7%94%A8/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Webpack的使用",
+  "name": "Webpack的使用",
+  "description": "webpack 安装 首先需要安装Node.js, node.js自带软件包管理工具npm 查看node版本 node -v 全局安装webpack npm install webpack@3.6.0 -g 本地安装webpack 在项目目录下执行 npm install webpack@3.6.0 --save-dev webpack的基本使用 项目文件目录: 项目 dist //打包好的文件 src //项目源码 webpack 打包js文件 常规方式 在项目文件夹下 webpack",
+  "keywords": [
+    ""
+  ],
+  "articleBody": "webpack 安装 首先需要安装Node.js, node.js自带软件包管理工具npm\n查看node版本\nnode -v\n全局安装webpack\nnpm install webpack@3.6.0 -g\n本地安装webpack\n在项目目录下执行\nnpm install webpack@3.6.0 --save-dev\nwebpack的基本使用 项目文件目录: 项目\ndist //打包好的文件\nsrc //项目源码\nwebpack 打包js文件 常规方式 在项目文件夹下\nwebpack ./src/main.js ./dist/bundle.js 简洁的方式 在项目目录下创建webpack.config.js文件\n//从node中引入包内容 //在使用前需要在项目目录执行`npm init`命令 const path = require('path') module.exports = { //入口 entry:'./src/main.js', //出口 output: { //动态获取路径 //用于拼接两个变量 path: path.resolve(__dirname, 'dist'), filename: 'bundle.js' } } //便捷打包方式:直接在命令行输入'webpack',就可以执行打包命令 更高效的方式 在项目目录下执行命令:\nnpm init\n修改package.json文件\n\"scripts\": { \"test\": \"echo \\\"Error: no test specified\\\" \u0026\u0026 exit 1\", //使用 npm run build执行 //会优先使用本地版本webpack \"build\": \"webpack\" }, loader 安装loader 配置loader 修改在项目目录下的webpack.config.js文件\n在module.exports中添加以下部分\n//css-loader module: { rules: [ { test: /\\.css$/, //css-loader 只负责将css文件进行加载 //style-loader负责将样式添加到DOM中 //使用多个loader时,是从右向左读取的 use: [ 'style-loader', 'css-loader'], }, ], }, 安装css-loader 以下命令默认安装最新版本的css-loader\nnpm install --save-dev css-lader\n在mac中,由于安装的webpack3.6.0版本,直接执行以上命令,容易出现错误(版本不匹配):\n![image-20220311172138730](/Users/cobb/Library/Application Support/typora-user-images/image-20220311172138730.png)\n指定版本安装方法:\nnpm install --save-dev css-loader@0.28.11\n安装style-loader 安装最新版本的:\nnpm install style-loader --save-dev\n安装webpack3.6.0适配版本style-loader\nnpm install --save-dev style-loader@0.15.0\nless文件处理 安装对应webpack3.6.0版本的less和less-loader\nnpm install --save-dev less-loader@5.0.0 less@3.13.1\n图片文件处理 安装url-loader\nnpm install --save-devurl-loader@1.1.2\n在webpack.config.js文件中添加如下部分:\n{ test: /\\.(png|jpg|gif|jpeg)$/i, use: [ { loader: 'url-loader', options: { //当加载的图片,小于limit时,会将图片编译成base64字符串的形式 //当加载的图片大于limit时,需要使用file-loader模块进行加载 limit: 50000, //在dist文件夹下生成img文件夹以及和原图片同名的文件 name: 'img/[name].[hash:8].[ext]' }, } ] } ES6转ES5语法 使用babel-loader\n引入vue.js 通过npm安装vue 因为在后续的实际项目中也会使用vue,所以并不是开发时依赖,不用加**-dev** npm install vue --save 在js文件中引入vue import Vue from vue 出现runtime-only错误:\n原因:\nruntime-only,代码中不可以有任何的template runtime-compiler,代码中可以有template,因为有compiler可以编译template 解决办法:在webpack.config.js文件中添加如下:\nresolve:{ alias:{ 'vue$': 'vue/dist/vue.esm.js' } vue应用中’el’和’template’区别 template会将el中的内容进行替换\n正确使用vue的方式 安装vue-loader和vue-template-compiler\n配置webpack.config.js\n{ test: /\\.vue$/, use: ['vue-loader'] } 在src文件夹下创建vue文件夹\n![image-20220312151241214](/Users/cobb/Library/Application Support/typora-user-images/image-20220312151241214.png)\nPlugin 添加版权的plugin 使用bannerplugin插件,webpack自带插件\n修改webpack.config.js文件\n打包html的plugin HtmlWebpackPlugin插件可以做的事情:\n自动打包生成一个index.html文件(可以指定模板来生成) 将打包的js文件,自动通过script标签插入到bady中 安装之后配置webpack.config.js文件如下:\nnew HtmlWebpackPlugin({ //根据以下模板生成 template: `index.html` }) js压缩的Plugin 使用第三方的插件Uglifyjs-webpack-plugin\n需要指定版本号1.1.1,保持和CIL2一致\nnpm install --save-dev uglifyjs-webpack-plugin@1.1.1\n搭建本地服务器 这个本地服务器基于node.js,内部使用express框架,可以实现浏览器自动刷新显示修改后的结果\n安装: npm install --save-dev webpack-dev-server@2.9.3\n设置:\ndevserver也是作为webpack中的一个选项,可以设置如下属性:\ncontentBase:为哪一个文件夹提供本地服务 port:端口号 inline:页面实时刷新 historyApiFallback:在SPA页面中,依赖html5的history模式 启动方式:\n在package.json文件中添加: \"dev\": \"webpack-dev-derver\" 在后面添加 --open ,能够在启动服务器的同时自动打开浏览器 在终端中输入: npm rundev webpack配置的分离 首先对webpack.config.js文件进行抽离,分成三部分: base.config.js dev.config.js prod.config.js 安装-webpack-merge插件,实现config文件的两两合并 在package.json文件中修改\"build\"和\"dev\"的运行路径 BUG记录 安装npm出现错误:\nnpm ERR! code EACCES npm ERR! syscall rename npm ERR! path /usr/local/lib/node_modules/npm npm ERR! dest /usr/local/lib/node_modules/.npm-i9nnxROI npm ERR! errno -13 npm ERR! Error: EACCES: permission denied, rename '/usr/local/lib/node_modules/npm' -\u003e '/usr/local/lib/node_modules/.npm-i9nnxROI' npm ERR! [Error: EACCES: permission denied, rename '/usr/local/lib/node_modules/npm' -\u003e '/usr/local/lib/node_modules/.npm-i9nnxROI'] { npm ERR! errno: -13, npm ERR! code: 'EACCES', npm ERR! syscall: 'rename', npm ERR! path: '/usr/local/lib/node_modules/npm', npm ERR! dest: '/usr/local/lib/node_modules/.npm-i9nnxROI' npm ERR! } npm ERR! npm ERR! The operation was rejected by your operating system. npm ERR! It is likely you do not have the permissions to access this file as the current user npm ERR! npm ERR! If you believe this might be a permissions issue, please double-check the npm ERR! permissions of the file and its containing directories, or try running npm ERR! the command again as root/Administrator. npm ERR! A complete log of this run can be found in: npm ERR! /Users/cobb/.npm/_logs/2022-03-10T13_55_54_267Z-debug.log 解决办法:\n需要在命令前加上 ==sudo==\n",
+  "wordCount" : "2141",
+  "inLanguage": "en",
+  "datePublished": "2023-02-22T09:46:05+08:00",
+  "dateModified": "2023-02-22T09:46:05+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "XP"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://sirius00.github.io/posts/tech/webpack%E7%9A%84%E4%BD%BF%E7%94%A8/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "XP's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://sirius00.github.io/img/cat.png"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://sirius00.github.io/" accesskey="h" title="XP&#39;s Blog (Alt + H)">
+            <img src="https://sirius00.github.io/img/cat.png" alt="logo" aria-label="logo"
+                 height="35">XP&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://sirius00.github.io/search" title="🔍 搜索 (Alt &#43; /)" accesskey=/>
+                <span>🔍 搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/" title="🏠 主页">
+                <span>🏠 主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/posts" title="📚 文章">
+                <span>📚 文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/tags" title="🧩 标签">
+                <span>🧩 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/archives/" title="⏱️ 时间轴">
+                <span>⏱️ 时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/about" title="🙋🏻‍♂️ 关于">
+                <span>🙋🏻‍♂️ 关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main page">
+<article class="post-single">
+    <div id="single-content">
+        <header class="post-header">
+            <div class="breadcrumbs"><a href="https://sirius00.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://sirius00.github.io/posts/">📚文章</a>&nbsp;»&nbsp;<a href="https://sirius00.github.io/posts/tech/">👨🏻‍💻 技术</a></div>
+            <h1 class="post-title">
+                Webpack的使用
+            </h1>
+            <div class="post-meta">创建:&nbsp;<span title='2023-02-22 09:46:05 +0800 CST'>2023-02-22</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-22&nbsp;|&nbsp;字数:&nbsp;2141字&nbsp;|&nbsp;时长:&nbsp;5分钟&nbsp;|&nbsp;
+作者:&nbsp;XP
+
+
+
+                &nbsp;|&nbsp;标签: &nbsp;
+                <ul class="post-tags-meta">
+                    <a href="https://sirius00.github.io/tags/tool/">tool</a>
+                    <a href="https://sirius00.github.io/tags/%E5%89%8D%E7%AB%AF/">、前端</a>
+                </ul>
+
+                
+                <span id="busuanzi_container_page_pv">
+                &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+</div>
+        </header> 
+        <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">文章目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#webpack-%e5%ae%89%e8%a3%85" aria-label="webpack 安装">webpack 安装</a></li>
+                <li>
+                    <a href="#webpack%e7%9a%84%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8" aria-label="webpack的基本使用">webpack的基本使用</a><ul>
+                        
+                <li>
+                    <a href="#%e9%a1%b9%e7%9b%ae%e6%96%87%e4%bb%b6%e7%9b%ae%e5%bd%95" aria-label="项目文件目录:">项目文件目录:</a></li>
+                <li>
+                    <a href="#webpack-%e6%89%93%e5%8c%85js%e6%96%87%e4%bb%b6" aria-label="webpack 打包js文件">webpack 打包js文件</a><ul>
+                        
+                <li>
+                    <a href="#%e5%b8%b8%e8%a7%84%e6%96%b9%e5%bc%8f" aria-label="常规方式">常规方式</a></li>
+                <li>
+                    <a href="#%e7%ae%80%e6%b4%81%e7%9a%84%e6%96%b9%e5%bc%8f" aria-label="简洁的方式">简洁的方式</a></li>
+                <li>
+                    <a href="#%e6%9b%b4%e9%ab%98%e6%95%88%e7%9a%84%e6%96%b9%e5%bc%8f" aria-label="更高效的方式">更高效的方式</a></li></ul>
+                </li>
+                <li>
+                    <a href="#loader" aria-label="loader">loader</a><ul>
+                        
+                <li>
+                    <a href="#%e5%ae%89%e8%a3%85loader" aria-label="安装loader">安装loader</a><ul>
+                        
+                <li>
+                    <a href="#%e9%85%8d%e7%bd%aeloader" aria-label="配置loader">配置loader</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%ae%89%e8%a3%85css-loader" aria-label="安装css-loader">安装css-loader</a></li>
+                <li>
+                    <a href="#%e5%ae%89%e8%a3%85style-loader" aria-label="安装style-loader">安装style-loader</a></li>
+                <li>
+                    <a href="#less%e6%96%87%e4%bb%b6%e5%a4%84%e7%90%86" aria-label="less文件处理">less文件处理</a></li>
+                <li>
+                    <a href="#%e5%9b%be%e7%89%87%e6%96%87%e4%bb%b6%e5%a4%84%e7%90%86" aria-label="图片文件处理">图片文件处理</a></li>
+                <li>
+                    <a href="#es6%e8%bd%aces5%e8%af%ad%e6%b3%95" aria-label="ES6转ES5语法">ES6转ES5语法</a></li>
+                <li>
+                    <a href="#%e5%bc%95%e5%85%a5vuejs" aria-label="引入vue.js">引入vue.js</a><ul>
+                        
+                <li>
+                    <a href="#%e9%80%9a%e8%bf%87npm%e5%ae%89%e8%a3%85vue" aria-label="通过npm安装vue">通过npm安装vue</a></li>
+                <li>
+                    <a href="#vue%e5%ba%94%e7%94%a8%e4%b8%adel%e5%92%8ctemplate%e5%8c%ba%e5%88%ab" aria-label="vue应用中&amp;rsquo;el&amp;rsquo;和&amp;rsquo;template&amp;rsquo;区别">vue应用中&rsquo;el&rsquo;和&rsquo;template&rsquo;区别</a></li>
+                <li>
+                    <a href="#%e6%ad%a3%e7%a1%ae%e4%bd%bf%e7%94%a8vue%e7%9a%84%e6%96%b9%e5%bc%8f" aria-label="正确使用vue的方式">正确使用vue的方式</a></li></ul>
+                </li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#plugin" aria-label="Plugin">Plugin</a><ul>
+                        
+                <li>
+                    <a href="#%e6%b7%bb%e5%8a%a0%e7%89%88%e6%9d%83%e7%9a%84plugin" aria-label="添加版权的plugin">添加版权的plugin</a></li>
+                <li>
+                    <a href="#%e6%89%93%e5%8c%85html%e7%9a%84plugin" aria-label="打包html的plugin">打包html的plugin</a></li>
+                <li>
+                    <a href="#js%e5%8e%8b%e7%bc%a9%e7%9a%84plugin" aria-label="js压缩的Plugin">js压缩的Plugin</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%90%ad%e5%bb%ba%e6%9c%ac%e5%9c%b0%e6%9c%8d%e5%8a%a1%e5%99%a8" aria-label="搭建本地服务器">搭建本地服务器</a><ul>
+                        <ul>
+                        
+                <li>
+                    <a href="#webpack%e9%85%8d%e7%bd%ae%e7%9a%84%e5%88%86%e7%a6%bb" aria-label="webpack配置的分离">webpack配置的分离</a></li></ul>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#bug%e8%ae%b0%e5%bd%95" aria-label="BUG记录">BUG记录</a>
+                </li>
+            </ul>
+        </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+        
+        activeElement = elements[0];
+        const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+        document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+    }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 &&
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+            const id = encodeURI(element.getAttribute('id')).toLowerCase();
+            if (element === activeElement){
+                document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+            } else {
+                document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+            }
+        })
+    }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;
+    }
+</script>
+        
+        <div class="post-content"><h1 id="webpack-安装">webpack 安装<a hidden class="anchor" aria-hidden="true" href="#webpack-安装">#</a></h1>
+<p>首先需要安装Node.js, node.js自带软件包管理工具npm</p>
+<p>查看node版本</p>
+<blockquote>
+<p>node -v</p>
+</blockquote>
+<p>全局安装webpack</p>
+<blockquote>
+<p>npm install <a href="mailto:webpack@3.6.0">webpack@3.6.0</a> -g</p>
+</blockquote>
+<p>本地安装webpack</p>
+<blockquote>
+<p>在项目目录下执行</p>
+<p><code>npm install webpack@3.6.0 --save-dev</code></p>
+</blockquote>
+<h1 id="webpack的基本使用">webpack的基本使用<a hidden class="anchor" aria-hidden="true" href="#webpack的基本使用">#</a></h1>
+<h2 id="项目文件目录">项目文件目录:<a hidden class="anchor" aria-hidden="true" href="#项目文件目录">#</a></h2>
+<blockquote>
+<ul>
+<li>
+<p>项目</p>
+<ul>
+<li>
+<p>dist     //打包好的文件</p>
+</li>
+<li>
+<p>src      //项目源码</p>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="webpack-打包js文件">webpack 打包js文件<a hidden class="anchor" aria-hidden="true" href="#webpack-打包js文件">#</a></h2>
+<h3 id="常规方式">常规方式<a hidden class="anchor" aria-hidden="true" href="#常规方式">#</a></h3>
+<blockquote>
+<p>在项目文件夹下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>webpack ./src/main.js ./dist/bundle.js
+</span></span></code></pre></div></blockquote>
+<h3 id="简洁的方式">简洁的方式<a hidden class="anchor" aria-hidden="true" href="#简洁的方式">#</a></h3>
+<p>在项目目录下创建webpack.config.js文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//从node中引入包内容
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//在使用前需要在项目目录执行`npm init`命令
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;path&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//入口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;./src/main.js&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//出口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//动态获取路径
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//用于拼接两个变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#39;dist&#39;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;bundle.js&#39;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//便捷打包方式:直接在命令行输入&#39;webpack&#39;,就可以执行打包命令
+</span></span></span></code></pre></div><h3 id="更高效的方式">更高效的方式<a hidden class="anchor" aria-hidden="true" href="#更高效的方式">#</a></h3>
+<ol>
+<li>
+<p>在项目目录下执行命令:</p>
+<p><code>npm init</code></p>
+</li>
+<li>
+<p>修改package.json文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;test&#34;</span>: <span style="color:#e6db74">&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span>,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//使用 npm run build执行
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//会优先使用本地版本webpack
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;build&#34;</span>: <span style="color:#e6db74">&#34;webpack&#34;</span>
+</span></span><span style="display:flex;"><span>  }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="loader">loader<a hidden class="anchor" aria-hidden="true" href="#loader">#</a></h2>
+<h3 id="安装loader">安装loader<a hidden class="anchor" aria-hidden="true" href="#安装loader">#</a></h3>
+<h4 id="配置loader">配置loader<a hidden class="anchor" aria-hidden="true" href="#配置loader">#</a></h4>
+<p><strong>修改在项目目录下的webpack.config.js文件</strong></p>
+<p>在module.exports中添加以下部分</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>  <span style="color:#75715e">//css-loader
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.css$/</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//css-loader 只负责将css文件进行加载
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">//style-loader负责将样式添加到DOM中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">//使用多个loader时,是从右向左读取的
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> [ <span style="color:#e6db74">&#39;style-loader&#39;</span>, <span style="color:#e6db74">&#39;css-loader&#39;</span>],
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  },
+</span></span></code></pre></div><h3 id="安装css-loader">安装css-loader<a hidden class="anchor" aria-hidden="true" href="#安装css-loader">#</a></h3>
+<p>以下命令默认安装最新版本的css-loader</p>
+<p><code>npm install --save-dev css-lader</code></p>
+<blockquote>
+<p>在mac中,由于安装的webpack3.6.0版本,直接执行以上命令,容易出现错误(版本不匹配):</p>
+</blockquote>
+<p>![image-20220311172138730](/Users/cobb/Library/Application Support/typora-user-images/image-20220311172138730.png)</p>
+<p>指定版本安装方法:</p>
+<p><code>npm install --save-dev css-loader@0.28.11</code></p>
+<h3 id="安装style-loader">安装style-loader<a hidden class="anchor" aria-hidden="true" href="#安装style-loader">#</a></h3>
+<p>安装最新版本的:</p>
+<p><code>npm install style-loader --save-dev</code></p>
+<p>安装webpack3.6.0适配版本style-loader</p>
+<p><code>npm install --save-dev style-loader@0.15.0</code></p>
+<h3 id="less文件处理">less文件处理<a hidden class="anchor" aria-hidden="true" href="#less文件处理">#</a></h3>
+<p>安装对应webpack3.6.0版本的less和less-loader</p>
+<p><code>npm install --save-dev less-loader@5.0.0 less@3.13.1</code></p>
+<h3 id="图片文件处理">图片文件处理<a hidden class="anchor" aria-hidden="true" href="#图片文件处理">#</a></h3>
+<p>安装url-loader</p>
+<p><code>npm install --save-devurl-loader@1.1.2</code></p>
+<blockquote>
+<p>在webpack.config.js文件中添加如下部分:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>   {
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.(png|jpg|gif|jpeg)$/i</span>,
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>       {
+</span></span><span style="display:flex;"><span>         <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;url-loader&#39;</span>,
+</span></span><span style="display:flex;"><span>         <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>           <span style="color:#75715e">//当加载的图片,小于limit时,会将图片编译成base64字符串的形式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#75715e">//当加载的图片大于limit时,需要使用file-loader模块进行加载
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#a6e22e">limit</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">50000</span>,
+</span></span><span style="display:flex;"><span>           <span style="color:#75715e">//在dist文件夹下生成img文件夹以及和原图片同名的文件 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;img/[name].[hash:8].[ext]&#39;</span>
+</span></span><span style="display:flex;"><span>         },
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>     ]
+</span></span><span style="display:flex;"><span>   }
+</span></span></code></pre></div></blockquote>
+<h3 id="es6转es5语法">ES6转ES5语法<a hidden class="anchor" aria-hidden="true" href="#es6转es5语法">#</a></h3>
+<p>使用babel-loader</p>
+<h3 id="引入vuejs">引入vue.js<a hidden class="anchor" aria-hidden="true" href="#引入vuejs">#</a></h3>
+<h4 id="通过npm安装vue">通过npm安装vue<a hidden class="anchor" aria-hidden="true" href="#通过npm安装vue">#</a></h4>
+<ul>
+<li>因为在后续的实际项目中也会使用vue,所以并不是开发时依赖,不用加**-dev**</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install vue --save
+</span></span></code></pre></div><ul>
+<li>在js文件中引入vue</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Vue</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">vue</span>
+</span></span></code></pre></div><ul>
+<li>
+<p>出现runtime-only错误:</p>
+<p>原因:</p>
+<ol>
+<li>runtime-only,代码中不可以有任何的template</li>
+<li>runtime-compiler,代码中可以有template,因为有compiler可以编译template</li>
+</ol>
+<p>解决办法:在webpack.config.js文件中添加如下:</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>  <span style="color:#a6e22e">resolve</span><span style="color:#f92672">:</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">alias</span><span style="color:#f92672">:</span>{
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;vue$&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;vue/dist/vue.esm.js&#39;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><h4 id="vue应用中el和template区别">vue应用中&rsquo;el&rsquo;和&rsquo;template&rsquo;区别<a hidden class="anchor" aria-hidden="true" href="#vue应用中el和template区别">#</a></h4>
+<p>template会将el中的内容进行替换</p>
+<h4 id="正确使用vue的方式">正确使用vue的方式<a hidden class="anchor" aria-hidden="true" href="#正确使用vue的方式">#</a></h4>
+<ul>
+<li>
+<p>安装vue-loader和vue-template-compiler</p>
+</li>
+<li>
+<p>配置webpack.config.js</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.vue$/</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;vue-loader&#39;</span>]
+</span></span><span style="display:flex;"><span>      }
+</span></span></code></pre></div></li>
+<li>
+<p>在src文件夹下创建vue文件夹</p>
+<p>![image-20220312151241214](/Users/cobb/Library/Application Support/typora-user-images/image-20220312151241214.png)</p>
+</li>
+</ul>
+<h1 id="plugin">Plugin<a hidden class="anchor" aria-hidden="true" href="#plugin">#</a></h1>
+<h2 id="添加版权的plugin">添加版权的plugin<a hidden class="anchor" aria-hidden="true" href="#添加版权的plugin">#</a></h2>
+<p>使用bannerplugin插件,webpack自带插件</p>
+<p>修改webpack.config.js文件</p>
+<h2 id="打包html的plugin">打包html的plugin<a hidden class="anchor" aria-hidden="true" href="#打包html的plugin">#</a></h2>
+<blockquote>
+<p>HtmlWebpackPlugin插件可以做的事情:</p>
+<ul>
+<li>自动打包生成一个index.html文件(可以指定模板来生成)</li>
+<li>将打包的js文件,自动通过script标签插入到bady中</li>
+</ul>
+</blockquote>
+<p>安装之后配置webpack.config.js文件如下:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>      <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HtmlWebpackPlugin</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//根据以下模板生成
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`index.html`</span>
+</span></span><span style="display:flex;"><span>      })
+</span></span></code></pre></div><h2 id="js压缩的plugin">js压缩的Plugin<a hidden class="anchor" aria-hidden="true" href="#js压缩的plugin">#</a></h2>
+<p>使用第三方的插件Uglifyjs-webpack-plugin</p>
+<p>需要指定版本号1.1.1,保持和CIL2一致</p>
+<p><code>npm install --save-dev uglifyjs-webpack-plugin@1.1.1</code></p>
+<h1 id="搭建本地服务器">搭建本地服务器<a hidden class="anchor" aria-hidden="true" href="#搭建本地服务器">#</a></h1>
+<ul>
+<li>
+<p>这个本地服务器基于node.js,内部使用express框架,可以实现浏览器自动刷新显示修改后的结果</p>
+</li>
+<li>
+<p>安装: <code>npm install --save-dev webpack-dev-server@2.9.3</code></p>
+</li>
+<li>
+<p>设置:</p>
+<ul>
+<li>
+<p>devserver也是作为webpack中的一个选项,可以设置如下属性:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">contentBase</span><span style="color:#f92672">:</span><span style="color:#a6e22e">为哪一个文件夹提供本地服务</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">port</span><span style="color:#f92672">:</span><span style="color:#a6e22e">端口号</span> 
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">inline</span><span style="color:#f92672">:</span><span style="color:#a6e22e">页面实时刷新</span> 
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">historyApiFallback</span><span style="color:#f92672">:</span><span style="color:#a6e22e">在SPA页面中</span>,<span style="color:#a6e22e">依赖html5的history模式</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>启动方式:</p>
+<ul>
+<li>在package.json文件中添加: <code>&quot;dev&quot;: &quot;webpack-dev-derver&quot;</code>
+<ul>
+<li>在后面添加 <code> --open</code> ,能够在启动服务器的同时自动打开浏览器</li>
+</ul>
+</li>
+<li>在终端中输入: <code>npm rundev</code></li>
+</ul>
+</li>
+<li>
+<h3 id="webpack配置的分离">webpack配置的分离<a hidden class="anchor" aria-hidden="true" href="#webpack配置的分离">#</a></h3>
+<ul>
+<li>首先对webpack.config.js文件进行抽离,分成三部分:
+<ul>
+<li>base.config.js</li>
+<li>dev.config.js</li>
+<li>prod.config.js</li>
+</ul>
+</li>
+<li>安装-<strong>webpack-merge</strong>插件,实现config文件的两两合并</li>
+<li>在package.json文件中修改&quot;build&quot;和&quot;dev&quot;的运行路径</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h1 id="bug记录">BUG记录<a hidden class="anchor" aria-hidden="true" href="#bug记录">#</a></h1>
+<ol>
+<li>
+<p>安装npm出现错误:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm ERR! code EACCES
+</span></span><span style="display:flex;"><span>npm ERR! syscall rename
+</span></span><span style="display:flex;"><span>npm ERR! path /usr/local/lib/node_modules/npm
+</span></span><span style="display:flex;"><span>npm ERR! dest /usr/local/lib/node_modules/.npm-i9nnxROI
+</span></span><span style="display:flex;"><span>npm ERR! errno -13
+</span></span><span style="display:flex;"><span>npm ERR! Error: EACCES: permission denied, rename <span style="color:#e6db74">&#39;/usr/local/lib/node_modules/npm&#39;</span> -&gt; <span style="color:#e6db74">&#39;/usr/local/lib/node_modules/.npm-i9nnxROI&#39;</span>
+</span></span><span style="display:flex;"><span>npm ERR!  <span style="color:#f92672">[</span>Error: EACCES: permission denied, rename <span style="color:#e6db74">&#39;/usr/local/lib/node_modules/npm&#39;</span> -&gt; <span style="color:#e6db74">&#39;/usr/local/lib/node_modules/.npm-i9nnxROI&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>npm ERR!   errno: -13,
+</span></span><span style="display:flex;"><span>npm ERR!   code: <span style="color:#e6db74">&#39;EACCES&#39;</span>,
+</span></span><span style="display:flex;"><span>npm ERR!   syscall: <span style="color:#e6db74">&#39;rename&#39;</span>,
+</span></span><span style="display:flex;"><span>npm ERR!   path: <span style="color:#e6db74">&#39;/usr/local/lib/node_modules/npm&#39;</span>,
+</span></span><span style="display:flex;"><span>npm ERR!   dest: <span style="color:#e6db74">&#39;/usr/local/lib/node_modules/.npm-i9nnxROI&#39;</span>
+</span></span><span style="display:flex;"><span>npm ERR! <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>npm ERR!
+</span></span><span style="display:flex;"><span>npm ERR! The operation was rejected by your operating system.
+</span></span><span style="display:flex;"><span>npm ERR! It is likely you <span style="color:#66d9ef">do</span> not have the permissions to access this file as the current user
+</span></span><span style="display:flex;"><span>npm ERR!
+</span></span><span style="display:flex;"><span>npm ERR! If you believe this might be a permissions issue, please double-check the
+</span></span><span style="display:flex;"><span>npm ERR! permissions of the file and its containing directories, or try running
+</span></span><span style="display:flex;"><span>npm ERR! the command again as root/Administrator.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>npm ERR! A complete log of this run can be found in:
+</span></span><span style="display:flex;"><span>npm ERR!     /Users/cobb/.npm/_logs/2022-03-10T13_55_54_267Z-debug.log
+</span></span></code></pre></div><p>解决办法:</p>
+<p>需要在命令前加上 ==sudo==</p>
+</li>
+<li></li>
+</ol>
+
+
+        </div>
+
+        <footer class="post-footer">
+            
+<nav class="paginav">
+  <a class="prev" href="https://sirius00.github.io/posts/tech/html_css/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>HTML_CSS</span>
+  </a>
+  <a class="next" href="https://sirius00.github.io/posts/tech/vue2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Vue2学习笔记</span>
+  </a>
+</nav>
+
+        </footer>
+    </div>
+</article>
+</main>
+
+
+<script async src="https://unpkg.com/mermaid@8.8.1/dist/mermaid.min.js"></script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<footer class="footer">
+    <span>
+        Copyright
+        &copy;
+        2020-2023
+        <a href="https://sirius00.github.io/" style="color:#939393;">XP&#39;s Blog</a>
+        All Rights Reserved
+    </span>
+
+    <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#939393;">填写自己的备案号</a>&nbsp;
+
+    <span>
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=null"
+           style="display:inline-block;text-decoration:none;height:20px;color:#939393;">
+            <img src="%e5%a1%ab%e8%87%aa%e5%b7%b1%e7%9a%84%e5%85%ac%e5%ae%89%e5%9b%be%e6%a0%87%e9%93%be%e6%8e%a5" style="float:left;margin: 0px 5px 0px 0px;"/>
+            填自己的公网安备
+        </a>
+    </span>
+
+    <span id="busuanzi_container">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        总访客数: <span id="busuanzi_value_site_uv"></span>
+        总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <span class="topInner">
+        <svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z"/>
+        </svg>
+        <span id="read_progress"></span>
+    </span>
+</a>
+
+<script>
+    document.addEventListener('scroll', function (e) {
+        const readProgress = document.getElementById("read_progress");
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        
+        readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
+    })
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    let mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+<script>
+    document.body.addEventListener('copy', function (e) {
+        if (window.getSelection().toString() && window.getSelection().toString().length > 50) {
+            let clipboardData = e.clipboardData || window.clipboardData;
+            if (clipboardData) {
+                e.preventDefault();
+                let htmlData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「' + {
+                { .
+                    Site.Title
+                }
+            }
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                let textData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「' + {
+                { .
+                    Site.Title
+                }
+            }
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                clipboardData.setData('text/html', htmlData);
+                clipboardData.setData('text/plain', textData);
+            }
+        }
+    });
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '📄复制';
+
+        function copyingDone() {
+            copybutton.innerText = '👌🏻已复制!';
+            setTimeout(() => {
+                copybutton.innerText = '📄复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                let text = codeblock.textContent +
+                    '\r\n————————————————\r\n' +
+                    '版权声明：本文为「' + "XP's Blog"
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                navigator.clipboard.writeText(text);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+            }
+            ;
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild === container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName === "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $("code[class^=language] ").on("mouseover", function () {
+        if (this.clientWidth < this.scrollWidth) {
+            $(this).css("width", "135%")
+        }
+    }).on("mouseout", function () {
+        $(this).css("width", "100%")
+    })
+</script>
+</body>
+
+</html>

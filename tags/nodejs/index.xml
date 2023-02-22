@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>nodejs on XP&#39;s Blog</title>
+    <link>https://sirius00.github.io/tags/nodejs/</link>
+    <description>Recent content in nodejs on XP&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 22 Feb 2023 09:31:10 +0800</lastBuildDate><atom:link href="https://sirius00.github.io/tags/nodejs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Koa框架</title>
+      <link>https://sirius00.github.io/posts/tech/koa%E6%A1%86%E6%9E%B6/</link>
+      <pubDate>Wed, 22 Feb 2023 09:31:10 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/tech/koa%E6%A1%86%E6%9E%B6/</guid>
+      <description>教程：https://github.com/jj112358/node-api 项目的基本优化 nodemon **作用：**自动重新加载当前项目 安装：npm i nodemon **配置：**在package.json修改scripts， 添加如下内容 ： &amp;#34;start&amp;#34;: &amp;#34;nodemon ./main.js&amp;#34;, dotenv **作用：**读取配置文件， 设置环境变量 链接：npm地</description>
+    </item>
+    
+  </channel>
+</rss>

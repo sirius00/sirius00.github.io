@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>HTML_CSS | XP&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="flex布局 容器的属性 flex-direction属性 作用:决定主轴的方向(项目的排列方向) .box { flex-direction: row | row-reverse | column | column-reverse; } row（默认值）：主轴为水平方向，起点在左端。 row-reverse：主轴为水平方向，起点在右端。 column：主轴为垂直方向，起点在上沿。 column-revers">
+<meta name="author" content="
+作者:&nbsp;XP">
+<link rel="canonical" href="https://sirius00.github.io/posts/tech/html_css/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a6c679e0d2f6e83a8f1aad1f7a2cdc96085c188647e679dbc62800f83be6bad2.css" integrity="sha256-psZ54NL26DqPGq0feizclghcGIZH5nnbxigA&#43;DvmutI=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+        onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sirius00.github.io/img/cat.png">
+<link rel="apple-touch-icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="mask-icon" href="https://sirius00.github.io/img/cat.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = ""; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<meta property="og:title" content="HTML_CSS" />
+<meta property="og:description" content="flex布局 容器的属性 flex-direction属性 作用:决定主轴的方向(项目的排列方向) .box { flex-direction: row | row-reverse | column | column-reverse; } row（默认值）：主轴为水平方向，起点在左端。 row-reverse：主轴为水平方向，起点在右端。 column：主轴为垂直方向，起点在上沿。 column-revers" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sirius00.github.io/posts/tech/html_css/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-22T09:47:53+08:00" />
+<meta property="article:modified_time" content="2023-02-22T09:47:53+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HTML_CSS"/>
+<meta name="twitter:description" content="flex布局 容器的属性 flex-direction属性 作用:决定主轴的方向(项目的排列方向) .box { flex-direction: row | row-reverse | column | column-reverse; } row（默认值）：主轴为水平方向，起点在左端。 row-reverse：主轴为水平方向，起点在右端。 column：主轴为垂直方向，起点在上沿。 column-revers"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+
+        {
+          "@type": "ListItem",
+          "position":  1 ,
+          "name": "📚文章",
+          "item": "https://sirius00.github.io/posts/"
+        },
+
+        {
+          "@type": "ListItem",
+          "position":  2 ,
+          "name": "👨🏻‍💻 技术",
+          "item": "https://sirius00.github.io/posts/tech/"
+        }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "HTML_CSS",
+      "item": "https://sirius00.github.io/posts/tech/html_css/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "HTML_CSS",
+  "name": "HTML_CSS",
+  "description": "flex布局 容器的属性 flex-direction属性 作用:决定主轴的方向(项目的排列方向) .box { flex-direction: row | row-reverse | column | column-reverse; } row（默认值）：主轴为水平方向，起点在左端。 row-reverse：主轴为水平方向，起点在右端。 column：主轴为垂直方向，起点在上沿。 column-revers",
+  "keywords": [
+    ""
+  ],
+  "articleBody": "flex布局 容器的属性 flex-direction属性 作用:决定主轴的方向(项目的排列方向)\n.box { flex-direction: row | row-reverse | column | column-reverse; } row（默认值）：主轴为水平方向，起点在左端。 row-reverse：主轴为水平方向，起点在右端。 column：主轴为垂直方向，起点在上沿。 column-reverse：主轴为垂直方向，起点在下沿 flex-wrap属性 作用:默认情况下，项目都排在一条线（又称”轴线”）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。\n.box{ flex-wrap: nowrap | wrap | wrap-reverse; } nowrap（默认）：不换行 wrap：换行，第一行在上方 wrap-reverse：换行，第一行在下方 flex-flow属性 作用:是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap\n.box { flex-flow: \u003cflex-direction\u003e \u003cflex-wrap\u003e; } justify-content属性 作用:定义了项目在主轴上的对齐方式\n.box { justify-content: flex-start | flex-end | center | space-between | space-around; } flex-start（默认值）：左对齐 flex-end：右对齐 center： 居中 space-between：两端对齐，项目之间的间隔都相等。 space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。 align-items属性 作用:定义了项目在交叉轴上如何对齐\n.box { align-items: flex-start | flex-end | center | baseline | stretch; } flex-start：交叉轴的起点对齐。 flex-end：交叉轴的终点对齐。 center：交叉轴的中点对齐。 baseline: 项目的第一行文字的基线对齐。 stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。 align-content属性 作用:定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用\n.box { align-content: flex-start | flex-end | center | space-between | space-around | stretch; } flex-start：与交叉轴的起点对齐。 flex-end：与交叉轴的终点对齐。 center：与交叉轴的中点对齐。 space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。 space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。 stretch（默认值）：轴线占满整个交叉轴。 项目的属性 order ​\t作用:定义项目的排列顺序,数值越小,排列越靠前\n.item { order: ; } flex-grow 作用:定义项目的放大比例,即如果存在剩余空间,也不放大.\n如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。\n.item { flex-grow: ; /* default 0 */ } flex-shrink 作用:定义了项目的缩小比例,即如果空间不足,将项目将缩小\n如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。负值对该属性无效。\n.item { flex-shrink: ; /* default 1 */ } flex-basis 作用:定义了再分配多余空间之前,项目占据的主轴空间(main size), 浏览器根据这个属性,计算主轴是否还有多余空间\n.item { flex-basis: | auto; /* default auto */ } flex 作用:是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选\n.item { flex: none | [ \u003c'flex-grow'\u003e \u003c'flex-shrink'\u003e? || \u003c'flex-basis'\u003e ] } align-self 作用:允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。\n.item { align-self: auto | flex-start | flex-end | center | baseline | stretch; } CSS实现动画效果 transform属性 transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转rotate、扭曲skew、缩放scale和移动translate以及矩阵变形matrix\n语法:\ntransform: none|transform-functions; 即： transform: rotate | scale | skew | translate |matrix; 其中none表示不变换, transfrom-function表示一个或多个变换函数, 以空格隔开\n旋转 roate roate(angle): 通过指定的角度参数对原元素指定一个2D旋转\nangle是指旋转角度（单位为deg），如果设置的值为正数表示顺时针旋转，如果设置的值为负数，则表示逆时针旋转。\ntransform: rotate(45deg); 注意：旋转的时候默认以元素中心点为基点进行旋转，可以通过transform-origin属性定义旋转的基点位置\ntransform-origin属性：定义旋转的基点。\n语法：\ntransform-origin: x-axis y-axis z-axis; 默认值：\ntransform-origin: 50% 50% 0; 2D的情况下，默认元素的左上角为0% 0%，例如：绕右下角旋转45度\ntransform-origin: 100% 100%; transform: rotate(45deg); rotate3d(x, y, z, angle)：定义3D旋转\n不常用\nrotateX(angle)：定义沿着X轴的3D旋转\ntransform: rotateX(45deg); roateY(angle): 定义沿着Y轴的3D旋转\ntransform:rotateY(45deg); rotateZ(angle)：定义沿着Z轴的3D旋转\n由以下的例子可以看出，Z轴的方向是垂直于window的方向\ntransform:rotateZ(45deg); 移动 translate translate(x, y): 定义2D移动转化\nx 是第一个过渡值参数，y 是第二个过渡值参数选项。如果未被提供，则ty以 0 作为其值。也就是translate(x,y),它表示对象进行平移，按照设定的x,y参数值,当值为负数时，反方向移动物体，其基点默认为元素中心点，也可以根据transform-origin进行改变基点。\n例如：\ntransform:translate(50px,50px): translate(x): 指定x轴方向上的一个移动\ntransform:translateX(50px): translate(y)：指定Y轴方向上的一个移动\ntransform:translateY(50px): translate3d(x, y, z)：定义3D移动转换\ntranslateZ(z)：指定Z轴方向上的一个移动\n缩放 scale scale(x, y)：定义2D缩放转换。\nX表示水平方向缩放的倍数，Y表示垂直方向的缩放倍数，而Y是一个可选参数，如果没有设置Y值，则表示X，Y两个方向的缩放倍数是一样的。并以X为准。例如：\ntransform: scale(0.7, 0.3); 可以通过transform-origin对元素的基点进行设置，同样基点在元素中心位置；例如：\ntransform-origin: 100% 100%; transform: scale(0.7, 0.3); scaleX(x)：在X轴方向进行缩放转换\ntransform: scaleX(0.7) scaleY(y)：在Y轴方向进行缩放转换\ntransform: scaleY(0.7) scale3d：(x, y, z)：定义3D缩放转换\nscaleZ(z)：在Z轴方向进行缩放转换\n扭曲 skew skew(x-angle, y-angle) ：定义沿着 X 和 Y 轴的 2D 倾斜转换。\nskew是用来对元素进行扭曲变行，第一个参数是水平方向扭曲角度，第二个参数是垂直方向扭曲角度。其中第二个参数是可选参数，如果没有设置第二个参数，那么Y轴为0deg。：\ntransform: skew(10deg,10deg); 同样是以元素中心为基点，我们也可以通过transform-origin来改变元素的基点位置。例如\ntransform-origin: 100% 100%; transform: skew(10deg,10deg); skewX(angle)：定义沿着 X 轴的 2D 倾斜转换\ntransform: skewX(10deg); skewY(angle)：定义沿着 Y轴的 2D 倾斜转换\ntransform: skewY(10deg); 注意：如果要实现3D效果，需要将transform-style属性设置为preserve-3d，即\ntransform-style: preserve-3d; @keyframes CSS3中添加的新属性animation是用来为元素实现动画效果的，但是animation无法单独担当起实现动画的效果。承载动画的另一个属性——@keyframes。使用的时候为了兼容可加上-webkit-、-o-、-ms-、-moz-、-khtml-等前缀以适应不同的浏览器\n创建动画的原理是，将一套 CSS 样式逐渐变化为另一套样式。\n通过 @keyframes 规则，您能够创建动画。\n@keyframes定义一个动画，并定义具体的动画效果，比如是放大还是位移等等。\n@keyframes 它定义的动画并不直接执行，需要借助animation来运转。\n在动画过程中，您能够多次改变这套 CSS 样式。\n以百分比来规定改变发生的时间，或者通过关键词 “from” 和 “to”，等价于 0% 和 100%。\n百分比是指动画完成一遍的时间长度的的百分比 ，0% 是动画的开始时间，50%是动画完成一半的时间，100% 动画的结束时间。百分比后面的花括号写：在动画执行过程中的某时间点要完成的变化。\n为了获得最佳的浏览器支持，您应该始终定义 0% 和 100% 选择器。\n语法:\n@keyframes animationname {keyframes-selector {css-styles;}} 名字为gif的@keyframes ，动画完成需要的总时长为1.4s,刚开始的时候图片旋转为0度，动画完成的时候图片旋转360度\n.load-border { width: 120px; height: 120px; background: url(../images/loading_icon.png) no-repeat center center; -webkit-animation: gif 1.4s infinite linear; animation: gif 1.4s infinite linear; } @keyframes gif { 0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); } 100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } } 名字为mymove的@keyframes ，动画完成需要的总时长为1s,刚开始的时候图片距顶部距离为0px，0.25s后图片距顶部距离为200px，0.5s后图片距顶部的距离为100px，以此类推\n.img { width: 120px; height: 120px; background: url(../images/icon.png) no-repeat center center; -webkit-animation: gif 1.4s infinite linear; animation: mymove 1s infinite linear; } @keyframes mymove { 0% {top:0px;} 25% {top:200px;} 50% {top:100px;} 75% {top:200px;} 100% {top:0px;} } 在一个动画中改变多个 CSS 样式：\n@keyframes mymove { 0% {top:0px; background:red; width:100px;} 100% {top:200px; background:yellow; width:300px;} } animation(动画)属性 语法 animation: name duration timing-function delay iteration-count direction fill-mode play-state; 值 说明 animation-name 指定要绑定到选择器的关键帧的名称 animation-duration 动画指定需要多少秒或毫秒完成 animation-timing-function 设置动画将如何完成一个周期 animation-delay 设置动画在启动前的延迟间隔。即是指动画延迟执行时间 animation-iteration-count 定义动画的播放次数。无限循环关键字 ==infinite==,即是反复循环播放动画 animation-direction 指定是否应该轮流反向播放动画。 animation-fill-mode 规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式。 animation-play-state 指定动画是否正在运行或已暂停。 initial 设置属性为其默认值。 inherit 从父元素继承属性。 animation-timing-function 规定动画的速度曲线. 默认是\"ease\"\n常见的动画速度参数:\nlinear: 线性过渡. ease: 平滑过渡 ease-in: 由慢到快 ease-out: 由快到慢 ease-in-out: 由慢到快再到慢 step-start: 等同于steps(1, start) step-end: 等同于steps(1, end) steps([, [ start | end ] ]?)：接受两个参数的步进函数。第一个参数必须为正整数，指定函数的步数。第二个参数取值可以是start或end，指定每一步的值发生变化的时间点。第二个参数是可选的，默认值为end cubic-bezier(, , , )：特定的贝塞尔曲线类型，4个数值需在[0, 1]区间内 animation-direction 规定动画是否在下一周期逆向的播放. 默认是\"normal\"\nreverse: 反方向运行 alternate: 动画先正常运行再反方向运行,并持续交替运行 alternate-reverse: 动画先反运行再正方向运行,并持续交替运行 animate-fill-mode 规定对象动画时间之外的状态\nnone: 默认值, 不设置对象动画之外的状态 forwards: 设置对象状态为动画结束时 的状态 backwards: 设置对象状态为动画开始时的状态 both: 设置对象状态为动画结束或开始的状态, 动画开始之前是\"form\"或\"0%“关键帧; 动画完成之后是\"to\"或\"100%“关键帧状态 ",
+  "wordCount" : "4052",
+  "inLanguage": "en",
+  "datePublished": "2023-02-22T09:47:53+08:00",
+  "dateModified": "2023-02-22T09:47:53+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "XP"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://sirius00.github.io/posts/tech/html_css/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "XP's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://sirius00.github.io/img/cat.png"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://sirius00.github.io/" accesskey="h" title="XP&#39;s Blog (Alt + H)">
+            <img src="https://sirius00.github.io/img/cat.png" alt="logo" aria-label="logo"
+                 height="35">XP&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://sirius00.github.io/search" title="🔍 搜索 (Alt &#43; /)" accesskey=/>
+                <span>🔍 搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/" title="🏠 主页">
+                <span>🏠 主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/posts" title="📚 文章">
+                <span>📚 文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/tags" title="🧩 标签">
+                <span>🧩 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/archives/" title="⏱️ 时间轴">
+                <span>⏱️ 时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/about" title="🙋🏻‍♂️ 关于">
+                <span>🙋🏻‍♂️ 关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main page">
+<article class="post-single">
+    <div id="single-content">
+        <header class="post-header">
+            <div class="breadcrumbs"><a href="https://sirius00.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://sirius00.github.io/posts/">📚文章</a>&nbsp;»&nbsp;<a href="https://sirius00.github.io/posts/tech/">👨🏻‍💻 技术</a></div>
+            <h1 class="post-title">
+                HTML_CSS
+            </h1>
+            <div class="post-meta">创建:&nbsp;<span title='2023-02-22 09:47:53 +0800 CST'>2023-02-22</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-22&nbsp;|&nbsp;字数:&nbsp;4052字&nbsp;|&nbsp;时长:&nbsp;9分钟&nbsp;|&nbsp;
+作者:&nbsp;XP
+
+
+
+                &nbsp;|&nbsp;标签: &nbsp;
+                <ul class="post-tags-meta">
+                    <a href="https://sirius00.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+                </ul>
+
+                
+                <span id="busuanzi_container_page_pv">
+                &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+</div>
+        </header> 
+        <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">文章目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#flex%e5%b8%83%e5%b1%80" aria-label="flex布局">flex布局</a><ul>
+                        
+                <li>
+                    <a href="#%e5%ae%b9%e5%99%a8%e7%9a%84%e5%b1%9e%e6%80%a7" aria-label="容器的属性">容器的属性</a><ul>
+                        
+                <li>
+                    <a href="#flex-direction%e5%b1%9e%e6%80%a7" aria-label="flex-direction属性">flex-direction属性</a></li>
+                <li>
+                    <a href="#flex-wrap%e5%b1%9e%e6%80%a7" aria-label="flex-wrap属性">flex-wrap属性</a></li>
+                <li>
+                    <a href="#flex-flow%e5%b1%9e%e6%80%a7" aria-label="flex-flow属性">flex-flow属性</a></li>
+                <li>
+                    <a href="#justify-content%e5%b1%9e%e6%80%a7" aria-label="justify-content属性">justify-content属性</a></li>
+                <li>
+                    <a href="#align-items%e5%b1%9e%e6%80%a7" aria-label="align-items属性">align-items属性</a></li>
+                <li>
+                    <a href="#align-content%e5%b1%9e%e6%80%a7" aria-label="align-content属性">align-content属性</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e9%a1%b9%e7%9b%ae%e7%9a%84%e5%b1%9e%e6%80%a7" aria-label="项目的属性">项目的属性</a><ul>
+                        
+                <li>
+                    <a href="#order" aria-label="order">order</a></li>
+                <li>
+                    <a href="#flex-grow" aria-label="flex-grow">flex-grow</a></li>
+                <li>
+                    <a href="#flex-shrink" aria-label="flex-shrink">flex-shrink</a></li>
+                <li>
+                    <a href="#flex-basis" aria-label="flex-basis">flex-basis</a></li>
+                <li>
+                    <a href="#flex" aria-label="flex">flex</a></li>
+                <li>
+                    <a href="#align-self" aria-label="align-self">align-self</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#css%e5%ae%9e%e7%8e%b0%e5%8a%a8%e7%94%bb%e6%95%88%e6%9e%9c" aria-label="CSS实现动画效果">CSS实现动画效果</a><ul>
+                        
+                <li>
+                    <a href="#transform%e5%b1%9e%e6%80%a7" aria-label="transform属性">transform属性</a><ul>
+                        
+                <li>
+                    <a href="#%e6%97%8b%e8%bd%ac-roate" aria-label="旋转 roate">旋转 roate</a></li>
+                <li>
+                    <a href="#%e7%a7%bb%e5%8a%a8-translate" aria-label="移动 translate">移动 translate</a></li>
+                <li>
+                    <a href="#%e7%bc%a9%e6%94%be-scale" aria-label="缩放 scale">缩放 scale</a></li>
+                <li>
+                    <a href="#%e6%89%ad%e6%9b%b2-skew" aria-label="扭曲 skew">扭曲 skew</a></li></ul>
+                </li>
+                <li>
+                    <a href="#keyframes" aria-label="@keyframes">@keyframes</a></li>
+                <li>
+                    <a href="#animation%e5%8a%a8%e7%94%bb%e5%b1%9e%e6%80%a7" aria-label="animation(动画)属性">animation(动画)属性</a><ul>
+                        
+                <li>
+                    <a href="#%e8%af%ad%e6%b3%95" aria-label="语法">语法</a><ul>
+                        
+                <li>
+                    <a href="#animation-timing-function" aria-label="animation-timing-function"><em>animation-timing-function</em></a></li>
+                <li>
+                    <a href="#animation-direction" aria-label="animation-direction"><em>animation-direction</em></a></li>
+                <li>
+                    <a href="#animate-fill-mode" aria-label="animate-fill-mode"><em>animate-fill-mode</em></a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+        
+        activeElement = elements[0];
+        const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+        document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+    }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 &&
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+            const id = encodeURI(element.getAttribute('id')).toLowerCase();
+            if (element === activeElement){
+                document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+            } else {
+                document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+            }
+        })
+    }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;
+    }
+</script>
+        
+        <div class="post-content"><h2 id="flex布局">flex布局<a hidden class="anchor" aria-hidden="true" href="#flex布局">#</a></h2>
+<h3 id="容器的属性">容器的属性<a hidden class="anchor" aria-hidden="true" href="#容器的属性">#</a></h3>
+<h4 id="flex-direction属性">flex-direction属性<a hidden class="anchor" aria-hidden="true" href="#flex-direction属性">#</a></h4>
+<p>作用:决定主轴的方向(项目的排列方向)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>.box {
+</span></span><span style="display:flex;"><span>  flex-direction: row | row-reverse | column | column-reverse;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>row（默认值）：主轴为水平方向，起点在左端。
+</span></span><span style="display:flex;"><span>row-reverse：主轴为水平方向，起点在右端。
+</span></span><span style="display:flex;"><span>column：主轴为垂直方向，起点在上沿。
+</span></span><span style="display:flex;"><span>column-reverse：主轴为垂直方向，起点在下沿
+</span></span></code></pre></div><h4 id="flex-wrap属性">flex-wrap属性<a hidden class="anchor" aria-hidden="true" href="#flex-wrap属性">#</a></h4>
+<p>作用:默认情况下，项目都排在一条线（又称”轴线”）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>.box{
+</span></span><span style="display:flex;"><span>  flex-wrap: nowrap | wrap | wrap-reverse;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>nowrap（默认）：不换行
+</span></span><span style="display:flex;"><span>wrap：换行，第一行在上方
+</span></span><span style="display:flex;"><span>wrap-reverse：换行，第一行在下方
+</span></span></code></pre></div><h4 id="flex-flow属性">flex-flow属性<a hidden class="anchor" aria-hidden="true" href="#flex-flow属性">#</a></h4>
+<p>作用:是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>.box {
+</span></span><span style="display:flex;"><span>  flex-flow: &lt;<span style="color:#f92672">flex-direction</span>&gt; &lt;<span style="color:#f92672">flex-wrap</span>&gt;;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="justify-content属性">justify-content属性<a hidden class="anchor" aria-hidden="true" href="#justify-content属性">#</a></h4>
+<p>作用:定义了项目在主轴上的对齐方式</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>.box {
+</span></span><span style="display:flex;"><span>  justify-content: flex-start | flex-end | center | space-between | space-around;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>flex-start（默认值）：左对齐
+</span></span><span style="display:flex;"><span>flex-end：右对齐
+</span></span><span style="display:flex;"><span>center： 居中
+</span></span><span style="display:flex;"><span>space-between：两端对齐，项目之间的间隔都相等。
+</span></span><span style="display:flex;"><span>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
+</span></span></code></pre></div><h4 id="align-items属性">align-items属性<a hidden class="anchor" aria-hidden="true" href="#align-items属性">#</a></h4>
+<p>作用:定义了项目在交叉轴上如何对齐</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>.box {
+</span></span><span style="display:flex;"><span>  align-items: flex-start | flex-end | center | baseline | stretch;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>flex-start：交叉轴的起点对齐。
+</span></span><span style="display:flex;"><span>flex-end：交叉轴的终点对齐。
+</span></span><span style="display:flex;"><span>center：交叉轴的中点对齐。
+</span></span><span style="display:flex;"><span>baseline: 项目的第一行文字的基线对齐。
+</span></span><span style="display:flex;"><span>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
+</span></span></code></pre></div><h4 id="align-content属性">align-content属性<a hidden class="anchor" aria-hidden="true" href="#align-content属性">#</a></h4>
+<p>作用:定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>.box {
+</span></span><span style="display:flex;"><span>  align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>flex-start：与交叉轴的起点对齐。
+</span></span><span style="display:flex;"><span>flex-end：与交叉轴的终点对齐。
+</span></span><span style="display:flex;"><span>center：与交叉轴的中点对齐。
+</span></span><span style="display:flex;"><span>space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。
+</span></span><span style="display:flex;"><span>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。
+</span></span><span style="display:flex;"><span>stretch（默认值）：轴线占满整个交叉轴。
+</span></span></code></pre></div><h3 id="项目的属性">项目的属性<a hidden class="anchor" aria-hidden="true" href="#项目的属性">#</a></h3>
+<h4 id="order">order<a hidden class="anchor" aria-hidden="true" href="#order">#</a></h4>
+<p>​	作用:定义项目的排列顺序,数值越小,排列越靠前</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>.item {
+</span></span><span style="display:flex;"><span>  order: &lt;integer&gt;;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="flex-grow">flex-grow<a hidden class="anchor" aria-hidden="true" href="#flex-grow">#</a></h4>
+<p>作用:定义项目的放大比例,即如果存在剩余空间,也不放大.</p>
+<p>如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>.item {
+</span></span><span style="display:flex;"><span>  flex-grow: &lt;number&gt;; /* default 0 */
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="flex-shrink">flex-shrink<a hidden class="anchor" aria-hidden="true" href="#flex-shrink">#</a></h4>
+<p>作用:定义了项目的缩小比例,即如果空间不足,将项目将缩小</p>
+<p>如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。负值对该属性无效。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>.item {
+</span></span><span style="display:flex;"><span>  flex-shrink: &lt;number&gt;; /* default 1 */
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="flex-basis">flex-basis<a hidden class="anchor" aria-hidden="true" href="#flex-basis">#</a></h4>
+<p>作用:定义了再分配多余空间之前,项目占据的主轴空间(main size), 浏览器根据这个属性,计算主轴是否还有多余空间</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>.item {
+</span></span><span style="display:flex;"><span>  flex-basis: &lt;length&gt; | auto; /* default auto */
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="flex">flex<a hidden class="anchor" aria-hidden="true" href="#flex">#</a></h4>
+<p>作用:是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>.item {
+</span></span><span style="display:flex;"><span>  flex: none | [ &lt;&#39;flex-grow&#39;&gt; &lt;&#39;flex-shrink&#39;&gt;? || &lt;&#39;flex-basis&#39;&gt; ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="align-self">align-self<a hidden class="anchor" aria-hidden="true" href="#align-self">#</a></h4>
+<p>作用:允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>.item {
+</span></span><span style="display:flex;"><span>  align-self: auto | flex-start | flex-end | center | baseline | stretch;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="css实现动画效果">CSS实现动画效果<a hidden class="anchor" aria-hidden="true" href="#css实现动画效果">#</a></h2>
+<h3 id="transform属性">transform属性<a hidden class="anchor" aria-hidden="true" href="#transform属性">#</a></h3>
+<p>transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行<strong>旋转rotate</strong>、<strong>扭曲skew</strong>、<strong>缩放scale</strong>和<strong>移动translate</strong>以及<strong>矩阵变形matrix</strong></p>
+<blockquote>
+<p>语法:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform</span><span style="color:#f92672">:</span> <span style="color:#f92672">none</span><span style="color:#f92672">|</span><span style="color:#f92672">transform-functions</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">即：</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">transform</span><span style="color:#f92672">:</span> <span style="color:#f92672">rotate</span> <span style="color:#f92672">|</span> <span style="color:#f92672">scale</span> <span style="color:#f92672">|</span> <span style="color:#f92672">skew</span> <span style="color:#f92672">|</span> <span style="color:#f92672">translate</span> <span style="color:#f92672">|</span><span style="color:#f92672">matrix</span><span style="color:#f92672">;</span>
+</span></span></code></pre></div><p>其中none表示不变换, transfrom-function表示一个或多个变换函数, 以空格隔开</p>
+</blockquote>
+<h4 id="旋转-roate">旋转 roate<a hidden class="anchor" aria-hidden="true" href="#旋转-roate">#</a></h4>
+<ol>
+<li>
+<p>roate(angle): 通过指定的角度参数对原元素指定一个2D旋转</p>
+<p>angle是指旋转角度（单位为deg），如果设置的值为正数表示顺时针旋转，如果设置的值为负数，则表示逆时针旋转。</p>
+<p><code>transform: rotate(45deg);  </code></p>
+<p>注意：旋转的时候默认以元素中心点为基点进行旋转，可以通过transform-origin属性定义旋转的基点位置</p>
+<p><strong>transform-origin属性：定义旋转的基点。</strong></p>
+<p>语法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform-origin</span><span style="color:#f92672">:</span> <span style="color:#f92672">x-axis</span> <span style="color:#f92672">y-axis</span> <span style="color:#f92672">z-axis</span><span style="color:#f92672">;</span> 
+</span></span></code></pre></div><p>默认值：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform-origin</span><span style="color:#f92672">:</span> <span style="color:#f92672">50</span><span style="color:#f92672">%</span> <span style="color:#f92672">50</span><span style="color:#f92672">%</span> <span style="color:#f92672">0</span><span style="color:#f92672">;</span>
+</span></span></code></pre></div><p>2D的情况下，默认元素的左上角为0% 0%，例如：绕右下角旋转45度</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform-origin</span><span style="color:#f92672">:</span> <span style="color:#f92672">100</span><span style="color:#f92672">%</span> <span style="color:#f92672">100</span><span style="color:#f92672">%;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">transform</span><span style="color:#f92672">:</span> <span style="color:#f92672">rotate</span><span style="color:#f92672">(</span><span style="color:#f92672">45deg</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>rotate3d(x, y, z, angle)</strong>：定义3D旋转</p>
+<p>不常用</p>
+</li>
+<li>
+<p><strong>rotateX(angle)</strong>：定义沿着X轴的3D旋转</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform</span><span style="color:#f92672">:</span> <span style="color:#f92672">rotateX</span><span style="color:#f92672">(</span><span style="color:#f92672">45deg</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div></li>
+<li>
+<p>roateY(angle): 定义沿着Y轴的3D旋转</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform</span>:<span style="color:#a6e22e">rotateY</span><span style="color:#f92672">(</span><span style="color:#f92672">45deg</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>rotateZ(angle)</strong>：定义沿着Z轴的3D旋转</p>
+<p>由以下的例子可以看出，Z轴的方向是垂直于window的方向</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform</span>:<span style="color:#a6e22e">rotateZ</span><span style="color:#f92672">(</span><span style="color:#f92672">45deg</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div></li>
+</ol>
+<h4 id="移动-translate">移动 translate<a hidden class="anchor" aria-hidden="true" href="#移动-translate">#</a></h4>
+<ol>
+<li>
+<p>translate(x, y): 定义2D移动转化</p>
+<p>x 是第一个过渡值参数，y 是第二个过渡值参数选项。如果未被提供，则ty以 0 作为其值。也就是translate(x,y),它表示对象进行平移，按照设定的x,y参数值,当值为负数时，反方向移动物体，其基点默认为元素中心点，也可以根据transform-origin进行改变基点。</p>
+<p>例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform</span>:<span style="color:#a6e22e">translate</span><span style="color:#f92672">(</span><span style="color:#f92672">50px</span><span style="color:#f92672">,</span><span style="color:#f92672">50px</span><span style="color:#f92672">):</span>
+</span></span></code></pre></div></li>
+<li>
+<p>translate(x): 指定x轴方向上的一个移动</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform</span>:<span style="color:#a6e22e">translateX</span><span style="color:#f92672">(</span><span style="color:#f92672">50px</span><span style="color:#f92672">):</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>translate(y)</strong>：指定Y轴方向上的一个移动</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform</span>:<span style="color:#a6e22e">translateY</span><span style="color:#f92672">(</span><span style="color:#f92672">50px</span><span style="color:#f92672">):</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>translate3d(x, y, z)</strong>：定义3D移动转换</p>
+</li>
+<li>
+<p><strong>translateZ(z)</strong>：指定Z轴方向上的一个移动</p>
+</li>
+</ol>
+<h4 id="缩放-scale">缩放 scale<a hidden class="anchor" aria-hidden="true" href="#缩放-scale">#</a></h4>
+<ol>
+<li>
+<p><strong>scale(x, y)</strong>：定义2D缩放转换。</p>
+<p>X表示水平方向缩放的倍数，Y表示垂直方向的缩放倍数，而Y是一个可选参数，如果没有设置Y值，则表示X，Y两个方向的缩放倍数是一样的。并以X为准。例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform</span><span style="color:#f92672">:</span> <span style="color:#f92672">scale</span><span style="color:#f92672">(</span><span style="color:#f92672">0</span>.<span style="color:#a6e22e">7</span><span style="color:#f92672">,</span> <span style="color:#f92672">0</span>.<span style="color:#a6e22e">3</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div><p>可以通过transform-origin对元素的基点进行设置，同样基点在元素中心位置；例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform-origin</span><span style="color:#f92672">:</span> <span style="color:#f92672">100</span><span style="color:#f92672">%</span> <span style="color:#f92672">100</span><span style="color:#f92672">%;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">transform</span><span style="color:#f92672">:</span> <span style="color:#f92672">scale</span><span style="color:#f92672">(</span><span style="color:#f92672">0</span>.<span style="color:#a6e22e">7</span><span style="color:#f92672">,</span> <span style="color:#f92672">0</span>.<span style="color:#a6e22e">3</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>scaleX(x)</strong>：在X轴方向进行缩放转换</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform</span><span style="color:#f92672">:</span> <span style="color:#f92672">scaleX</span><span style="color:#f92672">(</span><span style="color:#f92672">0</span>.<span style="color:#a6e22e">7</span><span style="color:#f92672">)</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>scaleY(y</strong>)：在Y轴方向进行缩放转换</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform</span><span style="color:#f92672">:</span> <span style="color:#f92672">scaleY</span><span style="color:#f92672">(</span><span style="color:#f92672">0</span>.<span style="color:#a6e22e">7</span><span style="color:#f92672">)</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>scale3d</strong>：(x, y, z)：定义3D缩放转换</p>
+</li>
+<li>
+<p><strong>scaleZ(z)</strong>：在Z轴方向进行缩放转换</p>
+</li>
+</ol>
+<h4 id="扭曲-skew">扭曲 skew<a hidden class="anchor" aria-hidden="true" href="#扭曲-skew">#</a></h4>
+<ol>
+<li>
+<p><strong>skew(x-angle, y-angle)</strong> ：定义沿着 X 和 Y 轴的 2D 倾斜转换。</p>
+<p>skew是用来对元素进行扭曲变行，第一个参数是水平方向扭曲角度，第二个参数是垂直方向扭曲角度。其中第二个参数是可选参数，如果没有设置第二个参数，那么Y轴为0deg。：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform</span><span style="color:#f92672">:</span> <span style="color:#f92672">skew</span><span style="color:#f92672">(</span><span style="color:#f92672">10deg</span><span style="color:#f92672">,</span><span style="color:#f92672">10deg</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div><p><img loading="lazy" src="https://pic1.zhimg.com/80/v2-2aedd562c5769787542ed7ae34ee19bc_1440w.png" alt="img"  />
+</p>
+<p>同样是以元素中心为基点，我们也可以通过transform-origin来改变元素的基点位置。例如</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform-origin</span><span style="color:#f92672">:</span> <span style="color:#f92672">100</span><span style="color:#f92672">%</span> <span style="color:#f92672">100</span><span style="color:#f92672">%;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">transform</span><span style="color:#f92672">:</span> <span style="color:#f92672">skew</span><span style="color:#f92672">(</span><span style="color:#f92672">10deg</span><span style="color:#f92672">,</span><span style="color:#f92672">10deg</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div><p><img loading="lazy" src="https://pic3.zhimg.com/80/v2-2cfc4a4eea061c0f2c3e4f4316d8c972_1440w.png" alt="img"  />
+</p>
+</li>
+<li>
+<p><strong>skewX(angle)</strong>：定义沿着 X 轴的 2D 倾斜转换</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform</span><span style="color:#f92672">:</span> <span style="color:#f92672">skewX</span><span style="color:#f92672">(</span><span style="color:#f92672">10deg</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div><p><img loading="lazy" src="https://pic4.zhimg.com/80/v2-8520dcb711395d66105ac236b659a6bf_1440w.png" alt="img"  />
+</p>
+</li>
+<li>
+<p><strong>skewY(angle)</strong>：定义沿着 Y轴的 2D 倾斜转换</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform</span><span style="color:#f92672">:</span> <span style="color:#f92672">skewY</span><span style="color:#f92672">(</span><span style="color:#f92672">10deg</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div><p><img loading="lazy" src="https://pic1.zhimg.com/80/v2-2954448e76799950ad13994fe1310c6c_1440w.png" alt="img"  />
+</p>
+<p><strong>注意</strong>：如果要实现3D效果，需要将transform-style属性设置为preserve-3d，即</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">transform-style</span><span style="color:#f92672">:</span> <span style="color:#f92672">preserve-3d</span><span style="color:#f92672">;</span>
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="keyframes">@keyframes<a hidden class="anchor" aria-hidden="true" href="#keyframes">#</a></h3>
+<p><strong>CSS3中添加的新属性animation是用来为元素实现动画效果的，但是animation无法单独担当起实现动画的效果。承载动画的另一个属性——@keyframes。使用的时候为了兼容可加上-webkit-、-o-、-ms-、-moz-、-khtml-等前缀以适应不同的浏览器</strong></p>
+<p>创建动画的原理是，将一套 CSS 样式逐渐变化为另一套样式。</p>
+<p>通过 @keyframes 规则，您能够创建动画。</p>
+<p>@keyframes定义一个动画，并定义具体的动画效果，比如是放大还是位移等等。</p>
+<p>@keyframes 它定义的动画并不直接执行，需要借助animation来运转。</p>
+<p>在动画过程中，您能够多次改变这套 CSS 样式。</p>
+<p>以百分比来规定改变发生的时间，或者通过关键词 “from” 和 “to”，等价于 0% 和 100%。</p>
+<p>百分比是指动画完成一遍的时间长度的的百分比 ，0% 是动画的开始时间，50%是动画完成一半的时间，100% 动画的结束时间。百分比后面的花括号写：在动画执行过程中的某时间点要完成的变化。</p>
+<p>为了获得最佳的浏览器支持，您应该始终定义 0% 和 100% 选择器。</p>
+<p>语法:</p>
+<p><code>@keyframes animationname {keyframes-selector {css-styles;}} </code></p>
+<p><img loading="lazy" src="https://img-blog.csdnimg.cn/fe746baca3db4803b09cdb7373a67ea4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAamFja2l5bG9uZw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"  />
+</p>
+<blockquote>
+<p>名字为gif的@keyframes ，动画完成需要的总时长为1.4s,刚开始的时候图片旋转为0度，动画完成的时候图片旋转360度</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">load-border</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">120</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">120</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background</span>: url(<span style="color:#e6db74">../images/loading_icon.png</span>) <span style="color:#66d9ef">no-repeat</span> <span style="color:#66d9ef">center</span> <span style="color:#66d9ef">center</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">-webkit-</span><span style="color:#66d9ef">animation</span>: gif <span style="color:#ae81ff">1.4</span><span style="color:#66d9ef">s</span> <span style="color:#66d9ef">infinite</span> <span style="color:#66d9ef">linear</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">animation</span>: gif <span style="color:#ae81ff">1.4</span><span style="color:#66d9ef">s</span> <span style="color:#66d9ef">infinite</span> <span style="color:#66d9ef">linear</span>; 
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>@<span style="color:#66d9ef">keyframes</span> <span style="color:#f92672">gif</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">0</span><span style="color:#f92672">%</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">-webkit-</span><span style="color:#66d9ef">transform</span>: rotate(<span style="color:#ae81ff">0</span><span style="color:#66d9ef">deg</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">transform</span>: rotate(<span style="color:#ae81ff">0</span><span style="color:#66d9ef">deg</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">100</span><span style="color:#f92672">%</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">-webkit-</span><span style="color:#66d9ef">transform</span>: rotate(<span style="color:#ae81ff">360</span><span style="color:#66d9ef">deg</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">transform</span>: rotate(<span style="color:#ae81ff">360</span><span style="color:#66d9ef">deg</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>名字为mymove的@keyframes ，动画完成需要的总时长为1s,刚开始的时候图片距顶部距离为0px，0.25s后图片距顶部距离为200px，0.5s后图片距顶部的距离为100px，以此类推</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">img</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">120</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">120</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background</span>: url(<span style="color:#e6db74">../images/icon.png</span>) <span style="color:#66d9ef">no-repeat</span> <span style="color:#66d9ef">center</span> <span style="color:#66d9ef">center</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">-webkit-</span><span style="color:#66d9ef">animation</span>: gif <span style="color:#ae81ff">1.4</span><span style="color:#66d9ef">s</span> <span style="color:#66d9ef">infinite</span> <span style="color:#66d9ef">linear</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">animation</span>: mymove <span style="color:#ae81ff">1</span><span style="color:#66d9ef">s</span> <span style="color:#66d9ef">infinite</span> <span style="color:#66d9ef">linear</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>@<span style="color:#66d9ef">keyframes</span> <span style="color:#f92672">mymove</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">0</span><span style="color:#f92672">%</span>   {<span style="color:#66d9ef">top</span>:<span style="color:#ae81ff">0</span><span style="color:#66d9ef">px</span>;}
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">25</span><span style="color:#f92672">%</span>  {<span style="color:#66d9ef">top</span>:<span style="color:#ae81ff">200</span><span style="color:#66d9ef">px</span>;}
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">50</span><span style="color:#f92672">%</span>  {<span style="color:#66d9ef">top</span>:<span style="color:#ae81ff">100</span><span style="color:#66d9ef">px</span>;}
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">75</span><span style="color:#f92672">%</span>  {<span style="color:#66d9ef">top</span>:<span style="color:#ae81ff">200</span><span style="color:#66d9ef">px</span>;}
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">100</span><span style="color:#f92672">%</span> {<span style="color:#66d9ef">top</span>:<span style="color:#ae81ff">0</span><span style="color:#66d9ef">px</span>;}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>在一个动画中改变多个 CSS 样式：</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>@<span style="color:#66d9ef">keyframes</span> <span style="color:#f92672">mymove</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">0</span><span style="color:#f92672">%</span>   {<span style="color:#66d9ef">top</span>:<span style="color:#ae81ff">0</span><span style="color:#66d9ef">px</span>; <span style="color:#66d9ef">background</span>:<span style="color:#66d9ef">red</span>; <span style="color:#66d9ef">width</span>:<span style="color:#ae81ff">100</span><span style="color:#66d9ef">px</span>;}
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">100</span><span style="color:#f92672">%</span> {<span style="color:#66d9ef">top</span>:<span style="color:#ae81ff">200</span><span style="color:#66d9ef">px</span>; <span style="color:#66d9ef">background</span>:<span style="color:#66d9ef">yellow</span>; <span style="color:#66d9ef">width</span>:<span style="color:#ae81ff">300</span><span style="color:#66d9ef">px</span>;}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="animation动画属性">animation(动画)属性<a hidden class="anchor" aria-hidden="true" href="#animation动画属性">#</a></h3>
+<h4 id="语法">语法<a hidden class="anchor" aria-hidden="true" href="#语法">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>animation: name duration timing-function delay iteration-count direction fill-mode play-state;
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">animation-name</td>
+<td style="text-align:left">指定要绑定到选择器的关键帧的名称</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-duration</td>
+<td style="text-align:left">动画指定需要多少秒或毫秒完成</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-timing-function</td>
+<td style="text-align:left">设置动画将如何完成一个周期</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-delay</td>
+<td style="text-align:left">设置动画在启动前的延迟间隔。即是指动画延迟执行时间</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-iteration-count</td>
+<td style="text-align:left">定义动画的播放次数。无限循环关键字 ==infinite==,即是反复循环播放动画</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-direction</td>
+<td style="text-align:left">指定是否应该轮流反向播放动画。</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-fill-mode</td>
+<td style="text-align:left">规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-play-state</td>
+<td style="text-align:left">指定动画是否正在运行或已暂停。</td>
+</tr>
+<tr>
+<td style="text-align:left">initial</td>
+<td style="text-align:left">设置属性为其默认值。</td>
+</tr>
+<tr>
+<td style="text-align:left">inherit</td>
+<td style="text-align:left">从父元素继承属性。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="animation-timing-function"><em>animation-timing-function</em><a hidden class="anchor" aria-hidden="true" href="#animation-timing-function">#</a></h5>
+<p>规定动画的速度曲线. 默认是&quot;ease&quot;</p>
+<p>常见的动画速度参数:</p>
+<ol>
+<li>linear: 线性过渡.</li>
+<li>ease: 平滑过渡</li>
+<li>ease-in: 由慢到快</li>
+<li>ease-out: 由快到慢</li>
+<li>ease-in-out: 由慢到快再到慢</li>
+<li>step-start: 等同于steps(1, start)</li>
+<li>step-end: 等同于steps(1, end)</li>
+<li>steps(<integer>[, [ start | end ] ]?)：接受两个参数的步进函数。第一个参数必须为正整数，指定函数的步数。第二个参数取值可以是start或end，指定每一步的值发生变化的时间点。第二个参数是可选的，默认值为end</li>
+<li>cubic-bezier(<number>, <number>, <number>, <number>)：特定的贝塞尔曲线类型，4个数值需在[0, 1]区间内</li>
+</ol>
+<h5 id="animation-direction"><em>animation-direction</em><a hidden class="anchor" aria-hidden="true" href="#animation-direction">#</a></h5>
+<p>规定动画是否在下一周期逆向的播放. 默认是&quot;normal&quot;</p>
+<ol>
+<li>reverse: 反方向运行</li>
+<li>alternate: 动画先正常运行再反方向运行,并持续交替运行</li>
+<li>alternate-reverse: 动画先反运行再正方向运行,并持续交替运行</li>
+</ol>
+<h5 id="animate-fill-mode"><em>animate-fill-mode</em><a hidden class="anchor" aria-hidden="true" href="#animate-fill-mode">#</a></h5>
+<p>规定对象动画时间之外的状态</p>
+<ol>
+<li>none: 默认值, 不设置对象动画之外的状态</li>
+<li>forwards: 设置对象状态为动画结束时 的状态</li>
+<li>backwards: 设置对象状态为动画开始时的状态</li>
+<li>both: 设置对象状态为动画结束或开始的状态, 动画开始之前是&quot;form&quot;或&quot;0%&ldquo;关键帧; 动画完成之后是&quot;to&quot;或&quot;100%&ldquo;关键帧状态</li>
+</ol>
+
+
+        </div>
+
+        <footer class="post-footer">
+            
+<nav class="paginav">
+  <a class="prev" href="https://sirius00.github.io/posts/tech/javascript%E5%9F%BA%E7%A1%80/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>Javascript基础</span>
+  </a>
+  <a class="next" href="https://sirius00.github.io/posts/tech/webpack%E7%9A%84%E4%BD%BF%E7%94%A8/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Webpack的使用</span>
+  </a>
+</nav>
+
+        </footer>
+    </div>
+</article>
+</main>
+
+
+<script async src="https://unpkg.com/mermaid@8.8.1/dist/mermaid.min.js"></script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<footer class="footer">
+    <span>
+        Copyright
+        &copy;
+        2020-2023
+        <a href="https://sirius00.github.io/" style="color:#939393;">XP&#39;s Blog</a>
+        All Rights Reserved
+    </span>
+
+    <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#939393;">填写自己的备案号</a>&nbsp;
+
+    <span>
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=null"
+           style="display:inline-block;text-decoration:none;height:20px;color:#939393;">
+            <img src="%e5%a1%ab%e8%87%aa%e5%b7%b1%e7%9a%84%e5%85%ac%e5%ae%89%e5%9b%be%e6%a0%87%e9%93%be%e6%8e%a5" style="float:left;margin: 0px 5px 0px 0px;"/>
+            填自己的公网安备
+        </a>
+    </span>
+
+    <span id="busuanzi_container">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        总访客数: <span id="busuanzi_value_site_uv"></span>
+        总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <span class="topInner">
+        <svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z"/>
+        </svg>
+        <span id="read_progress"></span>
+    </span>
+</a>
+
+<script>
+    document.addEventListener('scroll', function (e) {
+        const readProgress = document.getElementById("read_progress");
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        
+        readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
+    })
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    let mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+<script>
+    document.body.addEventListener('copy', function (e) {
+        if (window.getSelection().toString() && window.getSelection().toString().length > 50) {
+            let clipboardData = e.clipboardData || window.clipboardData;
+            if (clipboardData) {
+                e.preventDefault();
+                let htmlData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「' + {
+                { .
+                    Site.Title
+                }
+            }
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                let textData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「' + {
+                { .
+                    Site.Title
+                }
+            }
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                clipboardData.setData('text/html', htmlData);
+                clipboardData.setData('text/plain', textData);
+            }
+        }
+    });
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '📄复制';
+
+        function copyingDone() {
+            copybutton.innerText = '👌🏻已复制!';
+            setTimeout(() => {
+                copybutton.innerText = '📄复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                let text = codeblock.textContent +
+                    '\r\n————————————————\r\n' +
+                    '版权声明：本文为「' + "XP's Blog"
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                navigator.clipboard.writeText(text);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+            }
+            ;
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild === container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName === "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $("code[class^=language] ").on("mouseover", function () {
+        if (this.clientWidth < this.scrollWidth) {
+            $(this).css("width", "135%")
+        }
+    }).on("mouseout", function () {
+        $(this).css("width", "100%")
+    })
+</script>
+</body>
+
+</html>

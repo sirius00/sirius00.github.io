@@ -6,7 +6,106 @@
     <description>Recent content on XP&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 21 Feb 2023 17:05:52 +0800</lastBuildDate><atom:link href="https://sirius00.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Feb 2023 09:50:40 +0800</lastBuildDate><atom:link href="https://sirius00.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Javascript基础</title>
+      <link>https://sirius00.github.io/posts/tech/javascript%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Wed, 22 Feb 2023 09:50:40 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/tech/javascript%E5%9F%BA%E7%A1%80/</guid>
+      <description>浏览器运行JS 浏览器分成两部分: 渲染引擎和JS引擎 渲染引擎: 用来解析HTML和CSS, 俗称内核, 比如chrome浏览器的blink, 老版本的webkit JS引擎: 也称为js解释器, 用来读取网页的javascript代码, 对其处理后运行, 比如chrome的v8 浏览器本身不会执行JS</description>
+    </item>
+    
+    <item>
+      <title>HTML_CSS</title>
+      <link>https://sirius00.github.io/posts/tech/html_css/</link>
+      <pubDate>Wed, 22 Feb 2023 09:47:53 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/tech/html_css/</guid>
+      <description>flex布局 容器的属性 flex-direction属性 作用:决定主轴的方向(项目的排列方向) .box { flex-direction: row | row-reverse | column | column-reverse; } row（默认值）：主轴为水平方向，起点在左端。 row-reverse：主轴为水平方向，起点在右端。 column：主轴为垂直方向，起点在上沿。 column-revers</description>
+    </item>
+    
+    <item>
+      <title>Webpack的使用</title>
+      <link>https://sirius00.github.io/posts/tech/webpack%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 22 Feb 2023 09:46:05 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/tech/webpack%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>webpack 安装 首先需要安装Node.js, node.js自带软件包管理工具npm 查看node版本 node -v 全局安装webpack npm install webpack@3.6.0 -g 本地安装webpack 在项目目录下执行 npm install webpack@3.6.0 --save-dev webpack的基本使用 项目文件目录: 项目 dist //打包好的文件 src //项目源码 webpack 打包js文件 常规方式 在项目文件夹下 webpack</description>
+    </item>
+    
+    <item>
+      <title>Vue2学习笔记</title>
+      <link>https://sirius00.github.io/posts/tech/vue2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 22 Feb 2023 09:45:05 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/tech/vue2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>Vue2学习笔记 认识vue 渐进式框架,什么是渐进式? 渐进式意味着你可以将vue作为你应用的一部分嵌入其中 vue特点 解耦视图和数据 可复用的组件 前端路由技术 状态管理 虚拟DOM 安装 响应式开发 生命周期 webstorm 模板功能 基础知识 插值操作 mustache语法 &amp;lt;span&amp;gt;Message: {{ msg }}&amp;lt;/span&amp;gt; v-once语法 &amp;lt;span v-once&amp;g</description>
+    </item>
+    
+    <item>
+      <title>Uniapp的使用</title>
+      <link>https://sirius00.github.io/posts/tech/uniapp%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 22 Feb 2023 09:44:37 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/tech/uniapp%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>全局文件 pages.json页面路由 ​ mainfest.json应用配置 uni.scss文件 ​ 作用:为了方便整体控制应用的风格。比如按钮颜色、边框风格，uni.scss文件里预置了一批scss变量预置 main.js文件 ​ 项目的入口文件,主要作用是初始化vue实例并使用需要的插件 unpackage</description>
+    </item>
+    
+    <item>
+      <title>Django的使用</title>
+      <link>https://sirius00.github.io/posts/tech/django%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 22 Feb 2023 09:43:58 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/tech/django%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>安装django 安装django ：pip3 install django==2.2.12 检查安装的django版本：python -m django &amp;ndash;version 创建项目 django-amdin startproject mysite 启动服务 1、进入项目文件夹 2、python3 manage.py runserver 改变端口号 python manage.py runserver 端口号 项目结构 manage.py: 一个让你用各种方式管理 Django 项目的命令行工具 runserver：启动服务 startapp：创建应用</description>
+    </item>
+    
+    <item>
+      <title>数据结构</title>
+      <link>https://sirius00.github.io/posts/tech/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Wed, 22 Feb 2023 09:42:30 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/tech/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>计算机网络</title>
+      <link>https://sirius00.github.io/posts/tech/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link>
+      <pubDate>Wed, 22 Feb 2023 09:42:07 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/tech/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</guid>
+      <description>一、HTTP协议 1.GET和POST请求的区别 应用场景: GET请求是一个幂等的请求(在程序中如果相同条件下多次请求对资源的影响表现一致则称为幂等请求), 一般get请求用于对服务器资源不会产生影响的场景, 比如请求一个网页的资源. 而POST不是一个幂等的请求, 一般用于对服务器资源会产</description>
+    </item>
+    
+    <item>
+      <title>Canvas的使用</title>
+      <link>https://sirius00.github.io/posts/tech/canvas%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 22 Feb 2023 09:41:47 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/tech/canvas%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>canvas画布宽度和高度 canvas标签只有两个标签属性: width和height 当没有设置宽度和高度的时候, canvas会初始化为宽300px, 高150px画布 使用html属性设置width, height 时,只影响画布本身,不影响画布内容 使用css样式指定canvas的width, he</description>
+    </item>
+    
+    <item>
+      <title>Scss的使用</title>
+      <link>https://sirius00.github.io/posts/tech/scss%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 22 Feb 2023 09:41:35 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/tech/scss%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>Scss的基本用法 声明变量 声明变量的符号 $ $color: #333; .a { color: $color; } 默认变量 (!default) scss的默认变量仅需要在值后面加上!default即可 $color: #333 !default; .a { color: $color; } 如果分配给变量的值后面添加了 !default 标志 ，这意味着该变量如果已经赋值，那么它不会被重新赋值，但是，如果它尚未赋值，那么它会被赋予新的给定值 变量调用 直</description>
+    </item>
+    
+    <item>
+      <title>Koa框架</title>
+      <link>https://sirius00.github.io/posts/tech/koa%E6%A1%86%E6%9E%B6/</link>
+      <pubDate>Wed, 22 Feb 2023 09:31:10 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/tech/koa%E6%A1%86%E6%9E%B6/</guid>
+      <description>教程：https://github.com/jj112358/node-api 项目的基本优化 nodemon **作用：**自动重新加载当前项目 安装：npm i nodemon **配置：**在package.json修改scripts， 添加如下内容 ： &amp;#34;start&amp;#34;: &amp;#34;nodemon ./main.js&amp;#34;, dotenv **作用：**读取配置文件， 设置环境变量 链接：npm地</description>
+    </item>
+    
     <item>
       <title>Mysql的基本使用</title>
       <link>https://sirius00.github.io/posts/tech/mysql%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</link>
@@ -22,33 +121,6 @@
       <pubDate>Tue, 07 Feb 2023 19:59:52 +0800</pubDate>
       
       <guid>https://sirius00.github.io/posts/tech/git%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Blog</title>
-      <link>https://sirius00.github.io/posts/blog/blog/</link>
-      <pubDate>Thu, 05 May 2022 00:18:23 +0800</pubDate>
-      
-      <guid>https://sirius00.github.io/posts/blog/blog/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Life</title>
-      <link>https://sirius00.github.io/posts/life/life/</link>
-      <pubDate>Thu, 05 May 2022 00:18:15 +0800</pubDate>
-      
-      <guid>https://sirius00.github.io/posts/life/life/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Read</title>
-      <link>https://sirius00.github.io/posts/read/read/</link>
-      <pubDate>Thu, 05 May 2022 00:18:06 +0800</pubDate>
-      
-      <guid>https://sirius00.github.io/posts/read/read/</guid>
       <description></description>
     </item>
     
@@ -71,6 +143,15 @@
     </item>
     
     
+    
+    <item>
+      <title>🏷 分类</title>
+      <link>https://sirius00.github.io/categories/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sirius00.github.io/categories/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

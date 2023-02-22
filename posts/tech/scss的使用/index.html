@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Scss的使用 | XP&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="Scss的基本用法 声明变量 声明变量的符号 $ $color: #333; .a { color: $color; } 默认变量 (!default) scss的默认变量仅需要在值后面加上!default即可 $color: #333 !default; .a { color: $color; } 如果分配给变量的值后面添加了 !default 标志 ，这意味着该变量如果已经赋值，那么它不会被重新赋值，但是，如果它尚未赋值，那么它会被赋予新的给定值 变量调用 直">
+<meta name="author" content="
+作者:&nbsp;XP">
+<link rel="canonical" href="https://sirius00.github.io/posts/tech/scss%E7%9A%84%E4%BD%BF%E7%94%A8/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a6c679e0d2f6e83a8f1aad1f7a2cdc96085c188647e679dbc62800f83be6bad2.css" integrity="sha256-psZ54NL26DqPGq0feizclghcGIZH5nnbxigA&#43;DvmutI=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+        onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sirius00.github.io/img/cat.png">
+<link rel="apple-touch-icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="mask-icon" href="https://sirius00.github.io/img/cat.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = ""; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<meta property="og:title" content="Scss的使用" />
+<meta property="og:description" content="Scss的基本用法 声明变量 声明变量的符号 $ $color: #333; .a { color: $color; } 默认变量 (!default) scss的默认变量仅需要在值后面加上!default即可 $color: #333 !default; .a { color: $color; } 如果分配给变量的值后面添加了 !default 标志 ，这意味着该变量如果已经赋值，那么它不会被重新赋值，但是，如果它尚未赋值，那么它会被赋予新的给定值 变量调用 直" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sirius00.github.io/posts/tech/scss%E7%9A%84%E4%BD%BF%E7%94%A8/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-22T09:41:35+08:00" />
+<meta property="article:modified_time" content="2023-02-22T09:41:35+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Scss的使用"/>
+<meta name="twitter:description" content="Scss的基本用法 声明变量 声明变量的符号 $ $color: #333; .a { color: $color; } 默认变量 (!default) scss的默认变量仅需要在值后面加上!default即可 $color: #333 !default; .a { color: $color; } 如果分配给变量的值后面添加了 !default 标志 ，这意味着该变量如果已经赋值，那么它不会被重新赋值，但是，如果它尚未赋值，那么它会被赋予新的给定值 变量调用 直"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+
+        {
+          "@type": "ListItem",
+          "position":  1 ,
+          "name": "📚文章",
+          "item": "https://sirius00.github.io/posts/"
+        },
+
+        {
+          "@type": "ListItem",
+          "position":  2 ,
+          "name": "👨🏻‍💻 技术",
+          "item": "https://sirius00.github.io/posts/tech/"
+        }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Scss的使用",
+      "item": "https://sirius00.github.io/posts/tech/scss%E7%9A%84%E4%BD%BF%E7%94%A8/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Scss的使用",
+  "name": "Scss的使用",
+  "description": "Scss的基本用法 声明变量 声明变量的符号 $ $color: #333; .a { color: $color; } 默认变量 (!default) scss的默认变量仅需要在值后面加上!default即可 $color: #333 !default; .a { color: $color; } 如果分配给变量的值后面添加了 !default 标志 ，这意味着该变量如果已经赋值，那么它不会被重新赋值，但是，如果它尚未赋值，那么它会被赋予新的给定值 变量调用 直",
+  "keywords": [
+    ""
+  ],
+  "articleBody": "Scss的基本用法 声明变量 声明变量的符号 $\n$color: #333; .a { color: $color; } 默认变量 (!default) scss的默认变量仅需要在值后面加上!default即可\n$color: #333 !default; .a { color: $color; } 如果分配给变量的值后面添加了 !default 标志 ，这意味着该变量如果已经赋值，那么它不会被重新赋值，但是，如果它尚未赋值，那么它会被赋予新的给定值\n变量调用 直接调用即可, 变量声明也可以直接调用已声明的变量\n$color: #666; $color2: $color; .b { color: $color2; } 局部变量和全局变量 在元素内部定义的变量不会影响其他元素\nem { $color: red; //定义局部变量 a { color: $color; //调用局部变量 } } 嵌套 选择器嵌套 结构\n\u003cheader\u003e \u003cnav\u003e \u003ca href=“##”\u003eHome\u003c/a\u003e \u003ca href=“##”\u003eAbout\u003c/a\u003e \u003ca href=“##”\u003eBlog\u003c/a\u003e \u003c/nav\u003e \u003cheader\u003e scss实现\nnav { a { color: red; header \u0026 { color:green; } } } 属性嵌套 Sass 中还提供属性嵌套，CSS 有一些属性前缀相同，只是后缀不一样，比如：border-top/border-right，与这个类似的还有 margin、padding、font 等属性。\n样式如下:\n.box { border-top: 1px solid red; border-bottom: 1px solid green; } sass实现\n.box { border: { top: 1px solid red; bottom: 1px solid green; } } 伪类嵌套 借助 \u0026\nspan { color:red; \u0026:hover { color : green; } } 混合宏 如果你的整个网站中有几处小样式类似，比如颜色，字体等，在 Sass 可以使用变量来统一处理，那么这种选择还是不错的。但当你的样式变得越来越复杂，需要重复使用大段的样式时，使用变量就无法达到我们目了。这个时候 Sass 中的混合宏就会变得非常有意义\n声明 不带参数混合宏 在sass中, 使用\"@mixin\" 来声明一个混合宏,如:\n@mixin border-radius{ -webkit-border-radius: 5px; border-radius: 5px; } 其中 @mixin 是用来声明混合宏的关键词，有点类似 CSS 中的 @media、@font-face 一样。border-radius 是混合宏的名称。大括号里面是复用的样式代码。\n带参数混合宏 除了声明一个不带参数的混合宏之外，还可以在定义混合宏时带有参数，如：\n@mixin border-radius($radius:5px){ -webkit-border-radius: $radius; border-radius: $radius; } 调用 在 Sass 中通过 @mixin 关键词声明了一个混合宏，那么在实际调用中，其匹配了一个关键词“ @include ”来调用声明好的混合宏。例如在你的样式中定义了一个圆角的混合宏“border-radius”:\n@mixin border-radius{ -webkit-border-radius: 3px; border-radius: 3px; } 在一个按钮中要调用定义好的混合宏“border-radius”，可以这样使用：\nbutton { @include border-radius; } 混合宏的参数 Sass 的混合宏有一个强大的功能，可以传参，那么在 Sass 中传参主要有以下几种情形：\n传一个不带值的参数 在混合宏中，可以传一个不带任何值的参数，比如：\n@mixin border-radius($radius){ -webkit-border-radius: $radius; border-radius: $radius; } 在混合宏“border-radius”中定义了一个不带任何值的参数“$radius”。\n在调用的时候可以给这个混合宏传一个参数值：\n.box { @include border-radius(3px); } 传一个带值的参数 在 Sass 的混合宏中，还可以给混合宏的参数传一个默认值，例如：\n@mixin border-radius($radius:3px){ -webkit-border-radius: $radius; border-radius: $radius; } 在混合宏“border-radius”传了一个参数“$radius”，而且给这个参数赋予了一个默认值“3px”。\n在调用类似这样的混合宏时，会多有一个机会，假设你的页面中的圆角很多地方都是“3px”的圆角，那么这个时候只需要调用默认的混合宏“border-radius”:\n.btn { @include border-radius; } 混合宏的不足 混合宏在实际编码中给我们带来很多方便之处，特别是对于复用重复代码块。但其最大的不足之处是会生成冗余的代码块。比如在不同的地方调用一个相同的混合宏时。如：\n@mixin border-radius{ -webkit-border-radius: 3px; border-radius: 3px; } .box { @include border-radius; margin-bottom: 5px; } .btn { @include border-radius; } 扩展/继承 在 Sass 中是通过关键词 “@extend”来继承已存在的类样式块，从而实现代码的继承。如下所示：\n// SCSS .btn { border: 1px solid #ccc; padding: 6px 10px; font-size: 14px; } .btn-primary { background-color: #f36; color: #fff; @extend .btn; } .btn-second { background-color: orange; color: #fff; @extend .btn; } 占位符 % placeholder 它可以取代以前 CSS 中的基类造成的代码冗余的情形。因为 %placeholder 声明的代码，如果不被 @extend 调用的话，不会产生任何代码。来看一个演示：\n%mt5 { margin-top: 5px; } %pt5{ padding-top: 5px; } 这段代码没有被 @extend 调用，他并没有产生任何代码块，只是静静的躺在你的某个 SCSS 文件中。只有通过 @extend 调用才会产生代码：\n// SCSS %mt5 { margin-top: 5px; } %pt5{ padding-top: 5px; } .btn { @extend %mt5; @extend %pt5; } .block { @extend %mt5; span { @extend %pt5; } } ",
+  "wordCount" : "1590",
+  "inLanguage": "en",
+  "datePublished": "2023-02-22T09:41:35+08:00",
+  "dateModified": "2023-02-22T09:41:35+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "XP"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://sirius00.github.io/posts/tech/scss%E7%9A%84%E4%BD%BF%E7%94%A8/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "XP's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://sirius00.github.io/img/cat.png"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://sirius00.github.io/" accesskey="h" title="XP&#39;s Blog (Alt + H)">
+            <img src="https://sirius00.github.io/img/cat.png" alt="logo" aria-label="logo"
+                 height="35">XP&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://sirius00.github.io/search" title="🔍 搜索 (Alt &#43; /)" accesskey=/>
+                <span>🔍 搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/" title="🏠 主页">
+                <span>🏠 主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/posts" title="📚 文章">
+                <span>📚 文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/tags" title="🧩 标签">
+                <span>🧩 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/archives/" title="⏱️ 时间轴">
+                <span>⏱️ 时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/about" title="🙋🏻‍♂️ 关于">
+                <span>🙋🏻‍♂️ 关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main page">
+<article class="post-single">
+    <div id="single-content">
+        <header class="post-header">
+            <div class="breadcrumbs"><a href="https://sirius00.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://sirius00.github.io/posts/">📚文章</a>&nbsp;»&nbsp;<a href="https://sirius00.github.io/posts/tech/">👨🏻‍💻 技术</a></div>
+            <h1 class="post-title">
+                Scss的使用
+            </h1>
+            <div class="post-meta">创建:&nbsp;<span title='2023-02-22 09:41:35 +0800 CST'>2023-02-22</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-22&nbsp;|&nbsp;字数:&nbsp;1590字&nbsp;|&nbsp;时长:&nbsp;4分钟&nbsp;|&nbsp;
+作者:&nbsp;XP
+
+
+
+                &nbsp;|&nbsp;标签: &nbsp;
+                <ul class="post-tags-meta">
+                    <a href="https://sirius00.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+                </ul>
+
+                
+                <span id="busuanzi_container_page_pv">
+                &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+</div>
+        </header> 
+        <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">文章目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#scss%e7%9a%84%e5%9f%ba%e6%9c%ac%e7%94%a8%e6%b3%95" aria-label="Scss的基本用法">Scss的基本用法</a><ul>
+                        
+                <li>
+                    <a href="#%e5%a3%b0%e6%98%8e%e5%8f%98%e9%87%8f" aria-label="声明变量">声明变量</a></li>
+                <li>
+                    <a href="#%e9%bb%98%e8%ae%a4%e5%8f%98%e9%87%8f-default" aria-label="默认变量 (!default)">默认变量 (!default)</a></li>
+                <li>
+                    <a href="#%e5%8f%98%e9%87%8f%e8%b0%83%e7%94%a8" aria-label="变量调用">变量调用</a></li>
+                <li>
+                    <a href="#%e5%b1%80%e9%83%a8%e5%8f%98%e9%87%8f%e5%92%8c%e5%85%a8%e5%b1%80%e5%8f%98%e9%87%8f" aria-label="局部变量和全局变量">局部变量和全局变量</a></li>
+                <li>
+                    <a href="#%e5%b5%8c%e5%a5%97" aria-label="嵌套">嵌套</a><ul>
+                        
+                <li>
+                    <a href="#%e9%80%89%e6%8b%a9%e5%99%a8%e5%b5%8c%e5%a5%97" aria-label="选择器嵌套">选择器嵌套</a></li>
+                <li>
+                    <a href="#%e5%b1%9e%e6%80%a7%e5%b5%8c%e5%a5%97" aria-label="属性嵌套">属性嵌套</a></li>
+                <li>
+                    <a href="#%e4%bc%aa%e7%b1%bb%e5%b5%8c%e5%a5%97" aria-label="伪类嵌套">伪类嵌套</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%b7%b7%e5%90%88%e5%ae%8f" aria-label="混合宏">混合宏</a><ul>
+                        
+                <li>
+                    <a href="#%e5%a3%b0%e6%98%8e" aria-label="声明">声明</a><ul>
+                        
+                <li>
+                    <a href="#%e4%b8%8d%e5%b8%a6%e5%8f%82%e6%95%b0%e6%b7%b7%e5%90%88%e5%ae%8f" aria-label="不带参数混合宏">不带参数混合宏</a></li>
+                <li>
+                    <a href="#%e5%b8%a6%e5%8f%82%e6%95%b0%e6%b7%b7%e5%90%88%e5%ae%8f" aria-label="带参数混合宏">带参数混合宏</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e8%b0%83%e7%94%a8" aria-label="调用">调用</a></li>
+                <li>
+                    <a href="#%e6%b7%b7%e5%90%88%e5%ae%8f%e7%9a%84%e5%8f%82%e6%95%b0" aria-label="混合宏的参数">混合宏的参数</a><ul>
+                        
+                <li>
+                    <a href="#%e4%bc%a0%e4%b8%80%e4%b8%aa%e4%b8%8d%e5%b8%a6%e5%80%bc%e7%9a%84%e5%8f%82%e6%95%b0" aria-label="传一个不带值的参数">传一个不带值的参数</a></li>
+                <li>
+                    <a href="#%e4%bc%a0%e4%b8%80%e4%b8%aa%e5%b8%a6%e5%80%bc%e7%9a%84%e5%8f%82%e6%95%b0" aria-label="传一个带值的参数">传一个带值的参数</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%b7%b7%e5%90%88%e5%ae%8f%e7%9a%84%e4%b8%8d%e8%b6%b3" aria-label="混合宏的不足">混合宏的不足</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%89%a9%e5%b1%95%e7%bb%a7%e6%89%bf" aria-label="扩展/继承">扩展/继承</a></li>
+                <li>
+                    <a href="#%e5%8d%a0%e4%bd%8d%e7%ac%a6--placeholder" aria-label="占位符 % placeholder">占位符 % placeholder</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+        
+        activeElement = elements[0];
+        const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+        document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+    }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 &&
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+            const id = encodeURI(element.getAttribute('id')).toLowerCase();
+            if (element === activeElement){
+                document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+            } else {
+                document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+            }
+        })
+    }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;
+    }
+</script>
+        
+        <div class="post-content"><h1 id="scss的基本用法">Scss的基本用法<a hidden class="anchor" aria-hidden="true" href="#scss的基本用法">#</a></h1>
+<h2 id="声明变量">声明变量<a hidden class="anchor" aria-hidden="true" href="#声明变量">#</a></h2>
+<p>声明变量的符号 $</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">$</span><span style="color:#f92672">color</span><span style="color:#f92672">:</span> #333<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">a</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">color</span>: <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">color</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="默认变量-default">默认变量 (!default)<a hidden class="anchor" aria-hidden="true" href="#默认变量-default">#</a></h2>
+<p>scss的默认变量仅需要在值后面加上!default即可</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">$</span><span style="color:#f92672">color</span><span style="color:#f92672">:</span> #333 <span style="color:#f92672">!</span><span style="color:#f92672">default</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">a</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">color</span>: <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">color</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>如果分配给变量的值后面添加了 !default 标志 ，这意味着该变量如果已经赋值，那么它不会被重新赋值，但是，如果它尚未赋值，那么它会被赋予新的给定值</p>
+<h2 id="变量调用">变量调用<a hidden class="anchor" aria-hidden="true" href="#变量调用">#</a></h2>
+<p>直接调用即可, 变量声明也可以直接调用已声明的变量</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">$</span><span style="color:#f92672">color</span><span style="color:#f92672">:</span> #666<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span><span style="color:#f92672">color2</span><span style="color:#f92672">:</span> <span style="color:#f92672">$</span><span style="color:#f92672">color</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">b</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">color</span>: <span style="color:#960050;background-color:#1e0010">$</span>color2;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="局部变量和全局变量">局部变量和全局变量<a hidden class="anchor" aria-hidden="true" href="#局部变量和全局变量">#</a></h2>
+<p>在元素内部定义的变量不会影响其他元素</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">em</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">red</span>;  <span style="color:#960050;background-color:#1e0010">//定义局部变量</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">a</span> <span style="color:#960050;background-color:#1e0010">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">color</span>: <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">color</span>; <span style="color:#960050;background-color:#1e0010">//调用局部变量</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div><h2 id="嵌套">嵌套<a hidden class="anchor" aria-hidden="true" href="#嵌套">#</a></h2>
+<h3 id="选择器嵌套">选择器嵌套<a hidden class="anchor" aria-hidden="true" href="#选择器嵌套">#</a></h3>
+<p>结构</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">header</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">nav</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">“##”</span>&gt;Home&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">“##”</span>&gt;About&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">“##”</span>&gt;Blog&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">nav</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">header</span>&gt;
+</span></span></code></pre></div><p>scss实现</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">nav</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">a</span> <span style="color:#960050;background-color:#1e0010">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">red</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">header</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#960050;background-color:#1e0010">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">color</span>:<span style="color:#66d9ef">green</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">}</span>  
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div><h3 id="属性嵌套">属性嵌套<a hidden class="anchor" aria-hidden="true" href="#属性嵌套">#</a></h3>
+<p>Sass 中还提供属性嵌套，CSS 有一些属性前缀相同，只是后缀不一样，比如：border-top/border-right，与这个类似的还有 margin、padding、font 等属性。</p>
+<p>样式如下:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">border-top</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">red</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">border-bottom</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">green</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>sass实现</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border</span>: <span style="color:#960050;background-color:#1e0010">{</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">top</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">red</span>;
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">bottom</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">green</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div><h3 id="伪类嵌套">伪类嵌套<a hidden class="anchor" aria-hidden="true" href="#伪类嵌套">#</a></h3>
+<p>借助 &amp;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">span</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">color</span>:<span style="color:#66d9ef">red</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#960050;background-color:#1e0010">&amp;:hover</span> <span style="color:#960050;background-color:#1e0010">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">color</span> : <span style="color:#66d9ef">green</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div><h2 id="混合宏">混合宏<a hidden class="anchor" aria-hidden="true" href="#混合宏">#</a></h2>
+<p>如果你的整个网站中有几处小样式类似，比如颜色，字体等，在 Sass 可以使用变量来统一处理，那么这种选择还是不错的。但当你的样式变得越来越复杂，需要重复使用大段的样式时，使用变量就无法达到我们目了。这个时候 Sass 中的混合宏就会变得非常有意义</p>
+<h3 id="声明">声明<a hidden class="anchor" aria-hidden="true" href="#声明">#</a></h3>
+<h4 id="不带参数混合宏">不带参数混合宏<a hidden class="anchor" aria-hidden="true" href="#不带参数混合宏">#</a></h4>
+<p>在sass中, 使用&quot;@mixin&quot; 来声明一个混合宏,如:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>@<span style="color:#66d9ef">mixin</span> <span style="color:#f92672">border-radius</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-webkit-border-radius</span><span style="color:#f92672">:</span> <span style="color:#f92672">5px</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">border-radius</span><span style="color:#f92672">:</span> <span style="color:#f92672">5px</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>其中 @mixin 是用来声明混合宏的关键词，有点类似 CSS 中的 @media、@font-face 一样。border-radius 是混合宏的名称。大括号里面是复用的样式代码。</p>
+<h4 id="带参数混合宏">带参数混合宏<a hidden class="anchor" aria-hidden="true" href="#带参数混合宏">#</a></h4>
+<p>除了声明一个不带参数的混合宏之外，还可以在定义混合宏时带有参数，如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>@<span style="color:#66d9ef">mixin</span> <span style="color:#f92672">border-radius</span><span style="color:#f92672">($</span><span style="color:#f92672">radius</span>:<span style="color:#a6e22e">5px</span><span style="color:#f92672">)</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-webkit-border-radius</span><span style="color:#f92672">:</span> <span style="color:#f92672">$</span><span style="color:#f92672">radius</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">border-radius</span><span style="color:#f92672">:</span> <span style="color:#f92672">$</span><span style="color:#f92672">radius</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="调用">调用<a hidden class="anchor" aria-hidden="true" href="#调用">#</a></h3>
+<p>在 Sass 中通过 @mixin 关键词声明了一个混合宏，那么在实际调用中，其匹配了一个关键词“ @include ”来调用声明好的混合宏。例如在你的样式中定义了一个圆角的混合宏“border-radius”:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>@<span style="color:#66d9ef">mixin</span> <span style="color:#f92672">border-radius</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-webkit-border-radius</span><span style="color:#f92672">:</span> <span style="color:#f92672">3px</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">border-radius</span><span style="color:#f92672">:</span> <span style="color:#f92672">3px</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在一个按钮中要调用定义好的混合宏“border-radius”，可以这样使用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">button</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@include</span> <span style="color:#960050;background-color:#1e0010">border-radius</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="混合宏的参数">混合宏的参数<a hidden class="anchor" aria-hidden="true" href="#混合宏的参数">#</a></h3>
+<p>Sass 的混合宏有一个强大的功能，可以传参，那么在 Sass 中传参主要有以下几种情形：</p>
+<h4 id="传一个不带值的参数">传一个不带值的参数<a hidden class="anchor" aria-hidden="true" href="#传一个不带值的参数">#</a></h4>
+<p>在混合宏中，可以传一个不带任何值的参数，比如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>@<span style="color:#66d9ef">mixin</span> <span style="color:#f92672">border-radius</span><span style="color:#f92672">($</span><span style="color:#f92672">radius</span><span style="color:#f92672">)</span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">-webkit-border-radius</span><span style="color:#f92672">:</span> <span style="color:#f92672">$</span><span style="color:#f92672">radius</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">border-radius</span><span style="color:#f92672">:</span> <span style="color:#f92672">$</span><span style="color:#f92672">radius</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在混合宏“border-radius”中定义了一个不带任何值的参数“$radius”。</p>
+<p>在调用的时候可以给这个混合宏传一个参数值：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@include</span> <span style="color:#960050;background-color:#1e0010">border-radius(3px)</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="传一个带值的参数">传一个带值的参数<a hidden class="anchor" aria-hidden="true" href="#传一个带值的参数">#</a></h4>
+<p>在 Sass 的混合宏中，还可以给混合宏的参数传一个默认值，例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>@<span style="color:#66d9ef">mixin</span> <span style="color:#f92672">border-radius</span><span style="color:#f92672">($</span><span style="color:#f92672">radius</span>:<span style="color:#a6e22e">3px</span><span style="color:#f92672">)</span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">-webkit-border-radius</span><span style="color:#f92672">:</span> <span style="color:#f92672">$</span><span style="color:#f92672">radius</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">border-radius</span><span style="color:#f92672">:</span> <span style="color:#f92672">$</span><span style="color:#f92672">radius</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在混合宏“border-radius”传了一个参数“$radius”，而且给这个参数赋予了一个默认值“3px”。</p>
+<p>在调用类似这样的混合宏时，会多有一个机会，假设你的页面中的圆角很多地方都是“3px”的圆角，那么这个时候只需要调用默认的混合宏“border-radius”:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">btn</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@include</span> <span style="color:#960050;background-color:#1e0010">border-radius</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="混合宏的不足">混合宏的不足<a hidden class="anchor" aria-hidden="true" href="#混合宏的不足">#</a></h3>
+<p>混合宏在实际编码中给我们带来很多方便之处，特别是对于复用重复代码块。但其最大的不足之处是会生成冗余的代码块。比如在不同的地方调用一个相同的混合宏时。如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>@<span style="color:#66d9ef">mixin</span> <span style="color:#f92672">border-radius</span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">-webkit-border-radius</span><span style="color:#f92672">:</span> <span style="color:#f92672">3px</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">border-radius</span><span style="color:#f92672">:</span> <span style="color:#f92672">3px</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@include</span> <span style="color:#960050;background-color:#1e0010">border-radius</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">btn</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@include</span> <span style="color:#960050;background-color:#1e0010">border-radius</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="扩展继承">扩展/继承<a hidden class="anchor" aria-hidden="true" href="#扩展继承">#</a></h2>
+<p>在 Sass 中是通过关键词 “@extend”来继承已存在的类样式块，从而实现代码的继承。如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">//</span> <span style="color:#f92672">SCSS</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">btn</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#ae81ff">#ccc</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">6</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">14</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">btn-primary</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#f36</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#fff</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@extend</span> <span style="color:#960050;background-color:#1e0010">.btn</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">btn-second</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-color</span>: <span style="color:#66d9ef">orange</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#fff</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@extend</span> <span style="color:#960050;background-color:#1e0010">.btn</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="占位符--placeholder">占位符 % placeholder<a hidden class="anchor" aria-hidden="true" href="#占位符--placeholder">#</a></h2>
+<p>它可以取代以前 CSS 中的基类造成的代码冗余的情形。因为 %placeholder 声明的代码，如果不被 @extend 调用的话，不会产生任何代码。来看一个演示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">%</span><span style="color:#f92672">mt5</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin-top</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">%</span><span style="color:#f92672">pt5</span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding-top</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这段代码没有被 @extend 调用，他并没有产生任何代码块，只是静静的躺在你的某个 SCSS 文件中。只有通过 @extend 调用才会产生代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">//</span> <span style="color:#f92672">SCSS</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">%</span><span style="color:#f92672">mt5</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin-top</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">%</span><span style="color:#f92672">pt5</span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding-top</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">btn</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@extend</span> <span style="color:#960050;background-color:#1e0010">%mt5</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@extend</span> <span style="color:#960050;background-color:#1e0010">%pt5</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">block</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@extend</span> <span style="color:#960050;background-color:#1e0010">%mt5</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">span</span> <span style="color:#960050;background-color:#1e0010">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@extend</span> <span style="color:#960050;background-color:#1e0010">%pt5</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div>
+
+        </div>
+
+        <footer class="post-footer">
+            
+<nav class="paginav">
+  <a class="prev" href="https://sirius00.github.io/posts/tech/canvas%E7%9A%84%E4%BD%BF%E7%94%A8/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>Canvas的使用</span>
+  </a>
+  <a class="next" href="https://sirius00.github.io/posts/tech/koa%E6%A1%86%E6%9E%B6/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Koa框架</span>
+  </a>
+</nav>
+
+        </footer>
+    </div>
+</article>
+</main>
+
+
+<script async src="https://unpkg.com/mermaid@8.8.1/dist/mermaid.min.js"></script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<footer class="footer">
+    <span>
+        Copyright
+        &copy;
+        2020-2023
+        <a href="https://sirius00.github.io/" style="color:#939393;">XP&#39;s Blog</a>
+        All Rights Reserved
+    </span>
+
+    <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#939393;">填写自己的备案号</a>&nbsp;
+
+    <span>
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=null"
+           style="display:inline-block;text-decoration:none;height:20px;color:#939393;">
+            <img src="%e5%a1%ab%e8%87%aa%e5%b7%b1%e7%9a%84%e5%85%ac%e5%ae%89%e5%9b%be%e6%a0%87%e9%93%be%e6%8e%a5" style="float:left;margin: 0px 5px 0px 0px;"/>
+            填自己的公网安备
+        </a>
+    </span>
+
+    <span id="busuanzi_container">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        总访客数: <span id="busuanzi_value_site_uv"></span>
+        总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <span class="topInner">
+        <svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z"/>
+        </svg>
+        <span id="read_progress"></span>
+    </span>
+</a>
+
+<script>
+    document.addEventListener('scroll', function (e) {
+        const readProgress = document.getElementById("read_progress");
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        
+        readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
+    })
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    let mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+<script>
+    document.body.addEventListener('copy', function (e) {
+        if (window.getSelection().toString() && window.getSelection().toString().length > 50) {
+            let clipboardData = e.clipboardData || window.clipboardData;
+            if (clipboardData) {
+                e.preventDefault();
+                let htmlData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「' + {
+                { .
+                    Site.Title
+                }
+            }
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                let textData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「' + {
+                { .
+                    Site.Title
+                }
+            }
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                clipboardData.setData('text/html', htmlData);
+                clipboardData.setData('text/plain', textData);
+            }
+        }
+    });
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '📄复制';
+
+        function copyingDone() {
+            copybutton.innerText = '👌🏻已复制!';
+            setTimeout(() => {
+                copybutton.innerText = '📄复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                let text = codeblock.textContent +
+                    '\r\n————————————————\r\n' +
+                    '版权声明：本文为「' + "XP's Blog"
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                navigator.clipboard.writeText(text);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+            }
+            ;
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild === container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName === "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $("code[class^=language] ").on("mouseover", function () {
+        if (this.clientWidth < this.scrollWidth) {
+            $(this).css("width", "135%")
+        }
+    }).on("mouseout", function () {
+        $(this).css("width", "100%")
+    })
+</script>
+</body>
+
+</html>

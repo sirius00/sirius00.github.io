@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>python on XP&#39;s Blog</title>
+    <link>https://sirius00.github.io/tags/python/</link>
+    <description>Recent content in python on XP&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 22 Feb 2023 09:43:58 +0800</lastBuildDate><atom:link href="https://sirius00.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Django的使用</title>
+      <link>https://sirius00.github.io/posts/tech/django%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 22 Feb 2023 09:43:58 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/tech/django%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>安装django 安装django ：pip3 install django==2.2.12 检查安装的django版本：python -m django &amp;ndash;version 创建项目 django-amdin startproject mysite 启动服务 1、进入项目文件夹 2、python3 manage.py runserver 改变端口号 python manage.py runserver 端口号 项目结构 manage.py: 一个让你用各种方式管理 Django 项目的命令行工具 runserver：启动服务 startapp：创建应用</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>Mysql的基本使用 | XP&#39;s Blog</title>
-<meta name="keywords" content="">
+<meta name="keywords" content="mysql">
 <meta name="description" content="创建数据库 create database 数据库名 删除数据库 drop database 数据库名 mysql数据类型 数值类型 类型 大小 范围（有符号） 范围（无符号） 用途 TINYINT 1 Bytes (-128，127) (0，255) 小整数值 SMALLINT 2 Bytes (-32 768，32 767) (0，65 535) 大整数值 MEDIUMINT 3 Bytes (-8 388 608，8 388 607) (0，16 777 215) 大整数值 INT或INTEGER 4 Bytes (-2 147 483 6">
 <meta name="author" content="
 作者:&nbsp;XP">
@@ -14,11 +14,11 @@
 <link crossorigin="anonymous" href="/assets/css/stylesheet.a6c679e0d2f6e83a8f1aad1f7a2cdc96085c188647e679dbc62800f83be6bad2.css" integrity="sha256-psZ54NL26DqPGq0feizclghcGIZH5nnbxigA&#43;DvmutI=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
         onload="hljs.initHighlightingOnLoad();"></script>
-<link rel="icon" href="https://sirius00.github.io/img/Q.gif">
-<link rel="icon" type="image/png" sizes="16x16" href="https://sirius00.github.io/img/Q.gif">
-<link rel="icon" type="image/png" sizes="32x32" href="https://sirius00.github.io/img/Q.gif">
-<link rel="apple-touch-icon" href="https://sirius00.github.io/img/Q.gif">
-<link rel="mask-icon" href="https://sirius00.github.io/img/Q.gif">
+<link rel="icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sirius00.github.io/img/cat.png">
+<link rel="apple-touch-icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="mask-icon" href="https://sirius00.github.io/img/cat.png">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -115,10 +115,10 @@ var _hmt = _hmt || [];
   "name": "Mysql的基本使用",
   "description": "创建数据库 create database 数据库名 删除数据库 drop database 数据库名 mysql数据类型 数值类型 类型 大小 范围（有符号） 范围（无符号） 用途 TINYINT 1 Bytes (-128，127) (0，255) 小整数值 SMALLINT 2 Bytes (-32 768，32 767) (0，65 535) 大整数值 MEDIUMINT 3 Bytes (-8 388 608，8 388 607) (0，16 777 215) 大整数值 INT或INTEGER 4 Bytes (-2 147 483 6",
   "keywords": [
-    ""
+    "mysql"
   ],
-  "articleBody": "创建数据库 create database 数据库名\n删除数据库 drop database 数据库名\nmysql数据类型 数值类型 类型 大小 范围（有符号） 范围（无符号） 用途 TINYINT 1 Bytes (-128，127) (0，255) 小整数值 SMALLINT 2 Bytes (-32 768，32 767) (0，65 535) 大整数值 MEDIUMINT 3 Bytes (-8 388 608，8 388 607) (0，16 777 215) 大整数值 INT或INTEGER 4 Bytes (-2 147 483 648，2 147 483 647) (0，4 294 967 295) 大整数值 BIGINT 8 Bytes (-9,223,372,036,854,775,808，9 223 372 036 854 775 807) (0，18 446 744 073 709 551 615) 极大整数值 FLOAT 4 Bytes (-3.402 823 466 E+38，-1.175 494 351 E-38)，0，(1.175 494 351 E-38，3.402 823 466 351 E+38) 0，(1.175 494 351 E-38，3.402 823 466 E+38) 单精度 浮点数值 DOUBLE 8 Bytes (-1.797 693 134 862 315 7 E+308，-2.225 073 858 507 201 4 E-308)，0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308) 0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308) 双精度 浮点数值 DECIMAL 对DECIMAL(M,D) ，如果M\u003eD，为M+2否则为D+2 依赖于M和D的值 依赖于M和D的值 小数值 日期/时间类型 类型 大小 ( bytes) 范围 格式 用途 DATE 3 1000-01-01/9999-12-31 YYYY-MM-DD 日期值 TIME 3 ‘-838:59:59’/‘838:59:59’ HH:MM:SS 时间值或持续时间 YEAR 1 1901/2155 YYYY 年份值 DATETIME 8 ‘1000-01-01 00:00:00’ 到 ‘9999-12-31 23:59:59’ YYYY-MM-DD hh:mm:ss 混合日期和时间值 TIMESTAMP 4 ‘1970-01-01 00:00:01’ UTC 到 ‘2038-01-19 03:14:07’ UTC结束时间是第 2147483647 秒，北京时间 2038-1-19 11:14:07，格林尼治时间 2038年1月19日 凌晨 03:14:07 YYYY-MM-DD hh:mm:ss 混合日期和时间值，时间戳 字符串类型 类型 大小 用途 CHAR 0-255 bytes 定长字符串 VARCHAR 0-65535 bytes 变长字符串 TINYBLOB 0-255 bytes 不超过 255 个字符的二进制字符串 TINYTEXT 0-255 bytes 短文本字符串 BLOB 0-65 535 bytes 二进制形式的长文本数据 TEXT 0-65 535 bytes 长文本数据 MEDIUMBLOB 0-16 777 215 bytes 二进制形式的中等长度文本数据 MEDIUMTEXT 0-16 777 215 bytes 中等长度文本数据 LONGBLOB 0-4 294 967 295 bytes 二进制形式的极大文本数据 LONGTEXT 0-4 294 967 295 bytes 极大文本数据 mysql的基本使用 select 语句 select username， passward from users； insert into 语句 向数据表中插入新的数据行 insert into users (username, passward) values ('王五', '555'); update 语句 更新数据表 语法： UPDATE 表名称 SET 列名称=新值 WHERE 列名称=某值 示例1， 更新某一行某一列： update users set passward='333' where id=1; 示例2， 更新某一行的若干列： update users set passward='ceshi', status=1 where id=3; delete 语句 用于 删除表中的行\n语法： DELETE FROM 表名称 WHERE 列名称=值 示例： delete from users where id=3； where 子句 WHERE 子句用于限定选择的标准。在 SELECT、 UPDATE、 DELETE 语句中，皆可使用 WHERE 子句来限定选择的标准。\n查询语句中的 WHERE 条件 SELECT 列名称 FROM 表名称 WHERE 列 运算符 值 更新语句中的 WHERE 条件 UPDATE 表名称 SET 列-新值 WHERE 列 运算符 值 删除语句中的 WHERE 条件 DELETE FROM 表名称 WHERE 列 运算符 值\n实例： select * from users where username\u003c\u003e'张三'; select * from users where username like '%三'; 可以使用的运算符： AND 和 OR 运算符 语法： AND 和 OR 可在 WHERE 子语句中把两个或多个条件结合起来。\nAND 表示必须同时满足多个条件，相当于 JavaScript 中的 ＆＆ 运算符，例如计 (a !== 10 \u0026\u0026 a!== 20)\nOR 表示只要满足任意一个条件即可，相当于 JavaScript 中的 运算符，例如 if(a !== 10 ll a !== 20)\nselect * from users where status=0 and id\u003e2; order by 子句 语法： ORDER BY 语句用于根据指定的列对结果集进行排序。 ORDER BY 语句默认按照升序对记录进行排序。 如果您希望按照降序对记录进行排序，可以使用 DESC 关键字。\n使用示例：\nselect * from users order by status; select * from users order by status DESC; # 降序排列 （ASC升序） 多重排序\n对 users 表中的数据，先按照 status 字段进行降序排序，再按照 username 的字母顺序，进行升序排序，示例如下： select * from users order by status DESC, username ASC; cout（*） 函数和 as 关键字 count（*）函数 COUNT(*) 函数用于返回查询结果的总数据条数，语法格式如下：\nselect count（*） from 表名； select count（*） from users where status=0； as 关键字 如果希望给查询出来的列名称设置别名，可以使用 AS 关键字，示例如下：\nselect count(*) as total from users where status=0； ",
-  "wordCount" : "1477",
+  "articleBody": "创建数据库 create database 数据库名\n删除数据库 drop database 数据库名\nmysql数据类型 数值类型 类型 大小 范围（有符号） 范围（无符号） 用途 TINYINT 1 Bytes (-128，127) (0，255) 小整数值 SMALLINT 2 Bytes (-32 768，32 767) (0，65 535) 大整数值 MEDIUMINT 3 Bytes (-8 388 608，8 388 607) (0，16 777 215) 大整数值 INT或INTEGER 4 Bytes (-2 147 483 648，2 147 483 647) (0，4 294 967 295) 大整数值 BIGINT 8 Bytes (-9,223,372,036,854,775,808，9 223 372 036 854 775 807) (0，18 446 744 073 709 551 615) 极大整数值 FLOAT 4 Bytes (-3.402 823 466 E+38，-1.175 494 351 E-38)，0，(1.175 494 351 E-38，3.402 823 466 351 E+38) 0，(1.175 494 351 E-38，3.402 823 466 E+38) 单精度 浮点数值 DOUBLE 8 Bytes (-1.797 693 134 862 315 7 E+308，-2.225 073 858 507 201 4 E-308)，0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308) 0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308) 双精度 浮点数值 DECIMAL 对DECIMAL(M,D) ，如果M\u003eD，为M+2否则为D+2 依赖于M和D的值 依赖于M和D的值 小数值 日期/时间类型 类型 大小 ( bytes) 范围 格式 用途 DATE 3 1000-01-01/9999-12-31 YYYY-MM-DD 日期值 TIME 3 ‘-838:59:59’/‘838:59:59’ HH:MM:SS 时间值或持续时间 YEAR 1 1901/2155 YYYY 年份值 DATETIME 8 ‘1000-01-01 00:00:00’ 到 ‘9999-12-31 23:59:59’ YYYY-MM-DD hh:mm:ss 混合日期和时间值 TIMESTAMP 4 ‘1970-01-01 00:00:01’ UTC 到 ‘2038-01-19 03:14:07’ UTC结束时间是第 2147483647 秒，北京时间 2038-1-19 11:14:07，格林尼治时间 2038年1月19日 凌晨 03:14:07 YYYY-MM-DD hh:mm:ss 混合日期和时间值，时间戳 字符串类型 类型 大小 用途 CHAR 0-255 bytes 定长字符串 VARCHAR 0-65535 bytes 变长字符串 TINYBLOB 0-255 bytes 不超过 255 个字符的二进制字符串 TINYTEXT 0-255 bytes 短文本字符串 BLOB 0-65 535 bytes 二进制形式的长文本数据 TEXT 0-65 535 bytes 长文本数据 MEDIUMBLOB 0-16 777 215 bytes 二进制形式的中等长度文本数据 MEDIUMTEXT 0-16 777 215 bytes 中等长度文本数据 LONGBLOB 0-4 294 967 295 bytes 二进制形式的极大文本数据 LONGTEXT 0-4 294 967 295 bytes 极大文本数据 mysql的基本使用 select 语句 select username， passward from users； insert into 语句 向数据表中插入新的数据行 insert into users (username, passward) values ('王五', '555'); update 语句 更新数据表 语法： UPDATE 表名称 SET 列名称=新值 WHERE 列名称=某值 示例1， 更新某一行某一列： update users set passward='333' where id=1; 示例2， 更新某一行的若干列： update users set passward='ceshi', status=1 where id=3; delete 语句 用于 删除表中的行\n语法： DELETE FROM 表名称 WHERE 列名称=值 示例： delete from users where id=3； where 子句 WHERE 子句用于限定选择的标准。在 SELECT、 UPDATE、 DELETE 语句中，皆可使用 WHERE 子句来限定选择的标准。\n查询语句中的 WHERE 条件 SELECT 列名称 FROM 表名称 WHERE 列 运算符 值 更新语句中的 WHERE 条件 UPDATE 表名称 SET 列-新值 WHERE 列 运算符 值 删除语句中的 WHERE 条件 DELETE FROM 表名称 WHERE 列 运算符 值\n实例： select * from users where username\u003c\u003e'张三'; select * from users where username like '%三'; 可以使用的运算符： ![](CleanShot 2023-02-07 at 11.16.55.png)\nAND 和 OR 运算符 语法： AND 和 OR 可在 WHERE 子语句中把两个或多个条件结合起来。\nAND 表示必须同时满足多个条件，相当于 JavaScript 中的 ＆＆ 运算符，例如计 (a !== 10 \u0026\u0026 a!== 20)\nOR 表示只要满足任意一个条件即可，相当于 JavaScript 中的 运算符，例如 if(a !== 10 ll a !== 20)\nselect * from users where status=0 and id\u003e2; order by 子句 语法： ORDER BY 语句用于根据指定的列对结果集进行排序。 ORDER BY 语句默认按照升序对记录进行排序。 如果您希望按照降序对记录进行排序，可以使用 DESC 关键字。\n使用示例：\nselect * from users order by status; select * from users order by status DESC; # 降序排列 （ASC升序） 多重排序\n对 users 表中的数据，先按照 status 字段进行降序排序，再按照 username 的字母顺序，进行升序排序，示例如下： select * from users order by status DESC, username ASC; cout（*） 函数和 as 关键字 count（*）函数 COUNT(*) 函数用于返回查询结果的总数据条数，语法格式如下：\nselect count（*） from 表名； select count（*） from users where status=0； as 关键字 如果希望给查询出来的列名称设置别名，可以使用 AS 关键字，示例如下：\nselect count(*) as total from users where status=0； ",
+  "wordCount" : "1481",
   "inLanguage": "en",
   "datePublished": "2023-02-21T17:05:52+08:00",
   "dateModified": "2023-02-21T17:05:52+08:00",
@@ -135,7 +135,7 @@ var _hmt = _hmt || [];
     "name": "XP's Blog",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://sirius00.github.io/img/Q.gif"
+      "url": "https://sirius00.github.io/img/cat.png"
     }
   }
 }
@@ -163,7 +163,7 @@ var _hmt = _hmt || [];
     <nav class="nav">
         <div class="logo">
             <a href="https://sirius00.github.io/" accesskey="h" title="XP&#39;s Blog (Alt + H)">
-            <img src="https://sirius00.github.io/img/Q.gif" alt="logo" aria-label="logo"
+            <img src="https://sirius00.github.io/img/cat.png" alt="logo" aria-label="logo"
                  height="35">XP&#39;s Blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
@@ -230,13 +230,15 @@ var _hmt = _hmt || [];
             <h1 class="post-title">
                 Mysql的基本使用
             </h1>
-            <div class="post-meta">创建:&nbsp;<span title='2023-02-21 17:05:52 +0800 CST'>2023-02-21</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-21&nbsp;|&nbsp;字数:&nbsp;1477字&nbsp;|&nbsp;时长:&nbsp;3分钟&nbsp;|&nbsp;
+            <div class="post-meta">创建:&nbsp;<span title='2023-02-21 17:05:52 +0800 CST'>2023-02-21</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-21&nbsp;|&nbsp;字数:&nbsp;1481字&nbsp;|&nbsp;时长:&nbsp;3分钟&nbsp;|&nbsp;
 作者:&nbsp;XP
 
 
 
                 &nbsp;|&nbsp;标签: &nbsp;
                 <ul class="post-tags-meta">
+                    <a href="https://sirius00.github.io/tags/sql/">sql</a>
+                    <a href="https://sirius00.github.io/tags/%E5%90%8E%E7%AB%AF/">、后端</a>
                 </ul>
 
                 
@@ -585,8 +587,7 @@ DELETE FROM 表名称 WHERE 列 运算符 值</p>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> users <span style="color:#66d9ef">where</span> username<span style="color:#f92672">&lt;&gt;</span><span style="color:#e6db74">&#39;张三&#39;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> users <span style="color:#66d9ef">where</span> username <span style="color:#66d9ef">like</span> <span style="color:#e6db74">&#39;%三&#39;</span>;
 </span></span></code></pre></div><p>可以使用的运算符：
-<img loading="lazy" src="CleanShot%202023-02-07%20at%2011.16.55.png" alt=""  />
-</p>
+![](CleanShot 2023-02-07 at 11.16.55.png)</p>
 <h3 id="and-和-or-运算符">AND 和 OR 运算符<a hidden class="anchor" aria-hidden="true" href="#and-和-or-运算符">#</a></h3>
 <p>语法：
 AND 和 OR 可在 WHERE 子语句中把两个或多个条件结合起来。</p>
@@ -617,37 +618,15 @@ ORDER BY 语句默认按照升序对记录进行排序。
 </span></span></code></pre></div>
 
         </div>
-        <div class="post-reward">
-            <div style="padding: 0 0 0 0; margin: 0 0 0 0; width: 100%; font-size:16px; text-align: center;">
-                <div id="QR" style="opacity: 0;">
-                    <div id="wechat" style="display: inline-block">
-                        <a class="fancybox" rel="group">
-                            <img id="wechat_qr" src="https://sirius00.github.io/img/wechat_pay.png" alt="wechat_pay"></a>
-                        <p>微信</p>
-                    </div>
-                    <div id="alipay" style="display: inline-block">
-                        <a class="fancybox" rel="group">
-                            <img id="alipay_qr" src="https://sirius00.github.io/img/alipay.png" alt="alipay"></a>
-                        <p>支付宝</p>
-                    </div>
-                </div>
-                <button id="rewardButton"
-                        onclick="
-                    var qr = document.getElementById('QR');
-                    if (qr.style.opacity === '0') {
-                        qr.style.opacity='1';
-                    } else {
-                        qr.style.opacity='0'
-                    }"
-                >
-                    <span>🧧 鼓励</span>
-                </button>
-            </div>
-        </div>
 
         <footer class="post-footer">
             
 <nav class="paginav">
+  <a class="prev" href="https://sirius00.github.io/posts/tech/koa%E6%A1%86%E6%9E%B6/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>Koa框架</span>
+  </a>
   <a class="next" href="https://sirius00.github.io/posts/tech/git%E7%9A%84%E4%BD%BF%E7%94%A8/">
     <span class="title">下一页 »</span>
     <br>

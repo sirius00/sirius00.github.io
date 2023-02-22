@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>计算机网络 | XP&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="一、HTTP协议 1.GET和POST请求的区别 应用场景: GET请求是一个幂等的请求(在程序中如果相同条件下多次请求对资源的影响表现一致则称为幂等请求), 一般get请求用于对服务器资源不会产生影响的场景, 比如请求一个网页的资源. 而POST不是一个幂等的请求, 一般用于对服务器资源会产">
+<meta name="author" content="
+作者:&nbsp;XP">
+<link rel="canonical" href="https://sirius00.github.io/posts/tech/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a6c679e0d2f6e83a8f1aad1f7a2cdc96085c188647e679dbc62800f83be6bad2.css" integrity="sha256-psZ54NL26DqPGq0feizclghcGIZH5nnbxigA&#43;DvmutI=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+        onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sirius00.github.io/img/cat.png">
+<link rel="apple-touch-icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="mask-icon" href="https://sirius00.github.io/img/cat.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = ""; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<meta property="og:title" content="计算机网络" />
+<meta property="og:description" content="一、HTTP协议 1.GET和POST请求的区别 应用场景: GET请求是一个幂等的请求(在程序中如果相同条件下多次请求对资源的影响表现一致则称为幂等请求), 一般get请求用于对服务器资源不会产生影响的场景, 比如请求一个网页的资源. 而POST不是一个幂等的请求, 一般用于对服务器资源会产" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sirius00.github.io/posts/tech/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-22T09:42:07+08:00" />
+<meta property="article:modified_time" content="2023-02-22T09:42:07+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="计算机网络"/>
+<meta name="twitter:description" content="一、HTTP协议 1.GET和POST请求的区别 应用场景: GET请求是一个幂等的请求(在程序中如果相同条件下多次请求对资源的影响表现一致则称为幂等请求), 一般get请求用于对服务器资源不会产生影响的场景, 比如请求一个网页的资源. 而POST不是一个幂等的请求, 一般用于对服务器资源会产"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+
+        {
+          "@type": "ListItem",
+          "position":  1 ,
+          "name": "📚文章",
+          "item": "https://sirius00.github.io/posts/"
+        },
+
+        {
+          "@type": "ListItem",
+          "position":  2 ,
+          "name": "👨🏻‍💻 技术",
+          "item": "https://sirius00.github.io/posts/tech/"
+        }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "计算机网络",
+      "item": "https://sirius00.github.io/posts/tech/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "计算机网络",
+  "name": "计算机网络",
+  "description": "一、HTTP协议 1.GET和POST请求的区别 应用场景: GET请求是一个幂等的请求(在程序中如果相同条件下多次请求对资源的影响表现一致则称为幂等请求), 一般get请求用于对服务器资源不会产生影响的场景, 比如请求一个网页的资源. 而POST不是一个幂等的请求, 一般用于对服务器资源会产",
+  "keywords": [
+    ""
+  ],
+  "articleBody": "一、HTTP协议 1.GET和POST请求的区别 应用场景: GET请求是一个幂等的请求(在程序中如果相同条件下多次请求对资源的影响表现一致则称为幂等请求), 一般get请求用于对服务器资源不会产生影响的场景, 比如请求一个网页的资源. 而POST不是一个幂等的请求, 一般用于对服务器资源会产生影响的情景, 比如注册用户这一类的操作 是否缓存: 浏览器一般会对GET请求缓存, 但很少对post请求缓存 发送的报文格式: Get请求的报文中实体部分为空, POST请求的报文中实体部分一般为向服务器发送的数据 安全性: get请求可以将请求的参数放入url向服务器发送请求, 这样的做法相对于post来说不太安全, 因为请求的url会被保留在历史记录中 请求长度: 浏览器对于url长度的限制, 所以会影响get请求请求数据时的长度, 这个限制是浏览器规定的, 并不是RFC规定的 参数类型: post的参数传递支持更多的数据类型 2. POST和PUT请求的区别 put请求是向服务器端发送数据, 从而修改数据的内容, 但是不会增加数据的种类等, 也就是说无论进行多少次PUT操作, 其结果并没有不同. (可以理解为更新数据) post请求事向服务器发送数据, 该请求会改变数据的种类资源, 他会创建新的内容. (可以理解为创建数据) 3.常见的HTTP请求头和响应头 HTTP Request Header 常见的请求头:\nAccept: 浏览器能够处理的内容类型 Accept-Charset: 浏览器能够显示的字符集 Accept-Encodeing: 浏览器能够处理的压缩编码 Accept-Language: 浏览器当前设置的语言 Connection: 浏览器与服务器之间连接的类型 Cookie: 当前页面设置的任何cookie Host: 发出请求的页面所在域 Referer: 发出请求的页面的URL User-Agent: 浏览器的用户代理字符串 HTTP Responses Header 常见的响应头:\nDate: 表示消息发送的时间, 时间的描述格式由rfc822定义 server: 服务器名称 Connection: 浏览器与服务器之间连接的类型 Cache-Control: 控制HTTP缓存 content-type: 表示后面的文档属于什么MIME类型 常见的Content-type 属性值有以下几种: (1): application/x-www-form-urlencoded: 浏览器的原生form表单, 如果不设置enctype属性, 那么最终就会以application/x-www-form-urlencoded方式提交数据. 该种方式提交的数据放在body里面, 数据按照key1=val1\u0026key2=val2的方式进行编码, key和val都进行URL转码 (2)multipart/form-data: 该种方式也是一个常见的POST提交方式, 通常表单上传文件时使用这种方式 (3)application/json: 服务器消息主体是序列化后的JSON字符串 (4)text/xml: 该种方式主要用来提交XML格式的数据\n4. 常见HTTP状态码 100: 部分请求已经被服务器接收，且仍未被拒绝，客户端应当继续发送请求的剩余部分，post请求时会发2次请求，第一次只把头部发送给服务端确认，服务器返回100时才继续把内容发送给服务端，这样做的目的时万一因为某些原因服务器需要拒绝请求（如没权限），白白发送那么多数据。 101：切换协议，如websocket连接时会出现这种情况。 200：正常 204：服务器成功处理了请求，但无内容返回； 301：永久移动，比如 baidu.com跳转到 www.baidu.com 302：临时移动； 304: 内容未修改，客户端可以继续使用本地缓存； 400：请求数据不正确，服务器不理解请求的语法； 401：未授权，未登录； 403：服务器拒绝请求； 404：请求的地址不存在； 405：请求的方法不对，比如该POST的地方用了GET； 500：服务器内部错误； 504：网关超时，比如nginx代理经常碰到这种错误； 5.常见的HTTP请求方法 GET: 向服务器获取数据 POST: 将实体提交到指定的资源, 通常会造成服务器资源的修改 PUT: 上传文件, 更新数据 DELETE: 删除服务上的对象 HEAD: 获取报文首部, 与GET相比, 不返回报文主体部分 OPTIONS: 询问支持的请求方法, 用来跨域请求 CONNECT: 要求在于代理服务器通信时建立隧道, 使用隧道进行TCP通信 TRACE: 回显服务器收到的请求, 主要用于测试或诊断 6. OPTIOS请求方法及应用场景 OPTIONS方法是用于请求获得由 Request-URI 标识的资源在请求/响应的通信过程中可以使用的功能选项, 通过这个方法, 客户端可以在采取具体资源请求之前, 决定对资源采取和中必要措施, 或者了解服务起的性能. 该请求方法的响应不能缓存.\nOPTIONS 请求方法的主要用途:\n获取服务器支持的所有HTTP请求方法 用来检查访问权限, 例如: 在进行CORS卡与资源共享时, 对于复杂请求, 就是使用OPTIONS方法发送嗅探请求, 以判断是否有对指定资源的访问权限 6.HTTP和HTTPS协议的区别 HTTPS协议需要CA证书, 费用较高; 而HTTP协议不需要 HTTP协议是超文本传输协议，信息是明文传输的，HTTPS则是具有安全性的SSL加密传输协议； 使用不同的连接方式，端口也不同，HTTP协议端口是80，HTTPS协议端口是443； HTTP协议连接很简单，是无状态的；HTTPS协议是有SSL和HTTP协议构建的可进行加密传输、身份认证的网络协议，比HTTP更加安全。 7.在浏览器搜索的处理流程 解析URL: 首先对URL进行解析, 分析所需要使用的传输协议和请求的资源的路径. 如果输入的URL中的协议或者主机名不合法, 将会把地址中输入的内容传递给搜索引擎. 如果没有问题, 浏览器会检查URL中是否出现了非法字符, 如果存在非法字符, 则对非法字符进行转义后再进行下一过程 缓存判断: 浏览器会判断所请求的资源是否存在缓存里, 如果请求的资源在缓存里并且没有失效, 那么直接使用, 否则像服务器发起新的请求 DNS解析: 下一步首先需要获取的是输入的URL中的域名 ",
+  "wordCount" : "2201",
+  "inLanguage": "en",
+  "datePublished": "2023-02-22T09:42:07+08:00",
+  "dateModified": "2023-02-22T09:42:07+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "XP"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://sirius00.github.io/posts/tech/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "XP's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://sirius00.github.io/img/cat.png"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://sirius00.github.io/" accesskey="h" title="XP&#39;s Blog (Alt + H)">
+            <img src="https://sirius00.github.io/img/cat.png" alt="logo" aria-label="logo"
+                 height="35">XP&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://sirius00.github.io/search" title="🔍 搜索 (Alt &#43; /)" accesskey=/>
+                <span>🔍 搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/" title="🏠 主页">
+                <span>🏠 主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/posts" title="📚 文章">
+                <span>📚 文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/tags" title="🧩 标签">
+                <span>🧩 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/archives/" title="⏱️ 时间轴">
+                <span>⏱️ 时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/about" title="🙋🏻‍♂️ 关于">
+                <span>🙋🏻‍♂️ 关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main page">
+<article class="post-single">
+    <div id="single-content">
+        <header class="post-header">
+            <div class="breadcrumbs"><a href="https://sirius00.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://sirius00.github.io/posts/">📚文章</a>&nbsp;»&nbsp;<a href="https://sirius00.github.io/posts/tech/">👨🏻‍💻 技术</a></div>
+            <h1 class="post-title">
+                计算机网络
+            </h1>
+            <div class="post-meta">创建:&nbsp;<span title='2023-02-22 09:42:07 +0800 CST'>2023-02-22</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-22&nbsp;|&nbsp;字数:&nbsp;2201字&nbsp;|&nbsp;时长:&nbsp;5分钟&nbsp;|&nbsp;
+作者:&nbsp;XP
+
+
+
+                &nbsp;|&nbsp;标签: &nbsp;
+                <ul class="post-tags-meta">
+                    <a href="https://sirius00.github.io/tags/basic/">basic</a>
+                </ul>
+
+                
+                <span id="busuanzi_container_page_pv">
+                &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+</div>
+        </header> 
+        <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">文章目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e4%b8%80http%e5%8d%8f%e8%ae%ae" aria-label="一、HTTP协议">一、HTTP协议</a><ul>
+                        
+                <li>
+                    <a href="#1get%e5%92%8cpost%e8%af%b7%e6%b1%82%e7%9a%84%e5%8c%ba%e5%88%ab" aria-label="1.GET和POST请求的区别">1.GET和POST请求的区别</a></li>
+                <li>
+                    <a href="#2-post%e5%92%8cput%e8%af%b7%e6%b1%82%e7%9a%84%e5%8c%ba%e5%88%ab" aria-label="2. POST和PUT请求的区别">2. POST和PUT请求的区别</a></li>
+                <li>
+                    <a href="#3%e5%b8%b8%e8%a7%81%e7%9a%84http%e8%af%b7%e6%b1%82%e5%a4%b4%e5%92%8c%e5%93%8d%e5%ba%94%e5%a4%b4" aria-label="3.常见的HTTP请求头和响应头">3.常见的HTTP请求头和响应头</a></li>
+                <li>
+                    <a href="#4-%e5%b8%b8%e8%a7%81http%e7%8a%b6%e6%80%81%e7%a0%81" aria-label="4. 常见HTTP状态码">4. 常见HTTP状态码</a></li>
+                <li>
+                    <a href="#5%e5%b8%b8%e8%a7%81%e7%9a%84http%e8%af%b7%e6%b1%82%e6%96%b9%e6%b3%95" aria-label="5.常见的HTTP请求方法">5.常见的HTTP请求方法</a></li>
+                <li>
+                    <a href="#6-optios%e8%af%b7%e6%b1%82%e6%96%b9%e6%b3%95%e5%8f%8a%e5%ba%94%e7%94%a8%e5%9c%ba%e6%99%af" aria-label="6. OPTIOS请求方法及应用场景">6. OPTIOS请求方法及应用场景</a></li>
+                <li>
+                    <a href="#6http%e5%92%8chttps%e5%8d%8f%e8%ae%ae%e7%9a%84%e5%8c%ba%e5%88%ab" aria-label="6.HTTP和HTTPS协议的区别">6.HTTP和HTTPS协议的区别</a></li>
+                <li>
+                    <a href="#7%e5%9c%a8%e6%b5%8f%e8%a7%88%e5%99%a8%e6%90%9c%e7%b4%a2%e7%9a%84%e5%a4%84%e7%90%86%e6%b5%81%e7%a8%8b" aria-label="7.在浏览器搜索的处理流程">7.在浏览器搜索的处理流程</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+        
+        activeElement = elements[0];
+        const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+        document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+    }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 &&
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+            const id = encodeURI(element.getAttribute('id')).toLowerCase();
+            if (element === activeElement){
+                document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+            } else {
+                document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+            }
+        })
+    }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;
+    }
+</script>
+        
+        <div class="post-content"><h1 id="一http协议">一、HTTP协议<a hidden class="anchor" aria-hidden="true" href="#一http协议">#</a></h1>
+<h2 id="1get和post请求的区别">1.GET和POST请求的区别<a hidden class="anchor" aria-hidden="true" href="#1get和post请求的区别">#</a></h2>
+<ul>
+<li>应用场景: GET请求是一个幂等的请求(在程序中如果相同条件下多次请求对资源的影响表现一致则称为幂等请求), 一般get请求用于对服务器资源不会产生影响的场景, 比如请求一个网页的资源. 而POST不是一个幂等的请求, 一般用于对服务器资源会产生影响的情景, 比如注册用户这一类的操作</li>
+<li>是否缓存: 浏览器一般会对GET请求缓存, 但很少对post请求缓存</li>
+<li>发送的报文格式: Get请求的报文中实体部分为空, POST请求的报文中实体部分一般为向服务器发送的数据</li>
+<li>安全性: get请求可以将请求的参数放入url向服务器发送请求, 这样的做法相对于post来说不太安全, 因为请求的url会被保留在历史记录中</li>
+<li>请求长度: 浏览器对于url长度的限制, 所以会影响get请求请求数据时的长度, 这个限制是浏览器规定的, 并不是RFC规定的</li>
+<li>参数类型: post的参数传递支持更多的数据类型</li>
+</ul>
+<h2 id="2-post和put请求的区别">2. POST和PUT请求的区别<a hidden class="anchor" aria-hidden="true" href="#2-post和put请求的区别">#</a></h2>
+<ul>
+<li>put请求是向服务器端发送数据, 从而修改数据的内容, 但是不会增加数据的种类等, 也就是说无论进行多少次PUT操作, 其结果并没有不同. (可以理解为更新数据)</li>
+<li>post请求事向服务器发送数据, 该请求会改变数据的种类资源, 他会创建新的内容. (可以理解为创建数据)</li>
+</ul>
+<h2 id="3常见的http请求头和响应头">3.常见的HTTP请求头和响应头<a hidden class="anchor" aria-hidden="true" href="#3常见的http请求头和响应头">#</a></h2>
+<p>HTTP Request Header 常见的请求头:</p>
+<ul>
+<li>Accept: 浏览器能够处理的内容类型</li>
+<li>Accept-Charset: 浏览器能够显示的字符集</li>
+<li>Accept-Encodeing: 浏览器能够处理的压缩编码</li>
+<li>Accept-Language: 浏览器当前设置的语言</li>
+<li>Connection: 浏览器与服务器之间连接的类型</li>
+<li>Cookie: 当前页面设置的任何cookie</li>
+<li>Host: 发出请求的页面所在域</li>
+<li>Referer: 发出请求的页面的URL</li>
+<li>User-Agent: 浏览器的用户代理字符串</li>
+</ul>
+<p>HTTP Responses Header 常见的响应头:</p>
+<ul>
+<li>Date: 表示消息发送的时间, 时间的描述格式由rfc822定义</li>
+<li>server: 服务器名称</li>
+<li>Connection: 浏览器与服务器之间连接的类型</li>
+<li>Cache-Control: 控制HTTP缓存</li>
+<li>content-type: 表示后面的文档属于什么MIME类型</li>
+</ul>
+<p>常见的Content-type 属性值有以下几种:
+(1): application/x-www-form-urlencoded: 浏览器的原生form表单, 如果不设置enctype属性, 那么最终就会以application/x-www-form-urlencoded方式提交数据. 该种方式提交的数据放在body里面, 数据按照key1=val1&amp;key2=val2的方式进行编码, key和val都进行URL转码
+(2)multipart/form-data: 该种方式也是一个常见的POST提交方式, 通常表单上传文件时使用这种方式
+(3)application/json: 服务器消息主体是序列化后的JSON字符串
+(4)text/xml: 该种方式主要用来提交XML格式的数据</p>
+<h2 id="4-常见http状态码">4. 常见HTTP状态码<a hidden class="anchor" aria-hidden="true" href="#4-常见http状态码">#</a></h2>
+<ul>
+<li>100: 部分请求已经被服务器接收，且仍未被拒绝，客户端应当继续发送请求的剩余部分，post请求时会发2次请求，第一次只把头部发送给服务端确认，服务器返回100时才继续把内容发送给服务端，这样做的目的时万一因为某些原因服务器需要拒绝请求（如没权限），白白发送那么多数据。</li>
+<li>101：切换协议，如websocket连接时会出现这种情况。</li>
+<li>200：正常</li>
+<li>204：服务器成功处理了请求，但无内容返回；</li>
+<li>301：永久移动，比如 baidu.com跳转到 <a href="https://www.baidu.com">www.baidu.com</a></li>
+<li>302：临时移动；</li>
+<li>304: 内容未修改，客户端可以继续使用本地缓存；</li>
+<li>400：请求数据不正确，服务器不理解请求的语法；</li>
+<li>401：未授权，未登录；</li>
+<li>403：服务器拒绝请求；</li>
+<li>404：请求的地址不存在；</li>
+<li>405：请求的方法不对，比如该POST的地方用了GET；</li>
+<li>500：服务器内部错误；</li>
+<li>504：网关超时，比如nginx代理经常碰到这种错误；</li>
+</ul>
+<h2 id="5常见的http请求方法">5.常见的HTTP请求方法<a hidden class="anchor" aria-hidden="true" href="#5常见的http请求方法">#</a></h2>
+<ul>
+<li>GET: 向服务器获取数据</li>
+<li>POST: 将实体提交到指定的资源, 通常会造成服务器资源的修改</li>
+<li>PUT: 上传文件, 更新数据</li>
+<li>DELETE: 删除服务上的对象</li>
+<li>HEAD: 获取报文首部, 与GET相比, 不返回报文主体部分</li>
+<li>OPTIONS: 询问支持的请求方法, 用来跨域请求</li>
+<li>CONNECT: 要求在于代理服务器通信时建立隧道, 使用隧道进行TCP通信</li>
+<li>TRACE: 回显服务器收到的请求, 主要用于测试或诊断</li>
+</ul>
+<h2 id="6-optios请求方法及应用场景">6. OPTIOS请求方法及应用场景<a hidden class="anchor" aria-hidden="true" href="#6-optios请求方法及应用场景">#</a></h2>
+<p>OPTIONS方法是用于请求获得由 <strong>Request-URI</strong> 标识的资源在请求/响应的通信过程中可以使用的功能选项, 通过这个方法, 客户端可以在采取具体资源请求之前, 决定对资源采取和中必要措施, 或者了解服务起的性能. 该请求方法的响应不能缓存.</p>
+<p>OPTIONS 请求方法的主要用途:</p>
+<ul>
+<li>获取服务器支持的所有HTTP请求方法</li>
+<li>用来检查访问权限, 例如: 在进行CORS卡与资源共享时, 对于复杂请求, 就是使用OPTIONS方法发送嗅探请求, 以判断是否有对指定资源的访问权限</li>
+</ul>
+<h2 id="6http和https协议的区别">6.HTTP和HTTPS协议的区别<a hidden class="anchor" aria-hidden="true" href="#6http和https协议的区别">#</a></h2>
+<ul>
+<li>HTTPS协议需要CA证书, 费用较高; 而HTTP协议不需要</li>
+<li>HTTP协议是超文本传输协议，信息是明文传输的，HTTPS则是具有安全性的SSL加密传输协议；</li>
+<li>使用不同的连接方式，端口也不同，HTTP协议端口是80，HTTPS协议端口是443；</li>
+<li>HTTP协议连接很简单，是无状态的；HTTPS协议是有SSL和HTTP协议构建的可进行加密传输、身份认证的网络协议，比HTTP更加安全。</li>
+</ul>
+<h2 id="7在浏览器搜索的处理流程">7.在浏览器搜索的处理流程<a hidden class="anchor" aria-hidden="true" href="#7在浏览器搜索的处理流程">#</a></h2>
+<ul>
+<li><em>解析URL:</em> 首先对URL进行解析, 分析所需要使用的传输协议和请求的资源的路径. 如果输入的URL中的协议或者主机名不合法, 将会把地址中输入的内容传递给搜索引擎. 如果没有问题, 浏览器会检查URL中是否出现了非法字符, 如果存在非法字符, 则对非法字符进行转义后再进行下一过程</li>
+<li><em>缓存判断:</em> 浏览器会判断所请求的资源是否存在缓存里, 如果请求的资源在缓存里并且没有失效, 那么直接使用, 否则像服务器发起新的请求</li>
+<li><em>DNS解析:</em> 下一步首先需要获取的是输入的URL中的域名</li>
+</ul>
+
+
+        </div>
+
+        <footer class="post-footer">
+            
+<nav class="paginav">
+  <a class="prev" href="https://sirius00.github.io/posts/tech/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>数据结构</span>
+  </a>
+  <a class="next" href="https://sirius00.github.io/posts/tech/canvas%E7%9A%84%E4%BD%BF%E7%94%A8/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Canvas的使用</span>
+  </a>
+</nav>
+
+        </footer>
+    </div>
+</article>
+</main>
+
+
+<script async src="https://unpkg.com/mermaid@8.8.1/dist/mermaid.min.js"></script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<footer class="footer">
+    <span>
+        Copyright
+        &copy;
+        2020-2023
+        <a href="https://sirius00.github.io/" style="color:#939393;">XP&#39;s Blog</a>
+        All Rights Reserved
+    </span>
+
+    <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#939393;">填写自己的备案号</a>&nbsp;
+
+    <span>
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=null"
+           style="display:inline-block;text-decoration:none;height:20px;color:#939393;">
+            <img src="%e5%a1%ab%e8%87%aa%e5%b7%b1%e7%9a%84%e5%85%ac%e5%ae%89%e5%9b%be%e6%a0%87%e9%93%be%e6%8e%a5" style="float:left;margin: 0px 5px 0px 0px;"/>
+            填自己的公网安备
+        </a>
+    </span>
+
+    <span id="busuanzi_container">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        总访客数: <span id="busuanzi_value_site_uv"></span>
+        总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <span class="topInner">
+        <svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z"/>
+        </svg>
+        <span id="read_progress"></span>
+    </span>
+</a>
+
+<script>
+    document.addEventListener('scroll', function (e) {
+        const readProgress = document.getElementById("read_progress");
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        
+        readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
+    })
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    let mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+<script>
+    document.body.addEventListener('copy', function (e) {
+        if (window.getSelection().toString() && window.getSelection().toString().length > 50) {
+            let clipboardData = e.clipboardData || window.clipboardData;
+            if (clipboardData) {
+                e.preventDefault();
+                let htmlData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「' + {
+                { .
+                    Site.Title
+                }
+            }
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                let textData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「' + {
+                { .
+                    Site.Title
+                }
+            }
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                clipboardData.setData('text/html', htmlData);
+                clipboardData.setData('text/plain', textData);
+            }
+        }
+    });
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '📄复制';
+
+        function copyingDone() {
+            copybutton.innerText = '👌🏻已复制!';
+            setTimeout(() => {
+                copybutton.innerText = '📄复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                let text = codeblock.textContent +
+                    '\r\n————————————————\r\n' +
+                    '版权声明：本文为「' + "XP's Blog"
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                navigator.clipboard.writeText(text);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+            }
+            ;
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild === container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName === "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $("code[class^=language] ").on("mouseover", function () {
+        if (this.clientWidth < this.scrollWidth) {
+            $(this).css("width", "135%")
+        }
+    }).on("mouseout", function () {
+        $(this).css("width", "100%")
+    })
+</script>
+</body>
+
+</html>
