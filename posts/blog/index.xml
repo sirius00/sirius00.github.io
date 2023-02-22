@@ -5,6 +5,25 @@
     <link>https://sirius00.github.io/posts/blog/</link>
     <description>Recent content in 🧱 随笔 on XP&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language><atom:link href="https://sirius00.github.io/posts/blog/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 22 Feb 2023 10:46:22 +0800</lastBuildDate><atom:link href="https://sirius00.github.io/posts/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vscode的使用</title>
+      <link>https://sirius00.github.io/posts/blog/vscode%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 22 Feb 2023 10:46:22 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/blog/vscode%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>使用技巧： 快速替换文本： ctrl + f ： 搜索文本 shift + command + L： 选择 快速打开文件： command + P 查看函数定义： command + 鼠标点击函数名 快捷键 内置快捷键: 打开终端: shift + ctrl + ` 打开命令窗口: shift + command + p 插件使用 bookmarks(添加书签) 打开命令窗口, 输入 bookmarks 添加书签: opt + command + k project manage(项目管理): 打开</description>
+    </item>
+    
+    <item>
+      <title>Emacs使用备忘</title>
+      <link>https://sirius00.github.io/posts/blog/emacs%E4%BD%BF%E7%94%A8%E5%A4%87%E5%BF%98/</link>
+      <pubDate>Wed, 22 Feb 2023 10:22:00 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/blog/emacs%E4%BD%BF%E7%94%A8%E5%A4%87%E5%BF%98/</guid>
+      <description>查看emacs版本 emacs --version 配置文件 参考： 参考文章 配置文件检查顺序： ​ ~/.emacs ​ ~/.emacs.d ​ ~/.config/emacs/init.el 个人配置文件 init.el (add-to-list &amp;#39;load-path (expand-file-name (concat user-emacs-directory &amp;#34;lisp&amp;#34;))) (setq custom-file (expand-file-name &amp;#34;custom.el&amp;#34; user-emacs-directory)) ;; 通过图形化界面设置写入的内容会被记录到该文件中, 若没有自动创建,可以手动创建 (when (file-exists-p custom-file) (load custom-file)) (require &amp;#39;init-consts) (require &amp;#39;init-kbd) (require &amp;#39;init-startup) (require &amp;#39;init-elpa) (require &amp;#39;init-package) (require &amp;#39;init-filemanage) (require &amp;#39;init-org) (require &amp;#39;init-font) (require &amp;#39;init-org-modern) ;; 实现检索 (require &amp;#39;helm-org-rifle) ;;(require &amp;#39;init-meow) (require &amp;#39;init-ui) lisp文件夹 init-consts.el (defconst *is-mac* (eq system-type</description>
+    </item>
+    
   </channel>
 </rss>

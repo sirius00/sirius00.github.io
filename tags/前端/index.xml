@@ -6,7 +6,16 @@
     <description>Recent content in 前端 on XP&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 22 Feb 2023 09:47:53 +0800</lastBuildDate><atom:link href="https://sirius00.github.io/tags/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Feb 2023 10:51:44 +0800</lastBuildDate><atom:link href="https://sirius00.github.io/tags/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Typescript的使用</title>
+      <link>https://sirius00.github.io/posts/tech/typescript%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 22 Feb 2023 10:51:44 +0800</pubDate>
+      
+      <guid>https://sirius00.github.io/posts/tech/typescript%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>TS基础 变量的声明: 在typescript中定义变量需要指定 标志符 的类型 完整的声明格式如下: 声明了类型后typescript就会进行类型检测, 声明的类型可以称之为类型注解 var/let/const 标志符: 数据类型 - 赋值 // string: Typescript中的字符串类型^^ // String: Javascript的字符串包装类的类型</description>
+    </item>
+    
     <item>
       <title>HTML_CSS</title>
       <link>https://sirius00.github.io/posts/tech/html_css/</link>

@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Emacs使用备忘 | XP&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="查看emacs版本 emacs --version 配置文件 参考： 参考文章 配置文件检查顺序： ​ ~/.emacs ​ ~/.emacs.d ​ ~/.config/emacs/init.el 个人配置文件 init.el (add-to-list &#39;load-path (expand-file-name (concat user-emacs-directory &#34;lisp&#34;))) (setq custom-file (expand-file-name &#34;custom.el&#34; user-emacs-directory)) ;; 通过图形化界面设置写入的内容会被记录到该文件中, 若没有自动创建,可以手动创建 (when (file-exists-p custom-file) (load custom-file)) (require &#39;init-consts) (require &#39;init-kbd) (require &#39;init-startup) (require &#39;init-elpa) (require &#39;init-package) (require &#39;init-filemanage) (require &#39;init-org) (require &#39;init-font) (require &#39;init-org-modern) ;; 实现检索 (require &#39;helm-org-rifle) ;;(require &#39;init-meow) (require &#39;init-ui) lisp文件夹 init-consts.el (defconst *is-mac* (eq system-type">
+<meta name="author" content="
+作者:&nbsp;XP">
+<link rel="canonical" href="https://sirius00.github.io/posts/blog/emacs%E4%BD%BF%E7%94%A8%E5%A4%87%E5%BF%98/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a6c679e0d2f6e83a8f1aad1f7a2cdc96085c188647e679dbc62800f83be6bad2.css" integrity="sha256-psZ54NL26DqPGq0feizclghcGIZH5nnbxigA&#43;DvmutI=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+        onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://sirius00.github.io/img/cat.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sirius00.github.io/img/cat.png">
+<link rel="apple-touch-icon" href="https://sirius00.github.io/img/cat.png">
+<link rel="mask-icon" href="https://sirius00.github.io/img/cat.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = ""; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<meta property="og:title" content="Emacs使用备忘" />
+<meta property="og:description" content="查看emacs版本 emacs --version 配置文件 参考： 参考文章 配置文件检查顺序： ​ ~/.emacs ​ ~/.emacs.d ​ ~/.config/emacs/init.el 个人配置文件 init.el (add-to-list &#39;load-path (expand-file-name (concat user-emacs-directory &#34;lisp&#34;))) (setq custom-file (expand-file-name &#34;custom.el&#34; user-emacs-directory)) ;; 通过图形化界面设置写入的内容会被记录到该文件中, 若没有自动创建,可以手动创建 (when (file-exists-p custom-file) (load custom-file)) (require &#39;init-consts) (require &#39;init-kbd) (require &#39;init-startup) (require &#39;init-elpa) (require &#39;init-package) (require &#39;init-filemanage) (require &#39;init-org) (require &#39;init-font) (require &#39;init-org-modern) ;; 实现检索 (require &#39;helm-org-rifle) ;;(require &#39;init-meow) (require &#39;init-ui) lisp文件夹 init-consts.el (defconst *is-mac* (eq system-type" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sirius00.github.io/posts/blog/emacs%E4%BD%BF%E7%94%A8%E5%A4%87%E5%BF%98/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-22T10:22:00+08:00" />
+<meta property="article:modified_time" content="2023-02-22T10:22:00+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Emacs使用备忘"/>
+<meta name="twitter:description" content="查看emacs版本 emacs --version 配置文件 参考： 参考文章 配置文件检查顺序： ​ ~/.emacs ​ ~/.emacs.d ​ ~/.config/emacs/init.el 个人配置文件 init.el (add-to-list &#39;load-path (expand-file-name (concat user-emacs-directory &#34;lisp&#34;))) (setq custom-file (expand-file-name &#34;custom.el&#34; user-emacs-directory)) ;; 通过图形化界面设置写入的内容会被记录到该文件中, 若没有自动创建,可以手动创建 (when (file-exists-p custom-file) (load custom-file)) (require &#39;init-consts) (require &#39;init-kbd) (require &#39;init-startup) (require &#39;init-elpa) (require &#39;init-package) (require &#39;init-filemanage) (require &#39;init-org) (require &#39;init-font) (require &#39;init-org-modern) ;; 实现检索 (require &#39;helm-org-rifle) ;;(require &#39;init-meow) (require &#39;init-ui) lisp文件夹 init-consts.el (defconst *is-mac* (eq system-type"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+
+        {
+          "@type": "ListItem",
+          "position":  1 ,
+          "name": "📚文章",
+          "item": "https://sirius00.github.io/posts/"
+        },
+
+        {
+          "@type": "ListItem",
+          "position":  2 ,
+          "name": "🧱 随笔",
+          "item": "https://sirius00.github.io/posts/blog/"
+        }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Emacs使用备忘",
+      "item": "https://sirius00.github.io/posts/blog/emacs%E4%BD%BF%E7%94%A8%E5%A4%87%E5%BF%98/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Emacs使用备忘",
+  "name": "Emacs使用备忘",
+  "description": "查看emacs版本 emacs --version 配置文件 参考： 参考文章 配置文件检查顺序： ​ ~/.emacs ​ ~/.emacs.d ​ ~/.config/emacs/init.el 个人配置文件 init.el (add-to-list \u0026#39;load-path (expand-file-name (concat user-emacs-directory \u0026#34;lisp\u0026#34;))) (setq custom-file (expand-file-name \u0026#34;custom.el\u0026#34; user-emacs-directory)) ;; 通过图形化界面设置写入的内容会被记录到该文件中, 若没有自动创建,可以手动创建 (when (file-exists-p custom-file) (load custom-file)) (require \u0026#39;init-consts) (require \u0026#39;init-kbd) (require \u0026#39;init-startup) (require \u0026#39;init-elpa) (require \u0026#39;init-package) (require \u0026#39;init-filemanage) (require \u0026#39;init-org) (require \u0026#39;init-font) (require \u0026#39;init-org-modern) ;; 实现检索 (require \u0026#39;helm-org-rifle) ;;(require \u0026#39;init-meow) (require \u0026#39;init-ui) lisp文件夹 init-consts.el (defconst *is-mac* (eq system-type",
+  "keywords": [
+    ""
+  ],
+  "articleBody": "查看emacs版本 emacs --version\n配置文件 参考： 参考文章\n配置文件检查顺序：\n​\t~/.emacs\n​\t~/.emacs.d\n​\t~/.config/emacs/init.el\n个人配置文件 init.el\n(add-to-list 'load-path (expand-file-name (concat user-emacs-directory \"lisp\"))) (setq custom-file (expand-file-name \"custom.el\" user-emacs-directory)) ;; 通过图形化界面设置写入的内容会被记录到该文件中, 若没有自动创建,可以手动创建 (when (file-exists-p custom-file) (load custom-file)) (require 'init-consts) (require 'init-kbd) (require 'init-startup) (require 'init-elpa) (require 'init-package) (require 'init-filemanage) (require 'init-org) (require 'init-font) (require 'init-org-modern) ;; 实现检索 (require 'helm-org-rifle) ;;(require 'init-meow) (require 'init-ui) lisp文件夹\ninit-consts.el (defconst *is-mac* (eq system-type 'darwin)) (defconst *is-linux* (eq system-type 'gnu/linux)) (defconst *is-windows* (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))) (provide 'init-consts) init-ui.el ;;(global-linum-mode t) ;; 行号 (global-hl-line-mode 1) ;; 高亮当前行 (tool-bar-mode -1) ;;隐藏工具栏 (scroll-bar-mode -1) ;;隐藏滚动条 (setq-default cursor-type 'bar) ;;设置光标样式 (setq inhibit-startup-screen t) ;;关闭欢迎界面 (add-to-list 'default-frame-alist '(fullscreen . maximized )) ;;全屏显示 ;;设置窗口位置为屏库左上角(0,0) ;;(set-frame-position (selected-frame) 400 200) ;;(load-theme 'ef-spring t) ;;使用主题 (load-theme 'ef-autumn t) ;;使用主题 ;;(load-theme 'ef-night t) ;;使用主题 (provide 'init-ui) init-startup.el (setq make-backup-files nil) ;; 不生成备份文件 ;; 设置编码格式 (prefer-coding-system 'utf-8) (unless *is-windows* (set-selection-coding-system 'utf-8)) (setq gc-cons-threshold most-positive-fixnum) ;; 设置垃圾回收阈值,加快启动速度 (electric-pair-mode 1) ;;匹配括号 (provide 'init-startup) init-package.el ;;; package --- Summary (\"\" . drag-stuff-down))) ;;强化搜索三剑客 (use-package ivy :defer 1 :demand :hook (after-init . ivy-mode) :config (ivy-mode 1) (setq ivy-use-virtual-buffers t ivy-initial-inputs-alist nil ivy-count-format \"%d/%d \" enable-recursive-minibuffers t ivy-re-builders-alist '((t . ivy--regex-ignore-order))) ) (use-package counsel :after (ivy) :bind ((\"M-x\" . counsel-M-x) (\"C-x C-f\" . counsel-find-file) (\"C-c f\" . counsel-recentf) (\"C-c g\" . counsel-git))) (use-package swiper :after ivy :bind ((\"C-s\" . swiper) (\"C-r\" . swiper-isearch-backward)) :config (setq swiper-action-recenter t swiper-include-line-number-in-search t)) ;;自动补全 (use-package company :hook (after-init . global-company-mode) :config (setq company-minimum-prefix-length 1 company-show-quick-access t)) ;;语法检查 ;;(use-package flymake ;; :hook (prog-mode . flymake-mode) ;; :config ;;(global-set-key (kbd \"M-n\") #'flymake-goto-next-error) ;;(global-set-key (kbd \"M-p\") #'flymake-goto-prev-error)) ;;辅助记忆快捷键 (use-package which-key :defer nil :config (which-key-mode)) ;;doom mode-line (use-package all-the-icons :ensure t) (use-package doom-modeline :ensure t :init (doom-modeline-mode 1) (setq doom-modeline-height 1 doom-modeline-support-imenu t doom-modeline-icon nil doom-modeline-buffer-file-name-style 'relative-from-project doom-modeline-buffer-name t doom-modeline-enable-word-count t doom-modeline-continuous-word-count-modes '(markdown-mode gfm-mode org-mode) ) ; optional (if (facep 'mode-line-active) (set-face-attribute 'mode-line-active nil :family \"Hack\" :height 100) ; For 29+ (set-face-attribute 'mode-line nil :family \"Hack\" :height 100)) init-org.el (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil))) ;; 自动换行 (setq org-startup-indented t) ;; 缩进 (setq-default intent-tabs-mode nil) ;; 使用tab缩进 (setq-default default-tab-width 2) ;; tab长度 (setq-default tab-width 2) (setq org-hide-emphasis-markers t) ;;隐藏强调标记 (setq org-support-shift-select t) ;; org-mode shift选择 ;;; org (setq org-directory \"~/Documents/emacs/org-roam/\") (global-set-key (kbd \"C-c c\") 'org-capture) (setq org-capture-templates `((\"t\" \"Task\" entry (file \"task.org\") ,(concat \"* TODO %?\\n%U\\n\")) (\"d\" \"Daily Note\" entry (file \"daily_note.org\") ,(concat \"* Time:%U\\n** %?\")) )) ;; org-agenda (define-key global-map (kbd \"C-c a\") 'org-agenda) ;;(setq org-agenda-files (list \"~/Documents/emacs/org-roam/daily/*.org\")) ;;(setq org-agenda-files (file-expand-wildcards \"~/Documents/emacs/org-roam/daily/*.org\")) (setq org-agenda-files '(\"~/Documents/emacs/org-roam/daily\" \"~/Documents/emacs/org-roam/\" )) ;;org-roam (use-package org-roam :ensure t :custom (org-roam-directory (file-truename \"~/Documents/emacs/org-roam/\")) ;;(org-roam-db-gc-threshold 'most-positive-fixnum) (org-roam-completion-everywhere t) (org-roam-dailies-capture-templates ;; %\u003c%H:%M\u003e 为24小时制，%\u003c%I:%M %p\u003e 为12小时制 init-org-modern.el ;;(require 'org-modern) (use-package org-modern :after org :hook (org-mode . org-modern-mode) :init (setq org-modern-block t org-modern-radio-target nil org-modern-internal-target nil ;;org-modern-list nil ;; org-modern-star nil org-modern-timestamp nil org-modern-checkbox nil org-modern-todo nil ;; org-modern-footnote nil org-modern-block-name t org-modern-priority nil org-modern-progress nil org-modern-keyword nil org-modern-table nil org-modern-tag nil org-modern-statistics nil org-modern-horizontal-rule nil org-ellipsis \" +\" org-modern-todo-faces (quote ((\\\"TODO\\\" :background \\\" red\\\" :foreground \\\" yellow\\\"))) )) (custom-set-faces '(org-ellipsis ((t (:foreground \" yellow green\"))))) ;; 设置背景透明度 (defun user/change-background-opacity (alpha) (interactive \"nOpacity: \") (if (and (\u003e= alpha 0) (\u003c= alpha 100)) (user/set-background-opacity alpha) (format-message \"Opacity has to be between 0 and 100 but is %d.\" alpha))) (defun user/set-background-opacity (alpha) (set-frame-parameter (selected-frame) 'alpha alpha) (add-to-list 'default-frame-alist (cons 'alpha alpha))) (user/set-background-opacity 100) (provide 'init-org-modern) init-font.el ;;; init-font.el --- Dired customisations -*- lexical-binding: t -*- ;;; Commentary: ;;; Code: ;;; base on https://gist.github.com/coldnew/7398835 (defun qiang-font-existsp (font) (if (null (x-list-fonts font)) nil t)) ;;(defvar zh-font-list '(\"LXGW WenKai Mono\" )) (defvar zh-font-list '(\"tsangerJinKai03\" )) (defvar en-font-list '(\"PragmataPro\" )) (defun qiang-make-font-string (font-name font-size) (if (and (stringp font-size) (equal \":\" (string (elt font-size 0)))) (format \"%s%s\" font-name font-size) (format \"%s %s\" font-name font-size))) (defun qiang-set-font (english-fonts english-font-size chinese-fonts \u0026optional chinese-font-scale) (setq chinese-font-scale (or chinese-font-scale 1.2)) (setq face-font-rescale-alist (cl-loop for x in zh-font-list collect (cons x chinese-font-scale))) \"english-font-size could be set to \\\":pixelsize=18\\\" or a integer. If set/leave chinese-font-scale to nil, it will follow english-font-size\" (let ((en-font (qiang-make-font-string (cl-find-if #'qiang-font-existsp english-fonts) english-font-size)) init-filemanage.el ;; treemacs ;; Centaur tabs (use-package centaur-tabs :demand :config (centaur-tabs-mode t) (setq centaur-tabs-style \"bar\" centaur-tabs-set-icons nil centaur-tabs-set-bar 'over centaur-tabs-set-modified-marker t) :bind ;;(\"C-b\" . centaur-tabs-backward) ;;(\"C-n\" . centaur-tabs-forward) (\"C-\" . centaur-tabs-backward) (\"C-\" . centaur-tabs-forward) ) ;; 自动保存文件 (require 'auto-save) ;; 加载自动保存模块 (auto-save-enable) ;; 开启自动保存功能 (setq auto-save-slient t) ;; 自动保存的时候静悄悄的， 不要打扰我 (provide 'init-filemanage) init-elpa.el ;;切换国内源 (setq package-archives '((\"melpa\" . \"https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/\") (\"gnu\" . \"https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/\") (\"org\" . \"https://mirrors.tuna.tsinghua.edu.cn/elpa/org/\"))) (setq package-check-signature nil) ;;个别时候会出现签名检验失败 ;; 初始化软件包管理器 (require 'package) (unless (bound-and-true-p package--initialized) (package-initialize)) ;; 刷新软件源索引 (unless package-archive-contents (package-refresh-contents)) ;; 第一个扩展插件：use-package，用来批量统一管理软件包 (unless (package-installed-p 'use-package) (package-refresh-contents) (package-install 'use-package)) (setq use-package-always-ensure t ;; 避免每个包都需要加: ensure t use-package-always-defer t ;; 避免每个包都需要加: defer t use-package-enable-imenu-support t use-package-expand-minimally t) (require 'use-package) (provide 'init-elpa) auto-save.el ;;; auto-save.el --- Auto save files when idle ;; Filename: auto-save.el ;; Description: Auto save files when idle ;; Author: Andy Stewart lazycat.manatee@gmail.com ;; Maintainer: Andy Stewart lazycat.manatee@gmail.com ;; Copyright (C) 2013 ~ 2014, Andy Stewart, all rights reserved. ;; Created: 2013-12-31 00:32:00 ;; Version: 0.6 ;; Last-Updated: 2018-12-20 12:10:44 ;; By: Andy Stewart ;; URL: ;; Keywords: autosave ;; Compatibility: GNU Emacs 23.0.60.1 ;; ;; Features that might be required by this library: ;; ;; ;; ;;; This file is NOT part of GNU Emacs ;;; License ;; ;; This program is free software; you can redistribute it and/or modify ;; it under the terms of the GNU General Public License as published by ;; the Free Software Foundation; either version 3, or (at your option) ;; any later version. ;; This program is distributed in the hope that it will be useful, ;; but WITHOUT ANY WARRANTY; without even the implied warranty of ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the ;; GNU General Public License for more details. ;; You should have received a copy of the GNU General Public License ;; along with this program; see the file COPYING. If not, write to init-kbd.el ;; 改变mac系统 按键映射 ;;(when *is-mac* (setq mac-command-modifier 'meta) ;; (setq mac-option-modifier 'none)) (defalias 'yes-or-no-p 'y-or-n-p) ;; 改变yes (global-set-key (kbd \"C-x b\") 'ivy-switch-buffer) (provide 'init-kbd) 修改字体：\n;;; variable-pitch (custom-theme-set-faces 'user '(fixed-pitch ((t (:family \"SF Mono\" :height 1.0)))) '(variable-pitch ((t (:family \"Bookerly\" :height 1.0)))) '(mode-line ((t (:inherit variable-pitch :height 1.0)))) '(mode-line-inactive ((t (:inherit variable-pitch :height 1.0)))) '(Info-quoted ((t (:inherit fixed-pitch)))) '(org-block ((t (:inherit fixed-pitch)))) '(org-code ((t (:inherit (shadow fixed-pitch))))) '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch))))) '(org-indent ((t (:inherit (org-hide fixed-pitch))))) '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch))))) '(org-property-value ((t (:inherit fixed-pitch))) t) '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch))))) '(org-table ((t (:inherit fixed-pitch)))) '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 1.0)))) '(org-verbatim ((t (:inherit (shadow fixed-pitch))))) ) (add-hook 'org-mode-hook #'variable-pitch-mode) (add-hook 'Info-mode-hook #'variable-pitch-mode) (add-hook 'gnus-mode-hook #'variable-pitch-mode) (add-hook 'Info-mode-hook #'writeroom-mode) org-roam配合使用agenda agenda fast\n实现搜索 option + x： rifle 主题安装 MOdus ef-theme 文件管理 知乎文章\nelpa的使用 参考\n",
+  "wordCount" : "1531",
+  "inLanguage": "en",
+  "datePublished": "2023-02-22T10:22:00+08:00",
+  "dateModified": "2023-02-22T10:22:00+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "XP"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://sirius00.github.io/posts/blog/emacs%E4%BD%BF%E7%94%A8%E5%A4%87%E5%BF%98/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "XP's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://sirius00.github.io/img/cat.png"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://sirius00.github.io/" accesskey="h" title="XP&#39;s Blog (Alt + H)">
+            <img src="https://sirius00.github.io/img/cat.png" alt="logo" aria-label="logo"
+                 height="35">XP&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://sirius00.github.io/search" title="🔍 搜索 (Alt &#43; /)" accesskey=/>
+                <span>🔍 搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/" title="🏠 主页">
+                <span>🏠 主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/posts" title="📚 文章">
+                <span>📚 文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/tags" title="🧩 标签">
+                <span>🧩 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/archives/" title="⏱️ 时间轴">
+                <span>⏱️ 时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://sirius00.github.io/about" title="🙋🏻‍♂️ 关于">
+                <span>🙋🏻‍♂️ 关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main page">
+<article class="post-single">
+    <div id="single-content">
+        <header class="post-header">
+            <div class="breadcrumbs"><a href="https://sirius00.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://sirius00.github.io/posts/">📚文章</a>&nbsp;»&nbsp;<a href="https://sirius00.github.io/posts/blog/">🧱 随笔</a></div>
+            <h1 class="post-title">
+                Emacs使用备忘
+            </h1>
+            <div class="post-meta">创建:&nbsp;<span title='2023-02-22 10:22:00 +0800 CST'>2023-02-22</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-22&nbsp;|&nbsp;字数:&nbsp;1531字&nbsp;|&nbsp;时长:&nbsp;4分钟&nbsp;|&nbsp;
+作者:&nbsp;XP
+
+
+
+                &nbsp;|&nbsp;标签: &nbsp;
+                <ul class="post-tags-meta">
+                    <a href="https://sirius00.github.io/tags/tool/">tool</a>
+                </ul>
+
+                
+                <span id="busuanzi_container_page_pv">
+                &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+</div>
+        </header> 
+        <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">文章目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e6%9f%a5%e7%9c%8bemacs%e7%89%88%e6%9c%ac" aria-label="查看emacs版本">查看emacs版本</a></li>
+                <li>
+                    <a href="#%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" aria-label="配置文件">配置文件</a></li>
+                <li>
+                    <a href="#%e4%b8%aa%e4%ba%ba%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" aria-label="个人配置文件">个人配置文件</a></li>
+                <li>
+                    <a href="#org-roam%e9%85%8d%e5%90%88%e4%bd%bf%e7%94%a8agenda" aria-label="org-roam配合使用agenda">org-roam配合使用agenda</a></li>
+                <li>
+                    <a href="#%e5%ae%9e%e7%8e%b0%e6%90%9c%e7%b4%a2" aria-label="实现搜索">实现搜索</a></li>
+                <li>
+                    <a href="#%e4%b8%bb%e9%a2%98%e5%ae%89%e8%a3%85" aria-label="主题安装">主题安装</a></li>
+                <li>
+                    <a href="#%e6%96%87%e4%bb%b6%e7%ae%a1%e7%90%86" aria-label="文件管理">文件管理</a></li>
+                <li>
+                    <a href="#elpa%e7%9a%84%e4%bd%bf%e7%94%a8" aria-label="elpa的使用">elpa的使用</a>
+                </li>
+            </ul>
+        </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+        
+        activeElement = elements[0];
+        const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+        document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+    }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 &&
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+            const id = encodeURI(element.getAttribute('id')).toLowerCase();
+            if (element === activeElement){
+                document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+            } else {
+                document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+            }
+        })
+    }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;
+    }
+</script>
+        
+        <div class="post-content"><h3 id="查看emacs版本">查看emacs版本<a hidden class="anchor" aria-hidden="true" href="#查看emacs版本">#</a></h3>
+<p><code>emacs --version</code></p>
+<h3 id="配置文件">配置文件<a hidden class="anchor" aria-hidden="true" href="#配置文件">#</a></h3>
+<p>参考： <a href="https://github.com/cabins/emacs.d">参考文章</a></p>
+<p>配置文件检查顺序：</p>
+<p>​	~/.emacs</p>
+<p>​	~/.emacs.d</p>
+<p>​	~/.config/emacs/init.el</p>
+<h3 id="个人配置文件">个人配置文件<a hidden class="anchor" aria-hidden="true" href="#个人配置文件">#</a></h3>
+<ul>
+<li>
+<p>init.el</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">add</span><span style="color:#f92672">-</span><span style="color:#a6e22e">to</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#e6db74">&#39;load-path (expand-file-name (concat user-emacs-directory &#34;lisp&#34;)))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(setq custom-file (expand-file-name &#34;custom.el&#34; user-emacs-directory)) ;; 通过图形化界面设置写入的内容会被记录到该文件中, 若没有自动创建,可以手动创建
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(when (file-exists-p custom-file)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	(load custom-file))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(require &#39;</span><span style="color:#a6e22e">init</span><span style="color:#f92672">-</span><span style="color:#a6e22e">consts</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">require</span> <span style="color:#e6db74">&#39;init-kbd)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(require &#39;</span><span style="color:#a6e22e">init</span><span style="color:#f92672">-</span><span style="color:#a6e22e">startup</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">require</span> <span style="color:#e6db74">&#39;init-elpa)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(require &#39;</span><span style="color:#a6e22e">init</span><span style="color:#f92672">-</span><span style="color:#66d9ef">package</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">require</span> <span style="color:#e6db74">&#39;init-filemanage)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(require &#39;</span><span style="color:#a6e22e">init</span><span style="color:#f92672">-</span><span style="color:#a6e22e">org</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">require</span> <span style="color:#e6db74">&#39;init-font)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(require &#39;</span><span style="color:#a6e22e">init</span><span style="color:#f92672">-</span><span style="color:#a6e22e">org</span><span style="color:#f92672">-</span><span style="color:#a6e22e">modern</span>)
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">实现检索</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">require</span> <span style="color:#e6db74">&#39;helm-org-rifle)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;;(require &#39;</span><span style="color:#a6e22e">init</span><span style="color:#f92672">-</span><span style="color:#a6e22e">meow</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">require</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">init</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ui</span>)
+</span></span></code></pre></div></li>
+<li>
+<p>lisp文件夹</p>
+<ul>
+<li>init-consts.el</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>(<span style="color:#a6e22e">defconst</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">is</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mac</span><span style="color:#f92672">*</span> (<span style="color:#a6e22e">eq</span> <span style="color:#a6e22e">system</span><span style="color:#f92672">-</span><span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;darwin))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(defconst *is-linux* (eq system-type &#39;</span><span style="color:#a6e22e">gnu</span><span style="color:#f92672">/</span><span style="color:#a6e22e">linux</span>))
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">defconst</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">is</span><span style="color:#f92672">-</span><span style="color:#a6e22e">windows</span><span style="color:#f92672">*</span> (<span style="color:#a6e22e">or</span> (<span style="color:#a6e22e">eq</span> <span style="color:#a6e22e">system</span><span style="color:#f92672">-</span><span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;ms-dos) (eq system-type &#39;</span><span style="color:#a6e22e">windows</span><span style="color:#f92672">-</span><span style="color:#a6e22e">nt</span>)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">provide</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">init</span><span style="color:#f92672">-</span><span style="color:#a6e22e">consts</span>)
+</span></span></code></pre></div><ul>
+<li>init-ui.el</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>;;(<span style="color:#a6e22e">global</span><span style="color:#f92672">-</span><span style="color:#a6e22e">linum</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mode</span> <span style="color:#a6e22e">t</span>) ;; <span style="color:#a6e22e">行号</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">global</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hl</span><span style="color:#f92672">-</span><span style="color:#a6e22e">line</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mode</span> <span style="color:#ae81ff">1</span>) ;; <span style="color:#a6e22e">高亮当前行</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">tool</span><span style="color:#f92672">-</span><span style="color:#a6e22e">bar</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mode</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) ;;<span style="color:#a6e22e">隐藏工具栏</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">scroll</span><span style="color:#f92672">-</span><span style="color:#a6e22e">bar</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mode</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) ;;<span style="color:#a6e22e">隐藏滚动条</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">setq</span><span style="color:#f92672">-</span><span style="color:#66d9ef">default</span>  <span style="color:#a6e22e">cursor</span><span style="color:#f92672">-</span><span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;bar) ;;设置光标样式
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(setq inhibit-startup-screen t) ;;关闭欢迎界面
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(add-to-list &#39;</span><span style="color:#66d9ef">default</span><span style="color:#f92672">-</span><span style="color:#a6e22e">frame</span><span style="color:#f92672">-</span><span style="color:#a6e22e">alist</span> <span style="color:#e6db74">&#39;(fullscreen . maximized )) ;;全屏显示
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;;设置窗口位置为屏库左上角(0,0)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;;(set-frame-position (selected-frame) 400 200)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;;(load-theme &#39;</span><span style="color:#a6e22e">ef</span><span style="color:#f92672">-</span><span style="color:#a6e22e">spring</span> <span style="color:#a6e22e">t</span>) ;;<span style="color:#a6e22e">使用主题</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">load</span><span style="color:#f92672">-</span><span style="color:#a6e22e">theme</span> <span style="color:#e6db74">&#39;ef-autumn t) ;;使用主题
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;;(load-theme &#39;</span><span style="color:#a6e22e">ef</span><span style="color:#f92672">-</span><span style="color:#a6e22e">night</span> <span style="color:#a6e22e">t</span>) ;;<span style="color:#a6e22e">使用主题</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">provide</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">init</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ui</span>)
+</span></span></code></pre></div><ul>
+<li>init-startup.el</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>(<span style="color:#a6e22e">setq</span> <span style="color:#a6e22e">make</span><span style="color:#f92672">-</span><span style="color:#a6e22e">backup</span><span style="color:#f92672">-</span><span style="color:#a6e22e">files</span> <span style="color:#a6e22e">nil</span>) ;; <span style="color:#a6e22e">不生成备份文件</span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">设置编码格式</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">prefer</span><span style="color:#f92672">-</span><span style="color:#a6e22e">coding</span><span style="color:#f92672">-</span><span style="color:#a6e22e">system</span> <span style="color:#e6db74">&#39;utf-8)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(unless *is-windows* (set-selection-coding-system &#39;</span><span style="color:#a6e22e">utf</span><span style="color:#f92672">-</span><span style="color:#ae81ff">8</span>))
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">setq</span> <span style="color:#a6e22e">gc</span><span style="color:#f92672">-</span><span style="color:#a6e22e">cons</span><span style="color:#f92672">-</span><span style="color:#a6e22e">threshold</span> <span style="color:#a6e22e">most</span><span style="color:#f92672">-</span><span style="color:#a6e22e">positive</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fixnum</span>) ;; <span style="color:#a6e22e">设置垃圾回收阈值</span>,<span style="color:#a6e22e">加快启动速度</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">electric</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pair</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mode</span> <span style="color:#ae81ff">1</span>) ;;<span style="color:#a6e22e">匹配括号</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">provide</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">init</span><span style="color:#f92672">-</span><span style="color:#a6e22e">startup</span>)
+</span></span></code></pre></div><ul>
+<li>init-package.el</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>;;; <span style="color:#66d9ef">package</span> <span style="color:#f92672">---</span> <span style="color:#a6e22e">Summary</span>
+</span></span><span style="display:flex;"><span>           (<span style="color:#e6db74">&#34;&lt;M-down&gt;&#34;</span> . <span style="color:#a6e22e">drag</span><span style="color:#f92672">-</span><span style="color:#a6e22e">stuff</span><span style="color:#f92672">-</span><span style="color:#a6e22e">down</span>)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>;;<span style="color:#a6e22e">强化搜索三剑客</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">use</span><span style="color:#f92672">-</span><span style="color:#66d9ef">package</span> <span style="color:#a6e22e">ivy</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">:</span><span style="color:#a6e22e">defer</span> <span style="color:#ae81ff">1</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">:</span><span style="color:#a6e22e">demand</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">:</span><span style="color:#a6e22e">hook</span> (<span style="color:#a6e22e">after</span><span style="color:#f92672">-</span><span style="color:#a6e22e">init</span> . <span style="color:#a6e22e">ivy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mode</span>) 
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">:</span><span style="color:#a6e22e">config</span> 
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">ivy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mode</span> <span style="color:#ae81ff">1</span>) 
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">setq</span> <span style="color:#a6e22e">ivy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">use</span><span style="color:#f92672">-</span><span style="color:#a6e22e">virtual</span><span style="color:#f92672">-</span><span style="color:#a6e22e">buffers</span> <span style="color:#a6e22e">t</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ivy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">initial</span><span style="color:#f92672">-</span><span style="color:#a6e22e">inputs</span><span style="color:#f92672">-</span><span style="color:#a6e22e">alist</span> <span style="color:#a6e22e">nil</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ivy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">count</span><span style="color:#f92672">-</span><span style="color:#a6e22e">format</span> <span style="color:#e6db74">&#34;%d/%d &#34;</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">enable</span><span style="color:#f92672">-</span><span style="color:#a6e22e">recursive</span><span style="color:#f92672">-</span><span style="color:#a6e22e">minibuffers</span> <span style="color:#a6e22e">t</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ivy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">re</span><span style="color:#f92672">-</span><span style="color:#a6e22e">builders</span><span style="color:#f92672">-</span><span style="color:#a6e22e">alist</span> <span style="color:#e6db74">&#39;((t . ivy--regex-ignore-order))) ) 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(use-package counsel 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  :after (ivy) 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  :bind ((&#34;M-x&#34; . counsel-M-x) 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">         (&#34;C-x C-f&#34; . counsel-find-file) 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">         (&#34;C-c f&#34; . counsel-recentf)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">         (&#34;C-c g&#34; . counsel-git))) 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(use-package swiper 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  :after ivy 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  :bind ((&#34;C-s&#34; . swiper) 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          (&#34;C-r&#34; . swiper-isearch-backward)) 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  :config (setq swiper-action-recenter t 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                swiper-include-line-number-in-search t))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;;自动补全
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(use-package company
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  :hook (after-init . global-company-mode)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  :config (setq company-minimum-prefix-length 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                company-show-quick-access t))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;;语法检查
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;;(use-package flymake
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;;  :hook (prog-mode . flymake-mode)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;;  :config
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ;;(global-set-key (kbd &#34;M-n&#34;) #&#39;</span><span style="color:#a6e22e">flymake</span><span style="color:#f92672">-</span><span style="color:#66d9ef">goto</span><span style="color:#f92672">-</span><span style="color:#a6e22e">next</span><span style="color:#f92672">-</span><span style="color:#a6e22e">error</span>)
+</span></span><span style="display:flex;"><span>  ;;(<span style="color:#a6e22e">global</span><span style="color:#f92672">-</span><span style="color:#a6e22e">set</span><span style="color:#f92672">-</span><span style="color:#a6e22e">key</span> (<span style="color:#a6e22e">kbd</span> <span style="color:#e6db74">&#34;M-p&#34;</span>) <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#e6db74">&#39;flymake-goto-prev-error))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;;辅助记忆快捷键
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(use-package which-key
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  :defer nil
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  :config (which-key-mode))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;;doom mode-line
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(use-package all-the-icons
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  :ensure t)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(use-package doom-modeline
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  :ensure t
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  :init (doom-modeline-mode 1)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	(setq doom-modeline-height 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">				doom-modeline-support-imenu t
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">				doom-modeline-icon nil
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">				doom-modeline-buffer-file-name-style &#39;</span><span style="color:#a6e22e">relative</span><span style="color:#f92672">-</span><span style="color:#a6e22e">from</span><span style="color:#f92672">-</span><span style="color:#a6e22e">project</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">doom</span><span style="color:#f92672">-</span><span style="color:#a6e22e">modeline</span><span style="color:#f92672">-</span><span style="color:#a6e22e">buffer</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span> <span style="color:#a6e22e">t</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">doom</span><span style="color:#f92672">-</span><span style="color:#a6e22e">modeline</span><span style="color:#f92672">-</span><span style="color:#a6e22e">enable</span><span style="color:#f92672">-</span><span style="color:#a6e22e">word</span><span style="color:#f92672">-</span><span style="color:#a6e22e">count</span> <span style="color:#a6e22e">t</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">doom</span><span style="color:#f92672">-</span><span style="color:#a6e22e">modeline</span><span style="color:#f92672">-</span><span style="color:#a6e22e">continuous</span><span style="color:#f92672">-</span><span style="color:#a6e22e">word</span><span style="color:#f92672">-</span><span style="color:#a6e22e">count</span><span style="color:#f92672">-</span><span style="color:#a6e22e">modes</span> <span style="color:#e6db74">&#39;(markdown-mode gfm-mode org-mode)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">				) ; optional
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	(if (facep &#39;</span><span style="color:#a6e22e">mode</span><span style="color:#f92672">-</span><span style="color:#a6e22e">line</span><span style="color:#f92672">-</span><span style="color:#a6e22e">active</span>)
+</span></span><span style="display:flex;"><span>    (<span style="color:#a6e22e">set</span><span style="color:#f92672">-</span><span style="color:#a6e22e">face</span><span style="color:#f92672">-</span><span style="color:#a6e22e">attribute</span> <span style="color:#e6db74">&#39;mode-line-active nil :family &#34;Hack&#34; :height 100) ; For 29+
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		(set-face-attribute &#39;</span><span style="color:#a6e22e">mode</span><span style="color:#f92672">-</span><span style="color:#a6e22e">line</span> <span style="color:#a6e22e">nil</span> <span style="color:#f92672">:</span><span style="color:#a6e22e">family</span> <span style="color:#e6db74">&#34;Hack&#34;</span> <span style="color:#f92672">:</span><span style="color:#a6e22e">height</span> <span style="color:#ae81ff">100</span>))
+</span></span></code></pre></div><ul>
+<li>init-org.el</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>(<span style="color:#a6e22e">add</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hook</span> <span style="color:#e6db74">&#39;org-mode-hook (lambda () (setq truncate-lines nil))) ;; 自动换行
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(setq org-startup-indented t) ;; 缩进
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> (setq-default intent-tabs-mode nil) ;; 使用tab缩进
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(setq-default default-tab-width 2) ;; tab长度
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(setq-default tab-width 2)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(setq org-hide-emphasis-markers t) ;;隐藏强调标记
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(setq org-support-shift-select t) ;; org-mode shift选择
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;;; org
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(setq org-directory &#34;~/Documents/emacs/org-roam/&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(global-set-key (kbd &#34;C-c c&#34;) &#39;</span><span style="color:#a6e22e">org</span><span style="color:#f92672">-</span><span style="color:#a6e22e">capture</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">setq</span> <span style="color:#a6e22e">org</span><span style="color:#f92672">-</span><span style="color:#a6e22e">capture</span><span style="color:#f92672">-</span><span style="color:#a6e22e">templates</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">`((&#34;t&#34; &#34;Task&#34; entry  (file &#34;task.org&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">         ,(concat &#34;* TODO %?\n%U\n&#34;))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        (&#34;d&#34; &#34;Daily Note&#34; entry (file &#34;daily_note.org&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">         ,(concat &#34;* Time:%U\n** %?&#34;))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">       ))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;; org-agenda
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(define-key global-map (kbd &#34;C-c a&#34;) &#39;org-agenda)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;;(setq org-agenda-files (list &#34;~/Documents/emacs/org-roam/daily/*.org&#34;))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;;(setq org-agenda-files (file-expand-wildcards  &#34;~/Documents/emacs/org-roam/daily/*.org&#34;))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(setq org-agenda-files &#39;(&#34;~/Documents/emacs/org-roam/daily&#34; 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                         &#34;~/Documents/emacs/org-roam/&#34; 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;;org-roam
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(use-package org-roam
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  :ensure t
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  :custom
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (org-roam-directory (file-truename &#34;~/Documents/emacs/org-roam/&#34;))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ;;(org-roam-db-gc-threshold &#39;most-positive-fixnum)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (org-roam-completion-everywhere t)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	(org-roam-dailies-capture-templates
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   ;; %&lt;%H:%M&gt; 为24小时制，%&lt;%I:%M %p&gt; 为12小时制
+</span></span></span></code></pre></div><ul>
+<li>init-org-modern.el</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>;;(<span style="color:#a6e22e">require</span> <span style="color:#e6db74">&#39;org-modern)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(use-package org-modern
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  :after org
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  :hook (org-mode . org-modern-mode)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  :init
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (setq org-modern-block t
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        org-modern-radio-target nil
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        org-modern-internal-target nil
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        ;;org-modern-list nil
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        ;; org-modern-star nil
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        org-modern-timestamp nil
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        org-modern-checkbox nil
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        org-modern-todo nil
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        ;; org-modern-footnote nil
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        org-modern-block-name t
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        org-modern-priority nil
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        org-modern-progress nil
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        org-modern-keyword nil
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        org-modern-table nil
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        org-modern-tag nil
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        org-modern-statistics nil
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        org-modern-horizontal-rule nil
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        org-ellipsis &#34; +&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">				org-modern-todo-faces
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">				  (quote ((\&#34;TODO\&#34; :background \&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">red\&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    :foreground \&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">yellow\&#34;)))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">				))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(custom-set-faces
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> &#39;</span>(<span style="color:#a6e22e">org</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ellipsis</span> ((<span style="color:#a6e22e">t</span> (<span style="color:#f92672">:</span><span style="color:#a6e22e">foreground</span> <span style="color:#e6db74">&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">yellow 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">green&#34;</span>)))))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">设置背景透明度</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">defun</span> <span style="color:#a6e22e">user</span><span style="color:#f92672">/</span><span style="color:#a6e22e">change</span><span style="color:#f92672">-</span><span style="color:#a6e22e">background</span><span style="color:#f92672">-</span><span style="color:#a6e22e">opacity</span> (<span style="color:#a6e22e">alpha</span>)
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">interactive</span> <span style="color:#e6db74">&#34;nOpacity: &#34;</span>)
+</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">and</span> (<span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">alpha</span> <span style="color:#ae81ff">0</span>) (<span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">alpha</span> <span style="color:#ae81ff">100</span>))
+</span></span><span style="display:flex;"><span>      (<span style="color:#a6e22e">user</span><span style="color:#f92672">/</span><span style="color:#a6e22e">set</span><span style="color:#f92672">-</span><span style="color:#a6e22e">background</span><span style="color:#f92672">-</span><span style="color:#a6e22e">opacity</span> <span style="color:#a6e22e">alpha</span>)
+</span></span><span style="display:flex;"><span>    (<span style="color:#a6e22e">format</span><span style="color:#f92672">-</span><span style="color:#a6e22e">message</span> <span style="color:#e6db74">&#34;Opacity has to be between 0 and 100 but is %d.&#34;</span> <span style="color:#a6e22e">alpha</span>)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">defun</span> <span style="color:#a6e22e">user</span><span style="color:#f92672">/</span><span style="color:#a6e22e">set</span><span style="color:#f92672">-</span><span style="color:#a6e22e">background</span><span style="color:#f92672">-</span><span style="color:#a6e22e">opacity</span> (<span style="color:#a6e22e">alpha</span>)
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">set</span><span style="color:#f92672">-</span><span style="color:#a6e22e">frame</span><span style="color:#f92672">-</span><span style="color:#a6e22e">parameter</span> (<span style="color:#a6e22e">selected</span><span style="color:#f92672">-</span><span style="color:#a6e22e">frame</span>) <span style="color:#e6db74">&#39;alpha alpha)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (add-to-list &#39;</span><span style="color:#66d9ef">default</span><span style="color:#f92672">-</span><span style="color:#a6e22e">frame</span><span style="color:#f92672">-</span><span style="color:#a6e22e">alist</span> (<span style="color:#a6e22e">cons</span> <span style="color:#e6db74">&#39;alpha alpha)))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(user/set-background-opacity 100)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(provide &#39;</span><span style="color:#a6e22e">init</span><span style="color:#f92672">-</span><span style="color:#a6e22e">org</span><span style="color:#f92672">-</span><span style="color:#a6e22e">modern</span>)
+</span></span></code></pre></div><ul>
+<li>init-font.el</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>;;; <span style="color:#a6e22e">init</span><span style="color:#f92672">-</span><span style="color:#a6e22e">font</span>.<span style="color:#a6e22e">el</span> <span style="color:#f92672">---</span> <span style="color:#a6e22e">Dired</span> <span style="color:#a6e22e">customisations</span> <span style="color:#f92672">-*-</span> <span style="color:#a6e22e">lexical</span><span style="color:#f92672">-</span><span style="color:#a6e22e">binding</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">t</span> <span style="color:#f92672">-*-</span>
+</span></span><span style="display:flex;"><span>;;; <span style="color:#a6e22e">Commentary</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>;;; <span style="color:#a6e22e">Code</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>;;; <span style="color:#a6e22e">base</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//gist.github.com/coldnew/7398835
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>(<span style="color:#a6e22e">defun</span> <span style="color:#a6e22e">qiang</span><span style="color:#f92672">-</span><span style="color:#a6e22e">font</span><span style="color:#f92672">-</span><span style="color:#a6e22e">existsp</span> (<span style="color:#a6e22e">font</span>)
+</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">null</span> (<span style="color:#a6e22e">x</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fonts</span> <span style="color:#a6e22e">font</span>))
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">nil</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">t</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>;;(<span style="color:#a6e22e">defvar</span> <span style="color:#a6e22e">zh</span><span style="color:#f92672">-</span><span style="color:#a6e22e">font</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#e6db74">&#39;(&#34;LXGW WenKai Mono&#34; ))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(defvar zh-font-list &#39;</span>(<span style="color:#e6db74">&#34;tsangerJinKai03&#34;</span> ))
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">defvar</span> <span style="color:#a6e22e">en</span><span style="color:#f92672">-</span><span style="color:#a6e22e">font</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#e6db74">&#39;(&#34;PragmataPro&#34;  ))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(defun qiang-make-font-string (font-name font-size)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (if (and (stringp font-size)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">           (equal &#34;:&#34; (string (elt font-size 0))))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      (format &#34;%s%s&#34; font-name font-size)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    (format &#34;%s %s&#34; font-name font-size)))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(defun qiang-set-font (english-fonts
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                       english-font-size
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                       chinese-fonts
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                       &amp;optional chinese-font-scale)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (setq chinese-font-scale (or chinese-font-scale 1.2))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (setq face-font-rescale-alist
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        (cl-loop for x in zh-font-list
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              collect (cons x chinese-font-scale)))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;english-font-size could be set to \&#34;:pixelsize=18\&#34; or a integer.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">If set/leave chinese-font-scale to nil, it will follow english-font-size&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (let ((en-font (qiang-make-font-string
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  (cl-find-if #&#39;</span><span style="color:#a6e22e">qiang</span><span style="color:#f92672">-</span><span style="color:#a6e22e">font</span><span style="color:#f92672">-</span><span style="color:#a6e22e">existsp</span> <span style="color:#a6e22e">english</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fonts</span>)
+</span></span><span style="display:flex;"><span>                  <span style="color:#a6e22e">english</span><span style="color:#f92672">-</span><span style="color:#a6e22e">font</span><span style="color:#f92672">-</span><span style="color:#a6e22e">size</span>))
+</span></span></code></pre></div><ul>
+<li>init-filemanage.el</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>;; <span style="color:#a6e22e">treemacs</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">Centaur</span> <span style="color:#a6e22e">tabs</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">use</span><span style="color:#f92672">-</span><span style="color:#66d9ef">package</span> <span style="color:#a6e22e">centaur</span><span style="color:#f92672">-</span><span style="color:#a6e22e">tabs</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">:</span><span style="color:#a6e22e">demand</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">:</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">centaur</span><span style="color:#f92672">-</span><span style="color:#a6e22e">tabs</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mode</span> <span style="color:#a6e22e">t</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">setq</span> <span style="color:#a6e22e">centaur</span><span style="color:#f92672">-</span><span style="color:#a6e22e">tabs</span><span style="color:#f92672">-</span><span style="color:#a6e22e">style</span> <span style="color:#e6db74">&#34;bar&#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">centaur</span><span style="color:#f92672">-</span><span style="color:#a6e22e">tabs</span><span style="color:#f92672">-</span><span style="color:#a6e22e">set</span><span style="color:#f92672">-</span><span style="color:#a6e22e">icons</span> <span style="color:#a6e22e">nil</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">centaur</span><span style="color:#f92672">-</span><span style="color:#a6e22e">tabs</span><span style="color:#f92672">-</span><span style="color:#a6e22e">set</span><span style="color:#f92672">-</span><span style="color:#a6e22e">bar</span> <span style="color:#e6db74">&#39;over
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">				centaur-tabs-set-modified-marker t)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	:bind
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ;;(&#34;C-b&#34; . centaur-tabs-backward)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ;;(&#34;C-n&#34; . centaur-tabs-forward)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	(&#34;C-&lt;left&gt;&#34; . centaur-tabs-backward)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (&#34;C-&lt;right&gt;&#34; . centaur-tabs-forward)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;; 自动保存文件
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(require &#39;</span><span style="color:#a6e22e">auto</span><span style="color:#f92672">-</span><span style="color:#a6e22e">save</span>)            ;; <span style="color:#a6e22e">加载自动保存模块</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">auto</span><span style="color:#f92672">-</span><span style="color:#a6e22e">save</span><span style="color:#f92672">-</span><span style="color:#a6e22e">enable</span>)              ;; <span style="color:#a6e22e">开启自动保存功能</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">setq</span> <span style="color:#a6e22e">auto</span><span style="color:#f92672">-</span><span style="color:#a6e22e">save</span><span style="color:#f92672">-</span><span style="color:#a6e22e">slient</span> <span style="color:#a6e22e">t</span>)       ;; <span style="color:#a6e22e">自动保存的时候静悄悄的</span><span style="color:#960050;background-color:#1e0010">，</span> <span style="color:#a6e22e">不要打扰我</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">provide</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">init</span><span style="color:#f92672">-</span><span style="color:#a6e22e">filemanage</span>)
+</span></span></code></pre></div><ul>
+<li>init-elpa.el</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>;;<span style="color:#a6e22e">切换国内源</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">setq</span> <span style="color:#66d9ef">package</span><span style="color:#f92672">-</span><span style="color:#a6e22e">archives</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;((&#34;melpa&#34; . &#34;https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        (&#34;gnu&#34; . &#34;https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        (&#34;org&#34; . &#34;https://mirrors.tuna.tsinghua.edu.cn/elpa/org/&#34;)))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(setq package-check-signature nil) ;;个别时候会出现签名检验失败
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;; 初始化软件包管理器
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(require &#39;</span><span style="color:#66d9ef">package</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">unless</span> (<span style="color:#a6e22e">bound</span><span style="color:#f92672">-</span><span style="color:#a6e22e">and</span><span style="color:#f92672">-</span><span style="color:#66d9ef">true</span><span style="color:#f92672">-</span><span style="color:#a6e22e">p</span> <span style="color:#66d9ef">package</span><span style="color:#f92672">--</span><span style="color:#a6e22e">initialized</span>)
+</span></span><span style="display:flex;"><span>    (<span style="color:#66d9ef">package</span><span style="color:#f92672">-</span><span style="color:#a6e22e">initialize</span>))
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">刷新软件源索引</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">unless</span> <span style="color:#66d9ef">package</span><span style="color:#f92672">-</span><span style="color:#a6e22e">archive</span><span style="color:#f92672">-</span><span style="color:#a6e22e">contents</span>
+</span></span><span style="display:flex;"><span>    (<span style="color:#66d9ef">package</span><span style="color:#f92672">-</span><span style="color:#a6e22e">refresh</span><span style="color:#f92672">-</span><span style="color:#a6e22e">contents</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">第一个扩展插件</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">use</span><span style="color:#f92672">-</span><span style="color:#66d9ef">package</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">用来批量统一管理软件包</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">unless</span> (<span style="color:#66d9ef">package</span><span style="color:#f92672">-</span><span style="color:#a6e22e">installed</span><span style="color:#f92672">-</span><span style="color:#a6e22e">p</span> <span style="color:#e6db74">&#39;use-package)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    (package-refresh-contents)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    (package-install &#39;</span><span style="color:#a6e22e">use</span><span style="color:#f92672">-</span><span style="color:#66d9ef">package</span>)) 
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">setq</span> <span style="color:#a6e22e">use</span><span style="color:#f92672">-</span><span style="color:#66d9ef">package</span><span style="color:#f92672">-</span><span style="color:#a6e22e">always</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ensure</span> <span style="color:#a6e22e">t</span> ;; <span style="color:#a6e22e">避免每个包都需要加</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ensure</span> <span style="color:#a6e22e">t</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">use</span><span style="color:#f92672">-</span><span style="color:#66d9ef">package</span><span style="color:#f92672">-</span><span style="color:#a6e22e">always</span><span style="color:#f92672">-</span><span style="color:#a6e22e">defer</span> <span style="color:#a6e22e">t</span> ;; <span style="color:#a6e22e">避免每个包都需要加</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">defer</span> <span style="color:#a6e22e">t</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">use</span><span style="color:#f92672">-</span><span style="color:#66d9ef">package</span><span style="color:#f92672">-</span><span style="color:#a6e22e">enable</span><span style="color:#f92672">-</span><span style="color:#a6e22e">imenu</span><span style="color:#f92672">-</span><span style="color:#a6e22e">support</span> <span style="color:#a6e22e">t</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">use</span><span style="color:#f92672">-</span><span style="color:#66d9ef">package</span><span style="color:#f92672">-</span><span style="color:#a6e22e">expand</span><span style="color:#f92672">-</span><span style="color:#a6e22e">minimally</span> <span style="color:#a6e22e">t</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">require</span> <span style="color:#e6db74">&#39;use-package)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(provide &#39;</span><span style="color:#a6e22e">init</span><span style="color:#f92672">-</span><span style="color:#a6e22e">elpa</span>)
+</span></span></code></pre></div><ul>
+<li>auto-save.el</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>;;; <span style="color:#a6e22e">auto</span><span style="color:#f92672">-</span><span style="color:#a6e22e">save</span>.<span style="color:#a6e22e">el</span> <span style="color:#f92672">---</span> <span style="color:#a6e22e">Auto</span> <span style="color:#a6e22e">save</span> <span style="color:#a6e22e">files</span> <span style="color:#a6e22e">when</span> <span style="color:#a6e22e">idle</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">Filename</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">auto</span><span style="color:#f92672">-</span><span style="color:#a6e22e">save</span>.<span style="color:#a6e22e">el</span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">Description</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Auto</span> <span style="color:#a6e22e">save</span> <span style="color:#a6e22e">files</span> <span style="color:#a6e22e">when</span> <span style="color:#a6e22e">idle</span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">Author</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Andy</span> <span style="color:#a6e22e">Stewart</span> <span style="color:#a6e22e">lazycat</span>.<span style="color:#a6e22e">manatee</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">gmail</span>.<span style="color:#a6e22e">com</span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">Maintainer</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Andy</span> <span style="color:#a6e22e">Stewart</span> <span style="color:#a6e22e">lazycat</span>.<span style="color:#a6e22e">manatee</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">gmail</span>.<span style="color:#a6e22e">com</span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">Copyright</span> (<span style="color:#a6e22e">C</span>) <span style="color:#ae81ff">2013</span> <span style="color:#f92672">~</span> <span style="color:#ae81ff">2014</span>, <span style="color:#a6e22e">Andy</span> <span style="color:#a6e22e">Stewart</span>, <span style="color:#a6e22e">all</span> <span style="color:#a6e22e">rights</span> <span style="color:#a6e22e">reserved</span>.
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">Created</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2013</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">31</span> <span style="color:#ae81ff">00</span><span style="color:#f92672">:</span><span style="color:#ae81ff">32</span><span style="color:#f92672">:</span><span style="color:#ae81ff">00</span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">Version</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0.6</span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">Last</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Updated</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2018</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">20</span> <span style="color:#ae81ff">12</span><span style="color:#f92672">:</span><span style="color:#ae81ff">10</span><span style="color:#f92672">:</span><span style="color:#ae81ff">44</span>
+</span></span><span style="display:flex;"><span>;;           <span style="color:#a6e22e">By</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Andy</span> <span style="color:#a6e22e">Stewart</span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">URL</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">Keywords</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">autosave</span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">Compatibility</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">GNU</span> <span style="color:#a6e22e">Emacs</span> <span style="color:#ae81ff">23.0</span>.<span style="color:#ae81ff">60.1</span>
+</span></span><span style="display:flex;"><span>;;
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">Features</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">might</span> <span style="color:#a6e22e">be</span> <span style="color:#a6e22e">required</span> <span style="color:#a6e22e">by</span> <span style="color:#66d9ef">this</span> <span style="color:#a6e22e">library</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>;;
+</span></span><span style="display:flex;"><span>;;
+</span></span><span style="display:flex;"><span>;;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>;;; <span style="color:#a6e22e">This</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">NOT</span> <span style="color:#a6e22e">part</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">GNU</span> <span style="color:#a6e22e">Emacs</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>;;; <span style="color:#a6e22e">License</span>
+</span></span><span style="display:flex;"><span>;;
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">This</span> <span style="color:#a6e22e">program</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">free</span> <span style="color:#a6e22e">software</span>; <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">can</span> <span style="color:#a6e22e">redistribute</span> <span style="color:#a6e22e">it</span> <span style="color:#a6e22e">and</span><span style="color:#f92672">/</span><span style="color:#a6e22e">or</span> <span style="color:#a6e22e">modify</span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">it</span> <span style="color:#a6e22e">under</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">terms</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">GNU</span> <span style="color:#a6e22e">General</span> <span style="color:#a6e22e">Public</span> <span style="color:#a6e22e">License</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">published</span> <span style="color:#a6e22e">by</span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">Free</span> <span style="color:#a6e22e">Software</span> <span style="color:#a6e22e">Foundation</span>; <span style="color:#a6e22e">either</span> <span style="color:#a6e22e">version</span> <span style="color:#ae81ff">3</span>, <span style="color:#a6e22e">or</span> (<span style="color:#a6e22e">at</span> <span style="color:#a6e22e">your</span> <span style="color:#a6e22e">option</span>)
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">later</span> <span style="color:#a6e22e">version</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">This</span> <span style="color:#a6e22e">program</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">distributed</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">hope</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">it</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">be</span> <span style="color:#a6e22e">useful</span>,
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">but</span> <span style="color:#a6e22e">WITHOUT</span> <span style="color:#a6e22e">ANY</span> <span style="color:#a6e22e">WARRANTY</span>; <span style="color:#a6e22e">without</span> <span style="color:#a6e22e">even</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">implied</span> <span style="color:#a6e22e">warranty</span> <span style="color:#66d9ef">of</span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">MERCHANTABILITY</span> <span style="color:#a6e22e">or</span> <span style="color:#a6e22e">FITNESS</span> <span style="color:#a6e22e">FOR</span> <span style="color:#a6e22e">A</span> <span style="color:#a6e22e">PARTICULAR</span> <span style="color:#a6e22e">PURPOSE</span>.  <span style="color:#a6e22e">See</span> <span style="color:#a6e22e">the</span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">GNU</span> <span style="color:#a6e22e">General</span> <span style="color:#a6e22e">Public</span> <span style="color:#a6e22e">License</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">more</span> <span style="color:#a6e22e">details</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">You</span> <span style="color:#a6e22e">should</span> <span style="color:#a6e22e">have</span> <span style="color:#a6e22e">received</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">copy</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">GNU</span> <span style="color:#a6e22e">General</span> <span style="color:#a6e22e">Public</span> <span style="color:#a6e22e">License</span>
+</span></span><span style="display:flex;"><span>;; <span style="color:#a6e22e">along</span> <span style="color:#66d9ef">with</span> <span style="color:#66d9ef">this</span> <span style="color:#a6e22e">program</span>; <span style="color:#a6e22e">see</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">COPYING</span>.  <span style="color:#a6e22e">If</span> <span style="color:#a6e22e">not</span>, <span style="color:#a6e22e">write</span> <span style="color:#a6e22e">to</span>
+</span></span></code></pre></div><ul>
+<li>init-kbd.el</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>;; <span style="color:#a6e22e">改变mac系统</span> <span style="color:#a6e22e">按键映射</span>
+</span></span><span style="display:flex;"><span>;;(<span style="color:#a6e22e">when</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">is</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mac</span><span style="color:#f92672">*</span> (<span style="color:#a6e22e">setq</span> <span style="color:#a6e22e">mac</span><span style="color:#f92672">-</span><span style="color:#a6e22e">command</span><span style="color:#f92672">-</span><span style="color:#a6e22e">modifier</span> <span style="color:#e6db74">&#39;meta)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">;;      (setq mac-option-modifier &#39;</span><span style="color:#a6e22e">none</span>))
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">defalias</span> <span style="color:#e6db74">&#39;yes-or-no-p &#39;</span><span style="color:#a6e22e">y</span><span style="color:#f92672">-</span><span style="color:#a6e22e">or</span><span style="color:#f92672">-</span><span style="color:#a6e22e">n</span><span style="color:#f92672">-</span><span style="color:#a6e22e">p</span>)     ;; <span style="color:#a6e22e">改变yes</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">global</span><span style="color:#f92672">-</span><span style="color:#a6e22e">set</span><span style="color:#f92672">-</span><span style="color:#a6e22e">key</span> (<span style="color:#a6e22e">kbd</span> <span style="color:#e6db74">&#34;C-x b&#34;</span>) <span style="color:#e6db74">&#39;ivy-switch-buffer)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(provide &#39;</span><span style="color:#a6e22e">init</span><span style="color:#f92672">-</span><span style="color:#a6e22e">kbd</span>)
+</span></span></code></pre></div></li>
+<li>
+<p>修改字体：</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>;;; <span style="color:#a6e22e">variable</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pitch</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">custom</span><span style="color:#f92672">-</span><span style="color:#a6e22e">theme</span><span style="color:#f92672">-</span><span style="color:#a6e22e">set</span><span style="color:#f92672">-</span><span style="color:#a6e22e">faces</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;user
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> &#39;</span>(<span style="color:#a6e22e">fixed</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pitch</span> ((<span style="color:#a6e22e">t</span> (<span style="color:#f92672">:</span><span style="color:#a6e22e">family</span> <span style="color:#e6db74">&#34;SF Mono&#34;</span> <span style="color:#f92672">:</span><span style="color:#a6e22e">height</span> <span style="color:#ae81ff">1.0</span>))))
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;(variable-pitch ((t (:family &#34;Bookerly&#34; :height 1.0))))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> &#39;</span>(<span style="color:#a6e22e">mode</span><span style="color:#f92672">-</span><span style="color:#a6e22e">line</span> ((<span style="color:#a6e22e">t</span> (<span style="color:#f92672">:</span><span style="color:#a6e22e">inherit</span> <span style="color:#a6e22e">variable</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pitch</span> <span style="color:#f92672">:</span><span style="color:#a6e22e">height</span> <span style="color:#ae81ff">1.0</span>))))
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;(mode-line-inactive ((t (:inherit variable-pitch :height 1.0))))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> &#39;</span>(<span style="color:#a6e22e">Info</span><span style="color:#f92672">-</span><span style="color:#a6e22e">quoted</span> ((<span style="color:#a6e22e">t</span> (<span style="color:#f92672">:</span><span style="color:#a6e22e">inherit</span> <span style="color:#a6e22e">fixed</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pitch</span>))))
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;(org-block ((t (:inherit fixed-pitch))))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> &#39;</span>(<span style="color:#a6e22e">org</span><span style="color:#f92672">-</span><span style="color:#a6e22e">code</span> ((<span style="color:#a6e22e">t</span> (<span style="color:#f92672">:</span><span style="color:#a6e22e">inherit</span> (<span style="color:#a6e22e">shadow</span> <span style="color:#a6e22e">fixed</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pitch</span>)))))
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> &#39;</span>(<span style="color:#a6e22e">org</span><span style="color:#f92672">-</span><span style="color:#a6e22e">indent</span> ((<span style="color:#a6e22e">t</span> (<span style="color:#f92672">:</span><span style="color:#a6e22e">inherit</span> (<span style="color:#a6e22e">org</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hide</span> <span style="color:#a6e22e">fixed</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pitch</span>)))))
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> &#39;</span>(<span style="color:#a6e22e">org</span><span style="color:#f92672">-</span><span style="color:#a6e22e">property</span><span style="color:#f92672">-</span><span style="color:#a6e22e">value</span> ((<span style="color:#a6e22e">t</span> (<span style="color:#f92672">:</span><span style="color:#a6e22e">inherit</span> <span style="color:#a6e22e">fixed</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pitch</span>))) <span style="color:#a6e22e">t</span>)
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> &#39;</span>(<span style="color:#a6e22e">org</span><span style="color:#f92672">-</span><span style="color:#a6e22e">table</span> ((<span style="color:#a6e22e">t</span> (<span style="color:#f92672">:</span><span style="color:#a6e22e">inherit</span> <span style="color:#a6e22e">fixed</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pitch</span>))))
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 1.0))))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> &#39;</span>(<span style="color:#a6e22e">org</span><span style="color:#f92672">-</span><span style="color:#a6e22e">verbatim</span> ((<span style="color:#a6e22e">t</span> (<span style="color:#f92672">:</span><span style="color:#a6e22e">inherit</span> (<span style="color:#a6e22e">shadow</span> <span style="color:#a6e22e">fixed</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pitch</span>)))))
+</span></span><span style="display:flex;"><span> )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">add</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hook</span> <span style="color:#e6db74">&#39;org-mode-hook #&#39;</span><span style="color:#a6e22e">variable</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pitch</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mode</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">add</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hook</span> <span style="color:#e6db74">&#39;Info-mode-hook #&#39;</span><span style="color:#a6e22e">variable</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pitch</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mode</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">add</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hook</span> <span style="color:#e6db74">&#39;gnus-mode-hook #&#39;</span><span style="color:#a6e22e">variable</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pitch</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mode</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">add</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hook</span> <span style="color:#e6db74">&#39;Info-mode-hook #&#39;</span><span style="color:#a6e22e">writeroom</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mode</span>)
+</span></span></code></pre></div><h3 id="org-roam配合使用agenda">org-roam配合使用agenda<a hidden class="anchor" aria-hidden="true" href="#org-roam配合使用agenda">#</a></h3>
+<p><a href="https://d12frosted.io/posts/2021-01-16-task-management-with-roam-vol5.html">agenda fast</a></p>
+<h3 id="实现搜索">实现搜索<a hidden class="anchor" aria-hidden="true" href="#实现搜索">#</a></h3>
+<ul>
+<li>option + x： rifle</li>
+</ul>
+<h3 id="主题安装">主题安装<a hidden class="anchor" aria-hidden="true" href="#主题安装">#</a></h3>
+<ul>
+<li><a href="https://protesilaos.com/emacs/modus-themes#h:69b92089-069c-4ba1-9d94-cc3415fc4f87">MOdus</a></li>
+<li><a href="https://protesilaos.com/codelog/2022-08-15-intro-ef-themes-emacs/">ef-theme</a></li>
+</ul>
+<h3 id="文件管理">文件管理<a hidden class="anchor" aria-hidden="true" href="#文件管理">#</a></h3>
+<p><a href="https://zhuanlan.zhihu.com/p/156907392">知乎文章</a></p>
+<h3 id="elpa的使用">elpa的使用<a hidden class="anchor" aria-hidden="true" href="#elpa的使用">#</a></h3>
+<p><a href="https://www.cnblogs.com/litifeng/p/16172613.html">参考</a></p>
+
+
+        </div>
+
+        <footer class="post-footer">
+            
+<nav class="paginav">
+  <a class="prev" href="https://sirius00.github.io/posts/blog/vscode%E7%9A%84%E4%BD%BF%E7%94%A8/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>Vscode的使用</span>
+  </a>
+  <a class="next" href="https://sirius00.github.io/posts/tech/javascript%E5%9F%BA%E7%A1%80/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Javascript基础</span>
+  </a>
+</nav>
+
+        </footer>
+    </div>
+</article>
+</main>
+
+
+<script async src="https://unpkg.com/mermaid@8.8.1/dist/mermaid.min.js"></script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<footer class="footer">
+    <span>
+        Copyright
+        &copy;
+        2020-2023
+        <a href="https://sirius00.github.io/" style="color:#939393;">XP&#39;s Blog</a>
+        All Rights Reserved
+    </span>
+
+    <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#939393;">填写自己的备案号</a>&nbsp;
+
+    <span>
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=null"
+           style="display:inline-block;text-decoration:none;height:20px;color:#939393;">
+            <img src="%e5%a1%ab%e8%87%aa%e5%b7%b1%e7%9a%84%e5%85%ac%e5%ae%89%e5%9b%be%e6%a0%87%e9%93%be%e6%8e%a5" style="float:left;margin: 0px 5px 0px 0px;"/>
+            填自己的公网安备
+        </a>
+    </span>
+
+    <span id="busuanzi_container">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        总访客数: <span id="busuanzi_value_site_uv"></span>
+        总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <span class="topInner">
+        <svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z"/>
+        </svg>
+        <span id="read_progress"></span>
+    </span>
+</a>
+
+<script>
+    document.addEventListener('scroll', function (e) {
+        const readProgress = document.getElementById("read_progress");
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        
+        readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
+    })
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    let mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+<script>
+    document.body.addEventListener('copy', function (e) {
+        if (window.getSelection().toString() && window.getSelection().toString().length > 50) {
+            let clipboardData = e.clipboardData || window.clipboardData;
+            if (clipboardData) {
+                e.preventDefault();
+                let htmlData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「' + {
+                { .
+                    Site.Title
+                }
+            }
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                let textData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「' + {
+                { .
+                    Site.Title
+                }
+            }
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                clipboardData.setData('text/html', htmlData);
+                clipboardData.setData('text/plain', textData);
+            }
+        }
+    });
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '📄复制';
+
+        function copyingDone() {
+            copybutton.innerText = '👌🏻已复制!';
+            setTimeout(() => {
+                copybutton.innerText = '📄复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                let text = codeblock.textContent +
+                    '\r\n————————————————\r\n' +
+                    '版权声明：本文为「' + "XP's Blog"
+                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                navigator.clipboard.writeText(text);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+            }
+            ;
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild === container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName === "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $("code[class^=language] ").on("mouseover", function () {
+        if (this.clientWidth < this.scrollWidth) {
+            $(this).css("width", "135%")
+        }
+    }).on("mouseout", function () {
+        $(this).css("width", "100%")
+    })
+</script>
+</body>
+
+</html>
